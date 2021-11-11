@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="DueGin">
+
+
+
+
+
+<title>SeqQueue | Home</title>
+
+
+
+    <link rel="icon" href="/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">DueGin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">DueGin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">SeqQueue</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">DueGin</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">October 9, 2021&nbsp;&nbsp;9:52:26</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="队列Queue"><a href="#队列Queue" class="headerlink" title="队列Queue"></a>队列Queue</h1><ul>
+<li><p>队列是一种特殊的线性表，特殊之处在于它只允许在表的前端（front）进行删除操作，而在表的后端（rear）进行插入操作，和栈一样，队列是一种操作受限制的线性表</p>
+</li>
+<li><p>进行插入操作的端称为队尾，进行删除操作的端称为队头。队列中没有元素时，称为空队列。</p>
+</li>
+<li><p>在队列中插入一个队列元素称为入队，从队列中删除一个队列元素称为出队</p>
+</li>
+<li><p>先进先出，像实际生活中的排队</p>
+</li>
+</ul>
+<h1 id="顺序队列"><a href="#顺序队列" class="headerlink" title="顺序队列"></a>顺序队列</h1><p>建立顺序队列结构必须为其静态分配或动态申请一片连续的存储空间，并设置两个指针进行管理。一个是队头指针front，它指向队头元素；另一个是队尾指针rear，它指向下一个入队元素的存储位置</p>
+<p><img src="/2021/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Queue/SeqQueue/%E9%A1%BA%E5%BA%8F%E9%98%9F%E5%88%97.png" alt="顺序队列"></p>
+<p>顺序队列中的溢出现象：</p>
+<p>（1） “下溢”现象：当队列为空时，做出队运算产生的溢出现象。“下溢”是正常现象，常用作程序控制转移的条件。</p>
+<p>（2）”真上溢”现象：当队列满时，做进栈运算产生空间溢出的现象。“真上溢”是一种出错状态，应设法避免。</p>
+<p>（3）”假上溢”现象：由于入队和出队操作中，头尾指针只增加不减小，致使被删元素的空间永远无法重新利用。当队列中实际的元素个数远远小于向量空间的规模时，也可能由于尾指针已超越向量空间的上界而不能做入队操作。该现象称为”假上溢”现象。如图（d）</p>
+<h1 id="循环队列"><a href="#循环队列" class="headerlink" title="循环队列"></a>循环队列</h1><ul>
+<li>在实际使用队列时，为了使队列空间能重复使用，往往对队列的使用方法稍加改进：无论插入或删除，一旦rear指针增1或front指针增1 时超出了所分配的队列空间，就让它指向这片连续空间的起始位置。</li>
+</ul>
+<p>当队空时：<code>front=rear</code><br>当队满时：<code>front=rear</code> 亦成立<br>因此只凭等式front=rear无法判断队空还是队满。  有两种方法处理上述问题：</p>
+<ul>
+<li><p>（一）另设一个标志位以区别队列是空还是满。设置tag==0时为空，设置tag==1时为满</p>
+</li>
+<li><p>（二）<strong>少用一个元素空间</strong>，约定以“队列头指针front在队尾指针rear的下一个位置上”作为队列“满”状态的标志。即：</p>
+</li>
+<li><p><strong>队空</strong>时：<code> front=rear</code></p>
+</li>
+<li><p><strong>队满</strong>时：<code>(rear+1)%maxsize=front</code></p>
+<p>这样会腾出一个结点来，<strong>即容量上限为n，则实际容量为n-1</strong></p>
+</li>
+</ul>
+<p><strong>队尾rear始终指向队尾元素的下一个位置</strong></p>
+<h1 id="循环队列概述"><a href="#循环队列概述" class="headerlink" title="循环队列概述"></a>循环队列概述</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//队列容量上限</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 5</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">//结点内容的指针</span></span><br><span class="line">	string* base;</span><br><span class="line">	<span class="comment">//队头</span></span><br><span class="line">	<span class="keyword">int</span> front;</span><br><span class="line">	<span class="comment">//队尾</span></span><br><span class="line">	<span class="keyword">int</span> rear;</span><br><span class="line">	<span class="comment">//初始化</span></span><br><span class="line">	<span class="built_in">Queue</span>()</span><br><span class="line">	&#123; &#125;</span><br><span class="line">    <span class="comment">//获取长度</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">Qlength</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123; &#125;</span><br><span class="line">    <span class="comment">//入队</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(string data)</span></span></span><br><span class="line"><span class="function">	</span>&#123; &#125;</span><br><span class="line">    <span class="comment">//出队</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123; &#125;</span><br><span class="line">    <span class="comment">//获取队头</span></span><br><span class="line">	<span class="function">string <span class="title">get_head</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123; &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>结点的内容可任意类型</strong></p>
+<h1 id="初始化循环队列"><a href="#初始化循环队列" class="headerlink" title="初始化循环队列"></a>初始化循环队列</h1><ul>
+<li>给队列申请一段数组内存，并且是结点内容的类型</li>
+<li>判断是否创建成功</li>
+<li>再设置队头和队尾指针为0</li>
+</ul>
+<p><strong>【注意】</strong>这里 front 和 rear 虽然类型不是指针类型，但可以理解它为一个箭头</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始化</span></span><br><span class="line"><span class="built_in">Queue</span>()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//给循环队列申请连续内存</span></span><br><span class="line">    base = <span class="keyword">new</span> string[MaxSize];</span><br><span class="line">    <span class="comment">//判断base是否为空</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>-&gt;base) <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="comment">//设置队头和队尾为0</span></span><br><span class="line">    <span class="keyword">this</span>-&gt;front = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">this</span>-&gt;rear = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="获取长度"><a href="#获取长度" class="headerlink" title="获取长度"></a>获取长度</h1><p>==通过取模运算，来得出队列长度==</p>
+<p>这里 <strong>rear - front</strong> 有可能是负数，所以要加上容量，</p>
+<ul>
+<li>（一）设置标志方法</li>
+</ul>
+<p>因为这种方法实际容量==容量上限，当队满的时候，取模运算得0，所以需加判断条件</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取长度</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Qlength</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//取模求长度</span></span><br><span class="line">    <span class="keyword">int</span> len = (<span class="keyword">this</span>-&gt;rear - <span class="keyword">this</span>-&gt;front + MaxSize) % MaxSize;</span><br><span class="line">    <span class="keyword">if</span> (len == <span class="number">0</span> &amp;&amp; tag == <span class="number">1</span>) len = MaxSize;</span><br><span class="line">    <span class="keyword">return</span> len;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>（二）非设置标志方法</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取长度</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Qlength</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//取模求长度</span></span><br><span class="line">    <span class="keyword">int</span> len = (<span class="keyword">this</span>-&gt;rear - <span class="keyword">this</span>-&gt;front + MaxSize) % MaxSize;</span><br><span class="line">    <span class="keyword">return</span> len;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Queue/SeqQueue/%E8%8E%B7%E5%8F%96%E9%95%BF%E5%BA%A6.png" alt="获取长度"></p>
+<h1 id="入队"><a href="#入队" class="headerlink" title="入队"></a>入队</h1><ul>
+<li><strong>（一）设置标志来判断队列为空或满</strong></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//入队</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(string data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//当对头和队尾相等，并且标志为1时，判断队满</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>-&gt;rear == <span class="keyword">this</span>-&gt;front &amp;&amp; tag == <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;队满&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>-&gt;base[<span class="keyword">this</span>-&gt;rear] = data;</span><br><span class="line">    <span class="comment">//队尾+1</span></span><br><span class="line">    <span class="keyword">this</span>-&gt;rear = (<span class="keyword">this</span>-&gt;rear + <span class="number">1</span>) % MaxSize;</span><br><span class="line">    <span class="comment">//设置标志为满</span></span><br><span class="line">    tag = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里不必担心为什么队还没满就设置tag=1，因为队还没满的时候，rear != front，所以判断队列是否为满的时候还不会成立，而且只有在入队的时候，才需要判断队是否为满，来防止溢出</p>
+<p><img src="/2021/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Queue/SeqQueue/%E8%AE%BE%E7%BD%AE%E6%A0%87%E5%BF%97%E9%98%9F%E6%BB%A1%E5%88%A4%E6%96%AD.png" alt="设置标志队满判断"></p>
+<p><strong>【提醒】</strong>rear指针总是指向队尾元素的下一个位置</p>
+<ul>
+<li><strong>（二）<code>(rear + 1) % maxsize = front</code></strong></li>
+</ul>
+<p>利用模运算来判断</p>
+<p>这种方法实际容量要-1</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//入队</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(string data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//判断队是否为满</span></span><br><span class="line">    <span class="keyword">if</span> ((<span class="keyword">this</span>-&gt;rear + <span class="number">1</span>) % MaxSize == <span class="keyword">this</span>-&gt;front)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;队满&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>-&gt;base[<span class="keyword">this</span>-&gt;rear] = data;</span><br><span class="line">    <span class="comment">//队尾+1</span></span><br><span class="line">    <span class="keyword">this</span>-&gt;rear = (<span class="keyword">this</span>-&gt;rear + <span class="number">1</span>) % MaxSize;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Queue/SeqQueue/%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E4%B8%BA%E6%BB%A1.png" alt="循环队列为满"></p>
+<p><img src="/2021/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Queue/SeqQueue/%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E4%B8%BA%E6%BB%A1%E5%8F%96%E6%A8%A1.png" alt="循环队列为满取模"></p>
+<h1 id="出队"><a href="#出队" class="headerlink" title="出队"></a>出队</h1><ul>
+<li><strong>（一）设置标志来判断队列为空或满</strong></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//出队</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//对头和队尾相等时，并且标志为0时，队为空</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>-&gt;front == <span class="keyword">this</span>-&gt;rear &amp;&amp; tag == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;队为空&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;弹出&quot;</span> &lt;&lt; <span class="keyword">this</span>-&gt;base[<span class="keyword">this</span>-&gt;front] &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">this</span>-&gt;front = (<span class="keyword">this</span>-&gt;front + <span class="number">1</span>) % MaxSize;</span><br><span class="line">    <span class="comment">//设置标志为空</span></span><br><span class="line">    tag = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里的tag=1跟入队操作一样，只有在出队时才需要判断队列是否为空，以防止越界操作</p>
+<ul>
+<li><strong>（二）利用<code>front==rear</code>来判断队列是否为空</strong></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//出队</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//判断队是否为空</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>-&gt;front == <span class="keyword">this</span>-&gt;rear)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;队为空&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;弹出&quot;</span> &lt;&lt; <span class="keyword">this</span>-&gt;base[<span class="keyword">this</span>-&gt;front] &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">this</span>-&gt;front = (<span class="keyword">this</span>-&gt;front + <span class="number">1</span>) % MaxSize;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Queue/SeqQueue/%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E4%B8%BA%E7%A9%BA.png" alt="循环队列为空"></p>
+<h1 id="获取队头"><a href="#获取队头" class="headerlink" title="获取队头"></a>获取队头</h1><ul>
+<li>判断队列是否为空</li>
+<li>再通过数组下标方式访问队头的元素</li>
+</ul>
+<p>（一）设置标志</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取队头</span></span><br><span class="line"><span class="function">string <span class="title">get_head</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>-&gt;front == <span class="keyword">this</span>-&gt;rear &amp;&amp; tag == <span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;队为空&quot;</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">this</span>-&gt;base[<span class="keyword">this</span>-&gt;front];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（二）非设置标志</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取队头</span></span><br><span class="line"><span class="function">string <span class="title">get_head</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>-&gt;front != <span class="keyword">this</span>-&gt;rear)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>-&gt;base[<span class="keyword">this</span>-&gt;front];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="string">&quot;队列为空&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="SeqQueue全部代码"><a href="#SeqQueue全部代码" class="headerlink" title="SeqQueue全部代码"></a>SeqQueue全部代码</h1><h2 id="C-实现"><a href="#C-实现" class="headerlink" title="C++实现"></a>C++实现</h2><h3 id="（一）设置标志方法"><a href="#（一）设置标志方法" class="headerlink" title="（一）设置标志方法"></a><strong>（一）设置标志方法</strong></h3><p>==实际容量=MaxSize==</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">//队列容量上限</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 5</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">//结点内容</span></span><br><span class="line">	string* base;</span><br><span class="line">	<span class="comment">//队头</span></span><br><span class="line">	<span class="keyword">int</span> front;</span><br><span class="line">	<span class="comment">//队尾</span></span><br><span class="line">	<span class="keyword">int</span> rear;</span><br><span class="line">    <span class="comment">//标志</span></span><br><span class="line">    <span class="keyword">int</span> tag;</span><br><span class="line">	<span class="comment">//初始化</span></span><br><span class="line">	<span class="built_in">Queue</span>()</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//给循环队列申请连续内存</span></span><br><span class="line">		base = <span class="keyword">new</span> string[MaxSize];</span><br><span class="line">		<span class="comment">//判断是否创建成功</span></span><br><span class="line">		<span class="keyword">if</span> (!<span class="keyword">this</span>-&gt;base) <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">		<span class="comment">//设置队头和队尾为0</span></span><br><span class="line">		<span class="keyword">this</span>-&gt;front = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">this</span>-&gt;rear = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//设置标志为空</span></span><br><span class="line">        tag = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//获取长度</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">Qlength</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">//取模求长度</span></span><br><span class="line">		<span class="keyword">int</span> len = (<span class="keyword">this</span>-&gt;rear - <span class="keyword">this</span>-&gt;front + MaxSize) % MaxSize;</span><br><span class="line">		<span class="keyword">if</span> (len == <span class="number">0</span>) len = MaxSize;</span><br><span class="line">		<span class="keyword">return</span> len;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//入队</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(string data)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//当对头和队尾相等，并且标志为1时，判断队满</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span>-&gt;rear == <span class="keyword">this</span>-&gt;front &amp;&amp; tag == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;队满&quot;</span> &lt;&lt; endl;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>-&gt;base[<span class="keyword">this</span>-&gt;rear] = data;</span><br><span class="line">        <span class="comment">//队尾+1</span></span><br><span class="line">        <span class="keyword">this</span>-&gt;rear = (<span class="keyword">this</span>-&gt;rear + <span class="number">1</span>) % MaxSize;</span><br><span class="line">        <span class="comment">//设置标志为满</span></span><br><span class="line">        tag = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//出队</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//对头和队尾相等时，并且标志为0时，队为空</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>-&gt;front == <span class="keyword">this</span>-&gt;rear &amp;&amp; tag == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;队为空&quot;</span> &lt;&lt; endl;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;弹出&quot;</span> &lt;&lt; <span class="keyword">this</span>-&gt;base[<span class="keyword">this</span>-&gt;front] &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">this</span>-&gt;front = (<span class="keyword">this</span>-&gt;front + <span class="number">1</span>) % MaxSize;</span><br><span class="line">        <span class="comment">//设置标志为空</span></span><br><span class="line">        tag = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//获取队头</span></span><br><span class="line">    <span class="function">string <span class="title">get_head</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>-&gt;front == <span class="keyword">this</span>-&gt;rear &amp;&amp; tag == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;队为空&quot;</span> &lt;&lt; endl;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">this</span>-&gt;base[<span class="keyword">this</span>-&gt;front];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="（二）非设置标志方法"><a href="#（二）非设置标志方法" class="headerlink" title="（二）非设置标志方法"></a>（二）<strong>非设置标志方法</strong></h3><p>==实际容量=MaxSize-1==</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">//队列容量上限</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 5</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">//结点内容</span></span><br><span class="line">	string* base;</span><br><span class="line">	<span class="comment">//队头</span></span><br><span class="line">	<span class="keyword">int</span> front;</span><br><span class="line">	<span class="comment">//队尾</span></span><br><span class="line">	<span class="keyword">int</span> rear;</span><br><span class="line">	<span class="comment">//初始化</span></span><br><span class="line">	<span class="built_in">Queue</span>()</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//给循环队列申请连续内存</span></span><br><span class="line">		base = <span class="keyword">new</span> string[MaxSize];</span><br><span class="line">		<span class="comment">//判断是否创建成功</span></span><br><span class="line">		<span class="keyword">if</span> (!<span class="keyword">this</span>-&gt;base) <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">		<span class="comment">//设置队头和队尾为0</span></span><br><span class="line">		<span class="keyword">this</span>-&gt;front = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">this</span>-&gt;rear = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//获取长度</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">Qlength</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">//取模求长度</span></span><br><span class="line">		<span class="keyword">int</span> len = (<span class="keyword">this</span>-&gt;rear - <span class="keyword">this</span>-&gt;front + MaxSize) % MaxSize;</span><br><span class="line">		<span class="keyword">return</span> len;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//入队</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(string data)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">//判断队是否为满</span></span><br><span class="line">		<span class="keyword">if</span> ((<span class="keyword">this</span>-&gt;rear + <span class="number">1</span>) % MaxSize == <span class="keyword">this</span>-&gt;front)</span><br><span class="line">		&#123;</span><br><span class="line">			cout &lt;&lt; <span class="string">&quot;队满&quot;</span> &lt;&lt; endl;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">this</span>-&gt;base[<span class="keyword">this</span>-&gt;rear] = data;</span><br><span class="line">		<span class="comment">//队尾+1</span></span><br><span class="line">		<span class="keyword">this</span>-&gt;rear = (<span class="keyword">this</span>-&gt;rear + <span class="number">1</span>) % MaxSize;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//出队</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">//判断队是否为空</span></span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">this</span>-&gt;front == <span class="keyword">this</span>-&gt;rear)</span><br><span class="line">		&#123;</span><br><span class="line">			cout &lt;&lt; <span class="string">&quot;队为空&quot;</span> &lt;&lt; endl;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;弹出&quot;</span> &lt;&lt; <span class="keyword">this</span>-&gt;base[<span class="keyword">this</span>-&gt;front] &lt;&lt; endl;</span><br><span class="line">		<span class="keyword">this</span>-&gt;front = (<span class="keyword">this</span>-&gt;front + <span class="number">1</span>) % MaxSize;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//获取队头</span></span><br><span class="line">	<span class="function">string <span class="title">get_head</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">this</span>-&gt;front != <span class="keyword">this</span>-&gt;rear)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">this</span>-&gt;base[<span class="keyword">this</span>-&gt;front];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">return</span> <span class="string">&quot;队列为空&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Java实现"><a href="#Java实现" class="headerlink" title="Java实现"></a>Java实现</h2><p>pass</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>DueGin</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://duegin.github.io/2021/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Queue/SeqQueue/">https://duegin.github.io/2021/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Queue/SeqQueue/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/c/"># c++</a>
+                    
+                        <a href="/tags/Queue/"># Queue</a>
+                    
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"># 数据结构</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/10/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/LinkList/%E9%93%BE%E5%BC%8F%E6%9C%89%E5%BA%8F%E8%A1%A8%E5%90%88%E5%B9%B6/">链式有序表合并</a>
+            
+            
+            <a class="next" rel="next" href="/2021/10/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/LinkList/LinkList/">LinkList</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© DueGin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

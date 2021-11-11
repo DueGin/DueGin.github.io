@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="DueGin">
+
+
+
+
+
+<title>bs4 | Home</title>
+
+
+
+    <link rel="icon" href="/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">DueGin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">DueGin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">bs4</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">DueGin</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">September 29, 2021&nbsp;&nbsp;0:28:28</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/python/">python</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="bs4"><a href="#bs4" class="headerlink" title="bs4"></a>bs4</h1><p>bs4进行数据解析</p>
+<ul>
+<li><p>数据解析的原理：</p>
+<ol>
+<li><p>标签定位</p>
+</li>
+<li><p>提取标签、标签属性中存储的数据值</p>
+</li>
+</ol>
+</li>
+<li><p>bs4数据解析的原理：</p>
+<ul>
+<li>1.实例化一个BeautifulSoup对象，并且将页面源码数据加载到该对象中</li>
+<li>2.通过调用BeautifulSoup对象中相关的属性或者方法进行标签定位和数据提取</li>
+</ul>
+</li>
+<li><p>环境安装：</p>
+<ul>
+<li>pip install bs4</li>
+<li>pip install lxml</li>
+</ul>
+</li>
+</ul>
+<h2 id="如何使用BeautifulSoup："><a href="#如何使用BeautifulSoup：" class="headerlink" title="如何使用BeautifulSoup："></a>如何使用BeautifulSoup：</h2><ul>
+<li><p><code>from bs4 import BeautifulSoup</code></p>
+</li>
+<li><p>对象的实例化：</p>
+<ol>
+<li><p>将本地的html文档中的数据加载到该对象中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fp = <span class="built_in">open</span>(<span class="string">&#x27;./test.html&#x27;</span>,<span class="string">&#x27;r&#x27;</span>,encoding=<span class="string">&#x27;utf-8&#x27;</span>)</span><br><span class="line">soup = BeautifulSoup(fp,<span class="string">&#x27;lxml&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>将互联网上获取的页面源码加载到该对象中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">page_text = response.text</span><br><span class="line">soup = BeatifulSoup(page_text,<span class="string">&#x27;lxml&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+<h3 id="（一）根据标签名查找"><a href="#（一）根据标签名查找" class="headerlink" title="（一）根据标签名查找"></a>（一）根据标签名查找</h3><ul>
+<li>soup.a   只能找到第一个符合要求的标签</li>
+</ul>
+<h3 id="（二）获取属性"><a href="#（二）获取属性" class="headerlink" title="（二）获取属性"></a>（二）获取属性</h3><ul>
+<li><p>soup.a.attrs  获取a所有的属性和属性值，返回一个字典</p>
+</li>
+<li><p>soup.a.attrs[‘href’]   获取href属性</p>
+</li>
+<li><p>soup.a[‘href’]   也可简写为这种形式</p>
+</li>
+</ul>
+<h3 id="（三）获取内容"><a href="#（三）获取内容" class="headerlink" title="（三）获取内容"></a>（三）获取内容</h3><ul>
+<li><p>soup.a.string</p>
+</li>
+<li><p>soup.a.text</p>
+</li>
+<li><p>soup.a.get_text()</p>
+</li>
+<li><p>text/get_text()：可以获取某一个标签中所有的文本内容</p>
+</li>
+<li><p>string：只可以获取该标签下面直系的文本内容</p>
+</li>
+</ul>
+<p><strong>【注意】</strong>如果标签还有标签，那么string获取到的结果为None，而其它两个，可以获取文本内容</p>
+<h3 id="（四）find：找到第一个符合要求的标签"><a href="#（四）find：找到第一个符合要求的标签" class="headerlink" title="（四）find：找到第一个符合要求的标签"></a>（四）find：找到第一个符合要求的标签</h3><ul>
+<li><p><code>soup.find(&#39;a&#39;)</code>  找到第一个符合要求的</p>
+</li>
+<li><p><code>soup.find(&#39;a&#39;, title=&quot;xxx&quot;)</code></p>
+</li>
+<li><p><code>soup.find(&#39;a&#39;, alt=&quot;xxx&quot;)</code></p>
+</li>
+<li><p><code>soup.find(&#39;a&#39;, class_=&quot;xxx&quot;)</code></p>
+</li>
+<li><p><code>soup.find(&#39;a&#39;, id=&quot;xxx&quot;)</code></p>
+</li>
+</ul>
+<h3 id="（五）find-all：找到所有符合要求的标签"><a href="#（五）find-all：找到所有符合要求的标签" class="headerlink" title="（五）find_all：找到所有符合要求的标签"></a>（五）find_all：找到所有符合要求的标签</h3><ul>
+<li><p><code>soup.find_all(&#39;a&#39;)</code></p>
+</li>
+<li><p><code>soup.find_all([&#39;a&#39;,&#39;b&#39;])</code> 找到所有的a和b标签</p>
+</li>
+<li><p><code>soup.find_all(&#39;a&#39;, limit=2)</code>  限制前两个</p>
+</li>
+</ul>
+<h3 id="（六）根据选择器选择指定的内容"><a href="#（六）根据选择器选择指定的内容" class="headerlink" title="（六）根据选择器选择指定的内容"></a>（六）根据选择器选择指定的内容</h3><ul>
+<li>select(‘某种选择器（id，class，标签…选择器）’)，返回的是一个列表。</li>
+<li>如：<code>select:soup.select(&#39;#feng&#39;)</code></li>
+</ul>
+<p>常见的选择器：标签选择器(a)、类选择器(.)、id选择器(#)</p>
+<ul>
+<li>层级选择器：<ul>
+<li>soup.select(‘.tang &gt; ul &gt; li &gt; a &gt; .lala &gt; #nems’)：&gt;表示的是一个层级</li>
+<li>soup.select(‘.tang &gt; ul a #nems’)：空格表示的多个层级</li>
+</ul>
+</li>
+</ul>
+<p><strong>【注意】</strong>select选择器返回<em><strong>永远是列表</strong></em>，需要通过下标提取指定的对象</p>
+<h2 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h2><p>爬取豆瓣TOP250电影信息及封面</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> openpyxl</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">from</span> openpyxl.styles <span class="keyword">import</span> Font, Border, Side, PatternFill, colors, Alignment</span><br><span class="line"></span><br><span class="line">path=<span class="string">&#x27;./豆瓣&#x27;</span></span><br><span class="line">rank=<span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#初始化一张工作表</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">start_excel</span>(<span class="params">book,sh</span>):</span></span><br><span class="line">    <span class="comment"># 修改当前sheet标题</span></span><br><span class="line">    sh.title = <span class="string">&#x27;豆瓣TOP250&#x27;</span></span><br><span class="line">    row = [<span class="string">&#x27;排名&#x27;</span>,<span class="string">&#x27;电影&#x27;</span>,<span class="string">&#x27;电影别称&#x27;</span>,<span class="string">&#x27;电影类型&#x27;</span>,<span class="string">&#x27;电影评分&#x27;</span>]</span><br><span class="line">    rows = [<span class="string">&#x27;排名&#x27;</span>, <span class="string">&#x27;电影&#x27;</span>, <span class="string">&#x27;电影别称&#x27;</span>, <span class="string">&#x27;电影类型&#x27;</span>, <span class="string">&#x27;电影评分&#x27;</span>,<span class="string">&#x27;sssssssssssssss&#x27;</span>]</span><br><span class="line">    sh.append(row)</span><br><span class="line">    book.save(<span class="string">&#x27;豆瓣TOP250.xlsx&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;创建工作表完成！&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#获取电影封面</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_img_movie</span>(<span class="params">url,soup,len_movies</span>):</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, len_movies):</span><br><span class="line">        <span class="comment"># 每个电影名称（用bs4层级选择器寻找电影名）</span></span><br><span class="line">        img_name = soup.select(<span class="string">&#x27;#wrapper .grid_view &gt; li img&#x27;</span>)[i][<span class="string">&#x27;alt&#x27;</span>]</span><br><span class="line">        path_img = os.getcwd() + <span class="string">&#x27;/&#x27;</span> + <span class="built_in">str</span>(i + <span class="number">1</span>) + img_name + <span class="string">&#x27;.jpg&#x27;</span></span><br><span class="line">        <span class="comment"># 电影图片（用bs4层级选择器寻找电影封面）</span></span><br><span class="line">        url_img_movie = soup.select(<span class="string">&#x27;#wrapper .grid_view &gt; li img&#x27;</span>)[i][<span class="string">&#x27;src&#x27;</span>]</span><br><span class="line">        <span class="comment"># 获取图片数据并以二进制保存在img_movie里</span></span><br><span class="line">        img_movie = requests.get(url=url_img_movie, headers=header).content</span><br><span class="line">        <span class="comment"># 存储</span></span><br><span class="line">        <span class="keyword">with</span> <span class="built_in">open</span>(path_img, <span class="string">&#x27;wb&#x27;</span>) <span class="keyword">as</span> fp:</span><br><span class="line">            <span class="comment">#命令行清屏，pycharm无法清屏</span></span><br><span class="line">            os.system(<span class="string">&quot;cls&quot;</span>)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;进度：&#x27;</span>+<span class="built_in">str</span>(i/len_movies)+<span class="string">&#x27;%&#x27;</span>)</span><br><span class="line">            fp.write(img_movie)</span><br><span class="line">        <span class="comment">#print(img_name + &#x27;已下载完成!&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#电影信息</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_movie_message</span>(<span class="params">soup,len_movies,book,sh</span>):</span></span><br><span class="line">    <span class="comment">#影名匹配模式</span></span><br><span class="line">    re_mov_name = <span class="string">&#x27;&lt;span class=&quot;title&quot;&gt;(.*?)&lt;/span&gt;&#x27;</span></span><br><span class="line">    <span class="comment">#信息匹配模式</span></span><br><span class="line">    re_messa_movie = <span class="string">&#x27;&lt;br&gt;(.*?[\n]*?.*?[\n]*?.*?)&lt;/p&gt;&#x27;</span></span><br><span class="line">    <span class="comment">#其他影名匹配模式</span></span><br><span class="line">    re_oth_name = <span class="string">&#x27;&lt;span class=&quot;other&quot;&gt;(.*?)&lt;/span&gt;&#x27;</span></span><br><span class="line">    <span class="comment"># 电影评分匹配模式</span></span><br><span class="line">    re_score = <span class="string">&#x27;&lt;span class=&quot;rating_num&quot; property=&quot;v:average&quot;&gt;([0-9]\.[0-9])&lt;/span&gt;&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, len_movies):</span><br><span class="line">        <span class="comment">#添加的内容</span></span><br><span class="line">        list_movie = []</span><br><span class="line">        <span class="keyword">global</span> rank</span><br><span class="line">        rank += <span class="number">1</span></span><br><span class="line">        list_movie.append(rank)</span><br><span class="line">        mov_name1 = soup.select(<span class="string">&#x27;#wrapper .grid_view &gt; li&#x27;</span>)[i]</span><br><span class="line">        <span class="comment">#用正则表达式寻找电影名字</span></span><br><span class="line">        temp_mov_name = re.findall(pattern=re_mov_name, string=<span class="built_in">str</span>(mov_name1))</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 拼接有多个名字的电影</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">len</span>(temp_mov_name) &gt; <span class="number">1</span>:</span><br><span class="line">            mov_name = <span class="string">&#x27;&#x27;</span></span><br><span class="line">            <span class="keyword">for</span> a <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(temp_mov_name)):</span><br><span class="line">                mov_name += temp_mov_name[a]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            mov_name = temp_mov_name[<span class="number">0</span>]</span><br><span class="line">        list_movie.append(mov_name)</span><br><span class="line">        <span class="comment">#print(mov_name)</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 电影的其他名字</span></span><br><span class="line">        mov_oth_name = soup.select(<span class="string">&#x27;#wrapper .grid_view &gt; li .other&#x27;</span>)[i]</span><br><span class="line">        <span class="comment">#用正则表达式寻找电影其他名字</span></span><br><span class="line">        mov_oth_name = re.findall(re_oth_name,<span class="built_in">str</span>(mov_oth_name))[<span class="number">0</span>].split(<span class="string">&#x27;\xa0&#x27;</span>)[<span class="number">2</span>]</span><br><span class="line">        list_movie.append(mov_oth_name)</span><br><span class="line">        <span class="built_in">print</span>(mov_oth_name)</span><br><span class="line">        </span><br><span class="line">        <span class="comment">#电影类型(待用正则优化)</span></span><br><span class="line">        type_movie = soup.select(<span class="string">&#x27;#wrapper .grid_view &gt; li .bd&#x27;</span>)[i]</span><br><span class="line">        num_type_movie = <span class="built_in">str</span>(type_movie).find(<span class="string">&#x27;&lt;br/&gt;&#x27;</span>)</span><br><span class="line">        num_type_movie1 = <span class="built_in">str</span>(type_movie).find(<span class="string">&#x27;&lt;/p&gt;&#x27;</span>)</span><br><span class="line">        temp_num_type_movie = <span class="built_in">str</span>(type_movie)[num_type_movie:num_type_movie1]</span><br><span class="line">        list_movie.append(temp_num_type_movie[<span class="number">5</span>:-<span class="number">6</span>].strip())</span><br><span class="line">        <span class="comment">#print(temp_num_type_movie[5:-6].strip())</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 电影评分（用bs4层级选择器寻找评分，返回列表，并找出对应元素，第i+1个）</span></span><br><span class="line">        score_movie = soup.select(<span class="string">&#x27;#wrapper .grid_view &gt; li .star&#x27;</span>)[i]</span><br><span class="line">        <span class="comment">#用正则表达式寻找电影评分</span></span><br><span class="line">        score_movie = re.findall(re_score,<span class="built_in">str</span>(score_movie))</span><br><span class="line">        list_movie.append(score_movie[<span class="number">0</span>])</span><br><span class="line">        <span class="comment">#print(list_movie)</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">#将数据导入excel</span></span><br><span class="line">        sh.append(list_movie)</span><br><span class="line">        <span class="comment">#print(score_movie)</span></span><br><span class="line">        book.save(<span class="string">&#x27;豆瓣TOP250.xlsx&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="comment">#网页头信息</span></span><br><span class="line">    headers=&#123;</span><br><span class="line">        <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;referer&#x27;</span>: <span class="string">&#x27;https: // pagead2.googlesyndication.com /&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">#图片头信息</span></span><br><span class="line">    header = &#123;</span><br><span class="line">        <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;Upgrade-Insecure-Requests&#x27;</span>: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;sec - ch - ua - mobile&#x27;</span>: <span class="string">&#x27;?0&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;sec - ch - ua&#x27;</span>: <span class="string">&#x27;&quot;Google Chrome&quot;;v = &quot;89&quot;, &quot;Chromium&quot;;v = &quot;89&quot;, &quot;;Not A Brand&quot;;v = &quot;99&quot;&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    url = <span class="string">&#x27;https://movie.douban.com/top250?start=&#123;&#125;&amp;filter=&#x27;</span></span><br><span class="line">    <span class="comment"># 创建程序所在文件夹</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> os.path.isdir(path):</span><br><span class="line">        os.mkdir(path)</span><br><span class="line">    <span class="comment"># 将工作目录改为刚创建的文件夹里</span></span><br><span class="line">    os.chdir(path)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 创建一张excel对象</span></span><br><span class="line">    book = openpyxl.Workbook()</span><br><span class="line">    <span class="comment"># 创建新的工作簿</span></span><br><span class="line">    sh = book.active</span><br><span class="line">    <span class="comment"># 初始化一张工作表</span></span><br><span class="line">    start_excel(book=book, sh=sh)</span><br><span class="line">    <span class="comment">#页数</span></span><br><span class="line">    pagenum=-<span class="number">25</span></span><br><span class="line">    <span class="keyword">for</span> a <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">10</span>):</span><br><span class="line">        pagenum+=<span class="number">25</span></span><br><span class="line">        <span class="comment">#第n页的新网址</span></span><br><span class="line">        new_url=url.<span class="built_in">format</span>(pagenum)</span><br><span class="line">        <span class="comment">#获取整个网页源码</span></span><br><span class="line">        page_data = requests.get(url=new_url,headers=headers).text</span><br><span class="line">        <span class="comment">#煲汤实例化对象</span></span><br><span class="line">        soup = BeautifulSoup(page_data,<span class="string">&#x27;lxml&#x27;</span>)</span><br><span class="line">        <span class="comment">#寻找各个电影封面（用bs4层级选择器寻找封面所在标签）</span></span><br><span class="line">        len_movies = <span class="built_in">len</span>(soup.select(<span class="string">&#x27;#wrapper .grid_view &gt; li img&#x27;</span>))</span><br><span class="line">        <span class="comment">#收集每部电影的封面</span></span><br><span class="line">        get_img_movie(url=new_url,soup=soup,len_movies=len_movies)</span><br><span class="line">        <span class="comment"># 电影信息</span></span><br><span class="line">        get_movie_message(soup=soup,len_movies=len_movies,book=book,sh=sh)</span><br><span class="line">        </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">6</span>):</span><br><span class="line">        sh.cell(<span class="number">1</span>, i).font = Font(size=<span class="number">16</span>)</span><br><span class="line">    <span class="comment"># 设置行高</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">251</span>):</span><br><span class="line">        sh.row_dimensions[i].height = <span class="number">25</span></span><br><span class="line">    <span class="comment"># 设置列宽</span></span><br><span class="line">    sh.row_dimensions[<span class="number">1</span>].width = <span class="number">5</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">66</span>,<span class="number">70</span>):</span><br><span class="line">        sh.column_dimensions[<span class="built_in">chr</span>(i)].width = <span class="number">30</span></span><br><span class="line">    <span class="comment"># 通过参数horizontal和vertical来设置文字在单元格里的对齐方式，此外设置值还可为left和right</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">6</span>):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">252</span>):</span><br><span class="line">            sh.cell(j,i).alignment = Alignment(horizontal=<span class="string">&#x27;center&#x27;</span>, vertical=<span class="string">&#x27;center&#x27;</span>)</span><br><span class="line">    book.save(<span class="string">&#x27;豆瓣TOP250.xlsx&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&#x27;爬取完成！&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>DueGin</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://duegin.github.io/2021/09/29/Python/%E7%88%AC%E8%99%AB/bs4/">https://duegin.github.io/2021/09/29/Python/%E7%88%AC%E8%99%AB/bs4/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/python/"># python</a>
+                    
+                        <a href="/tags/%E7%88%AC%E8%99%AB/"># 爬虫</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/09/29/Python/%E7%88%AC%E8%99%AB/xpath/">xpath</a>
+            
+            
+            <a class="next" rel="next" href="/2021/09/29/Python/Excel%E6%A8%A1%E5%9D%97/Excel%E8%AF%BB%E5%86%99%E6%A8%A1%E5%9D%97/">读写excel</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© DueGin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="DueGin">
+
+
+
+
+
+<title>LinkList | Home</title>
+
+
+
+    <link rel="icon" href="/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">DueGin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">DueGin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">LinkList</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">DueGin</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">October 7, 2021&nbsp;&nbsp;21:57:17</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="LinkList"><a href="#LinkList" class="headerlink" title="LinkList"></a>LinkList</h1><ul>
+<li><p>链表是一种物理存储单元上非连续、非顺序的存储结构，数据元素的逻辑顺序是通过链表中的指针链接次序实现的。</p>
+</li>
+<li><p>链表由一系列结点（链表中每一个元素称为结点）组成，结点可以在运行时动态生成。</p>
+</li>
+<li><p>每个结点包括两个部分：一个是存储数据元素的数据域，另一个是存储下一个结点地址的指针域。 </p>
+</li>
+</ul>
+<p><img src="/2021/10/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/LinkList/LinkList/%E9%93%BE%E8%A1%A8%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84.png"></p>
+<h2 id="与顺序表的区别"><a href="#与顺序表的区别" class="headerlink" title="与顺序表的区别"></a>与顺序表的区别</h2><ul>
+<li>链表可以充分利用计算机内存空间，实现灵活的内存动态管理，而线性表顺序别构只能利用连续的内存空间</li>
+<li>但是链表失去了数组随机读取的优点，同时链表由于增加了结点的指针域，空间开销比较大，而顺序结构能随机存取</li>
+</ul>
+<p><strong>链式结构可以组成多个链表</strong></p>
+<p>先从单链表开始说起，还是以C++为例</p>
+<h2 id="表中每个单元格的数据"><a href="#表中每个单元格的数据" class="headerlink" title="表中每个单元格的数据"></a>表中每个单元格的数据</h2><p>以Num为例，根据链表的存储结构，在结构体中定义<strong>要储存的信息</strong>，和<strong>该结构体的指针</strong></p>
+<p><code>typedef</code>是用来为复杂的声明定义简单的别名</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Num</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="comment">//内容</span></span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">    <span class="comment">//下一单元格的地址</span></span><br><span class="line">	Num* next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="创建链表"><a href="#创建链表" class="headerlink" title="创建链表"></a>创建链表</h2><p>先创建一个名为LinkList的类：</p>
+<p>里面包含一些属性，每个单元格的指针，即结构体指针，和链表长度，还有一些链表的方法</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkList</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	Num* a0;</span><br><span class="line">	<span class="keyword">int</span> length;</span><br><span class="line">    <span class="comment">//初始化</span></span><br><span class="line">    <span class="built_in">LinkList</span>()</span><br><span class="line">    &#123; &#125;</span><br><span class="line">    <span class="comment">//插入</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> data)</span></span></span><br><span class="line"><span class="function">    </span>&#123; &#125;</span><br><span class="line">    <span class="comment">//查找</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function">    </span>&#123; &#125;</span><br><span class="line">    <span class="comment">//删除</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function">    </span>&#123; &#125;</span><br><span class="line">    <span class="comment">//打印</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123; &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="头结点"><a href="#头结点" class="headerlink" title="头结点"></a>头结点</h2><ul>
+<li><p>在单链表的开始结点之前附设一个类型相同的结点，称之为头结点。</p>
+</li>
+<li><p>头结点的数据域可以不存储任何信息，头结点的指针域存储指向开始结点的指针（即第一个元素结点的存储位置）。</p>
+</li>
+</ul>
+<p><img src="/2021/10/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/LinkList/LinkList/%E5%A4%B4%E7%BB%93%E7%82%B9.png"></p>
+<h3 id="头结点作用"><a href="#头结点作用" class="headerlink" title="头结点作用"></a>头结点作用</h3><ol>
+<li>便于受源结点的处理</li>
+<li>便于空表和非空表的统一处理</li>
+</ol>
+<p>【注意】若链表不设头结点，则头指针所指结点为该线性表的首元结点</p>
+<h2 id="初始化链表"><a href="#初始化链表" class="headerlink" title="初始化链表"></a>初始化链表</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//单链表初始化</span></span><br><span class="line"><span class="built_in">LinkList</span>()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//给结构体指针申请内存</span></span><br><span class="line">    a0 = <span class="keyword">new</span> Num;</span><br><span class="line">    <span class="comment">//将Num结构体里的next指针指向NULL</span></span><br><span class="line">    a0-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="comment">//设置长度为0</span></span><br><span class="line">    <span class="keyword">this</span>-&gt;length = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><ul>
+<li>（判断）插入的时候，需先判断插入位置是否合法</li>
+<li>（遍历）再移动指针，移动到链表最后一个元素或者指定位置的元素</li>
+<li>（赋值）再判断该结点是否为空，指针移动到的位置是否在目标位置后面，若<strong>都为否</strong>，则赋值</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//插入</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> d, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//新建一个局部变量指针帮忙遍历</span></span><br><span class="line">    <span class="comment">//将头结点赋值到局部变量来</span></span><br><span class="line">    Num* temp = <span class="keyword">this</span>-&gt;a0;</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (temp &amp;&amp; j&lt;i<span class="number">-1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//目标位置前一个结点</span></span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">        ++j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//如果temp为空或者遍历到的位置在目标位置后面，则程序无法继续执行且返回</span></span><br><span class="line">    <span class="keyword">if</span> (!temp || j &gt; i<span class="number">-1</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">//新建一个单元格，并给她申请内存</span></span><br><span class="line">    Num* s = <span class="keyword">new</span> Num;</span><br><span class="line">    <span class="comment">//修改新结点的指针指向</span></span><br><span class="line">    s-&gt;next = temp-&gt;next;</span><br><span class="line">    <span class="comment">//修改目标位置前一个结点的指针指向</span></span><br><span class="line">    temp-&gt;next = s;</span><br><span class="line">    s-&gt;data = d;</span><br><span class="line">    ++<span class="keyword">this</span>-&gt;length;<span class="comment">//长度加1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/2021/10/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/LinkList/LinkList/%E9%93%BE%E8%A1%A8%E6%8F%92%E5%85%A5.gif"></p>
+<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><ul>
+<li>（遍历）移动指针至目标位置</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//查找</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//新建一个局部变量指针帮忙遍历</span></span><br><span class="line">    Num* temp = <span class="keyword">this</span>-&gt;a0;</span><br><span class="line">    <span class="keyword">while</span> (temp-&gt;next &amp;&amp; j &lt; i)</span><br><span class="line">    &#123;</span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">        ++j;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; temp-&gt;data &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><ul>
+<li>（判断）先判断i输入是否合法</li>
+<li>（遍历）再移动指针，移动到目标位置的前一个结点</li>
+<li>（赋值）再判断<strong>该结点的下一结点</strong>和<strong>该结点的下一结点的下一结点</strong>是否为空，若<strong>都非空</strong>，则将<strong>该结点的指针</strong>指向<strong>该结点的下一结点的下一结点</strong></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(i&gt;<span class="keyword">this</span>-&gt;length||i&lt;<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;输入有误！&quot;</span>&lt;&lt;endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//新建一个局部变量指针帮忙遍历</span></span><br><span class="line">    Num* temp = <span class="keyword">this</span>-&gt;a0;</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//遍历</span></span><br><span class="line">    <span class="keyword">while</span> (temp-&gt;next &amp;&amp; j &lt; i - <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">        ++j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//判断是否为空</span></span><br><span class="line">    <span class="keyword">if</span> (!temp-&gt;next || !temp-&gt;next-&gt;next) <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">//修改指针指向</span></span><br><span class="line">    temp-&gt;next = temp-&gt;next-&gt;next;</span><br><span class="line">    --<span class="keyword">this</span>-&gt;length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>只需将蓝色结点的指针指向绿色结点的指针即可</p>
+<p><img src="/2021/10/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/LinkList/LinkList/%E9%93%BE%E8%A1%A8%E5%88%A0%E9%99%A4.gif"></p>
+<h2 id="打印"><a href="#打印" class="headerlink" title="打印"></a>打印</h2><ul>
+<li>遍历</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//打印</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//打工仔</span></span><br><span class="line">    Num* temp = <span class="keyword">this</span>-&gt;a0;</span><br><span class="line">    <span class="comment">//遍历打印</span></span><br><span class="line">    <span class="keyword">while</span> (temp-&gt;next)</span><br><span class="line">    &#123;</span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">        cout &lt;&lt; temp-&gt;data &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="LinkList全部代码"><a href="#LinkList全部代码" class="headerlink" title="LinkList全部代码"></a>LinkList全部代码</h2><h3 id="C-实现"><a href="#C-实现" class="headerlink" title="C++实现"></a>C++实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Num</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="comment">//内容</span></span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">    <span class="comment">//下一单元格的地址</span></span><br><span class="line">	Num* next;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkList</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	Num* a0;</span><br><span class="line">	<span class="keyword">int</span> length;</span><br><span class="line">    <span class="comment">//单链表初始化</span></span><br><span class="line">    <span class="built_in">LinkList</span>()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//给结构体指针申请内存</span></span><br><span class="line">        a0 = <span class="keyword">new</span> Num;</span><br><span class="line">        <span class="comment">//将Num结构体里的next指针指向NULL</span></span><br><span class="line">        a0-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="comment">//设置长度为0</span></span><br><span class="line">        <span class="keyword">this</span>-&gt;length = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//插入</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> d, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//新建一个局部变量指针帮忙遍历</span></span><br><span class="line">        <span class="comment">//将头结点赋值到局部变量来</span></span><br><span class="line">        Num* temp = <span class="keyword">this</span>-&gt;a0;</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (temp &amp;&amp; j&lt;i<span class="number">-1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//目标位置前一个结点</span></span><br><span class="line">            temp = temp-&gt;next;</span><br><span class="line">            ++j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//如果temp为空或者遍历到的位置在目标位置后面，则程序无法继续执行且返回</span></span><br><span class="line">        <span class="keyword">if</span> (!temp || j &gt; i<span class="number">-1</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="comment">//新建一个单元格，并给她申请内存</span></span><br><span class="line">        Num* s = <span class="keyword">new</span> Num;</span><br><span class="line">        <span class="comment">//修改新结点的指针指向</span></span><br><span class="line">        s-&gt;next = temp-&gt;next;</span><br><span class="line">        <span class="comment">//修改目标位置前一个结点的指针指向</span></span><br><span class="line">        temp-&gt;next = s;</span><br><span class="line">        s-&gt;data = d;</span><br><span class="line">        ++<span class="keyword">this</span>-&gt;length;<span class="comment">//长度加1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//查找</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//新建一个局部变量指针帮忙遍历</span></span><br><span class="line">        Num* temp = <span class="keyword">this</span>-&gt;a0;</span><br><span class="line">        <span class="keyword">while</span> (temp-&gt;next &amp;&amp; j &lt; i)</span><br><span class="line">        &#123;</span><br><span class="line">            temp = temp-&gt;next;</span><br><span class="line">            ++j;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; temp-&gt;data &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//删除</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(i&gt;<span class="keyword">this</span>-&gt;length||i&lt;<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            cout&lt;&lt;<span class="string">&quot;输入有误！&quot;</span>&lt;&lt;endl;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//新建一个局部变量指针帮忙遍历</span></span><br><span class="line">        Num* temp = <span class="keyword">this</span>-&gt;a0;</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//遍历</span></span><br><span class="line">        <span class="keyword">while</span> (temp-&gt;next &amp;&amp; j &lt; i - <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            temp = temp-&gt;next;</span><br><span class="line">            ++j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//判断是否为空</span></span><br><span class="line">        <span class="keyword">if</span> (!temp-&gt;next || !temp-&gt;next-&gt;next) <span class="keyword">return</span>;</span><br><span class="line">        <span class="comment">//修改指针指向</span></span><br><span class="line">        temp-&gt;next = temp-&gt;next-&gt;next;</span><br><span class="line">        --<span class="keyword">this</span>-&gt;length;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//打印</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//打工仔</span></span><br><span class="line">        Num* temp = <span class="keyword">this</span>-&gt;a0;</span><br><span class="line">        <span class="comment">//遍历打印</span></span><br><span class="line">        <span class="keyword">while</span> (temp-&gt;next)</span><br><span class="line">        &#123;</span><br><span class="line">            temp = temp-&gt;next;</span><br><span class="line">            cout &lt;&lt; temp-&gt;data &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Java实现"><a href="#Java实现" class="headerlink" title="Java实现"></a>Java实现</h3><p>pass</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>DueGin</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://duegin.github.io/2021/10/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/LinkList/LinkList/">https://duegin.github.io/2021/10/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/LinkList/LinkList/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/c/"># c++</a>
+                    
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"># 数据结构</a>
+                    
+                        <a href="/tags/LinkList/"># LinkList</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Queue/SeqQueue/">SeqQueue</a>
+            
+            
+            <a class="next" rel="next" href="/2021/10/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/SeqList/SeqList/">SeqList</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© DueGin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
