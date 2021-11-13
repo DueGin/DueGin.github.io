@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="DueGin">
+
+
+
+
+
+<title>深度优先搜索 | Home</title>
+
+
+
+    <link rel="icon" href="/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">DueGin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">DueGin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">深度优先搜索</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">DueGin</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">November 13, 2021&nbsp;&nbsp;21:30:17</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/">搜索算法</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Depth-First-Search（DFS）"><a href="#Depth-First-Search（DFS）" class="headerlink" title="Depth-First-Search（DFS）"></a>Depth-First-Search（DFS）</h1><p>深度优先搜索 (DFS) 是一种用于遍历或搜索树或图数据结构的算法。一个从根开始（在图的情况下选择某个任意节点作为根）并在回溯之前沿着每个分支尽可能地探索。</p>
+<img src="/2021/11/13/%E7%AE%97%E6%B3%95/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/Tree Depth-First-Search.gif" alt="Depth-First-Search" style="zoom: 67%;">
+
+<img src="/2021/11/13/%E7%AE%97%E6%B3%95/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/Brute-Force-Depth-First-Search.gif" alt="Brute-Force-Depth-First-Search">
+
+
+
+<p>基本思路：</p>
+<ul>
+<li><p>深度优先遍历图的方法是，从图中某顶点v出发：</p>
+<ul>
+<li><p>  （一）访问顶点v；</p>
+</li>
+<li><p>  （二）依次从v的未被访问的邻接点出发，对图进行深度优先遍历；直至图中和v有路径相通的顶点都被访问；</p>
+</li>
+<li><p>  （三）若此时图中尚有顶点未被访问，则从一个未被访问的顶点出发，重新进行深度优先遍历，直到图中所有顶点均被访问过为止。</p>
+</li>
+</ul>
+</li>
+<li><p>  深度优先遍历树的方法，其实遍历树的先序、中序、后序遍历即是深度优先遍历</p>
+</li>
+</ul>
+<h1 id="邻接矩阵深度优先遍历"><a href="#邻接矩阵深度优先遍历" class="headerlink" title="邻接矩阵深度优先遍历"></a>邻接矩阵深度优先遍历</h1><p>不多bb，看GIF</p>
+<p><img src="/2021/11/13/%E7%AE%97%E6%B3%95/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86%E5%9B%BE.gif" alt="深度优先遍历图"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">bool</span> visited[MAXNUM];<span class="comment">//访问标志的数组</span></span><br><span class="line"><span class="comment">//深度优先递归算法，从第i个开始</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(AMGraph&amp; G,<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    visited[i] = <span class="literal">true</span>;</span><br><span class="line">    cout &lt;&lt; <span class="keyword">this</span>-&gt;ves[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="keyword">this</span>-&gt;vexnum; j++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (G.arc[i][j] &gt;= <span class="number">1</span> &amp;&amp; !visited[j])</span><br><span class="line">            <span class="built_in">DFS</span>(j);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//邻接矩阵深度遍历</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFSTraverse</span><span class="params">(AMGraph&amp; G)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//初始化所有顶点状态为未访问的状态</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.vexnum; i++)</span><br><span class="line">        visited[i] = <span class="literal">false</span>;</span><br><span class="line">    <span class="comment">//如果还有结点未访问则调用DFS，</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G.vexnum; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//若是连通图，只会调用一次</span></span><br><span class="line">        <span class="keyword">if</span> (!visited[i])</span><br><span class="line">            <span class="built_in">DFS</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="邻接表深度优先遍历"><a href="#邻接表深度优先遍历" class="headerlink" title="邻接表深度优先遍历"></a>邻接表深度优先遍历</h2><p>这个就很好理解了吧，而且只是在递归函数中将访问数组换成访问链表而已</p>
+<p>从某一个顶点进去，然后开始遍历该顶点第一个结点下的结点，如果遍历过了或者没有，则回溯就OK了</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//邻接表深度优先递归算法</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(AdjGraph&amp; GL, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout &lt;&lt; GL.vertices[i].data &lt;&lt; <span class="string">&quot; &quot;</span>;  <span class="comment">//打印当前结点</span></span><br><span class="line">    EdgeNode* p = GL.vertices[i].firstnext;   <span class="comment">//打工人</span></span><br><span class="line">    visited[i] = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">while</span> (p)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//判断当前结点</span></span><br><span class="line">        <span class="keyword">if</span> (!visited[p-&gt;adjvex])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">DFS</span>(p-&gt;adjvex);</span><br><span class="line">        &#125;</span><br><span class="line">        p = p-&gt;nextarc;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFSTraverse</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//初始化所有顶点状态为未访问的状态</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; GL.vexnum; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        visited[i] = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//如果还有结点未访问则调用DFS，</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; GL.vexnum; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//若是连通图，只会调用一次</span></span><br><span class="line">        <span class="keyword">if</span> (!visited[i])</span><br><span class="line">            <span class="built_in">DFS</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="两种存储结构区别"><a href="#两种存储结构区别" class="headerlink" title="两种存储结构区别"></a>两种存储结构区别</h1><p>对比两个不同存储结构的深度优先遍历算法，对于 n 个顶点 e 条边的图来说，邻接矩阵由于是二维数组，要查找每个顶点的邻接点需要访问矩阵中的所有元素，因此都需要 $O(n^2)$的时间 而邻接表做存储结构时，找邻接点所需的时间取决于顶点和边的数量，所以是 $O(n+e)$ 。显然对于点多边少的稀疏图来说，邻接表结构使得算法在时间效率上大大提高。</p>
+<p>对于有向图而言，由于它只是对通道存在可行或不可行，算法上没有变化，是完全可以通用的。这里就不再详述了。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>DueGin</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://duegin.github.io/2021/11/13/%E7%AE%97%E6%B3%95/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/">https://duegin.github.io/2021/11/13/%E7%AE%97%E6%B3%95/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/c/"># c++</a>
+                    
+                        <a href="/tags/%E7%AE%97%E6%B3%95/"># 算法</a>
+                    
+                        <a href="/tags/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/"># 深度优先搜索</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2021/11/13/%E7%AE%97%E6%B3%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© DueGin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
