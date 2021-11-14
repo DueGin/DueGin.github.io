@@ -234,7 +234,7 @@
 <li>  贪心算法一般用来解决求最大或最小解</li>
 <li>  贪心算法只能确定某些问题的可行性范围</li>
 </ul>
-<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="455-分发饼干"><a href="#455-分发饼干" class="headerlink" title="455.分发饼干"></a>455.分发饼干</h2><blockquote>
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="455-分发饼干（Easy）"><a href="#455-分发饼干（Easy）" class="headerlink" title="455.分发饼干（Easy）"></a>455.分发饼干（Easy）</h2><blockquote>
 <p>  题目：对每个孩子 <code>i</code>，都有一个胃口值 <code>g[i]</code>，这是能让孩子们满足胃口的饼干的最小尺寸；并且每块饼干 <code>j</code>，都有一个尺寸 <code>s[j]</code> 。如果 <code>s[j] &gt;= g[i]</code>，我们可以将这个饼干 <code>j</code> 分配给孩子 <code>i</code> ，这个孩子会得到满足。你的目标是尽可能满足越多数量的孩子，并输出这个最大数值。</p>
 </blockquote>
 <p>思路：</p>
@@ -256,7 +256,7 @@
 <p>  心得：</p>
 <p>  这题看过题解视频，然后才遇到的，幸运的是，我能写出来</p>
 </blockquote>
-<h2 id="376-摆动序列"><a href="#376-摆动序列" class="headerlink" title="376.摆动序列"></a>376.摆动序列</h2><p>如果连续数字之间的差严格地在正数和负数之间交替，则数字序列称为 <strong>摆动序列 。</strong>第一个差（如果存在的话）可能是正数或负数。仅有一个元素或者含两个不等元素的序列也视作摆动序列。</p>
+<h2 id="376-摆动序列（Medium）"><a href="#376-摆动序列（Medium）" class="headerlink" title="376.摆动序列（Medium）"></a>376.摆动序列（Medium）</h2><p>如果连续数字之间的差严格地在正数和负数之间交替，则数字序列称为 <strong>摆动序列 。</strong>第一个差（如果存在的话）可能是正数或负数。仅有一个元素或者含两个不等元素的序列也视作摆动序列。</p>
 <ul>
 <li>  例如， <code>[1, 7, 4, 9, 2, 5]</code> 是一个 <strong>摆动序列</strong> ，因为差值 <code>(6, -3, 5, -7, 3)</code> 是正负交替出现的。</li>
 <li>  相反，<code>[1, 4, 7, 2, 5]</code> 和 <code>[1, 7, 4, 5, 5]</code> 不是摆动序列，第一个序列是因为它的前两个差值都是正数，第二个序列是因为它的最后一个差值为零。</li>
@@ -288,7 +288,7 @@
 <p>  心得：</p>
 <p>  能写个大概，但判断条件没写出来，无从下手，应该说是不知道怎么计算峰值才最好和两个数之间的峰值不知道怎么处理，后来看了下题解，有了思路</p>
 </blockquote>
-<h2 id="53-最大子序和"><a href="#53-最大子序和" class="headerlink" title="53.最大子序和"></a>53.最大子序和</h2><p>给定一个整数数组 <code>nums</code> ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
+<h2 id="53-最大子序和（Easy）"><a href="#53-最大子序和（Easy）" class="headerlink" title="53.最大子序和（Easy）"></a>53.最大子序和（Easy）</h2><p>给定一个整数数组 <code>nums</code> ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
 <p><strong>示例 1：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：nums = [-2,1,-3,4,-1,2,1,-5,4]</span><br><span class="line">输出：6</span><br><span class="line">解释：连续子数组 [4,-1,2,1] 的和最大，为 6 。</span><br></pre></td></tr></table></figure>
 
@@ -320,7 +320,7 @@
 <p>  心得：</p>
 <p>  这题我是先在动态规划那做过了的，当我用贪心再做的时候，也不是完全没思路，就是能写个大概，但这个重置最大值=0，我写错了。可喜的是，我经过刷前面的题，我知道要在每次循环都要比较出最大值，并赋值给目前的最大值ansMax，刚开始这个比较放在了判断sum&lt;0后面。这题贪心思路还是不行</p>
 </blockquote>
-<h2 id="122-买卖股票的最佳时机"><a href="#122-买卖股票的最佳时机" class="headerlink" title="122.买卖股票的最佳时机"></a>122.买卖股票的最佳时机</h2><p>给定一个数组 <code>prices</code> ，其中 <code>prices[i]</code> 是一支给定股票第 <code>i</code> 天的价格。</p>
+<h2 id="122-买卖股票的最佳时机（Medium）"><a href="#122-买卖股票的最佳时机（Medium）" class="headerlink" title="122.买卖股票的最佳时机（Medium）"></a>122.买卖股票的最佳时机（Medium）</h2><p>给定一个数组 <code>prices</code> ，其中 <code>prices[i]</code> 是一支给定股票第 <code>i</code> 天的价格。</p>
 <p>设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。</p>
 <p><strong>注意：</strong>你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
 <p><strong>示例 1:</strong></p>
@@ -347,7 +347,7 @@
 <p>  心得：</p>
 <p>  这题写出来了，刚开始的时候，纠结当遇到前一个比后一个大怎么去留到后面去判断，其实想了想，这个题只需要判断俩俩关系即可，而且后一个比前一个大的话，记录利润值即可，比较小的话，直接下次循环。</p>
 </blockquote>
-<h2 id="55-跳跃游戏"><a href="#55-跳跃游戏" class="headerlink" title="55.跳跃游戏"></a>55.跳跃游戏</h2><p>给定一个非负整数数组 <code>nums</code> ，你最初位于数组的 <strong>第一个下标</strong> 。</p>
+<h2 id="55-跳跃游戏（Medium）"><a href="#55-跳跃游戏（Medium）" class="headerlink" title="55.跳跃游戏（Medium）"></a>55.跳跃游戏（Medium）</h2><p>给定一个非负整数数组 <code>nums</code> ，你最初位于数组的 <strong>第一个下标</strong> 。</p>
 <p>数组中的每个元素代表你在该位置可以跳跃的最大长度。</p>
 <p>判断你是否能够到达最后一个下标。</p>
 <p><strong>示例 1：</strong></p>
@@ -372,7 +372,7 @@
 <p>  心得：</p>
 <p>  没做出来，但看了思路之后，茅塞顿开，思路被打开了。这题其实我在b站视频看过前半部分，所以下面想到的思路都可能被视频刚开始的试错影响了，刚开始我想的是从后往前推，但是还是被该跳哪一格所困扰；后来又转换了思路，只要跳过数组里的所有0，就是true，但根本无法实现。</p>
 </blockquote>
-<h2 id="跳跃游戏ii"><a href="#跳跃游戏ii" class="headerlink" title="跳跃游戏ii"></a>跳跃游戏ii</h2><p>给你一个非负整数数组 <code>nums</code> ，你最初位于数组的第一个位置。</p>
+<h2 id="跳跃游戏ii（Medium）"><a href="#跳跃游戏ii（Medium）" class="headerlink" title="跳跃游戏ii（Medium）"></a>跳跃游戏ii（Medium）</h2><p>给你一个非负整数数组 <code>nums</code> ，你最初位于数组的第一个位置。</p>
 <p>数组中的每个元素代表你在该位置可以跳跃的最大长度。</p>
 <p>你的目标是使用最少的跳跃次数到达数组的最后一个位置。</p>
 <p>假设你总是可以到达数组的最后一个位置。</p>
@@ -386,6 +386,7 @@
 <ul>
 <li><p>局部最优：当前可移动距离尽可能多走，如果还没到终点，步数再加一，即每遍历下一个结点，获取最大范围，并且，如果遍历到了这一步的最大范围终点的话，就跳去下一步，</p>
 <p>  每步是按遍历完这一步的最大范围算走完这一步</p>
+<p>  <strong>找出当前这一步范围内的最大范围，来确定下一步到达的范围</strong></p>
 </li>
 <li><p>  整体最优：一步尽可能多走，从而达到最小步数</p>
 </li>
@@ -399,6 +400,51 @@
 <blockquote>
 <p>  心得：</p>
 <p>  刚开始做这题的时候，我是想着，选格跳的，从[i+1,i+nums[i]]里找出最大值来跳，这样就不用遍历每个数，但好像设计的有点问题，后来看题解，原来又是用范围来解，而且遍历每个数，到了这一步终点就跳下一步，我画了图才明白，哎。</p>
+</blockquote>
+<h2 id="1005-K-次取反后最大化的数组和（Easy）"><a href="#1005-K-次取反后最大化的数组和（Easy）" class="headerlink" title="1005.K 次取反后最大化的数组和（Easy）"></a>1005.K 次取反后最大化的数组和（Easy）</h2><p>思路：</p>
+<ul>
+<li><p>局部最优：每次找出数组中最小的值来取反</p>
+<p>  也就是负数取反就变正的了，对数组和有利，如果全都是正数，那当然也是取最小的正数来取反，这样对数组和影响最小</p>
+</li>
+<li><p>  全局最优：整个数组和达到最大</p>
+</li>
+</ul>
+<p>但我这方法有缺点，时间复杂度高$O(n*k)$，而且当负数被全部取反后，它一直循环取反最小的非负数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">largestSumAfterKNegations</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt; &amp;nums, <span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> numMin = INT32_MAX;<span class="comment">//记录最小值，这里初始化为最大值，不然有可能找不出最小值</span></span><br><span class="line">        <span class="keyword">int</span> index = <span class="number">0</span>;<span class="comment">//记录最小值的索引</span></span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (numMin &gt; nums[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    numMin = nums[j];</span><br><span class="line">                    index = j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            nums[index] = -nums[index];<span class="comment">//取反找到的最小值</span></span><br><span class="line">            numMin = INT32_MAX;<span class="comment">//重置最小值为最大值</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">            sum += nums[i];</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>代码随想录中的思路是<strong>将负数和非负数分开处理</strong>，而且将负数取反后，反复取反一个数作了优化</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* @Author : Carl */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">abs</span>(a) &gt; <span class="built_in">abs</span>(b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">largestSumAfterKNegations</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt;&amp; A, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 第一步:将数组按照绝对值大小从大到小排序，注意要按照绝对值的大小</span></span><br><span class="line">        <span class="built_in">sort</span>(A.<span class="built_in">begin</span>(), A.<span class="built_in">end</span>(), cmp);       </span><br><span class="line">        <span class="comment">// 第二步:从前向后遍历，遇到负数将其变为正数，同时K--</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; A.<span class="built_in">size</span>(); i++) &#123; </span><br><span class="line">            <span class="keyword">if</span> (A[i] &lt; <span class="number">0</span> &amp;&amp; K &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                A[i] *= <span class="number">-1</span>;</span><br><span class="line">                K--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (K % <span class="number">2</span> == <span class="number">1</span>) A[A.<span class="built_in">size</span>() - <span class="number">1</span>] *= <span class="number">-1</span>; <span class="comment">// 第三步:如果K还大于0，那么反复转变数值最小的元素，将K用完，（这里如果剩余的k是偶数，取反两次还是它本身）</span></span><br><span class="line">        <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> a : A) result += a;        <span class="comment">// 第四步:求和</span></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>  心得：</p>
+<p>  这题做出来了，而且思路很清晰，知道局部最优是找出最小值然后取反，这样才能对数组和最有利。看了 代码随想录题解后，茅塞顿开，知道自己写的代码有很多地方需要优化。</p>
+</blockquote>
+<h2 id="134-加油站"><a href="#134-加油站" class="headerlink" title="134.加油站"></a>134.加油站</h2><p>我的想法：</p>
+<ul>
+<li>  局部最优：起点从索引0开始试，如果中途油量小于0，那直接换下一个起点，如果走完一圈之后，油量是大于等于0，那这个起点可以</li>
+<li>  全局最优：保证油量大于等于0的情况下走最远的路。</li>
+</ul>
+<p>但是这样做，思路可行，但是力扣超时了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">canCompleteCircuit</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt; &amp;gas, vector&lt;<span class="keyword">int</span>&gt; &amp;cost)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = gas.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> curSum = <span class="number">0</span>; <span class="comment">// 每天剩余油量之和</span></span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, start = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (start&lt;n)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//求和每天剩余的油量</span></span><br><span class="line">            curSum += gas[i]-cost[i];</span><br><span class="line">            i = (i + <span class="number">1</span>) % n;<span class="comment">//下一个结点</span></span><br><span class="line">            <span class="comment">// 如果油量之和小于0，则肯定不是这个为起点，立即停止从下一个点开始</span></span><br><span class="line">            <span class="keyword">if</span> (curSum &lt; <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                start++; <span class="comment">//下一个起点</span></span><br><span class="line">                i = start;</span><br><span class="line">                curSum = <span class="number">0</span>; <span class="comment">//重置</span></span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (curSum &gt;= <span class="number">0</span> &amp;&amp; i == start)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">return</span> start;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Carl哥的思路：</p>
+<p>直接从全局进行贪心：</p>
+<ul>
+<li>  情况一：如果gas的总和小于cost总和，那么无论从哪里出发，一定是跑不了一圈的</li>
+<li>  情况二：rest[i] = gas[i]-cost[i]为一天剩下的油，i从0开始计算累加到最后一站，如果累加没有出现负数，说明从0出发，油就没有断过，那么0就是起点。</li>
+<li>  情况三：如果累加的最小值是负数，汽车就要从非0节点出发，从后向前，看哪个节点能这个负数填平，能把这个负数填平的节点就是出发节点。</li>
+</ul>
+<p>他说这不算是贪心，因为没有全局最优</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">canCompleteCircuit</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt; &amp;gas, vector&lt;<span class="keyword">int</span>&gt; &amp;cost)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> curSum = <span class="number">0</span>;    <span class="comment">// 每天剩余油量之和</span></span><br><span class="line">        <span class="keyword">int</span> min = INT_MAX; <span class="comment">// 从起点出发，油箱里的油量最小值</span></span><br><span class="line">        <span class="keyword">int</span> n = gas.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> rest= gas[i]-cost[i]; <span class="comment">// 剩余的油量</span></span><br><span class="line">            curSum+=rest;</span><br><span class="line">            <span class="comment">//记录最小油量</span></span><br><span class="line">            <span class="keyword">if</span>(curSum&lt;min)</span><br><span class="line">                min=curSum;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//如果剩余油量是负数，那肯定跑不完整圈</span></span><br><span class="line">        <span class="keyword">if</span>(curSum&lt;<span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="comment">//这个最小油量只要不是正数，这里都不是起点，因为从这出发，跑完全程邮箱是负的</span></span><br><span class="line">        <span class="keyword">if</span>(min&gt;=<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//判断哪个是起点，一定要从后往前加剩余的油量，因为车是从左到右开的</span></span><br><span class="line">        <span class="comment">//因为min是从左到右的最小油量，负数即欠油量，那么这个最小油量就相当于是所需的总油量</span></span><br><span class="line">        <span class="comment">//如果刚好min是非负数，则这就是终点</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=n<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> rest=gas[i]-cost[i];</span><br><span class="line">            min+=rest;</span><br><span class="line">            <span class="keyword">if</span>(min&gt;=<span class="number">0</span>)</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>  心得：</p>
+<p>  这题太搞了，我的想法被两个力扣 n 个0的数组给干碎了，运行超时了。</p>
+<p>  后来看代码随想录题解，我觉得不是那么好理解，虽然是分情况来判断，但我觉得做贪心的题以来最巧妙就这题了。</p>
 </blockquote>
 
         </div>
