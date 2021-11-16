@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="DueGin">
+
+
+
+
+
+<title>图 | Home</title>
+
+
+
+    <link rel="icon" href="/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">DueGin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">DueGin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">图</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">DueGin</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">November 13, 2021&nbsp;&nbsp;17:06:25</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Graph"><a href="#Graph" class="headerlink" title="Graph"></a>Graph</h1><p>像这样的称为图：</p>
+<ul>
+<li>  无向图、有向图</li>
+</ul>
+<p><img src="/2021/11/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Graph/%E7%94%9F%E6%88%90%E5%9B%BE/%E5%9B%BE/无向图例子.jpg" alt="无向图例子" style="zoom: 80%;">             <img src="/2021/11/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Graph/%E7%94%9F%E6%88%90%E5%9B%BE/%E5%9B%BE/有向图例子.png" alt="有向图例子" style="zoom: 67%;"></p>
+<p>基本术语：</p>
+<ul>
+<li><p>  子图（Sub-Graph）：当图G’=(V’,E’)其中V‘包含于V，E’包含于E，则G’称作图G=(V,E)的子图。每个图都是本身的子图。</p>
+</li>
+<li><p>度（Degree）：一个顶点的度是指与该顶点相关联的边的条数，顶点v的度记作d(v)。</p>
+<ul>
+<li>  入度（In-degree）：一个顶点的入度是指与其关联的各边之中，以其为终点的边数（箭头指向该顶点的箭头数）</li>
+<li>  出度（Out-degree）：出度则是相对的概念，指以该顶点为起点的边数。（这个顶点往外指的箭头数）</li>
+</ul>
+</li>
+<li><p>无向完全图和有向完全图：</p>
+<ul>
+<li>  <strong>无向完全图</strong>，在无向图中，如果<strong>任意两个顶点之间</strong>都存在边，则称该图为无向完全图<strong>，具有$n(n-1)/2$条边。</strong></li>
+<li>  <strong>有向完全图</strong>，在有向图中，如果<strong>任意两个顶点之间</strong>都存在 <strong>方向互为相反</strong> 的<strong>两条弧</strong>，<strong>具有$n(n-1)$条弧</strong></li>
+</ul>
+</li>
+<li><p>  稀疏图和稠密图：有很少条边或弧（如$e&lt;nlog_2n$）的图称为稀疏图，反之称为稠密图</p>
+</li>
+</ul>
+<h1 id="创建图"><a href="#创建图" class="headerlink" title="创建图"></a>创建图</h1><p>有两种方法：</p>
+<ul>
+<li>  邻接矩阵</li>
+<li>  邻接表</li>
+</ul>
+<h2 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h2><p>邻接矩阵就像一个二维数组，<strong>无向图的邻接矩阵是一个对称矩阵</strong></p>
+<img src="/2021/11/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Graph/%E7%94%9F%E6%88%90%E5%9B%BE/%E5%9B%BE/邻接矩阵解释.png" alt="邻接矩阵解释" style="zoom:50%;">
+
+<p>优点：</p>
+<ul>
+<li>  便于判断两个顶点之间是否有边，即根据<code>arc[i][j]=0或其他数</code>来判断</li>
+<li>便于计算各个顶点的度。<ul>
+<li>  对于<strong>无向图</strong>，邻接矩阵第 i 行元素之和 = 顶点 i 的度；</li>
+<li>  对于<strong>有向图</strong>，第 i 行元素之和 = 顶点 i 的出度，第 i 列元素之和 = 顶点 i 的入度</li>
+</ul>
+</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>  不便于增加和删除顶点</li>
+<li>  不便于统计边的数目</li>
+<li>  空间复杂度高，$O(n^2)$，对于稀疏图而言浪费很多空间</li>
+</ul>
+<p>根据储存结构来创建邻接矩阵</p>
+<p>邻接矩阵就像是二维数组，所以需要定义一个二维数组来存放顶点与顶点间的权值</p>
+<p>还需要定义一些与图相关的信息，比如图的点数vexnum即顶点数，图的的边数arcnum等等</p>
+<p>先写好需要定义或者需要用到的，并写在类中</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXNUM 100<span class="comment">//顶点存放的最大容量</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 32767<span class="comment">//表示无穷大，也可以直接用INT32_MAX</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AMGraph</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    string ves[MAXNUM];<span class="comment">//顶点表</span></span><br><span class="line">    <span class="keyword">int</span> arcs[MAXNUM][MAXNUM];<span class="comment">//邻接矩阵</span></span><br><span class="line">    <span class="keyword">int</span> vexnum,arcnum;<span class="comment">//图的点数和边数</span></span><br><span class="line">    <span class="comment">//创建邻接矩阵</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">creat</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">//遍历打印图</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">print_AMGraph</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建邻接矩阵"><a href="#创建邻接矩阵" class="headerlink" title="创建邻接矩阵"></a>创建邻接矩阵</h3><p>这里传入一个二维数组来创建邻接矩阵，如果一个一个数据手动输入的话太过于麻烦。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建邻接矩阵</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">creat</span><span class="params">(string c[],<span class="keyword">int</span> data[][MAXNUM],<span class="keyword">int</span> vexnum,<span class="keyword">int</span> arcnum)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;vexnum=vexnum;</span><br><span class="line">    <span class="keyword">this</span>-&gt;arcnum=arcnum;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;vexnum;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        ves[i]=c[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;vexnum;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;vexnum;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">this</span>-&gt;arcs[i][j]=data[i][j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="遍历打印邻接矩阵"><a href="#遍历打印邻接矩阵" class="headerlink" title="遍历打印邻接矩阵"></a>遍历打印邻接矩阵</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print_AMGraph</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;vexnum;i++)</span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;\t&quot;</span>&lt;&lt;ves[i];</span><br><span class="line">    cout&lt;&lt;endl;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;vexnum;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; ves[i] &lt;&lt; <span class="string">&quot;\t&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;vexnum;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(arcs[i][j]==INF)</span><br><span class="line">            &#123;</span><br><span class="line">                cout&lt;&lt;<span class="string">&quot;∞\t&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                cout&lt;&lt;arcs[i][j]&lt;&lt;<span class="string">&quot;\t&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h2><p>按照其存储结构</p>
+<p>需要有边结点和顶点结点</p>
+<p>顶点结点：</p>
+<ul>
+<li>  顶点结点相当于链表的头结点</li>
+</ul>
+<p>边结点：</p>
+<ul>
+<li>  边结点相当于链表除头结点以外的结点</li>
+</ul>
+<img src="/2021/11/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Graph/%E7%94%9F%E6%88%90%E5%9B%BE/%E5%9B%BE/邻接表.png" alt="邻接表" style="zoom: 50%;">
+
+<p>这里顶点结点所连的一串结点，都是与顶点结点相连的顶点，比如：A顶点，与B和E顶点相连，而B顶点的索引是1，E顶点的索引是4，最后一个结点的next指针要置空</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//邻接表</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AdjList</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">//边结点(相当于链表的其他结点)</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">ArcNode</span></span></span><br><span class="line"><span class="class">    &#123;</span></span><br><span class="line">        <span class="keyword">int</span> adjvex;<span class="comment">//该边顶点的编号</span></span><br><span class="line">        ArcNode* nextarc;<span class="comment">//指向下一条边</span></span><br><span class="line">        <span class="keyword">int</span> weight;<span class="comment">//权值</span></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">//顶点结点(相当于链表的头结点)</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">VNode</span></span></span><br><span class="line"><span class="class">    &#123;</span></span><br><span class="line">        <span class="keyword">int</span> data;<span class="comment">//顶点数据</span></span><br><span class="line">        ArcNode* firstnext;<span class="comment">//下一个顶点</span></span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//邻接表头顶点数组</span></span><br><span class="line">    VNode vertices[MAXNUM];</span><br><span class="line">    <span class="comment">//顶点数、边数</span></span><br><span class="line">    <span class="keyword">int</span> vexnum,arcnum;</span><br><span class="line">    <span class="comment">//创建邻接表</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">creat</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">//遍历打印</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">print_Graph</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="创建邻接表"><a href="#创建邻接表" class="headerlink" title="创建邻接表"></a>创建邻接表</h3><p>这里还是传入二维数组来创建</p>
+<p>这里有点小坑，头结点和其他结点数据类型不同，所以只能用头插</p>
+<p>跟链表插入一个新结点差不多</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">creat</span><span class="params">(<span class="keyword">int</span> data[][MAXNUM],<span class="keyword">int</span> vexnum,<span class="keyword">int</span> arcnum)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>-&gt;vexnum=vexnum;</span><br><span class="line">    <span class="keyword">this</span>-&gt;arcnum=arcnum;</span><br><span class="line">    <span class="comment">//初始化邻接表全部表头结点的next指针为null</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;vexnum;i++)</span><br><span class="line">        <span class="keyword">this</span>-&gt;vertices[i].firstnext=<span class="literal">NULL</span>;</span><br><span class="line">    <span class="comment">//头插法添加（因为头结点和其他结点类型不同，所以只能用头插）</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;vexnum;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;vertices[i].data=i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=vexnum<span class="number">-1</span>;j&gt;=<span class="number">0</span>;j--)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//赋值，并将边结点添加到表头结点的next下</span></span><br><span class="line">            <span class="keyword">if</span>(data[i][j]!=<span class="number">0</span>&amp;&amp;data[i][j]!=INF)</span><br><span class="line">            &#123;</span><br><span class="line">                ArcNode* s=<span class="keyword">new</span> ArcNode;</span><br><span class="line">                s-&gt;adjvex=j;</span><br><span class="line">                s-&gt;weight=data[i][j];</span><br><span class="line">                s-&gt;nextarc=<span class="keyword">this</span>-&gt;vertices[i].firstnext;</span><br><span class="line">                <span class="keyword">this</span>-&gt;vertices[i].firstnext=s;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="遍历打印邻接表"><a href="#遍历打印邻接表" class="headerlink" title="遍历打印邻接表"></a>遍历打印邻接表</h3><p>没啥好说的，跟遍历打印链表差不多，只不过这里是链表数组而已</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print_Graph</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="keyword">this</span>-&gt;vexnum;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//声明局部变量指针遍历</span></span><br><span class="line">        ArcNode* t=<span class="keyword">this</span>-&gt;vertices[i].firstnext;</span><br><span class="line">        <span class="comment">//打印</span></span><br><span class="line">        cout&lt;&lt;<span class="keyword">this</span>-&gt;vertices[i].data&lt;&lt;<span class="string">&quot; -&gt; &quot;</span>;</span><br><span class="line">        <span class="keyword">while</span>(t)</span><br><span class="line">        &#123;</span><br><span class="line">            cout&lt;&lt;t-&gt;adjvex&lt;&lt;<span class="string">&quot;[&quot;</span>&lt;&lt;t-&gt;weight&lt;&lt;<span class="string">&quot;]&quot;</span>&lt;&lt;<span class="string">&quot; -&gt; &quot;</span>;</span><br><span class="line">            t=t-&gt;nextarc;</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;<span class="string">&quot; ^ &quot;</span>&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>DueGin</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://duegin.github.io/2021/11/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Graph/%E7%94%9F%E6%88%90%E5%9B%BE/%E5%9B%BE/">https://duegin.github.io/2021/11/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Graph/%E7%94%9F%E6%88%90%E5%9B%BE/%E5%9B%BE/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/c/"># c++</a>
+                    
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"># 数据结构</a>
+                    
+                        <a href="/tags/Graph/"># Graph</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/11/13/%E7%AE%97%E6%B3%95/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/">深度优先搜索</a>
+            
+            
+            <a class="next" rel="next" href="/2021/11/13/%E7%AE%97%E6%B3%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">贪心算法</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© DueGin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

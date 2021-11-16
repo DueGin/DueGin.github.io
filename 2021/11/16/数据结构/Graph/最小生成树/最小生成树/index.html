@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="DueGin">
+
+
+
+
+
+<title>最小生成树 | Home</title>
+
+
+
+    <link rel="icon" href="/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">DueGin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">DueGin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">最小生成树</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">DueGin</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">November 16, 2021&nbsp;&nbsp;23:30:17</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Minimum-Spanning-Tree（MST）"><a href="#Minimum-Spanning-Tree（MST）" class="headerlink" title="Minimum Spanning Tree（MST）"></a>Minimum Spanning Tree（MST）</h1><p>有两种算法生成：</p>
+<ul>
+<li>  普里姆（Prim）算法</li>
+<li>  克鲁斯卡尔( Kruskal )算法</li>
+</ul>
+<h1 id="Prim算法-O-n-2"><a href="#Prim算法-O-n-2" class="headerlink" title="Prim算法 $O(n^2)$"></a>Prim算法 $O(n^2)$</h1><p>我个人觉得核心是贪心算法，而且用了两次贪心</p>
+<p>用两个数组来记录顶点的权值和索引： lowcost 来记录当前连接到的顶点下的最小的权值， adjvex 来记录与 lowcost 对应的各个最小权值的邻接点（它爸）的索引</p>
+<p><img src="/2021/11/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Graph/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/prim%E7%AE%97%E6%B3%95.gif" alt="prim算法"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> INF 32676</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXNUM 100</span></span><br><span class="line"><span class="comment">// prim最小生成树</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MiniSpanTree_Prim</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> min, i, j, k;</span><br><span class="line">    <span class="keyword">int</span> adjvex[MAXNUM];  <span class="comment">// 当前已连接点的最小权值的集合</span></span><br><span class="line">    <span class="keyword">int</span> lowcost[MAXNUM]; <span class="comment">// 记录最小权值的邻接点索引</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>-&gt;numVertexes; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        lowcost[i] = <span class="keyword">this</span>-&gt;arc[<span class="number">0</span>][i]; <span class="comment">// 先初始化全为第一个顶点的权值</span></span><br><span class="line">        adjvex[i] = <span class="number">0</span>;                <span class="comment">//初始化全为0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//从1开始，因为第一个顶点已经确定了</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="keyword">this</span>-&gt;numVertexes; ++i)</span><br><span class="line">    &#123;</span><br><span class="line">        min = INF; <span class="comment">// 重置最小值为无穷大</span></span><br><span class="line">        k = <span class="number">0</span>;     <span class="comment">// 记录当前最小权值的索引</span></span><br><span class="line">        <span class="comment">// 取与当前顶点相连的边的最小权值，并记录当前最小权值边的顶点索引（贪心思维）</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; <span class="keyword">this</span>-&gt;numVertexes; ++j)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (lowcost[j] != <span class="number">0</span> &amp;&amp; min &gt; lowcost[j])</span><br><span class="line">            &#123;</span><br><span class="line">                min = lowcost[j];</span><br><span class="line">                k = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;(&quot;</span> &lt;&lt; adjvex[k] &lt;&lt; <span class="string">&quot;,&quot;</span> &lt;&lt; k &lt;&lt; <span class="string">&quot;)&quot;</span> &lt;&lt; endl;</span><br><span class="line">        lowcost[k] = <span class="number">0</span>; <span class="comment">//置0表示该点完成生成树任务</span></span><br><span class="line">        <span class="comment">//进入这个最小权值的顶点，来依次赋值给lowcost</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; <span class="keyword">this</span>-&gt;numVertexes; ++j)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">/* 在lowcost和arc[k]这里面一一比较获取最小值（贪心思维）</span></span><br><span class="line"><span class="comment">                这里k是当前最小权值的顶点索引*/</span></span><br><span class="line">            <span class="keyword">if</span> (lowcost[j] != <span class="number">0</span> &amp;&amp; <span class="keyword">this</span>-&gt;arc[k][j] &lt; lowcost[j])</span><br><span class="line">            &#123;</span><br><span class="line">                lowcost[j] = <span class="keyword">this</span>-&gt;arc[k][j];</span><br><span class="line">                adjvex[j] = k;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由算法代码中的循环嵌套可得知此算法的时间复杂度为 $O(n^2)$</p>
+<h1 id="Kruskal算法-O-elog-2e"><a href="#Kruskal算法-O-elog-2e" class="headerlink" title="Kruskal算法 $O(elog_2e)$"></a>Kruskal算法 $O(elog_2e)$</h1><p>这个就是把全部边都去掉，然后对他们的权值进行升序排序，判断是否成环，否则从小到大给边。</p>
+<p>GIF</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Kruskal最小生成树</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">MiniSpanTree_Kruskal</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Edge</span></span></span><br><span class="line"><span class="class">    &#123;</span></span><br><span class="line">        <span class="keyword">int</span> begin;</span><br><span class="line">        <span class="keyword">int</span> end;</span><br><span class="line">        <span class="keyword">int</span> weight;</span><br><span class="line">    &#125;;</span><br><span class="line">    Edge edges[numEdges];</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>-&gt;numVertexes; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="keyword">this</span>-&gt;numVertexes; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">this</span>-&gt;arc[i][j] != INF &amp;&amp; <span class="keyword">this</span>-&gt;arc[i][j] != <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                edges[k].begin = i;</span><br><span class="line">                edges[k].end = j;</span><br><span class="line">                edges[k].weight = <span class="keyword">this</span>-&gt;arc[i][j];</span><br><span class="line">                k++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> minIndex;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        minIndex = i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; k; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (edges[j].weight &lt; edges[minIndex].weight)</span><br><span class="line">            &#123;</span><br><span class="line">                minIndex = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (minIndex != i)</span><br><span class="line">        &#123;</span><br><span class="line">            Edge temp = edges[i];</span><br><span class="line">            edges[i] = edges[minIndex];</span><br><span class="line">            edges[minIndex] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/* 以上赋值排序 */</span></span><br><span class="line">    <span class="keyword">int</span> parent[<span class="keyword">this</span>-&gt;numVertexes]; <span class="comment">// 索引记录边的起始点，其对应值用来记录边的结束点，判断边与边是否成环</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="keyword">this</span>-&gt;numVertexes; i++)</span><br><span class="line">        parent[i] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//找出边的两头所对应的索引的索引</span></span><br><span class="line">        <span class="keyword">int</span> n = <span class="built_in">find</span>(parent, edges[i].begin); </span><br><span class="line">        <span class="keyword">int</span> m = <span class="built_in">find</span>(parent, edges[i].end);</span><br><span class="line">        <span class="keyword">if</span> (n != m)</span><br><span class="line">        &#123;</span><br><span class="line">            parent[n] = m;</span><br><span class="line">            <span class="comment">//cout &lt;&lt; &quot;(&quot; &lt;&lt; edges[i].begin &lt;&lt; &quot;,&quot; &lt;&lt; edges[i].end &lt;&lt; &quot;)&quot; &lt;&lt; edges[i].weight &lt;&lt; endl;</span></span><br><span class="line">            cout &lt;&lt; edges[i].begin &lt;&lt; <span class="string">&quot; ——— &quot;</span> &lt;&lt; edges[i].end &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> *parent, <span class="keyword">int</span> index)</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">// 根据整条路的</span></span><br><span class="line">    <span class="keyword">while</span> (parent[index])</span><br><span class="line">        index = parent[index];</span><br><span class="line">    <span class="keyword">return</span> index;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由算法代码中的循环嵌套可得知此算法的时间复杂度为$O(elog_2e)$，e为边数</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>DueGin</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://duegin.github.io/2021/11/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Graph/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/">https://duegin.github.io/2021/11/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Graph/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/c/"># c++</a>
+                    
+                        <a href="/tags/%E7%AE%97%E6%B3%95/"># 算法</a>
+                    
+                        <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"># 数据结构</a>
+                    
+                        <a href="/tags/Graph/"># Graph</a>
+                    
+                        <a href="/tags/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/"># 最小生成树</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/11/16/%E7%AE%97%E6%B3%95/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/">广度优先搜索</a>
+            
+            
+            <a class="next" rel="next" href="/2021/11/13/%E7%AE%97%E6%B3%95/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2/">深度优先搜索</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© DueGin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>
