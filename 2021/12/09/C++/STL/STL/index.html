@@ -13,7 +13,7 @@
 
 
 
-<title>Home</title>
+<title>STL | Home</title>
 
 
 
@@ -40,6 +40,45 @@
 
     
     
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
         
     
 
@@ -197,7 +236,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title"></h1>
+            <h1 class="post-title">STL</h1>
             
                 <div class="post-meta">
                     
@@ -206,9 +245,16 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">December 10, 2021&nbsp;&nbsp;21:37:50</a>
+                        Date: <a href="#">December 9, 2021&nbsp;&nbsp;23:30:17</a>
                         </span>
                     
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/C-C/">C/C++</a>
+                            
+                        </span>
                     
                 </div>
             
@@ -268,7 +314,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://duegin.github.io/2021/12/10/C++/STL/STL/">https://duegin.github.io/2021/12/10/C++/STL/STL/</a></span>
+                        <span><a href="https://duegin.github.io/2021/12/09/C++/STL/STL/">https://duegin.github.io/2021/12/09/C++/STL/STL/</a></span>
                     </p>
                 
                 
@@ -291,6 +337,12 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/c/"># c++</a>
+                    
+                        <a href="/tags/STL/"># STL</a>
+                    
+                        
                 </span>
             </div>
             <div>
@@ -301,8 +353,10 @@
         </section>
         <section class="post-nav">
             
+                <a class="prev" rel="prev" href="/2021/12/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Tree/%E5%AD%97%E5%85%B8%E6%A0%91/%E5%AD%97%E5%85%B8%E6%A0%91/">字典树</a>
             
-            <a class="next" rel="next" href="/2021/12/10/%E7%AE%97%E6%B3%95/%E5%B8%B8%E8%A7%81%E6%A8%A1%E5%9E%8B/%E5%B8%B8%E8%A7%81%E6%A8%A1%E5%9E%8B/">常见模型</a>
+            
+            <a class="next" rel="next" href="/2021/12/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%93%88%E5%B8%8C%E8%A1%A8/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a>
             
         </section>
 
