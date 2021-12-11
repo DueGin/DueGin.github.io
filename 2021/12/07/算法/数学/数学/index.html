@@ -13,7 +13,7 @@
 
 
 
-<title>Home</title>
+<title>数学 | Home</title>
 
 
 
@@ -40,6 +40,45 @@
 
     
     
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
         
     
 
@@ -197,7 +236,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title"></h1>
+            <h1 class="post-title">数学</h1>
             
                 <div class="post-meta">
                     
@@ -206,9 +245,16 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">December 9, 2021&nbsp;&nbsp;0:01:07</a>
+                        Date: <a href="#">December 7, 2021&nbsp;&nbsp;21:30:17</a>
                         </span>
                     
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">基础算法</a>
+                            
+                        </span>
                     
                 </div>
             
@@ -231,7 +277,7 @@
 </blockquote>
 <p><strong>结论：</strong>$$S=S-S_{x_2,y_1-1}-S_{x_1-1,y_2}+S_{x_1-1,y_1-1}$$</p>
 <p>即：<code>s = s[x2][y2] - s[x1 - 1][y2] - s[x2][y1 - 1] + s[x1 - 1][y1 - 1]</code></p>
-<img src="/2021/12/09/%E7%AE%97%E6%B3%95/%E6%95%B0%E5%AD%A6/%E6%95%B0%E5%AD%A6/二维子矩阵前缀和.png" alt="二维子矩阵前缀和" style="zoom:70%;">
+<img src="/2021/12/07/%E7%AE%97%E6%B3%95/%E6%95%B0%E5%AD%A6/%E6%95%B0%E5%AD%A6/二维子矩阵前缀和.png" alt="二维子矩阵前缀和" style="zoom:70%;">
 
 
 
@@ -247,7 +293,7 @@
 <p>结果输出时，只需要对<code>b[]</code> 用一维前缀和公式即可</p>
 <h2 id="二维差分数组"><a href="#二维差分数组" class="headerlink" title="二维差分数组"></a>二维差分数组</h2><p>给以<code>(x1, y1)</code>为左上角，<code>(x2, y2)</code>为右下角的子矩阵中的所有元素加上c：<br><strong>结论：</strong><code>S[x1, y1] += c, S[x2 + 1, y1] -= c, S[x1, y2 + 1] -= c, S[x2 + 1, y2 + 1] += c</code></p>
 <p>设 <code>a[][]</code> 为 <code>b[][]</code> 的前缀和</p>
-<img src="/2021/12/09/%E7%AE%97%E6%B3%95/%E6%95%B0%E5%AD%A6/%E6%95%B0%E5%AD%A6/二维差分矩阵.png" alt="二维差分矩阵" style="zoom:67%;">
+<img src="/2021/12/07/%E7%AE%97%E6%B3%95/%E6%95%B0%E5%AD%A6/%E6%95%B0%E5%AD%A6/二维差分矩阵.png" alt="二维差分矩阵" style="zoom:67%;">
 
 <p>即为：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x1,<span class="keyword">int</span> y1,<span class="keyword">int</span> x2,<span class="keyword">int</span> y2,<span class="keyword">int</span> c)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    b[x1][y1]+=c;</span><br><span class="line">    b[x2+<span class="number">1</span>][y1]-=c;</span><br><span class="line">    b[x1][y2+<span class="number">1</span>]-=c;</span><br><span class="line">    b[x2+<span class="number">1</span>][y2+<span class="number">1</span>]+=c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -301,7 +347,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://duegin.github.io/2021/12/09/%E7%AE%97%E6%B3%95/%E6%95%B0%E5%AD%A6/%E6%95%B0%E5%AD%A6/">https://duegin.github.io/2021/12/09/%E7%AE%97%E6%B3%95/%E6%95%B0%E5%AD%A6/%E6%95%B0%E5%AD%A6/</a></span>
+                        <span><a href="https://duegin.github.io/2021/12/07/%E7%AE%97%E6%B3%95/%E6%95%B0%E5%AD%A6/%E6%95%B0%E5%AD%A6/">https://duegin.github.io/2021/12/07/%E7%AE%97%E6%B3%95/%E6%95%B0%E5%AD%A6/%E6%95%B0%E5%AD%A6/</a></span>
                     </p>
                 
                 
@@ -324,6 +370,14 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/c/"># c++</a>
+                    
+                        <a href="/tags/%E7%AE%97%E6%B3%95/"># 算法</a>
+                    
+                        <a href="/tags/%E6%95%B0%E5%AD%A6/"># 数学</a>
+                    
+                        
                 </span>
             </div>
             <div>
@@ -334,10 +388,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2021/12/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%93%88%E5%B8%8C%E8%A1%A8/%E5%93%88%E5%B8%8C%E8%A1%A8/">哈希表</a>
+                <a class="prev" rel="prev" href="/2021/12/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B6%E6%9F%A5%E9%9B%86/%E5%B9%B6%E6%9F%A5%E9%9B%86/">并查集</a>
             
             
-            <a class="next" rel="next" href="/2021/12/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%A0%86/%E5%A0%86/">堆</a>
+            <a class="next" rel="next" href="/2021/12/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/KMP%E5%8C%B9%E9%85%8D%E7%AE%97%E6%B3%95/KMP/">KMP算法</a>
             
         </section>
 
