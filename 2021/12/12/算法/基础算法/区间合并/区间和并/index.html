@@ -13,7 +13,7 @@
 
 
 
-<title>常见模型 | Home</title>
+<title>区间合并 | Home</title>
 
 
 
@@ -236,7 +236,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">常见模型</h1>
+            <h1 class="post-title">区间合并</h1>
             
                 <div class="post-meta">
                     
@@ -245,7 +245,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">December 10, 2021&nbsp;&nbsp;21:31:17</a>
+                        Date: <a href="#">December 12, 2021&nbsp;&nbsp;16:01:17</a>
                         </span>
                     
                     
@@ -261,21 +261,17 @@
         </header>
 
         <div class="post-content">
-            <h1 id="常见模型"><a href="#常见模型" class="headerlink" title="常见模型"></a>常见模型</h1><h2 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h2><p>模板题： <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/832/">AcWing 830. 单调栈</a></p>
-<p>模型：找出每个数左边离它最近的比它大/小的数</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> top = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span> (top &amp;&amp; <span class="built_in">check</span>(st[top - <span class="number">1</span>], i)) top -- ;</span><br><span class="line">    st[ ++ top] = i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>check()</code> 就是判断栈顶元素与其他元素之间的关系，与题目有关</p>
-<h1 id="单调队列"><a href="#单调队列" class="headerlink" title="单调队列"></a>单调队列</h1><p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/156/">AcWing 154. 滑动窗口</a></p>
-<p>模型：找出滑动窗口中的最大值/最小值</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> front = <span class="number">0</span>, rear = <span class="number">-1</span>; <span class="comment">// 队头、队尾指针</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++ )</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span> (front &lt;= rear &amp;&amp; <span class="built_in">check_out</span>(q[front])) front ++ ;  <span class="comment">// 判断队头是否滑出窗口</span></span><br><span class="line">    <span class="keyword">while</span> (front &lt;= rear &amp;&amp; <span class="built_in">check</span>(q[rear], i)) rear -- ;</span><br><span class="line">    q[ ++ rear] = i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h1 id="区间合并"><a href="#区间合并" class="headerlink" title="区间合并"></a>区间合并</h1><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/805/">AcWing 803. 区间合并</a></p>
+<p>给定 $n$ 个区间 $[l_i,r_i]$，要求合并所有有交集的区间。</p>
+<p>注意如果在端点处相交，也算有交集。</p>
+<p>输出合并完成后的区间个数。</p>
+<p>例如：$[1,3]$ 和 $[2,6]$ 可以合并为一个区间 $[1,6]$ 。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; PII;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vector&lt;PII&gt; res;</span><br><span class="line">    l=<span class="number">-2e9</span>,r=<span class="number">-2e9</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(r&lt;a[i].first) <span class="comment">// 只需判断扩张区间是不是断了</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(l!=<span class="number">-2e9</span>) res.<span class="built_in">push_back</span>(&#123;l,r&#125;); <span class="comment">// 第一次的时候，肯定是不执行的，所以这个是存入上一次的合并区间</span></span><br><span class="line">            l=a[i].first,r=a[i].second; <span class="comment">// 那合并区间断了，肯定要重新定左端点和右端点啊</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            r=<span class="built_in">max</span>(r,a[i].second); <span class="comment">// 没断的话，取右端点最大值就好了</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(l!=<span class="number">-2e9</span>) res.<span class="built_in">push_back</span>(&#123;l,r&#125;); <span class="comment">//因为是存入上一次的合并区间，所以这次的还没存</span></span><br><span class="line">    a=res; <span class="comment">// 结果数组赋值回去罢了</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<p>逻辑：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// a[]为需要找的数组，k为滑动窗口大小</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (front &lt;= rear &amp;&amp; i - k + <span class="number">1</span> &gt; q[front]) <span class="comment">// 判断队头是否滑出窗口</span></span><br><span class="line">        front++;</span><br><span class="line">    <span class="keyword">while</span> (front &lt;= rear &amp;&amp; a[i] &lt;= a[q[rear]])</span><br><span class="line">        rear--; <span class="comment">// 清除当前队列中的元素</span></span><br><span class="line">    que[++rear] = i;</span><br><span class="line">    <span class="keyword">if</span> (i &gt;= k - <span class="number">1</span>)</span><br><span class="line">        cout &lt;&lt; a[q[front]] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>当找最小值时，队列中队头元素是最小的，依次往后排都是比前一个大的元素，当当前元素<code>a[i]&lt;=</code>队头的最小元素时，循环判断队列中的元素是否有小于<code>a[i]</code>，没有则继续从后向前判断，并将队头出队</p>
+
 
         </div>
 
@@ -290,7 +286,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://duegin.github.io/2021/12/10/%E7%AE%97%E6%B3%95/%E5%B8%B8%E8%A7%81%E6%A8%A1%E5%9E%8B/%E5%B8%B8%E8%A7%81%E6%A8%A1%E5%9E%8B/">https://duegin.github.io/2021/12/10/%E7%AE%97%E6%B3%95/%E5%B8%B8%E8%A7%81%E6%A8%A1%E5%9E%8B/%E5%B8%B8%E8%A7%81%E6%A8%A1%E5%9E%8B/</a></span>
+                        <span><a href="https://duegin.github.io/2021/12/12/%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6/%E5%8C%BA%E9%97%B4%E5%92%8C%E5%B9%B6/">https://duegin.github.io/2021/12/12/%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6/%E5%8C%BA%E9%97%B4%E5%92%8C%E5%B9%B6/</a></span>
                     </p>
                 
                 
@@ -318,6 +314,8 @@
                     
                         <a href="/tags/%E7%AE%97%E6%B3%95/"># 算法</a>
                     
+                        <a href="/tags/%E5%8C%BA%E9%97%B4%E5%92%8C%E5%B9%B6/"># 区间和并</a>
+                    
                         
                 </span>
             </div>
@@ -329,10 +327,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2021/12/12/%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6/%E5%8C%BA%E9%97%B4%E5%92%8C%E5%B9%B6/">区间合并</a>
             
-            
-            <a class="next" rel="next" href="/2021/12/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Tree/%E5%AD%97%E5%85%B8%E6%A0%91/%E5%AD%97%E5%85%B8%E6%A0%91/">字典树</a>
+            <a class="next" rel="next" href="/2021/12/10/%E7%AE%97%E6%B3%95/%E5%B8%B8%E8%A7%81%E6%A8%A1%E5%9E%8B/%E5%B8%B8%E8%A7%81%E6%A8%A1%E5%9E%8B/">常见模型</a>
             
         </section>
 
