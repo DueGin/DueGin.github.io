@@ -13,7 +13,7 @@
 
 
 
-<title>区间合并 | Home</title>
+<title>小技巧 | Home</title>
 
 
 
@@ -236,7 +236,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">区间合并</h1>
+            <h1 class="post-title">小技巧</h1>
             
                 <div class="post-meta">
                     
@@ -245,7 +245,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">December 12, 2021&nbsp;&nbsp;16:01:17</a>
+                        Date: <a href="#">December 14, 2021&nbsp;&nbsp;22:30:17</a>
                         </span>
                     
                     
@@ -261,17 +261,29 @@
         </header>
 
         <div class="post-content">
-            <h1 id="区间合并"><a href="#区间合并" class="headerlink" title="区间合并"></a>区间合并</h1><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/805/">AcWing 803. 区间合并</a></p>
-<p>给定 $n$ 个区间 $[l_i,r_i]$，要求合并所有有交集的区间。</p>
-<p>注意如果在端点处相交，也算有交集。</p>
-<p>输出合并完成后的区间个数。</p>
-<p>例如：$[1,3]$ 和 $[2,6]$ 可以合并为一个区间 $[1,6]$ 。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; PII;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vector&lt;PII&gt; res;</span><br><span class="line">    l=<span class="number">-2e9</span>,r=<span class="number">-2e9</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(r&lt;a[i].first) <span class="comment">// 只需判断扩张区间是不是断了</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(l!=<span class="number">-2e9</span>) res.<span class="built_in">push_back</span>(&#123;l,r&#125;); <span class="comment">// 第一次的时候，肯定是不执行的，所以这个是存入上一次的合并区间</span></span><br><span class="line">            l=a[i].first,r=a[i].second; <span class="comment">// 那合并区间断了，肯定要重新定左端点和右端点啊</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            r=<span class="built_in">max</span>(r,a[i].second); <span class="comment">// 没断的话，取右端点最大值就好了</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(l!=<span class="number">-2e9</span>) res.<span class="built_in">push_back</span>(&#123;l,r&#125;); <span class="comment">//因为是存入上一次的合并区间，所以这次的还没存</span></span><br><span class="line">    a=res; <span class="comment">// 结果数组赋值回去罢了</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h1 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h1><h2 id="一维转二维"><a href="#一维转二维" class="headerlink" title="一维转二维"></a>一维转二维</h2><p><code>s[]:</code> <code>1 2 3 4 5 6 7 c 8 9 10 11</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">s[4][3]:</span><br><span class="line">1  2  3 </span><br><span class="line">4  5  6</span><br><span class="line">7  c  8</span><br><span class="line">9  10 11</span><br></pre></td></tr></table></figure>
+
+<p>若我们求 $c$ 的坐标 $(x,y)$ ，我们要先知道 $c$ 在一维中的是第 $k$ 个元素，然后可以用一次函数的思想 $y=ax+b$ ，因为一次函数是二维的嘛，而这里的 $a$ 可以看作是 <code>s[][]</code> 一层中<strong>共有</strong>  $a$ 个元素，而 $b$ 可以看作是 <code>s[][]</code> 这一层中第 $b$ 个元素</p>
+<blockquote>
+<p>  那x —&gt; <code>x = k / a</code><br>  而y —&gt; <code>y = k % a</code><br>  如上的例子：<br>  <code>k = 7, a = 3</code><br>  <code>x = 7 / 3 = 2, y = 7 % 3 = 1</code><br>  则 <code>s[x][y]</code> 就是 $c$ 的坐标</p>
+<p>  <strong>一维数组的坐标用二维坐标表示</strong>就是用一次函数的思想：<code>s[a*x+y]</code><br>  即：<code>s[3 * 2 + 1] = s[7]</code></p>
+</blockquote>
+<img src="/2021/12/14/%E7%AE%97%E6%B3%95/%E5%B0%8F%E6%8A%80%E5%B7%A7/%E5%B0%8F%E6%8A%80%E5%B7%A7/一次函数.png" alt="一次函数" style="zoom:61%;">
 
 
 
+<h2 id="二维转一维"><a href="#二维转一维" class="headerlink" title="二维转一维"></a>二维转一维</h2><p>同样也需要用一次函数来转换 $y=ax+b$ ，同样的，其实就是上面的逆运算，$a$ 同样是一层中有多少个元素， $b$ 则是本层中第 $b$ 个元素</p>
+<p><code>s[]:</code> <code>1 2 3 4 5 6 7 c 8 9 10 11</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">s[4][3]:</span><br><span class="line">1  2  3 </span><br><span class="line">4  5  6</span><br><span class="line">7  c  8</span><br><span class="line">9  10 11</span><br></pre></td></tr></table></figure>
 
-
+<p><code>s[x][y]</code> ，求 x 和 y ：已知 $c$ 在一维数组中的下标 <code>k = 7</code></p>
+<p><code>x = k / a</code><br><code>y = k % a</code></p>
+<blockquote>
+<p>  <code>x = 7 / 3 = 2</code></p>
+<p>  <code>y = 7 % 3 = 1</code></p>
+<p>  <code>s[2][1] = c</code></p>
+</blockquote>
 
         </div>
 
@@ -286,7 +298,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://duegin.github.io/2021/12/12/%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6/%E5%8C%BA%E9%97%B4%E5%92%8C%E5%B9%B6/">https://duegin.github.io/2021/12/12/%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6/%E5%8C%BA%E9%97%B4%E5%92%8C%E5%B9%B6/</a></span>
+                        <span><a href="https://duegin.github.io/2021/12/14/%E7%AE%97%E6%B3%95/%E5%B0%8F%E6%8A%80%E5%B7%A7/%E5%B0%8F%E6%8A%80%E5%B7%A7/">https://duegin.github.io/2021/12/14/%E7%AE%97%E6%B3%95/%E5%B0%8F%E6%8A%80%E5%B7%A7/%E5%B0%8F%E6%8A%80%E5%B7%A7/</a></span>
                     </p>
                 
                 
@@ -312,9 +324,7 @@
                     
                         <a href="/tags/c/"># c++</a>
                     
-                        <a href="/tags/%E7%AE%97%E6%B3%95/"># 算法</a>
-                    
-                        <a href="/tags/%E5%8C%BA%E9%97%B4%E5%92%8C%E5%B9%B6/"># 区间和并</a>
+                        <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/"># 小技巧</a>
                     
                         
                 </span>
@@ -327,10 +337,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2021/12/14/%E7%AE%97%E6%B3%95/%E5%B0%8F%E6%8A%80%E5%B7%A7/%E5%B0%8F%E6%8A%80%E5%B7%A7/">小技巧</a>
             
-            
-            <a class="next" rel="next" href="/2021/12/10/%E7%AE%97%E6%B3%95/%E5%B8%B8%E8%A7%81%E6%A8%A1%E5%9E%8B/%E5%B8%B8%E8%A7%81%E6%A8%A1%E5%9E%8B/">常见模型</a>
+            <a class="next" rel="next" href="/2021/12/12/%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6/%E5%8C%BA%E9%97%B4%E5%92%8C%E5%B9%B6/">区间合并</a>
             
         </section>
 
