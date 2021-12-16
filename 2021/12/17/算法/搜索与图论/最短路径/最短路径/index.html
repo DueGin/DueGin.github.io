@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="DueGin">
+
+
+
+
+
+<title>最短路径汇总 | Home</title>
+
+
+
+    <link rel="icon" href="/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+            <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    "HTML-CSS": {
+        preferredFont: "TeX",
+        availableFonts: ["STIX","TeX"],
+        linebreaks: { automatic:true },
+        EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
+    },
+    tex2jax: {
+        inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
+        processEscapes: true,
+        ignoreClass: "tex2jax_ignore|dno",
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+        equationNumbers: { autoNumber: "AMS" },
+        noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
+        Macros: { href: "{}" }
+    },
+    messageStyle: "none"
+    });
+</script>
+<!-- 给MathJax元素添加has-jax class -->
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<!-- 通过连接CDN加载MathJax的js代码 -->
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+        
+    
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    <script>
+        // this function is used to check current theme before page loaded.
+        (() => {
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme') || '';
+            const isDark = currentTheme === 'dark';
+            const pagebody = document.getElementsByTagName('body')[0]
+            if (isDark) {
+                pagebody.classList.add('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Dark"
+            } else {
+                pagebody.classList.remove('dark-theme');
+                // mobile
+                document.getElementById("mobile-toggle-theme").innerText = "· Light"
+            }
+        })();
+    </script>
+
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">DueGin&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">DueGin&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Posts</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+            <div class="main">
+                <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">最短路径汇总</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">DueGin</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">December 17, 2021&nbsp;&nbsp;0:00:03</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/">搜索与图论</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="最短路径汇总"><a href="#最短路径汇总" class="headerlink" title="最短路径汇总"></a>最短路径汇总</h1><img src="/2021/12/17/%E7%AE%97%E6%B3%95/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/最短路径.png" alt="最短路径" style="zoom: 50%;">
+
+
+
+<h2 id="朴素Dijkstra算法"><a href="#朴素Dijkstra算法" class="headerlink" title="朴素Dijkstra算法"></a>朴素Dijkstra算法</h2><p>时间复杂是 $O(n^2+m)$， $n$ 表示点数，$m$ 表示边数</p>
+<p><strong><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1zz4y1m7Nq?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click">动画算法思路</a></strong></p>
+<p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/851/">AcWing 849. Dijkstra求最短路 I</a></p>
+<p>模板：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> g[N][N];  <span class="comment">// 存储每条边</span></span><br><span class="line"><span class="keyword">int</span> dist[N];  <span class="comment">// 存储1号点到每个点的最短距离</span></span><br><span class="line"><span class="keyword">bool</span> st[N];   <span class="comment">// 存储每个点的最短路是否已经确定</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 自环不影响，重环的话取最短的即可</span></span><br><span class="line"><span class="comment">// 贪心 + 宽搜</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 求1号点到n号点的最短路，如果不存在则返回-1</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dijkstra</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dist, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> dist);</span><br><span class="line">    dist[<span class="number">1</span>] = <span class="number">0</span>; <span class="comment">// dist[]从1开始</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i ++ ) <span class="comment">// 遍历每一个结点</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> t = <span class="number">-1</span>;     <span class="comment">// 在还未确定最短路的点中，寻找距离最小的点</span></span><br><span class="line">        <span class="comment">// 寻找当前dist[]中路径最小值</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j ++ ) <span class="comment">// dist[]从1开始</span></span><br><span class="line">            <span class="keyword">if</span> (!st[j] &amp;&amp; (t == <span class="number">-1</span> || dist[t] &gt; dist[j])) <span class="comment">// 没有被加入 且 t==-1 或 这次路径比上次最小路径小</span></span><br><span class="line">                t = j;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 用t更新其他点的距离</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j ++ ) <span class="comment">// dist[]从1开始</span></span><br><span class="line">            dist[j] = <span class="built_in">min</span>(dist[j], dist[t] + g[t][j]);</span><br><span class="line"></span><br><span class="line">        st[t] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">if</span> (dist[n] == <span class="number">0x3f3f3f3f</span>) <span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">// 从1号点到不了n号点</span></span><br><span class="line">    <span class="keyword">return</span> dist[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="堆优化Dijkstra算法"><a href="#堆优化Dijkstra算法" class="headerlink" title="堆优化Dijkstra算法"></a>堆优化Dijkstra算法</h2><p>时间复杂度 $O(mlogn)$， $n$ 表示点数，$m$ 表示边数</p>
+<p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/852/">AcWing 850. Dijkstra求最短路 II</a></p>
+<p>模板：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span> <span class="comment">// 优先队列头文件</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;functional&gt;</span> <span class="comment">// greater&lt;&gt;头文件</span></span></span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; PII; <span class="comment">//first是路径长度，second是结点编号</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n; <span class="comment">// 点的数量</span></span><br><span class="line"><span class="keyword">int</span> h[N], w[N], e[N], ne[N], idx; <span class="comment">// 邻接表存储所有边</span></span><br><span class="line"><span class="keyword">int</span> dist[N]; <span class="comment">// 存储所有点到1号点的距离</span></span><br><span class="line"><span class="keyword">bool</span> st[N]; <span class="comment">// 存储每个点的最短距离是否已确定</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 贪心（核心） + 宽搜 + 堆优化</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 求1号点到n号点的最短距离，如果不存在，则返回-1</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dijkstra</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dist, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> dist);</span><br><span class="line">    dist[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    priority_queue&lt;PII, vector&lt;PII&gt;, greater&lt;PII&gt;&gt; heap; <span class="comment">// 小根堆</span></span><br><span class="line">    heap.<span class="built_in">push</span>(&#123;<span class="number">0</span>, <span class="number">1</span>&#125;);      <span class="comment">// first存储距离，second存储节点编号</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (heap.<span class="built_in">size</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 获取路径最小的点</span></span><br><span class="line">        PII t = heap.<span class="built_in">top</span>();</span><br><span class="line">        heap.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> ver = t.second, distance = t.first;</span><br><span class="line">	</span><br><span class="line">        <span class="keyword">if</span> (st[ver]) <span class="keyword">continue</span>; <span class="comment">// 如果这个点已经确定为最短路径的点，则不执行以下操作了</span></span><br><span class="line">        st[ver] = <span class="literal">true</span>; <span class="comment">//设置该点为已确定最短路径</span></span><br><span class="line">		</span><br><span class="line">        <span class="comment">// 同样的，更新dist[]中每个点的最短路径，只不过这里是放入小根堆，小根堆会维护升序序列</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = h[ver]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> j = e[i];</span><br><span class="line">            <span class="keyword">if</span> (dist[j] &gt; distance + w[i])</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j] = distance + w[i];</span><br><span class="line">                heap.<span class="built_in">push</span>(&#123;dist[j], j&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (dist[n] == <span class="number">0x3f3f3f3f</span>) <span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">// 从1号点到不了n号点</span></span><br><span class="line">    <span class="keyword">return</span> dist[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Dijkstra算法总结"><a href="#Dijkstra算法总结" class="headerlink" title="Dijkstra算法总结"></a>Dijkstra算法总结</h1><p>基本思路：</p>
+<ul>
+<li>首先需要：<ul>
+<li>   <code>dist[]</code> 存所有点到1号点的距离</li>
+<li>  <code>st[]</code> 存每个点的最短距离是否已确定</li>
+</ul>
+</li>
+<li>思路：<ol>
+<li>  初始化<code>dist[]</code> 所有元素为最大值 <code>0x3f3f3f3f</code></li>
+<li><code>for(1 ~ n)</code><ol>
+<li>  从 <code>dist[]</code> 中获取路径最小的点下标 <code>t</code></li>
+<li>  用 <code>t</code> 更新其他点的距离</li>
+</ol>
+</li>
+<li>  判断从1号点是否能到n号点</li>
+</ol>
+</li>
+</ul>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>DueGin</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="https://duegin.github.io/2021/12/17/%E7%AE%97%E6%B3%95/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/">https://duegin.github.io/2021/12/17/%E7%AE%97%E6%B3%95/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a target="_blank" rel="noopener" href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>Do you believe in <strong>DESTINY</strong>?</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/c/"># c++</a>
+                    
+                        <a href="/tags/%E7%AE%97%E6%B3%95/"># 算法</a>
+                    
+                        <a href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/"># 最短路径</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/12/17/%E7%AE%97%E6%B3%95/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/%E6%A0%91%E4%B8%8E%E5%9B%BE%E9%81%8D%E5%8E%86/%E6%A0%91%E4%B8%8E%E5%9B%BE%E9%81%8D%E5%8E%86/">树与图遍历</a>
+            
+            
+            <a class="next" rel="next" href="/2021/12/14/%E7%AE%97%E6%B3%95/%E5%B0%8F%E6%8A%80%E5%B7%A7/%E5%B0%8F%E6%8A%80%E5%B7%A7/">小技巧</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+            </div>
+            <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© DueGin | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+
+</html>

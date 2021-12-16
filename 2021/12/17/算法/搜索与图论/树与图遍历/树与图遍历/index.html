@@ -13,7 +13,7 @@
 
 
 
-<title>常见模型 | Home</title>
+<title>树与图遍历 | Home</title>
 
 
 
@@ -236,7 +236,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">常见模型</h1>
+            <h1 class="post-title">树与图遍历</h1>
             
                 <div class="post-meta">
                     
@@ -245,14 +245,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">December 10, 2021&nbsp;&nbsp;21:31:17</a>
+                        Date: <a href="#">December 17, 2021&nbsp;&nbsp;0:27:03</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">基础算法</a>
+                                <a href="/categories/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/">搜索与图论</a>
                             
                         </span>
                     
@@ -261,21 +261,21 @@
         </header>
 
         <div class="post-content">
-            <h1 id="常见模型"><a href="#常见模型" class="headerlink" title="常见模型"></a>常见模型</h1><h2 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h2><p>模板题： <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/832/">AcWing 830. 单调栈</a></p>
-<p>模型：找出每个数左边离它最近的比它大/小的数</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> top = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span> (top &amp;&amp; <span class="built_in">check</span>(st[top - <span class="number">1</span>], i)) top -- ;</span><br><span class="line">    st[ ++ top] = i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>check()</code> 就是判断栈顶元素与其他元素之间的关系，与题目有关</p>
-<h1 id="单调队列"><a href="#单调队列" class="headerlink" title="单调队列"></a>单调队列</h1><p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/156/">AcWing 154. 滑动窗口</a></p>
-<p>模型：找出滑动窗口中的最大值/最小值</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> front = <span class="number">0</span>, rear = <span class="number">-1</span>; <span class="comment">// 队头、队尾指针</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++ )</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span> (front &lt;= rear &amp;&amp; <span class="built_in">check_out</span>(q[front])) front ++ ;  <span class="comment">// 判断队头是否滑出窗口</span></span><br><span class="line">    <span class="keyword">while</span> (front &lt;= rear &amp;&amp; <span class="built_in">check</span>(q[rear], i)) rear -- ;</span><br><span class="line">    q[ ++ rear] = i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h1 id="树与图遍历"><a href="#树与图遍历" class="headerlink" title="树与图遍历"></a>树与图遍历</h1><p>时间复杂度 $O(n+m)$ ， $n$ 表示点数，$m$ 表示边数</p>
+<h3 id="深度优先遍历"><a href="#深度优先遍历" class="headerlink" title="深度优先遍历"></a>深度优先遍历</h3><p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/848/">AcWing 846. 树的重心</a></p>
+<p>模板：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vis[u] = <span class="literal">true</span>; <span class="comment">// vis[u] 表示点u已经被遍历过</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = h[u]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> j = e[i];</span><br><span class="line">        <span class="keyword">if</span> (!st[j]) <span class="built_in">dfs</span>(j);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
-<p>逻辑：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// a[]为需要找的数组，k为滑动窗口大小</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (front &lt;= rear &amp;&amp; i - k + <span class="number">1</span> &gt; q[front]) <span class="comment">// 判断队头是否滑出窗口</span></span><br><span class="line">        front++;</span><br><span class="line">    <span class="keyword">while</span> (front &lt;= rear &amp;&amp; a[i] &lt;= a[q[rear]])</span><br><span class="line">        rear--; <span class="comment">// 清除当前队列中的元素</span></span><br><span class="line">    que[++rear] = i;</span><br><span class="line">    <span class="keyword">if</span> (i &gt;= k - <span class="number">1</span>)</span><br><span class="line">        cout &lt;&lt; a[q[front]] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="宽度优先遍历"><a href="#宽度优先遍历" class="headerlink" title="宽度优先遍历"></a>宽度优先遍历</h3><p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/849/">AcWing 847. 图中点的层次</a></p>
+<p>模板：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">queue&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">vis[<span class="number">1</span>] = <span class="literal">true</span>; <span class="comment">// 表示1号点已经被遍历过</span></span><br><span class="line">q.<span class="built_in">push</span>(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (q.<span class="built_in">size</span>())</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> t = q.<span class="built_in">front</span>();</span><br><span class="line">    q.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = h[t]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> j = e[i];</span><br><span class="line">        <span class="keyword">if</span> (!vis[j])</span><br><span class="line">        &#123;</span><br><span class="line">            vis[j] = <span class="literal">true</span>; <span class="comment">// 表示点j已经被遍历过</span></span><br><span class="line">            q.<span class="built_in">push</span>(j);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>当找最小值时，队列中队头元素是最小的，依次往后排都是比前一个大的元素，当当前元素<code>a[i]&lt;=</code>队头的最小元素时，循环判断队列中的元素是否有小于<code>a[i]</code>，没有则继续从后向前判断，并将队头出队</p>
+
+
+
+
 
         </div>
 
@@ -290,7 +290,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://duegin.github.io/2021/12/10/%E7%AE%97%E6%B3%95/%E5%B8%B8%E8%A7%81%E6%A8%A1%E5%9E%8B/%E5%B8%B8%E8%A7%81%E6%A8%A1%E5%9E%8B/">https://duegin.github.io/2021/12/10/%E7%AE%97%E6%B3%95/%E5%B8%B8%E8%A7%81%E6%A8%A1%E5%9E%8B/%E5%B8%B8%E8%A7%81%E6%A8%A1%E5%9E%8B/</a></span>
+                        <span><a href="https://duegin.github.io/2021/12/17/%E7%AE%97%E6%B3%95/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/%E6%A0%91%E4%B8%8E%E5%9B%BE%E9%81%8D%E5%8E%86/%E6%A0%91%E4%B8%8E%E5%9B%BE%E9%81%8D%E5%8E%86/">https://duegin.github.io/2021/12/17/%E7%AE%97%E6%B3%95/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/%E6%A0%91%E4%B8%8E%E5%9B%BE%E9%81%8D%E5%8E%86/%E6%A0%91%E4%B8%8E%E5%9B%BE%E9%81%8D%E5%8E%86/</a></span>
                     </p>
                 
                 
@@ -318,6 +318,8 @@
                     
                         <a href="/tags/%E7%AE%97%E6%B3%95/"># 算法</a>
                     
+                        <a href="/tags/%E6%A0%91%E4%B8%8E%E5%9B%BE%E9%81%8D%E5%8E%86/"># 树与图遍历</a>
+                    
                         
                 </span>
             </div>
@@ -329,10 +331,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2021/12/12/%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6/%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6/">区间合并</a>
+                <a class="prev" rel="prev" href="/2021/12/17/%E7%AE%97%E6%B3%95/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/">拓扑排序</a>
             
             
-            <a class="next" rel="next" href="/2021/12/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Tree/%E5%AD%97%E5%85%B8%E6%A0%91/%E5%AD%97%E5%85%B8%E6%A0%91/">字典树</a>
+            <a class="next" rel="next" href="/2021/12/17/%E7%AE%97%E6%B3%95/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/">最短路径汇总</a>
             
         </section>
 

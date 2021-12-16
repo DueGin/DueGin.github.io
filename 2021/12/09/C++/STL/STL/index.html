@@ -267,10 +267,24 @@
 
 
 <h1 id="string"><a href="#string" class="headerlink" title="string"></a>string</h1><p>头文件<code>#include&lt;cstring&gt;</code></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">string，字符串</span><br><span class="line">    <span class="built_in">size</span>()/<span class="built_in">length</span>()  返回字符串长度</span><br><span class="line">    <span class="built_in">empty</span>() 返回是否为空</span><br><span class="line">    <span class="built_in">clear</span>() 清空字符串</span><br><span class="line">    <span class="built_in">find</span>(<span class="string">&#x27;x&#x27;</span>) <span class="comment">//返回字符x出现的下标</span></span><br><span class="line">    <span class="built_in">substr</span>(起始下标，(子串长度))  返回子串</span><br><span class="line">    <span class="built_in">c_str</span>()  返回字符串所在字符数组的起始地址</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">string，字符串</span><br><span class="line">    <span class="built_in">size</span>()/<span class="built_in">length</span>()  返回字符串长度</span><br><span class="line">    <span class="built_in">empty</span>() 返回是否为空</span><br><span class="line">    <span class="built_in">clear</span>() 清空字符串</span><br><span class="line">    <span class="built_in">find</span>(<span class="string">&#x27;x&#x27;</span>) <span class="comment">//返回字符x出现的下标</span></span><br><span class="line">    <span class="built_in">memset</span>(h,x,<span class="keyword">sizeof</span> h) <span class="comment">// 设置h[]中所有元素中每个字节为x</span></span><br><span class="line">    <span class="built_in">substr</span>(起始下标，(子串长度))  返回子串</span><br><span class="line">    <span class="built_in">c_str</span>()  返回字符串所在字符数组的起始地址</span><br></pre></td></tr></table></figure>
 
-
-
+<blockquote>
+<p>  <code>meset(数组名, 数组每个元素的每个字节赋值, 数组大小)</code> 此方法是对数组中每个元素赋值，赋值是对<strong>每个元素的每个字节赋值</strong></p>
+<p>  常用的有</p>
+<ul>
+<li><p>数组 h 赋值为 0</p>
+<p>  <code>memset(h, 0, sizeof(h))</code></p>
+</li>
+<li><p>数组 h 赋值为 -1</p>
+<p>  <code>memset(h, -1, sizeof(h))</code></p>
+</li>
+<li><p>数组 h 赋值为 int无穷大</p>
+<p>  <code>memset(h, 0x3f, sizeof(h))</code></p>
+</li>
+</ul>
+<p>  而每个元素实际赋值出来的值是 <code>INF = 0x3f3f3f3f</code></p>
+</blockquote>
 <blockquote>
 <p>  <code>substr()</code> </p>
   <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">string s=<span class="string">&quot;abcde&quot;</span>;</span><br><span class="line">s.<span class="built_in">substr</span>(<span class="number">1</span>); <span class="comment">// 返回bcde</span></span><br><span class="line">s.<span class="built_in">substr</span>(<span class="number">1</span>,<span class="number">3</span>) <span class="comment">// 返回bcd</span></span><br></pre></td></tr></table></figure>
