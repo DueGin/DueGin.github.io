@@ -13,7 +13,7 @@
 
 
 
-<title>拓扑排序 | Home</title>
+<title>位运算 | Home</title>
 
 
 
@@ -236,7 +236,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">拓扑排序</h1>
+            <h1 class="post-title">位运算</h1>
             
                 <div class="post-meta">
                     
@@ -245,14 +245,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">December 17, 2021&nbsp;&nbsp;0:35:03</a>
+                        Date: <a href="#">December 1, 2021&nbsp;&nbsp;0:39:17</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/">搜索与图论</a>
+                                <a href="/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/">基础算法</a>
                             
                         </span>
                     
@@ -261,11 +261,37 @@
         </header>
 
         <div class="post-content">
-            <h1 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h1><p>时间复杂度 $O(n+m)$ ， $n$ 表示点数，$m$ 表示边数</p>
-<p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/850/">AcWing 848. 有向图的拓扑序列</a></p>
-<p>模板：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> d[N];<span class="comment">// 结点的入度</span></span><br><span class="line"><span class="keyword">int</span> que[N]; <span class="comment">// 模拟队列</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 宽搜思想 + 删除结点</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">topsort</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> fr = <span class="number">0</span>, re = <span class="number">-1</span>; <span class="comment">// 还没加进去元素时，队尾设为-1</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// d[i] 存储点i的入度</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )</span><br><span class="line">        <span class="keyword">if</span> (!d[i])</span><br><span class="line">            que[++re] = i;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (fr &lt;= re)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> t = que[fr++]; <span class="comment">// 获取队头并弹出</span></span><br><span class="line">        </span><br><span class="line">		<span class="comment">// 更新删除 t 结点后所有点的入度</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = h[t]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> j = e[i];</span><br><span class="line">            <span class="keyword">if</span> (-- d[j] == <span class="number">0</span>)</span><br><span class="line">                que[++re] = j;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果所有点都入队了，说明存在拓扑序列；否则不存在拓扑序列。</span></span><br><span class="line">    <span class="keyword">return</span> re == n - <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h1 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h1><h2 id="求整数-n-二进制的第-k-位"><a href="#求整数-n-二进制的第-k-位" class="headerlink" title="求整数$n$二进制的第$k$位"></a>求整数$n$二进制的第$k$位</h2><p><strong>结论：</strong><code>n &gt;&gt; k &amp; 1</code></p>
+<blockquote>
+<p>  例子：</p>
+<p>  10的二进制数是1010</p>
+<p>  <code>10 &gt;&gt; 1</code>  —&gt;  101</p>
+<p>  <code>10 &gt;&gt; 2</code>  —&gt;  10</p>
+<p>  <code>10 &gt;&gt; 3</code>  —&gt;  1</p>
+<p>  <code>10 &gt;&gt; 4</code>  —&gt;  0</p>
+<p>  我把它们理解成在前面补零，比如<code>10 &gt;&gt; 2</code>  —&gt;  0010</p>
+</blockquote>
+<blockquote>
+<p>  <code>&amp;</code>按位与</p>
+<p>  只有一种情况是1，凡是出现0都为0</p>
+<p>  <code>1 &amp; 1 = 1</code></p>
+<p>  <code>0 &amp; 1 = 0</code></p>
+<p>  <code>1 &amp; 0 = 0</code></p>
+<p>  <code>0 &amp; 0 = 0</code></p>
+</blockquote>
+<h2 id="求整数二进制中出现1的次数"><a href="#求整数二进制中出现1的次数" class="headerlink" title="求整数二进制中出现1的次数"></a>求整数二进制中出现1的次数</h2><p><strong>结论：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回最后一位1，包括1后面的所有0</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &amp; -x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+
+
+<blockquote>
+<p>  <code>-x = ~x + 1</code></p>
+<p>  例如：</p>
+<p>  <code>x = 1011</code></p>
+<p>  <code>~x = 0100</code></p>
+<p>  <code>~x + 1 = 0101</code></p>
+<p>  即 -11=0101</p>
+</blockquote>
 
         </div>
 
@@ -280,7 +306,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://duegin.github.io/2021/12/17/%E7%AE%97%E6%B3%95/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/">https://duegin.github.io/2021/12/17/%E7%AE%97%E6%B3%95/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/</a></span>
+                        <span><a href="https://duegin.github.io/2021/12/01/%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E4%BD%8D%E8%BF%90%E7%AE%97/%E4%BD%8D%E8%BF%90%E7%AE%97/">https://duegin.github.io/2021/12/01/%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E4%BD%8D%E8%BF%90%E7%AE%97/%E4%BD%8D%E8%BF%90%E7%AE%97/</a></span>
                     </p>
                 
                 
@@ -308,7 +334,7 @@
                     
                         <a href="/tags/%E7%AE%97%E6%B3%95/"># 算法</a>
                     
-                        <a href="/tags/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/"># 拓扑排序</a>
+                        <a href="/tags/%E4%BD%8D%E8%BF%90%E7%AE%97/"># 位运算</a>
                     
                         
                 </span>
@@ -321,10 +347,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2021/12/20/%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%89%8D%E7%BC%80%E5%92%8C%20%E5%92%8C%20%E5%B7%AE%E5%88%86/%E5%89%8D%E7%BC%80%E5%92%8C%20%E5%92%8C%20%E5%B7%AE%E5%88%86/">前缀和 和 差分</a>
+                <a class="prev" rel="prev" href="/2021/12/01/%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E9%AB%98%E7%B2%BE%E5%BA%A6%E7%AE%97%E6%B3%95/%E9%AB%98%E7%B2%BE%E5%BA%A6%E7%AE%97%E6%B3%95/">高精度算法</a>
             
             
-            <a class="next" rel="next" href="/2021/12/17/%E7%AE%97%E6%B3%95/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/%E6%A0%91%E4%B8%8E%E5%9B%BE%E9%81%8D%E5%8E%86/%E6%A0%91%E4%B8%8E%E5%9B%BE%E9%81%8D%E5%8E%86/">树与图遍历</a>
+            <a class="next" rel="next" href="/2021/11/29/%E7%AE%97%E6%B3%95/%E6%8E%92%E5%BA%8F/%E6%8E%92%E5%BA%8F/">排序算法</a>
             
         </section>
 
