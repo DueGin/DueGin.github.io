@@ -245,7 +245,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">December 24, 2021&nbsp;&nbsp;1:01:17</a>
+                        Date: <a href="#">December 23, 2021&nbsp;&nbsp;0:39:17</a>
                         </span>
                     
                     
@@ -390,6 +390,7 @@
 <p>  至此，最大公约数为1</p>
 <p>  以除数和余数反复做除法运算，当余数为 0 时，取当前算式除数为最大公约数，所以就得出了 1997 和 615 的最大公约数 1。</p>
 </blockquote>
+<p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/874/">AcWing 872. 最大公约数</a></p>
 <p>模板：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b ? <span class="built_in">gcd</span>(b, a % b) : a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -400,18 +401,20 @@
 </blockquote>
 <h3 id="求欧拉函数"><a href="#求欧拉函数" class="headerlink" title="求欧拉函数"></a>求欧拉函数</h3><p>在数论，对正整数 n，欧拉函数是小于 n 的正整数中与 n <a href="%E4%BA%92%E8%B4%A8%E6%98%AF%E5%85%AC%E7%BA%A6%E6%95%B0%E5%8F%AA%E6%9C%891%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%95%B4%E6%95%B0%EF%BC%8C%E5%8F%AB%E5%81%9A%E4%BA%92%E8%B4%A8%E6%95%B4%E6%95%B0%E3%80%82%E5%85%AC%E7%BA%A6%E6%95%B0%E5%8F%AA%E6%9C%891%E7%9A%84%E4%B8%A4%E4%B8%AA%E8%87%AA%E7%84%B6%E6%95%B0%EF%BC%8C%E5%8F%AB%E5%81%9A%E4%BA%92%E8%B4%A8%E8%87%AA%E7%84%B6%E6%95%B0%EF%BC%8C%E5%90%8E%E8%80%85%E6%98%AF%E5%89%8D%E8%80%85%E7%9A%84%E7%89%B9%E6%AE%8A%E6%83%85%E5%BD%A2%E3%80%82">^互质</a>的数的数目。</p>
 <p>原理： <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0/1944850">欧拉函数</a> 容斥原理</p>
-<img src="/2021/12/24/%E7%AE%97%E6%B3%95/%E6%95%B0%E8%AE%BA/%E6%95%B0%E8%AE%BA/容斥原理.png" alt="容斥原理" style="zoom:61%;">
+<img src="/2021/12/23/%E7%AE%97%E6%B3%95/%E6%95%B0%E8%AE%BA/%E6%95%B0%E8%AE%BA/容斥原理.png" alt="容斥原理" style="zoom:61%;">
 
 <p>N的质因数分解： $N=p_1^{c_1}\times p_2^{c_2} \times … \times p_k^{c_k}$</p>
 <p>与 N 互质的数的个数<strong>结论</strong>：</p>
 <p> $\Phi(N)=N(1-\frac{1}{p_1})(1-\frac{1}{p_2})…(1-\frac{1}{p_k})$ </p>
 <p>可以发现：<strong>欧拉函数与质因数的级数无关</strong></p>
-<h4 id="朴素求法"><a href="#朴素求法" class="headerlink" title="朴素求法"></a>朴素求法</h4><p>模板：</p>
+<h4 id="朴素求法"><a href="#朴素求法" class="headerlink" title="朴素求法"></a>朴素求法</h4><p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/875/">AcWing 873. 欧拉函数</a></p>
+<p>模板：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">phi</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = x;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= x / i; i ++ ) <span class="comment">// 试除法求质因数</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (x % i == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            res = res / i * (i - <span class="number">1</span>); <span class="comment">// 先除后乘，防止溢出</span></span><br><span class="line">            <span class="keyword">while</span>(x % i == <span class="number">0</span>) x /= i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 扫尾</span></span><br><span class="line">    <span class="keyword">if</span> (x &gt; <span class="number">1</span>) res = res / x * (x - <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
 <h4 id="筛法求欧拉函数"><a href="#筛法求欧拉函数" class="headerlink" title="筛法求欧拉函数"></a>筛法求欧拉函数</h4><p>这个思路是利用了线性筛法来求欧拉函数，代码也在线性筛法的基础上作出了小修改，在求质因数的时候，顺便求出了欧拉函数</p>
+<p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/876/">AcWing 874. 筛法求欧拉函数</a></p>
 <p>模板：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> primes[N], cnt;     <span class="comment">// primes[]存储所有素数</span></span><br><span class="line"><span class="keyword">int</span> euler[N];           <span class="comment">// 存储每个数的欧拉函数</span></span><br><span class="line"><span class="keyword">bool</span> st[N];         <span class="comment">// st[x]存储x是否被筛掉</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_eulers</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    euler[<span class="number">1</span>] = <span class="number">1</span>; <span class="comment">// 初始化</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!st[i])</span><br><span class="line">        &#123;</span><br><span class="line">            primes[cnt ++ ] = i;</span><br><span class="line">            euler[i] = i - <span class="number">1</span>; <span class="comment">// 质数的话，肯定是前面的数，除了0以外互质的数只有1</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; primes[j] &lt;= n / i; j ++ ) <span class="comment">// 遍历质数，用最小质因数筛掉</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> t = primes[j] * i; <span class="comment">// 质数*i </span></span><br><span class="line">            st[t] = <span class="literal">true</span>; </span><br><span class="line">            <span class="keyword">if</span> (i % primes[j] == <span class="number">0</span>) <span class="comment">// i不是质数的情况</span></span><br><span class="line">            &#123;</span><br><span class="line">                euler[t] = euler[i] * primes[j];</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            euler[t] = euler[i] * (primes[j] - <span class="number">1</span>); <span class="comment">// i是质数的情况</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -436,7 +439,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="https://duegin.github.io/2021/12/24/%E7%AE%97%E6%B3%95/%E6%95%B0%E8%AE%BA/%E6%95%B0%E8%AE%BA/">https://duegin.github.io/2021/12/24/%E7%AE%97%E6%B3%95/%E6%95%B0%E8%AE%BA/%E6%95%B0%E8%AE%BA/</a></span>
+                        <span><a href="https://duegin.github.io/2021/12/23/%E7%AE%97%E6%B3%95/%E6%95%B0%E8%AE%BA/%E6%95%B0%E8%AE%BA/">https://duegin.github.io/2021/12/23/%E7%AE%97%E6%B3%95/%E6%95%B0%E8%AE%BA/%E6%95%B0%E8%AE%BA/</a></span>
                     </p>
                 
                 
