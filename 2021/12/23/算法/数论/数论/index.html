@@ -295,21 +295,24 @@
 <blockquote>
 <p>  给出要筛数值的范围n，找出以内的素数。先用2去筛，即把2留下，把2的倍数剔除掉；再用下一个质数，也就是3筛，把3留下，把3的倍数剔除掉；接下去用下一个质数5筛，把5留下，把5的倍数剔除掉；不断重复下去……</p>
 </blockquote>
-<h3 id="线性筛法"><a href="#线性筛法" class="headerlink" title="线性筛法"></a>线性筛法</h3><p>时间复杂度 $O(n)$</p>
+<h3 id="线性筛法"><a href="#线性筛法" class="headerlink" title="线性筛法"></a>线性筛法</h3><p>线性筛法，也叫欧拉筛法，是在埃氏筛法的基础上做出优化，我们发现这里面似乎会对某些数标记了很多次其为合数，而线性筛法利用其最小质因数来筛掉合数，每次只标记一次</p>
+<p>时间复杂度 $O(n)$ ，数据量小于1e7的情况下，线性筛法和埃氏筛法差不多，数据量大于1e7则线性筛法比埃氏筛法快一倍</p>
 <p>模版题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/870/">AcWing 868. 筛质数</a></p>
 <p>模版：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> primes[N], cnt;     <span class="comment">// primes[]存储所有素数</span></span><br><span class="line"><span class="keyword">bool</span> st[N];         <span class="comment">// st[x]存储x是否被筛掉</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_primes</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!st[i]) primes[cnt ++ ] = i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; primes[j] &lt;= n / i; j ++ )</span><br><span class="line">        &#123;</span><br><span class="line">            st[primes[j] * i] = <span class="literal">true</span>; <span class="comment">// 用最小质因子去筛合数 primes[j] * i</span></span><br><span class="line">            <span class="keyword">if</span> (i % primes[j] == <span class="number">0</span>) <span class="keyword">break</span>; <span class="comment">// 如果 i 是合数</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p><code>if(i%prime[j]==0) break;</code> 这句代码保证了每个数最多被筛一次，将时间复杂度降到了线性。</p>
+<img src="/2021/12/23/%E7%AE%97%E6%B3%95/%E6%95%B0%E8%AE%BA/%E6%95%B0%E8%AE%BA/线性筛法例子.png" alt="线性筛法例子" style="zoom:75%;">
 
-
-<blockquote>
+<p>例如，$i=6$ 时，第一个素数是2，能整除，筛掉12后就 break；至于第二个素数3，6x3中的最小素因数肯定是前一个素数2，所以它要到 $i=9$，素数取2时才被筛掉。</p>
 <ol>
 <li><p>  当 <code>i%primes[j]!=0</code> 时，说明此时遍历到的 <code>primes[j]</code> 不是i的质因子，那么只可能是此时的 <code>primes[j]*i</code> 的最小质因子，所以 <code>primes[j]*i</code> 的最小质因子就是 <code>primes[j]</code></p>
 </li>
 <li><p>  当有 <code>i%primes[j]==0</code> 时，说明 i 的最小质因子是 <code>primes[j]</code> ， 因此 <code>primes[j]*i</code> 的最小质因子也就应该是 <code>prime[j]</code>，之后接着用 <code>st[primes[j+1]*i]=true</code> 去筛合数时，就不是用最小质因子去更新了，因为 i 有最小质因子 <code>primes[j]&lt;primes[j+1]</code>，此时的 <code>primes[j+1]</code>不是 <code>primes[j+1]*i</code> 的最小质因子，此时就应该退出循环，避免之后重复进行筛选。</p>
 </li>
 </ol>
-<p>补充：一个数乘上合数肯定是合数，所以只需要让遍历到的数 i 乘上其最小质因数 pj 即可，这样的话乘上后的数必是合数，且有质因数是 pj</p>
+<blockquote>
+<p>补充：一个数乘上合数肯定是合数，所以只需要让遍历到的数 i 乘上其最小质因数 <code>prime[j]</code> 即可，这样的话乘上后的数必是合数，且有质因数是 <code>prime[j]</code></p>
 </blockquote>
 <h2 id="约数"><a href="#约数" class="headerlink" title="约数"></a>约数</h2><p>方法：</p>
 <ul>
@@ -405,7 +408,7 @@
 
 <p>N的质因数分解： $N=p_1^{c_1}\times p_2^{c_2} \times … \times p_k^{c_k}$</p>
 <p>与 N 互质的数的个数<strong>结论</strong>：</p>
-<p> $\Phi(N)=N(1-\frac{1}{p_1})(1-\frac{1}{p_2})…(1-\frac{1}{p_k})$ </p>
+<p> $φ(N)=N(1-\frac{1}{p_1})(1-\frac{1}{p_2})…(1-\frac{1}{p_k})$ </p>
 <p>可以发现：<strong>欧拉函数与质因数的级数无关</strong></p>
 <h4 id="朴素求法"><a href="#朴素求法" class="headerlink" title="朴素求法"></a>朴素求法</h4><p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/875/">AcWing 873. 欧拉函数</a></p>
 <p>模板：</p>
@@ -414,17 +417,42 @@
 
 
 <h4 id="筛法求欧拉函数"><a href="#筛法求欧拉函数" class="headerlink" title="筛法求欧拉函数"></a>筛法求欧拉函数</h4><p>这个思路是利用了线性筛法来求欧拉函数，代码也在线性筛法的基础上作出了小修改，在求质因数的时候，顺便求出了欧拉函数</p>
+<p>思路：</p>
+<ul>
+<li>  先写出线性筛法模板</li>
+<li>分情况<ul>
+<li>被筛掉的情况<ul>
+<li>  被筛掉说明是质数，那他的欧拉函数就是 $i-1$</li>
+</ul>
+</li>
+<li>筛选时的情况<ul>
+<li>  $primes[j]$ 为 $primes[j] \times i$ 的最小质因数</li>
+<li>$i$ 为合数的情况<ul>
+<li>  $φ(primes[j] \times i)=primes[j] \times φ(i)$</li>
+</ul>
+</li>
+<li>$i$ 为质数的情况<ul>
+<li>  $φ(primes[j] \times i)=φ(i) \times (primes[j]−1)$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/876/">AcWing 874. 筛法求欧拉函数</a></p>
 <p>模板：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> primes[N], cnt;     <span class="comment">// primes[]存储所有素数</span></span><br><span class="line"><span class="keyword">int</span> euler[N];           <span class="comment">// 存储每个数的欧拉函数</span></span><br><span class="line"><span class="keyword">bool</span> st[N];         <span class="comment">// st[x]存储x是否被筛掉</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_eulers</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    euler[<span class="number">1</span>] = <span class="number">1</span>; <span class="comment">// 初始化</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!st[i])</span><br><span class="line">        &#123;</span><br><span class="line">            primes[cnt ++ ] = i;</span><br><span class="line">            euler[i] = i - <span class="number">1</span>; <span class="comment">// 质数的话，肯定是前面的数，除了0以外互质的数只有1</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; primes[j] &lt;= n / i; j ++ ) <span class="comment">// 遍历质数，用最小质因数筛掉</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> t = primes[j] * i; <span class="comment">// 质数*i </span></span><br><span class="line">            st[t] = <span class="literal">true</span>; </span><br><span class="line">            <span class="keyword">if</span> (i % primes[j] == <span class="number">0</span>) <span class="comment">// i不是质数的情况</span></span><br><span class="line">            &#123;</span><br><span class="line">                euler[t] = euler[i] * primes[j];</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            euler[t] = euler[i] * (primes[j] - <span class="number">1</span>); <span class="comment">// i是质数的情况</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> primes[N], cnt;     <span class="comment">// primes[]存储所有素数</span></span><br><span class="line"><span class="keyword">int</span> euler[N];           <span class="comment">// 存储每个数的欧拉函数</span></span><br><span class="line"><span class="keyword">bool</span> st[N];         <span class="comment">// st[x]存储x是否被筛掉</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_eulers</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    euler[<span class="number">1</span>] = <span class="number">1</span>; <span class="comment">// 初始化</span></span><br><span class="line">    <span class="comment">// 线性筛法求欧拉函数</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!st[i])</span><br><span class="line">        &#123;</span><br><span class="line">            primes[cnt ++ ] = i;</span><br><span class="line">            euler[i] = i - <span class="number">1</span>; <span class="comment">// 质数的话，肯定是前面的数，除了0以外互质的数只有1</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; primes[j] &lt;= n / i; j ++ ) <span class="comment">// 遍历质数，用最小质因数筛掉</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> t = primes[j] * i; <span class="comment">// 质数*i </span></span><br><span class="line">            st[t] = <span class="literal">true</span>; </span><br><span class="line">            <span class="keyword">if</span> (i % primes[j] == <span class="number">0</span>) <span class="comment">// i不是质数的情况</span></span><br><span class="line">            &#123;</span><br><span class="line">                euler[t] = euler[i] * primes[j]; <span class="comment">// 直接乘上其最小质因数的欧拉函数即可</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// i是质数的情况</span></span><br><span class="line">            euler[t] = euler[i] * (primes[j] - <span class="number">1</span>); <span class="comment">// 这里是化简后的情况</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
+<p>推到过程：</p>
+<p>若 <code>i % primes[j] == 0</code> ，由于 $primes[j]$ 是 $i$ 的一个质因子，并且在计算 $i$ 的欧拉函数的时候已经计算了 $primes[j]$ 出现的情况 $(1−\frac{1}{primes[j]})$ ，所以 $φ(primes[j] \times i)=primes[j] \times φ(i)$ 。</p>
+<p>若 <code>i % primes[j] != 0</code> ， $primes[j]$ 就一定是 $primes[j]×i$ 的最小质因子，而且 $primes[j]$ 不包含在 $i$ 的质因子当中。<br>由于 $φ(i)=i \times (1−\frac{1}{p_1}) \times (1−\frac{1}{p_2}) \times … \times (1−\frac{1}{p_k})$ ，<br>所以 $φ(primes[j] \times i)=primes[j] \times i \times (1−\frac{1}{p_1}) \times (1−\frac{1}{p_2}) \times … \times (1−\frac{1}{p_k}) \times (1−\frac{1}{primes[j]})$ 。<br>最终就可以得到 $φ(primes[j] \times i)=primes[j] \times φ(i) \times (1−\frac{1}{primes[j]})=φ(i) \times (primes[j]−1)$ 。</p>
 <blockquote>
 <p>  当 $i$ 未被标记时，即 $i$ 为质数，那肯定是前面的数，除了0以外只有1是互质的数</p>
 </blockquote>
 <p>背过吧…</p>
-<p><a href="%E4%BA%92%E8%B4%A8%E6%98%AF%E5%85%AC%E7%BA%A6%E6%95%B0%E5%8F%AA%E6%9C%891%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%95%B4%E6%95%B0%EF%BC%8C%E5%8F%AB%E5%81%9A%E4%BA%92%E8%B4%A8%E6%95%B4%E6%95%B0%E3%80%82%E5%85%AC%E7%BA%A6%E6%95%B0%E5%8F%AA%E6%9C%891%E7%9A%84%E4%B8%A4%E4%B8%AA%E8%87%AA%E7%84%B6%E6%95%B0%EF%BC%8C%E5%8F%AB%E5%81%9A%E4%BA%92%E8%B4%A8%E8%87%AA%E7%84%B6%E6%95%B0%EF%BC%8C%E5%90%8E%E8%80%85%E6%98%AF%E5%89%8D%E8%80%85%E7%9A%84%E7%89%B9%E6%AE%8A%E6%83%85%E5%BD%A2%E3%80%82">^互质</a>:</p>
 
         </div>
 
