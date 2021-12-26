@@ -1,0 +1,2947 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT, technology blog, open source blog, C++ blog" />
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="DueGin">
+<meta property="og:url" content="https://duegin.github.io/intro/page/4/index.html">
+<meta property="og:site_name" content="DueGin">
+<meta property="og:locale">
+<meta property="article:author" content="DueGin">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://duegin.github.io/intro/page/4/"/>
+
+
+
+
+
+  <title>DueGin</title>
+  
+
+
+
+
+
+
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DueGin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/home/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://duegin.github.io/2021/10/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Tree/LinkTree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/m.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DueGin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/10/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Tree/LinkTree/" itemprop="url">链式二叉树</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-10-26T17:06:25+08:00">
+                2021-10-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="link-tree-de-gou-jian">LinkTree的构建</h1>
+<blockquote>
+<p>本篇是如何构建</p>
+<p>原理：<a href="https://duegin.github.io/2021/10/26/Tree/">https://duegin.github.io/2021/10/26/Tree/</a></p>
+</blockquote>
+<p>根据其每个结点存储结构创建</p>
+<p><img src="/2021/10/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Tree/LinkTree/%E9%93%BE%E5%BC%8F%E4%BA%8C%E5%8F%89%E6%A0%91%E5%8D%95%E5%85%83%E6%A0%BC%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84.gif" alt="链式二叉树单元格存储结构"></p>
+<p>这里用结构体表示其每个结点，我这里用模板来声明</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Data</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="comment">//左孩子指针</span></span><br><span class="line">	Data* lchild;</span><br><span class="line">    <span class="comment">//右孩子指针</span></span><br><span class="line">	Data* rchild;</span><br><span class="line">    <span class="comment">//存放数据域，这里用模板来声明</span></span><br><span class="line">	T dd;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>再根据链式二叉树的存储结构</p>
+<p><img src="/2021/10/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Tree/LinkTree/%E9%93%BE%E5%BC%8F%E4%BA%8C%E5%8F%89%E6%A0%91%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84.gif" alt="链式二叉树存储结构"></p>
+<p>用一个类来构建起这个链式二叉树，这里同样用模板来创建</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkTree</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//按层创建树</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">creat</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//按先序遍历创建树（递归）</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">XianXu_creat</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//按层遍历树打印</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">layer_print</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//递归先序遍历树打印</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">XianXu_print</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//非递归先序遍历树打印</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">NotRecXianXu_print</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//计算树深度</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">Depth</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//统计二叉树结点的个数</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">NodeCount</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//叶子个数</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">leavesCount</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//树宽度</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">treeWidth</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="an-ceng-chuang-jian-shu">按层创建树</h2>
+<p>我的设计想法是：传入数据的数组，然后依次赋值</p>
+<p>这里需要用到队列的数据结构，使左孩子和右孩子排队依次给他们的左孩子和右孩子赋值（套娃）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//按层创建树</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">creat</span><span class="params">(T* num, Data&lt;T&gt;* &amp;data,<span class="keyword">int</span> length)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//创建队列</span></span><br><span class="line">    queue&lt;Data&lt;T&gt;*&gt; q;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//num数组非空时，申请根结点内存，赋值并且将根结点地址入队</span></span><br><span class="line">    <span class="keyword">if</span> (num)</span><br><span class="line">    &#123;</span><br><span class="line">        data = <span class="keyword">new</span> Data&lt;T&gt;;</span><br><span class="line">        data-&gt;dd = num[i++];</span><br><span class="line">        q.<span class="built_in">push</span>(data);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//否则根结点指向NULL</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        data = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//循环添加</span></span><br><span class="line">    <span class="keyword">while</span> (!q.<span class="built_in">empty</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//将根结点的地址出队并且赋值给n（将队列第一个元素作为根结点）</span></span><br><span class="line">        Data&lt;T&gt;* n = q.<span class="built_in">front</span>();</span><br><span class="line">        q.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="comment">//左儿子</span></span><br><span class="line">        <span class="comment">//判断数组下标是否到达数组总长，</span></span><br><span class="line">        <span class="keyword">if</span> (i+<span class="number">1</span>&lt;=length)</span><br><span class="line">        &#123;<span class="comment">//与创建根结点差不多，给左儿子申请内存，赋值，并且将其入队，</span></span><br><span class="line">            <span class="comment">//然后再下一次while循环时，q.front()即为左儿子的地址，即n也是左儿子的地址，这时候把左儿子看作根结点</span></span><br><span class="line">            <span class="comment">//即像根结点一样给左、右儿子赋值</span></span><br><span class="line">            n-&gt;lchild = <span class="keyword">new</span> Data&lt;T&gt;;</span><br><span class="line">            n-&gt;lchild-&gt;dd = num[i++];</span><br><span class="line">            q.<span class="built_in">push</span>(n-&gt;lchild);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            n-&gt;lchild = <span class="literal">NULL</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//右儿子</span></span><br><span class="line">        <span class="keyword">if</span> (i+<span class="number">1</span>&lt;=length)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//在左儿子入队后，右儿子也跟着入队，在n=左儿子地址的下一个while循环，即n=右儿子地址</span></span><br><span class="line">            n-&gt;rchild = <span class="keyword">new</span> Data&lt;T&gt;;</span><br><span class="line">            n-&gt;rchild-&gt;dd = num[i++];</span><br><span class="line">            q.<span class="built_in">push</span>(n-&gt;rchild);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            n-&gt;rchild = <span class="literal">NULL</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="di-gui-xian-xu-bian-li-chuang-jian-shu">递归先序遍历创建树</h2>
+<p>递归遍历很容易理解</p>
+<p>先序遍历的话，顺序是：左，根，右</p>
+<p>按照这个顺序设计程序即可，</p>
+<blockquote>
+<p>这里有个问题没解决：在<strong>判断结束</strong>那，我不知道怎么统一判断string类型和其他数字类型的结束</p>
+<p>所以如果 T 的类型为数字类型（int，float，double）那使用下面的判断语句即可</p>
+<p>如果 T 的类型是string类型，将判断条件改为<code>data == &quot;000&quot;</code></p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递归先序遍历创建树</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">XianXu_creat</span><span class="params">(Data&lt;T&gt;* &amp;d)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    T data;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;input：&quot;</span>;</span><br><span class="line">    cin &gt;&gt; data;</span><br><span class="line">    <span class="comment">//判断结束</span></span><br><span class="line">    <span class="keyword">if</span> (data == <span class="number">000</span>)</span><br><span class="line">        d = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="comment">//用先序遍历法赋值</span></span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//新建结点</span></span><br><span class="line">        d = <span class="keyword">new</span> Data&lt;T&gt;;</span><br><span class="line">        d-&gt;dd = data;</span><br><span class="line">        <span class="comment">//遍历并创建左结点</span></span><br><span class="line">        <span class="built_in">XianXu_creat</span>(d-&gt;lchild);</span><br><span class="line">        <span class="comment">//遍历并创建右结点</span></span><br><span class="line">        <span class="built_in">XianXu_creat</span>(d-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="an-ceng-da-yin-shu">按层打印树</h2>
+<p>思想跟按层创建树差不多，同样要用到队列</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//按层打印</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">layer_print</span><span class="params">(Data&lt;T&gt;*&amp; data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//创建队列</span></span><br><span class="line">    queue&lt;Data&lt;T&gt;*&gt; q;</span><br><span class="line">    <span class="keyword">if</span>(!data)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;树为空！&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    q.<span class="built_in">push</span>(data);</span><br><span class="line">    <span class="comment">//循环打印</span></span><br><span class="line">    <span class="keyword">while</span> (!q.<span class="built_in">empty</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//将根结点的地址出队并且赋值给n（将队列第一个元素作为根结点）</span></span><br><span class="line">        Data&lt;T&gt;* n = q.<span class="built_in">front</span>();</span><br><span class="line">        q.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="comment">//打印根结点</span></span><br><span class="line">        cout &lt;&lt; n-&gt;dd &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//左儿子</span></span><br><span class="line">        <span class="keyword">if</span> (n-&gt;lchild)</span><br><span class="line">        &#123;</span><br><span class="line">            q.<span class="built_in">push</span>(n-&gt;lchild);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//右儿子</span></span><br><span class="line">        <span class="keyword">if</span> (n-&gt;rchild)</span><br><span class="line">        &#123;</span><br><span class="line">            q.<span class="built_in">push</span>(n-&gt;rchild);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="di-gui-xian-xu-bian-li-shu-da-yin">递归先序遍历树打印</h2>
+<p>按照先序遍历顺序：根 左 右 设计</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">XianXu_print</span><span class="params">(Data&lt;T&gt;* d)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (d)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; d-&gt;dd &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        <span class="built_in">NnredursionPreorder</span>(d-&gt;lchild);</span><br><span class="line">        <span class="built_in">NnredursionPreorder</span>(d-&gt;rchild);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="fei-di-gui-xian-xu-bian-li-shu-da-yin">非递归先序遍历树打印</h2>
+<p><em><strong>补！</strong></em></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">NotRecXianXu_print</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ji-suan-shu-shen-du">计算树深度</h2>
+<p>同样用递归从后往前计数，分别用两个局部变量来记录左、右孩子的结点个数。然后作比较谁的深度更深即返回。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//计算树深度</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Depth</span><span class="params">(Data&lt;T&gt;* data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//判断树是否为空</span></span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//遍历左儿、右儿，当遍历到其中一儿子没有结点时，另一结点比这结点大，即返回</span></span><br><span class="line">        <span class="keyword">int</span> m = <span class="built_in">Depth</span>(data-&gt;lchild);</span><br><span class="line">        <span class="keyword">int</span> n = <span class="built_in">Depth</span>(data-&gt;rchild);</span><br><span class="line">        <span class="keyword">if</span> (m &gt; n) <span class="keyword">return</span> m + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> n + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="tong-ji-er-cha-shu-jie-dian-de-ge-shu">统计二叉树结点的个数</h2>
+<p>递归遍历所有结点，然后计数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//统计二叉树结点的个数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">NodeCount</span><span class="params">(Data&lt;T&gt;* data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//判断树是否为空</span></span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">NodeCount</span>(data-&gt;lchild) + <span class="built_in">NodeCount</span>(data-&gt;rchild) + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="xie-zi-ge-shu">叶子个数</h2>
+<p>叶子是度为0的结点，即其后面没有两孩子，按照其来作为判断条件</p>
+<p>同样递归遍历所有结点，加个条件判断是否为叶子即可</p>
+<p>用两个变量来记录左右孩子下的叶子个数</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//叶子个数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">leavesCount</span><span class="params">(Data&lt;T&gt;* data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//判断树是否为空</span></span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//判断左儿和右儿为空的时候，确立这个根结点是叶子</span></span><br><span class="line">        <span class="keyword">if</span> (data-&gt;lchild == <span class="literal">NULL</span> &amp;&amp; data-&gt;rchild == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;<span class="comment">//不都为空则继续遍历左儿、右儿</span></span><br><span class="line">            <span class="keyword">int</span> num1 = <span class="built_in">leavesCount</span>(data-&gt;lchild);</span><br><span class="line">            <span class="keyword">int</span> num2 = <span class="built_in">leavesCount</span>(data-&gt;rchild);</span><br><span class="line">            <span class="keyword">return</span> num1 + num2;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="shu-kuan-du">树宽度</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//树宽度</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">treeWidth</span><span class="params">(Data&lt;T&gt;* data)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//判断树是否为空</span></span><br><span class="line">    <span class="keyword">if</span> (data == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//双端队列</span></span><br><span class="line">    deque&lt;Data&lt;T&gt;*&gt; dequeTreeNode;</span><br><span class="line">    <span class="keyword">int</span> maxWidth = <span class="number">1</span>;</span><br><span class="line">    dequeTreeNode.<span class="built_in">push_back</span>(data);<span class="comment">//头结点入队</span></span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> mlength = dequeTreeNode.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span> (mlength == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">while</span> (mlength &gt; <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            Data&lt;T&gt;* temp = dequeTreeNode.<span class="built_in">front</span>();</span><br><span class="line">            dequeTreeNode.<span class="built_in">pop_front</span>();</span><br><span class="line">            mlength--;</span><br><span class="line">            <span class="keyword">if</span> (temp-&gt;lchild)</span><br><span class="line">            &#123;</span><br><span class="line">                dequeTreeNode.<span class="built_in">push_back</span>(temp-&gt;lchild);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (temp-&gt;rchild)</span><br><span class="line">            &#123;</span><br><span class="line">                dequeTreeNode.<span class="built_in">push_back</span>(temp-&gt;rchild);</span><br><span class="line">            &#125;</span><br><span class="line">            maxWidth = maxWidth &gt; dequeTreeNode.<span class="built_in">size</span>() ? maxWidth : dequeTreeNode.<span class="built_in">size</span>();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> maxWidth;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="hui-zong">汇总</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Data</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	Data* lchild;</span><br><span class="line">	Data* rchild;</span><br><span class="line">	T dd;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkTree</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">//递归先序遍历创建树</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">XianXu_creat</span><span class="params">(Data&lt;T&gt;* &amp;d)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        T data;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;input：&quot;</span>;</span><br><span class="line">        cin &gt;&gt; data;</span><br><span class="line">        <span class="comment">//判断结束</span></span><br><span class="line">        <span class="keyword">if</span> (data == <span class="number">000</span>)</span><br><span class="line">            d = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="comment">//用先序遍历法赋值</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//新建结点</span></span><br><span class="line">            d = <span class="keyword">new</span> Data&lt;T&gt;;</span><br><span class="line">            d-&gt;dd = data;</span><br><span class="line">            <span class="comment">//遍历并创建左结点</span></span><br><span class="line">            <span class="built_in">XianXu_creat</span>(d-&gt;lchild);</span><br><span class="line">            <span class="comment">//遍历并创建右结点</span></span><br><span class="line">            <span class="built_in">XianXu_creat</span>(d-&gt;rchild);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//按层创建树</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">creat</span><span class="params">(T* num, Data&lt;T&gt;* &amp;data,<span class="keyword">int</span> length)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//创建队列</span></span><br><span class="line">        queue&lt;Data&lt;T&gt;*&gt; q;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//num数组非空时，申请根结点内存，赋值并且将根结点地址入队</span></span><br><span class="line">        <span class="keyword">if</span> (num)</span><br><span class="line">        &#123;</span><br><span class="line">            data = <span class="keyword">new</span> Data&lt;T&gt;;</span><br><span class="line">            data-&gt;dd = num[i++];</span><br><span class="line">            q.<span class="built_in">push</span>(data);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//否则根结点指向NULL</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            data = <span class="literal">NULL</span>;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//循环添加</span></span><br><span class="line">        <span class="keyword">while</span> (!q.<span class="built_in">empty</span>())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//将根结点的地址出队并且赋值给n（将队列第一个元素作为根结点）</span></span><br><span class="line">            Data&lt;T&gt;* n = q.<span class="built_in">front</span>();</span><br><span class="line">            q.<span class="built_in">pop</span>();</span><br><span class="line">            <span class="comment">//左儿子</span></span><br><span class="line">            <span class="comment">//判断数组下标是否到达数组总长，</span></span><br><span class="line">            <span class="keyword">if</span> (i+<span class="number">1</span>&lt;=length)</span><br><span class="line">            &#123;<span class="comment">//与创建根结点差不多，给左儿子申请内存，赋值，并且将其入队，</span></span><br><span class="line">                <span class="comment">//然后再下一次while循环时，q.front()即为左儿子的地址，即n也是左儿子的地址，这时候把左儿子看作根结点</span></span><br><span class="line">                <span class="comment">//即像根结点一样给左、右儿子赋值</span></span><br><span class="line">                n-&gt;lchild = <span class="keyword">new</span> Data&lt;T&gt;;</span><br><span class="line">                n-&gt;lchild-&gt;dd = num[i++];</span><br><span class="line">                q.<span class="built_in">push</span>(n-&gt;lchild);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                n-&gt;lchild = <span class="literal">NULL</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//右儿子</span></span><br><span class="line">            <span class="keyword">if</span> (i+<span class="number">1</span>&lt;=length)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="comment">//在左儿子入队后，右儿子也跟着入队，在n=左儿子地址的下一个while循环，即n=右儿子地址</span></span><br><span class="line">                n-&gt;rchild = <span class="keyword">new</span> Data&lt;T&gt;;</span><br><span class="line">                n-&gt;rchild-&gt;dd = num[i++];</span><br><span class="line">                q.<span class="built_in">push</span>(n-&gt;rchild);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                n-&gt;rchild = <span class="literal">NULL</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//按层打印</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">layer_print</span><span class="params">(Data&lt;T&gt;*&amp; data)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">//创建队列</span></span><br><span class="line">		queue&lt;Data&lt;T&gt;*&gt; q;</span><br><span class="line">		<span class="keyword">if</span>(!data)</span><br><span class="line">		&#123;</span><br><span class="line">			cout &lt;&lt; <span class="string">&quot;树为空！&quot;</span> &lt;&lt; endl;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		q.<span class="built_in">push</span>(data);</span><br><span class="line">		<span class="comment">//循环添加</span></span><br><span class="line">		<span class="keyword">while</span> (!q.<span class="built_in">empty</span>())</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">//将根结点的地址出队并且赋值给n</span></span><br><span class="line">			Data&lt;T&gt;* n = q.<span class="built_in">front</span>();</span><br><span class="line">			q.<span class="built_in">pop</span>();</span><br><span class="line">			<span class="comment">//打印根结点</span></span><br><span class="line">			cout &lt;&lt; n-&gt;dd &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line"></span><br><span class="line">			<span class="comment">//左儿子</span></span><br><span class="line">			<span class="comment">//判断数组下标是否到达数组总长</span></span><br><span class="line">			<span class="keyword">if</span> (n-&gt;lchild)</span><br><span class="line">			&#123;<span class="comment">//与创建根结点差不多，给左儿子申请内存，赋值，并且将其入队，</span></span><br><span class="line">			<span class="comment">//然后再下一次while循环时，q.front()即为左儿子的地址，即n也是左儿子的地址，这时候把左儿子看作根结点</span></span><br><span class="line">			<span class="comment">//即像根结点一样给左、右儿子赋值</span></span><br><span class="line">				q.<span class="built_in">push</span>(n-&gt;lchild);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="comment">//右儿子</span></span><br><span class="line">			<span class="keyword">if</span> (n-&gt;rchild)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="comment">//在左儿子入队后，右儿子也跟着入队，在n=左儿子地址的下一个while循环，即n=右儿子地址</span></span><br><span class="line">				q.<span class="built_in">push</span>(n-&gt;rchild);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//递归先序遍历打印</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">XianXu_print</span><span class="params">(Data&lt;T&gt;* d)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (d)</span><br><span class="line">		&#123;</span><br><span class="line">			cout &lt;&lt; d-&gt;dd &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">			<span class="built_in">NnredursionPreorder</span>(d-&gt;lchild);</span><br><span class="line">			<span class="built_in">NnredursionPreorder</span>(d-&gt;rchild);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//非递归算法</span></span><br><span class="line">	<span class="comment">//void NnredursionPreorder(Data&lt;T&gt;* d)</span></span><br><span class="line">	<span class="comment">//&#123;</span></span><br><span class="line">	<span class="comment">//&#125;</span></span><br><span class="line">    </span><br><span class="line">	<span class="comment">//计算树深度</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">Depth</span><span class="params">(Data&lt;T&gt;* data)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">//判断树是否为空</span></span><br><span class="line">		<span class="keyword">if</span> (data == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">//遍历左儿、右儿，当遍历到其中一儿子没有结点时，另一结点比这结点大，即返回</span></span><br><span class="line">			<span class="keyword">int</span> m = <span class="built_in">Depth</span>(data-&gt;lchild);</span><br><span class="line">			<span class="keyword">int</span> n = <span class="built_in">Depth</span>(data-&gt;rchild);</span><br><span class="line">			<span class="keyword">if</span> (m &gt; n) <span class="keyword">return</span> m + <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">return</span> n + <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//统计二叉树结点的个数</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">NodeCount</span><span class="params">(Data&lt;T&gt;* data)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">//判断树是否为空</span></span><br><span class="line">		<span class="keyword">if</span> (data == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">NodeCount</span>(data-&gt;lchild) + <span class="built_in">NodeCount</span>(data-&gt;rchild) + <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//叶子个数</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">leavesCount</span><span class="params">(Data&lt;T&gt;* data)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">//判断树是否为空</span></span><br><span class="line">		<span class="keyword">if</span> (data == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">//判断左儿和右儿为空的时候，确立这个根结点是叶子</span></span><br><span class="line">			<span class="keyword">if</span> (data-&gt;lchild == <span class="literal">NULL</span> &amp;&amp; data-&gt;rchild == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span></span><br><span class="line">			&#123;<span class="comment">//不都为空则继续遍历左儿、右儿</span></span><br><span class="line">				<span class="keyword">int</span> num1 = <span class="built_in">leavesCount</span>(data-&gt;lchild);</span><br><span class="line">				<span class="keyword">int</span> num2 = <span class="built_in">leavesCount</span>(data-&gt;rchild);</span><br><span class="line">				<span class="keyword">return</span> num1 + num2;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    </span><br><span class="line">	<span class="comment">//树宽度</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">treeWidth</span><span class="params">(Data&lt;T&gt;* data)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">//判断树是否为空</span></span><br><span class="line">		<span class="keyword">if</span> (data == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		<span class="comment">//双端队列</span></span><br><span class="line">		deque&lt;Data&lt;T&gt;*&gt; dequeTreeNode;</span><br><span class="line">		<span class="keyword">int</span> maxWidth = <span class="number">1</span>;</span><br><span class="line">		dequeTreeNode.<span class="built_in">push_back</span>(data);<span class="comment">//头结点入队</span></span><br><span class="line">		<span class="keyword">while</span> (<span class="literal">true</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> mlength = dequeTreeNode.<span class="built_in">size</span>();</span><br><span class="line">			<span class="keyword">if</span> (mlength == <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">while</span> (mlength &gt; <span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				Data&lt;T&gt;* temp = dequeTreeNode.<span class="built_in">front</span>();</span><br><span class="line">				dequeTreeNode.<span class="built_in">pop_front</span>();</span><br><span class="line">				mlength--;</span><br><span class="line">				<span class="keyword">if</span> (temp-&gt;lchild)</span><br><span class="line">				&#123;</span><br><span class="line">					dequeTreeNode.<span class="built_in">push_back</span>(temp-&gt;lchild);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span> (temp-&gt;rchild)</span><br><span class="line">				&#123;</span><br><span class="line">					dequeTreeNode.<span class="built_in">push_back</span>(temp-&gt;rchild);</span><br><span class="line">				&#125;</span><br><span class="line">				maxWidth = maxWidth &gt; dequeTreeNode.<span class="built_in">size</span>() ? maxWidth : dequeTreeNode.<span class="built_in">size</span>();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> maxWidth;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://duegin.github.io/2021/10/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Tree/Tree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/m.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DueGin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/10/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Tree/Tree/" itemprop="url">二叉树原理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-10-26T17:06:16+08:00">
+                2021-10-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="er-cha-shu">二叉树</h1>
+<ul>
+<li>
+<p>二叉树是n个有限元素的集合，该集合或者为空、或者由一个称为根（root）的元素及两个不相交的、被分别称为左子树和右子树的二叉树组成，是有序树。</p>
+</li>
+<li>
+<p>当集合为空时，称该二叉树为空二叉树。</p>
+</li>
+<li>
+<p>在二叉树中，一个元素也称作一个结点</p>
+</li>
+</ul>
+<p><img src="/2021/10/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Tree/Tree/%E4%BA%8C%E5%8F%89%E6%A0%91%E4%BE%8B%E5%AD%90.png" alt="二叉树例子"></p>
+<h2 id="er-cha-shu-fen-lei">二叉树分类</h2>
+<ul>
+<li>
+<p>（一）满二叉树</p>
+<ul>
+<li><strong>国内定义</strong>：一个二叉树，如果每一个层的结点数都达到最大值，则这个二叉树就是满二叉树。
+<ul>
+<li>外观上是一个三角形结构</li>
+<li>层数为 K 时，结点总数为$2^K-1$</li>
+<li>层数为 K 的<strong>最后一层</strong>结点总数为$2^{K-1}$</li>
+<li>第 i 层上的结点数为：$2^i-1$</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2021/10/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Tree/Tree/%E5%9B%BD%E5%86%85%E6%BB%A1%E4%BA%8C%E5%8F%89%E6%A0%91.png" alt="国内满二叉树例子"></p>
+<ul>
+<li>
+<p><strong>国际定义</strong>：如果一棵二叉树的结点要么是叶子结点，要么它有两个子结点，这样的树就是满二叉树。（但反过来不成立，因为完全二叉树也满足这个要求，但不是满二叉树）</p>
+<ul>
+<li>
+<p><strong>国际定义这个二叉树也是满二叉树。但是按照国内的定义，它却不是满二叉树。</strong></p>
+</li>
+<li>
+<p>满二叉树的任意节点，要么度为0，要么度为2。换个说法即要么为叶子结点，要么同时具有左右孩子。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>国内满二叉树的特点：每一层上的结点数都是最大结点数，即每一层 i 的结点数都具有最大值$2^{i-1}$</p>
+<p><img src="/2021/10/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Tree/Tree/%E5%9B%BD%E9%99%85%E6%BB%A1%E4%BA%8C%E5%8F%89%E6%A0%91.png" alt="国际满二叉树"></p>
+</li>
+</ul>
+</li>
+<li>
+<p>（二）完全二叉树</p>
+<p>深度为k，有n个结点的二叉树当且仅当其每一个结点都与深度为k的满二叉树中编号从1到n的结点一 一对应时，称之为完全二叉树。</p>
+<ul>
+<li>一棵深度为k且有$2^K-1$个结点的二叉树称为满二叉树。</li>
+<li>如果一棵二叉树是满二叉树, 则它必定是完全二叉树。</li>
+<li>完全二叉树特点：
+<ul>
+<li>（一）叶子结点只可能在层次最大的两层上出现；</li>
+<li>（二）对任一结点，若其右分支下的子孙的最大层次为 l，则其左分支下的子孙的最大层次必为 l 或 l+1。即层次：左分支 &gt;= 右分支</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2021/10/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Tree/Tree/%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91.jpg" alt="完全二叉树"></p>
+</li>
+<li>
+<p>（三）平衡树（<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%B9%B3%E8%A1%A1%E6%A0%91?fromtitle=%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%A0%91&amp;fromid=10421057">Balance Tree</a>）</p>
+<p>任意节点的子树的高度差都小于等于1。</p>
+<p>常见的符合平衡树的有，<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/B%E6%A0%91/5411672">B树</a>（多路平衡搜索树）、<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/AVL%E6%A0%91/10986648?fr=aladdin">AVL树</a>（二叉平衡搜索树）等。</p>
+</li>
+</ul>
+<h2 id="er-cha-shu-xiang-guan-zhu-yu">二叉树相关术语</h2>
+<ul>
+<li>（一）结点：包含一个数据元素及若干指向子树分支的信息。</li>
+<li>（二）结点的度：一个结点拥有子树的数目称为结点的度。</li>
+<li>（三）叶子结点：也称为终端结点，没有子树的结点或者度为零的结点。</li>
+<li>（四）分支结点：也称为非终端结点，度不为零的结点称为非终端结点。</li>
+<li>（五）树的度：树中所有结点的度的最大值。</li>
+<li>（六）结点的层次：从根结点开始，假设根结点为第1层，根结点的子节点为第2层，依此类推，如果某一个结点位于第L层，则其子节点位于第L+1层 。</li>
+<li>（七）树的深度：也称为树的高度，树中所有结点的层次最大值称为树的深度。</li>
+<li>（八）有序树：如果树中各棵子树的次序是有先后次序，则称该树为有序树。</li>
+<li>（九）无序树：如果树中各棵子树的次序没有先后次序，则称该树为无序树 。</li>
+<li>（十）森林：由m（m≥0）棵互不相交的树构成一片森林。如果把一棵非空的树的根结点删除，则该树就变成了一片森林，森林中的树由原来根结点的各棵子树构成。</li>
+</ul>
+<h2 id="er-cha-shu-xing-zhi">二叉树性质</h2>
+<ul>
+<li>
+<p>**性质1：**二叉树的第i层上至多有2i-1（i≥1）个节点 。</p>
+</li>
+<li>
+<p>**性质2：**深度为h的二叉树中至多含有2h-1个节点。</p>
+</li>
+<li>
+<p>**性质3：**若在任意一棵二叉树中，有n0个叶子节点，有n2个度为2的节点，则必有n0=n2+1。</p>
+</li>
+<li>
+<p>**性质4：**具有n个节点的完全二叉树深为log2x+1（其中x表示不大于n的最大整数）。</p>
+</li>
+<li>
+<p>**性质5：**若对一棵有n个节点的完全二叉树进行顺序编号（1≤i≤n），那么，对于编号为i（i≥1）的节点：</p>
+<ul>
+<li>
+<p>当i=1时，该节点为根，它无双亲节点 [6] 。</p>
+</li>
+<li>
+<p>当i&gt;1时，该节点的双亲节点的编号为i/2 [6] 。</p>
+</li>
+<li>
+<p>若2i≤n，则有编号为2i的左节点，否则没有左节点 [6] 。</p>
+</li>
+<li>
+<p>若2i+1≤n，则有编号为2i+1的右节点，否则没有右节点 [6] 。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="shi-ji-ying-yong">实际应用</h2>
+<p><em>摘至<a target="_blank" rel="noopener" href="https://blog.csdn.net/hellowd123/article/details/99692395">blog</a></em></p>
+<ul>
+<li>普通的二叉树，很难构成现实的应用场景，但因其简单，常用于学习研究，<strong>平衡二叉树</strong>则是实际应用比较多的。常见于快速匹配、搜索等方面。</li>
+<li>常用的树有：AVL树、红黑树、B+树、Trie（字典）树。
+<ul>
+<li>（一）AVL树: 最早的平衡二叉树之一。应用相对其他数据结构比较少。windows对进程地址空间的管理用到了AVL树。</li>
+<li>（二）红黑树: 平衡二叉树，广泛用在C++的STL中。如map和set都是用红黑树实现的。还有Linux文件管理。</li>
+<li>（三）B/B+树: 用在磁盘文件组织 数据索引和数据库索引。</li>
+<li>（四）Trie树(字典树): 用在统计和排序大量字符串，如自动机、M数据库索引。</li>
+</ul>
+</li>
+</ul>
+<h1 id="er-cha-shu-bian-li">二叉树遍历</h1>
+<p><strong>在构建二叉树之前，我们需要先知道如何遍历一棵二叉树，因为懂得遍历，即懂得赋值</strong></p>
+<p>有三种普遍方法可以遍历：</p>
+<ul>
+<li>先序遍历</li>
+<li>中序遍历</li>
+<li>后序遍历</li>
+</ul>
+<p>遍历的顺序即是访问根结点的顺序，访问左、右孩子的顺序都是，先左，后右。</p>
+<p>即如：中序遍历：先访问左孩子，然后访问根结点，最后访问右孩子</p>
+<p>由其<strong>先序序列和中序序列</strong>，或者其<strong>中序序列和后序序列</strong>均能唯一地确定一颗二叉树</p>
+<p>还有一种是：<strong>层次遍历</strong></p>
+<p><em>以下的图摘至<a target="_blank" rel="noopener" href="https://blog.csdn.net/chinesekobe/article/details/110874773">blog</a></em></p>
+<ul>
+<li>（一）先序遍历</li>
+</ul>
+<blockquote>
+<p>先序遍历可以想象为，一个小人从一棵二叉树根节点为起点，沿着二叉树外沿，逆时针走一圈回到根节点，路上遇到的元素顺序，就是先序遍历的结果</p>
+</blockquote>
+<p>先序遍历结果为：A B D H I E J C F K G</p>
+<p><img src="/2021/10/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Tree/Tree/%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86.gif" alt="先序遍历"></p>
+<p><img src="/2021/10/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Tree/Tree/%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86%E5%B0%8F%E4%BA%BA%E8%B7%91.gif" alt="先序遍历小人跑"></p>
+<p><strong>小人沿着外围跑一圈（直到跑回根节点）</strong></p>
+<ul>
+<li>中序遍历</li>
+</ul>
+<blockquote>
+<p>中序遍历可以看成，二叉树每个节点，垂直方向投影下来（可以理解为每个节点从最左边开始垂直掉到地上），然后从左往右数，得出的结果便是中序遍历的结果</p>
+</blockquote>
+<p>中遍历结果为：H D I B E J A F K C G</p>
+<p><img src="/2021/10/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Tree/Tree/%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86.gif" alt="中序遍历"></p>
+<p><strong>中序遍历就是从最左边开始，把每个节点垂直投影到同一直线上，然后从左往右读值就可以了</strong></p>
+<ul>
+<li>后序遍历</li>
+</ul>
+<blockquote>
+<p>后序遍历就像是剪葡萄，我们要把一串葡萄一颗一颗地剪下来。规定从左向右剪，从下往上剪才能剪一颗一颗剪下来。</p>
+</blockquote>
+<p><strong>后序遍历中，根节点默认最后面</strong></p>
+<p>后序遍历结果：H I D J E B K F G C A</p>
+<p><img src="/2021/10/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Tree/Tree/%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86.gif" alt="后序遍历"></p>
+<ul>
+<li>层次遍历</li>
+</ul>
+<blockquote>
+<p>层次遍历很好理解，就是从根节点开始，一层一层，从上到下，每层从左到右，依次写值就可以了</p>
+</blockquote>
+<p>层次遍历结果：A B C D E F G H I J K</p>
+<p><img src="/2021/10/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Tree/Tree/%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86.png" alt="层次遍历"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://duegin.github.io/2021/10/26/test/test/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/m.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DueGin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/10/26/test/test/" itemprop="url">Test</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-10-26T16:26:03+08:00">
+                2021-10-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/test/" itemprop="url" rel="index">
+                    <span itemprop="name">test</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="test">test</h1>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://duegin.github.io/2021/10/22/Java/String%E7%B1%BB%E5%92%8CStringBuilder%E7%B1%BB/String%E7%B1%BB%E5%92%8CStringBuilder%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/m.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DueGin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/10/22/Java/String%E7%B1%BB%E5%92%8CStringBuilder%E7%B1%BB/String%E7%B1%BB%E5%92%8CStringBuilder%E7%B1%BB/" itemprop="url">String类和StringBuilder类</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-10-22T01:59:47+08:00">
+                2021-10-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="string-lei-he-string-builder-lei">String类和StringBuilder类</h1>
+<h2 id="chang-yong-fang-fa">常用方法</h2>
+<p><strong><code>String s</code></strong></p>
+<p>取字符：<code>char s.charAt(int index)</code></p>
+<h1 id="string-builder-lei">StringBuilder类</h1>
+<p><code>StringBuilder sb = new StringBuilder()</code></p>
+<ul>
+<li>
+<p>构造器：</p>
+<ul>
+<li><code>StringBuilder()</code></li>
+<li><code>StringBuilder(String s)</code></li>
+</ul>
+</li>
+<li>
+<p>在字符串后面拼接字符串：</p>
+<ul>
+<li>函数原型：<code>public StringBuilder append(String s)</code></li>
+<li><code>sb.append(s)</code></li>
+</ul>
+</li>
+<li>
+<p>字符串反转：</p>
+<ul>
+<li>函数原型：<code>public StringBuilder reverse()</code></li>
+<li><code>sb.reverse()</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="string-yu-string-builder-xiang-hu-zhuan-huan">String 与 StringBuilder 相互转换</h1>
+<ul>
+<li>
+<p>（一）StringBuilder 转换为 String：</p>
+<ul>
+<li>函数原型：<code>public String toString()</code></li>
+<li><code>String s = sb.toString()</code></li>
+</ul>
+</li>
+<li>
+<p>（二）String 转换为 StringBuilder：</p>
+<ul>
+<li>利用StringBuilder的构造器来转换</li>
+<li><code> StringBuilder sb = new StringBuilder(s)</code></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://duegin.github.io/2021/10/22/Java/ArrayList/ArrayList/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/m.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DueGin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/10/22/Java/ArrayList/ArrayList/" itemprop="url">ArrayList</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-10-22T01:57:31+08:00">
+                2021-10-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="array-list">ArrayList</h1>
+<p><strong>集合</strong>，是一种容器</p>
+<p>这个ArrayList和c++的vector容器相似</p>
+<h2 id="gou-zao-fang-fa">构造方法</h2>
+<ul>
+<li>函数原型：<code>public ArrayList()</code></li>
+</ul>
+<p>使用：</p>
+<p>需要用&lt;&gt;指定类型</p>
+<ul>
+<li><code>ArrayList&lt;Type&gt; array = new ArrayList&lt;&gt;()</code>	此使用形式后面的&lt;&gt;可通过前面推断类型</li>
+<li><code>ArrayList&lt;Type&gt; array = new ArrayList&lt;Type&gt;()</code></li>
+</ul>
+<h2 id="chang-yong-fang-fa">常用方法</h2>
+<p><code>ArrayList&lt;Type&gt; array = new ArrayList&lt;&gt;()</code></p>
+<p>（一）往集合添加元素：</p>
+<ul>
+<li>
+<p>添加到集合末尾：</p>
+<ul>
+<li>函数原型：<code>public boolean add(Type element)</code></li>
+<li>返回true即添加成功，反之…</li>
+<li>使用：<code>array.add(Type element)</code></li>
+</ul>
+</li>
+<li>
+<p>添加到指定位置：</p>
+<ul>
+<li>函数原型：<code>public void add(int index, Type element)</code></li>
+<li>使用：<code>add(index, element)</code></li>
+<li>index是索引值</li>
+</ul>
+</li>
+</ul>
+<p>（二）删除元素：</p>
+<ul>
+<li>
+<p>删除指定元素：</p>
+<ul>
+<li>函数原型：<code>public boolean remove(Type element)</code></li>
+<li>返回删除是否成功</li>
+<li>使用：<code>array.remove(element)</code></li>
+<li>例如：<code>array.remove(&quot;hello&quot;)</code></li>
+</ul>
+</li>
+<li>
+<p>删除指定索引处的元素：</p>
+<ul>
+<li>函数原型：<code>public Type remove(int index)</code></li>
+<li>返回值：被删除的元素</li>
+<li>使用：<code>array.remove(index)</code></li>
+</ul>
+</li>
+</ul>
+<p>（三）修改元素：</p>
+<ul>
+<li>修改指定索引处的元素：
+<ul>
+<li>函数原型：<code>public Type set(int index, Type element)</code></li>
+<li>返回值：被修改的元素</li>
+<li>使用：<code>array.set(index, element)</code></li>
+</ul>
+</li>
+</ul>
+<p>（四）获取集合中的信息</p>
+<ul>
+<li>获取指定索引处的元素：
+<ul>
+<li>函数原型：<code>public Type get(int index)</code></li>
+<li>返回值：指定索引处的元素</li>
+<li>使用：<code>array.get(index)</code></li>
+</ul>
+</li>
+<li>获取集合中的元素个数：
+<ul>
+<li>函数原型：<code>public int size()</code></li>
+<li>使用：<code>array.size()</code></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://duegin.github.io/2021/10/22/Java/%E5%A4%9A%E6%80%81/java%E5%A4%9A%E6%80%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/m.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DueGin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/10/22/Java/%E5%A4%9A%E6%80%81/java%E5%A4%9A%E6%80%81/" itemprop="url">多态</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-10-22T01:55:37+08:00">
+                2021-10-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="duo-tai">多态</h1>
+<p>多态的条件：</p>
+<ul>
+<li>有继承或实现关系</li>
+<li>有方法重写</li>
+<li>有父类引用指向子类对象    如：动物 animal = new 猫()</li>
+</ul>
+<p>多态中成员访问特点：</p>
+<ul>
+<li>成员变量：编译看左边，执行看左边</li>
+<li>成员方法：编译看左边，执行看<strong>右边</strong></li>
+</ul>
+<blockquote>
+<p>即：<code>Animal a =new Cat()</code></p>
+<p>成员变量a.age，访问的是 Animal 的属性 age</p>
+<p><code>System.out.println(a.age)</code></p>
+<p>成员方法 a.eat() ，调用的是 Cat 的 eat() 方法</p>
+<p><code>a.eat()</code></p>
+</blockquote>
+<h2 id="shi-yong-duo-tai">使用多态</h2>
+<p>与C++大同小异</p>
+<p>两种方法：</p>
+<ul>
+<li>
+<p>（一）通过创建父类对象 并且指向申请的子类内存</p>
+<p><code>父类 obj = new 子类()</code></p>
+</li>
+<li>
+<p>（二）在函数传参时，将子类对象作为形参传入函数，并且函数用父类接收，即可做到父类引用子类对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Animal is eating&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Cat is eating&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Dog is eating&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        <span class="comment">//第一种方法</span></span><br><span class="line">        test1();</span><br><span class="line">        <span class="comment">//第二种方法</span></span><br><span class="line">        test2();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;正在使用第一种方法：&quot;</span>);</span><br><span class="line">        <span class="comment">//创建父类引用子类对象</span></span><br><span class="line">        Animal a = <span class="keyword">new</span> Cat();</span><br><span class="line">        <span class="comment">//调用Cat的eat()</span></span><br><span class="line">        a.eat();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//创建父类引用子类对象</span></span><br><span class="line">        Animal b = <span class="keyword">new</span> Dog();</span><br><span class="line">        <span class="comment">//调用Dog的eat()</span></span><br><span class="line">        b.eat();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;正在使用第二种方法：&quot;</span>);</span><br><span class="line">        Animal animal = <span class="keyword">new</span> Animal();</span><br><span class="line">        Cat cat = <span class="keyword">new</span> Cat();</span><br><span class="line">        Dog dog = <span class="keyword">new</span> Dog();</span><br><span class="line">        <span class="comment">//第二种方法</span></span><br><span class="line">        <span class="comment">//调用了Cat的eat()</span></span><br><span class="line">        test2Do(cat);</span><br><span class="line">        <span class="comment">//调用了Dog的eat()</span></span><br><span class="line">        test2Do(dog);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test2Do</span><span class="params">(Animal a)</span></span>&#123;<span class="comment">//使用父类来接收</span></span><br><span class="line">        <span class="comment">//调用子类的eat()方法</span></span><br><span class="line">        a.eat();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>运行结果：</p>
+<p>正在使用第一种方法：<br>
+Cat is eating<br>
+Dog is eating<br>
+正在使用第二种方法：<br>
+Cat is eating<br>
+Dog is eating</p>
+</blockquote>
+<h2 id="hao-chu">好处</h2>
+<ul>
+<li>提高了程序的扩展性和复用性</li>
+</ul>
+<h2 id="bi-duan">弊端</h2>
+<ul>
+<li><strong>多态无法访问子类特有的方法，只能访问共有的方法。</strong></li>
+</ul>
+<p>如：若上面的Dog类添加多一个方法<code>l()</code>，那么在这个Dog类中，<code>l()</code>方法是Dog类中特有的，Cat类和其父类Animal类都没有，则在父类引用子类对象的对象中，此对象无法调用其特有的方法，即<code>l()</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Animal is eating&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;Dog is eating&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">l</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;aaaaaaaaa&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Animal a = <span class="keyword">new</span> Dog();</span><br><span class="line">        a.l();<span class="comment">//报错，无法调用</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://duegin.github.io/2021/10/20/Java/super%E5%92%8Cthis/super%E5%92%8Cthis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/m.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DueGin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/10/20/Java/super%E5%92%8Cthis/super%E5%92%8Cthis/" itemprop="url">super和this</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-10-20T23:35:13+08:00">
+                2021-10-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/java/" itemprop="url" rel="index">
+                    <span itemprop="name">java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="super-he-this">super 和 this</h1>
+<h1 id="this">this</h1>
+<p>this的作用</p>
+<ul>
+<li>this调用本类属性</li>
+<li>调用本类方法</li>
+<li>利用this表示当前类对象</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a;</span><br><span class="line">    <span class="keyword">int</span> b;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setA</span><span class="params">(<span class="keyword">int</span> a)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//this.a是本类的属性a</span></span><br><span class="line">        <span class="keyword">this</span>.a=a;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">setB</span><span class="params">(<span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.b=b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">getB</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(<span class="keyword">this</span>.b);</span><br><span class="line">        <span class="comment">//调用本类的getA()方法</span></span><br><span class="line">        <span class="keyword">this</span>.get();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">get</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        System.out.println(”Test的get方法调用“);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="gou-zao-qi">构造器</h2>
+<p>在构造器中，使用this来调用本类的函数，<strong>需要放在首位</strong></p>
+<h1 id="super">super</h1>
+<ul>
+<li>代表父类对象</li>
+<li>子父类存在着同名的成员时，在子类中默认时访问子类的成员，可以通过super关键字指定访问父类的成员</li>
+<li>创建子类对象时，<strong>默认会先调用父类无参的构造方法</strong>，可以通过super关键字指定调用父类的构造方法</li>
+</ul>
+<p><strong>super的用法</strong></p>
+<ul>
+<li>
+<p><code>super.xx</code>可以用来引用直接父类的实例变量。</p>
+</li>
+<li>
+<p><code>super.xxx()</code>可以用来调用直接父类方法。</p>
+</li>
+<li>
+<p><code>super()</code>可以用于调用直接父类构造函数</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">extends</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">get</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//调用父类的方法get()</span></span><br><span class="line">        <span class="keyword">super</span>.get();</span><br><span class="line">        <span class="comment">//调用父类的属性a</span></span><br><span class="line">        System.out.println(<span class="keyword">super</span>.a);</span><br><span class="line">        System.out.println(<span class="string">&quot;A的get方法调用&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="gou-zao-qi-1">构造器</h2>
+<p>在构造器中，使用super来调用父类的函数，<strong>需要放在首位</strong></p>
+<h1 id="zhu-yi-shi-xiang">注意事项</h1>
+<ul>
+<li>super 和 this<strong>不能同时出现在同一个构造函数中</strong>调用其他的构造函数，因为两个语句都要是第一个语句</li>
+</ul>
+<h2 id="this-he-super-de-qu-bie">this和super的区别</h2>
+<ul>
+<li>
+<p><strong>（一）代表的事物不同</strong></p>
+<p>super代表的是父类空间的引用</p>
+<p>this代表的是所属函数的调用者对象</p>
+</li>
+<li>
+<p><strong>（二）使用前提不同</strong></p>
+<p>super必须要有继承关系才能使用</p>
+<p>this不需要继承关系也能使用</p>
+</li>
+<li>
+<p><strong>（三）调用的构造函数不同</strong></p>
+<p>super：调用父类的构造函数</p>
+<p>this：调用所属类的构造函数</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://duegin.github.io/2021/10/12/Python/%E6%89%93%E5%8C%85%E6%88%90exe/python%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E6%88%90exe/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/m.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DueGin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/10/12/Python/%E6%89%93%E5%8C%85%E6%88%90exe/python%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E6%88%90exe/" itemprop="url">python程序打包成exe</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-10-12T23:26:00+08:00">
+                2021-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="da-bao-ji-ben-ming-ling">打包基本命令</h1>
+<p>打包需要使用<strong>pyinstaller</strong><br>
+需要用 pip 安装<br>
+<code>pip install pyinstaller</code><br>
+简单的打包命令：<code>pyinstaller -F setup.py</code><br>
+这里的 <code>setup.py</code>是你所需要打包的 py 文件</p>
+<p>你需要使用 CMD 命令窗口，然后把工作目录转到某个文件夹中，打包时，他会在这个文件夹中生成三个文件。</p>
+<p><img src="/2021/10/12/Python/%E6%89%93%E5%8C%85%E6%88%90exe/python%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E6%88%90exe/%E6%89%93%E5%8C%85%E5%AE%8C%E7%9A%84%E6%96%87%E4%BB%B6.png" alt></p>
+<p>在 <strong>dist</strong> 文件夹中就有打包完的 exe 文件，.spec 文件是打包的缓存文件。<br>
+在 -F 后面可加一些参数</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-w</td>
+<td style="text-align:center">执行时不显示命令行窗口</td>
+</tr>
+<tr>
+<td style="text-align:center">-i xxx.ico</td>
+<td style="text-align:center">指定 exe 文件的图标</td>
+</tr>
+</tbody>
+</table>
+<p>这些命令都需要放到<code>-F</code>后面 <a target="_blank" rel="noopener" href="http://setup.py">setup.py</a> 前面</p>
+<p><img src="/2021/10/12/Python/%E6%89%93%E5%8C%85%E6%88%90exe/python%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E6%88%90exe/%E5%AE%8C%E6%95%B4%E5%91%BD%E4%BB%A4.png" alt></p>
+<h1 id="pyinstaller-da-bao-ji-zhi">pyinstaller打包机制</h1>
+<ul>
+<li>我们写的python脚本是不能脱离python解释器单独运行的，所以在打包的时候，至少会将python解释器和脚本一起打包，同样，为了打包的exe能正常运行，会把我们所有安装的第三方包一并打包到exe。</li>
+<li>也就是说我们需要确保打包的程序中所使用的模块是 pip 已经安装，否则打包之后的 exe 文件会提示错误，找不到模块。<br>
+可以通过<code>pip list</code>查看<br>
+如：<br>
+<img src="/2021/10/12/Python/%E6%89%93%E5%8C%85%E6%88%90exe/python%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E6%88%90exe/pip_list.jpg" alt></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://duegin.github.io/2021/10/12/C++/%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8/C-%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/m.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DueGin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/10/12/C++/%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8/C-%E6%8C%87%E9%92%88%E5%92%8C%E5%BC%95%E7%94%A8/" itemprop="url">C/C++的*和&</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-10-12T16:26:03+08:00">
+                2021-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="c-de-he-amp">C++的*和&amp;</h1>
+<h2 id="code-code-you-liang-chong-yong-fa"><code>*</code>有两种用法</h2>
+<ul>
+<li>
+<p>作单目运算符的时候，是<strong>取当前变量所对应的值</strong></p>
+</li>
+<li>
+<p>在定义变量的时候作为<strong>指针变量</strong>，如：<code>int* a</code>	指针变量a</p>
+</li>
+<li>
+<p>在函数形参列表作形参，调用函数时需要传入<strong>变量的地址</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun</span><span class="params">(<span class="keyword">int</span>* d)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	*d=<span class="number">7</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span>* n=&amp;a;</span><br><span class="line">	<span class="built_in">fun</span>(n);<span class="comment">//或者fun(&amp;a)</span></span><br><span class="line">	cout&lt;&lt;<span class="string">&quot;*n=&quot;</span>&lt;&lt;*n&lt;&lt;endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>结果是：*n=7</p>
+<p>但是a=1</p>
+</blockquote>
+<h2 id="code-amp-code-you-liang-chong-yong-fa"><code>&amp;</code>有两种用法</h2>
+<ul>
+<li>
+<p>在赋值时，作单目运算符，是<strong>取址运算符</strong>，如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">b=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span>* a = &amp;b;<span class="comment">//&amp;b即b的地址</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>在函数形参列表中起<strong>引用</strong>的作用，调用函数时，需传入变量本身，而非变量的地址如：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun2</span><span class="params">(<span class="keyword">int</span>&amp; d)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span>* c=<span class="keyword">new</span> <span class="keyword">int</span>;</span><br><span class="line">	*c=<span class="number">8</span>;</span><br><span class="line">	d=*c;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span>* n=&amp;a;</span><br><span class="line">	<span class="built_in">fun2</span>(*n);</span><br><span class="line">	cout&lt;&lt;<span class="string">&quot;*n=&quot;</span>&lt;&lt;a&lt;&lt;endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>结果是*n=8</p>
+<p>a=8</p>
+</blockquote>
+<p>事实上，&amp;和*在形参列表的作用差不多</p>
+<h2 id="xiu-gai-zhi-zhen-zhi-xiang">修改指针指向</h2>
+<ul>
+<li>若想对一级指针修改，就需要二级指针</li>
+<li>&amp;和*就是为了简便操作的</li>
+<li>C++用一个&amp;，就可以代替*这样，就不用写* a=b这种</li>
+<li>形参一个&amp; 可以接收一级指针</li>
+</ul>
+<p>所以，在形参中有两种方法：</p>
+<ul>
+<li>使用二级指针</li>
+<li>使用*&amp;代替**</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fun3</span><span class="params">(<span class="keyword">int</span>* &amp;d)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span>* b=<span class="keyword">new</span> <span class="keyword">int</span>;</span><br><span class="line">	*b=<span class="number">9</span>;</span><br><span class="line">	d=b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span>* n=&amp;a;</span><br><span class="line">	<span class="built_in">fun3</span>(n);</span><br><span class="line">	cout&lt;&lt;<span class="string">&quot;*n=&quot;</span>&lt;&lt;*n1&lt;&lt;endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>结果是：*n=9</p>
+<p>但是a=1</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://duegin.github.io/2021/10/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Stack/%E6%A0%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/m.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DueGin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/10/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Stack/%E6%A0%88/" itemprop="url">栈</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-10-10T14:33:18+08:00">
+                2021-10-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="zhan-stack">栈Stack</h1>
+<h1 id="shun-xu-zhan">顺序栈</h1>
+<ul>
+<li>
+<p>栈（stack）又名堆栈，它是一种运算受限的线性表。</p>
+</li>
+<li>
+<p>限定仅在表尾进行插入和删除操作的线性表。这一端被称为栈顶，相对地，把另一端称为栈底。</p>
+</li>
+<li>
+<p>向一个栈插入新元素又称作进栈、入栈或压栈，它是把新元素放到栈顶元素的上面，使之成为新的栈顶元素。</p>
+</li>
+<li>
+<p>从一个栈删除元素又称作出栈或退栈，它是把栈顶元素删除掉，使其相邻的元素成为新的栈顶元素。</p>
+</li>
+</ul>
+<p><img src="/2021/10/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Stack/%E6%A0%88/%E6%A0%88%E7%9A%84%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84.gif" alt></p>
+<h2 id="gai-shu">概述</h2>
+<p>用c++模板来模糊定义栈里面的元素类型</p>
+<p>根据栈的数据存储结构，需要有栈顶指针和栈底指针，还需要压栈、出栈和获取栈顶元素等方法</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SeqStack</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">//栈底指针</span></span><br><span class="line">	T* base;</span><br><span class="line">	<span class="comment">//栈顶指针</span></span><br><span class="line">	T* top;</span><br><span class="line">    <span class="comment">//初始化</span></span><br><span class="line">    <span class="built_in">SeqStack</span>()</span><br><span class="line">	&#123; &#125;</span><br><span class="line">    <span class="comment">//入栈</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(T&amp; t)</span></span></span><br><span class="line"><span class="function">	</span>&#123; &#125;</span><br><span class="line">	<span class="comment">//出栈</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123; &#125;</span><br><span class="line">    <span class="comment">//获取栈顶元素</span></span><br><span class="line">	<span class="function">T <span class="title">get_top</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123; &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="chu-shi-hua-shun-xu-zhan">初始化顺序栈</h2>
+<p>顺序栈嘛，顾名思义，跟顺序表差不多，物理内存有顺序，连续</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//初始化</span></span><br><span class="line"><span class="built_in">SeqStack</span>()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//申请一段类型为T的数组内存，并把首地址赋值给栈底指针</span></span><br><span class="line">    <span class="keyword">this</span>-&gt;base = <span class="keyword">new</span> T[MAXSIZE];</span><br><span class="line">    <span class="comment">//判断是否申请内存成功</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">this</span>-&gt;base) <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="comment">//将战地指针赋值给栈顶指针</span></span><br><span class="line">    top = base;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ya-zhan">压栈</h2>
+<p><img src="/2021/10/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Stack/%E6%A0%88/%E5%8E%8B%E6%A0%88.gif" alt="压栈"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//压栈</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(T&amp; t)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//判断是否栈满</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>-&gt;top - <span class="keyword">this</span>-&gt;base == MAXSIZE)<span class="comment">//这里MAXSIZE需要宏定义一下，表示栈的最大容量</span></span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;栈满&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//赋值</span></span><br><span class="line">    *top = t;</span><br><span class="line">    <span class="comment">//移动top指针</span></span><br><span class="line">    top++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="chu-zhan">出栈</h2>
+<img src="/2021/10/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Stack/%E6%A0%88/出栈.gif" alt="出栈" style="zoom: 50%;">
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//出栈</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//判断是否栈空</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>-&gt;base == <span class="keyword">this</span>-&gt;top)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;栈空&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; *(top<span class="number">-1</span>) &lt;&lt; endl;</span><br><span class="line">    top--;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="huo-qu-zhan-ding-yuan-su">获取栈顶元素</h2>
+<p>注意一下top指针的指向</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">T <span class="title">get_top</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>-&gt;base != <span class="keyword">this</span>-&gt;top)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//栈顶指针总是指向栈顶元素的下一个位置</span></span><br><span class="line">        <span class="keyword">return</span> *(top - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="shun-xu-zhan-quan-bu-dai-ma">顺序栈全部代码</h2>
+<h3 id="c-shi-xian">C++实现</h3>
+<p>顺序栈程序：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSIZE 3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SeqStack</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">//栈底指针</span></span><br><span class="line">	T* base;</span><br><span class="line">	<span class="comment">//栈顶指针</span></span><br><span class="line">	T* top;</span><br><span class="line">	<span class="comment">//栈可用最大容量</span></span><br><span class="line">	<span class="keyword">int</span> stacksize;</span><br><span class="line">    <span class="comment">//初始化</span></span><br><span class="line">	<span class="built_in">SeqStack</span>()</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">this</span>-&gt;base = <span class="keyword">new</span> T[MAXSIZE];</span><br><span class="line">		<span class="keyword">if</span> (!<span class="keyword">this</span>-&gt;base) <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">		top = base;</span><br><span class="line">		<span class="keyword">this</span>-&gt;stacksize = MAXSIZE;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//压栈</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(T&amp; t)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">//判断是否栈满</span></span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">this</span>-&gt;top - <span class="keyword">this</span>-&gt;base == MAXSIZE)</span><br><span class="line">		&#123;</span><br><span class="line">			cout &lt;&lt; <span class="string">&quot;栈满&quot;</span> &lt;&lt; endl;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//赋值</span></span><br><span class="line">		*top = t;</span><br><span class="line">		<span class="comment">//移动top指针</span></span><br><span class="line">		top++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//出栈</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">//判断是否栈空</span></span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">this</span>-&gt;base == <span class="keyword">this</span>-&gt;top)</span><br><span class="line">		&#123;</span><br><span class="line">			cout &lt;&lt; <span class="string">&quot;栈空&quot;</span> &lt;&lt; endl;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; *(top<span class="number">-1</span>) &lt;&lt; endl;</span><br><span class="line">		top--;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//获取栈顶元素</span></span><br><span class="line">	<span class="function">T <span class="title">get_top</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">this</span>-&gt;base != <span class="keyword">this</span>-&gt;top)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="comment">//栈顶指针总是指向栈顶元素的下一个位置</span></span><br><span class="line">			<span class="keyword">return</span> *(top - <span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/intro/page/3/">&lt;</a><a class="page-number" href="/intro/">1</a><span class="space">&hellip;</span><a class="page-number" href="/intro/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/intro/page/5/">5</a><a class="page-number" href="/intro/page/6/">6</a><a class="extend next" rel="next" href="/intro/page/5/">&gt;</a>
+  </nav>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/m.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/DueGin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DueGin</span>
+
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+<div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv" style='display:none'>
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    <span class="post-meta-divider">|</span>
+</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+</span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

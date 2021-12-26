@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python,excel," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="openpyxl 主要方法 创建新excel 创建时会自动创建一张新表 wb &#x3D; openpyxl.Workbook() 加载本地excel文件 wb &#x3D; openpyxl.load_workbook(&#39;e:\python lianxi\income.xlsx&#39;) 获取当前表对象 sh &#x3D; wb.active 获取Excel中所有表名 是列表wb.sheetnames 根据名称获取某个工作表对象">
+<meta property="og:type" content="article">
+<meta property="og:title" content="openpyxl">
+<meta property="og:url" content="https://duegin.github.io/2021/09/29/Python/%E7%88%AC%E8%99%AB/openpyxl/index.html">
+<meta property="og:site_name" content="DueGin">
+<meta property="og:description" content="openpyxl 主要方法 创建新excel 创建时会自动创建一张新表 wb &#x3D; openpyxl.Workbook() 加载本地excel文件 wb &#x3D; openpyxl.load_workbook(&#39;e:\python lianxi\income.xlsx&#39;) 获取当前表对象 sh &#x3D; wb.active 获取Excel中所有表名 是列表wb.sheetnames 根据名称获取某个工作表对象">
+<meta property="og:locale">
+<meta property="og:image" content="https://duegin.github.io/2021/09/29/Python/%E7%88%AC%E8%99%AB/openpyxl/openpyxl_1.jpg">
+<meta property="og:image" content="https://duegin.github.io/2021/09/29/Python/%E7%88%AC%E8%99%AB/openpyxl/openpyxl_3.jpg">
+<meta property="og:image" content="https://duegin.github.io/2021/09/29/Python/%E7%88%AC%E8%99%AB/openpyxl/openpyxl_2.jpg">
+<meta property="article:published_time" content="2021-09-28T16:20:10.000Z">
+<meta property="article:modified_time" content="2021-11-24T12:43:02.034Z">
+<meta property="article:author" content="DueGin">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="excel">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://duegin.github.io/2021/09/29/Python/%E7%88%AC%E8%99%AB/openpyxl/openpyxl_1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://duegin.github.io/2021/09/29/Python/爬虫/openpyxl/"/>
+
+
+
+
+
+  <title>openpyxl | DueGin</title>
+  
+
+
+
+
+
+
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DueGin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/home/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+    
+  
+  
+
+  <article class="post post-type-normal true" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://duegin.github.io/2021/09/29/Python/%E7%88%AC%E8%99%AB/openpyxl/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/m.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DueGin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">openpyxl</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-29T00:20:10+08:00">
+                2021-09-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="openpyxl">openpyxl</h1>
+<p><strong>主要方法</strong></p>
+<h2 id="chuang-jian-xin-excel">创建新excel</h2>
+<p>创建时会自动创建一张新表</p>
+<p><code>wb = openpyxl.Workbook()</code></p>
+<h2 id="jia-zai-ben-di-excel-wen-jian">加载本地excel文件</h2>
+<p><code>wb = openpyxl.load_workbook('e:\python lianxi\income.xlsx')</code></p>
+<h2 id="huo-qu-dang-qian-biao-dui-xiang">获取当前表对象</h2>
+<p><code>sh = wb.active</code></p>
+<h2 id="huo-qu-excel-zhong-suo-you-biao-ming">获取Excel中所有表名</h2>
+<p>是列表<code>wb.sheetnames</code></p>
+<h2 id="gen-ju-ming-cheng-huo-qu-mou-ge-gong-zuo-biao-dui-xiang">根据名称获取某个工作表对象</h2>
+<p><code>sh = wb['工资表']</code></p>
+<h2 id="xiu-gai-dang-qian-sheet-de-biao-ti">修改当前 sheet 的标题</h2>
+<p><code>sh.title = '工资表'</code></p>
+<h2 id="huo-qu-dang-qian-gong-zuo-biao-de-biao-ming">获取当前工作表的表名</h2>
+<p><code>sheet_name = sh.title</code></p>
+<h2 id="xin-jian-gong-zuo-biao">新建工作表</h2>
+<p><strong>建在最前：</strong></p>
+<p><code>sh1 = wb.create_sheet('年龄表-最前',0)</code>（0为插入位置）</p>
+<p><strong>建在最后：</strong></p>
+<p><code>sh2 = wb.create_sheet('年龄表-最后')</code></p>
+<h2 id="shan-chu-gong-zuo-biao">删除工作表</h2>
+<p>按工作表名字删除</p>
+<p><code>wb.remove('sheet')</code></p>
+<h2 id="xiu-gai-dan-yuan-ge-de-zhi">修改单元格的值</h2>
+<p>三种方法（都一样）</p>
+<ul>
+<li><code>sh['A1'] = '你好'</code></li>
+<li><code>sh['A1'].value= '你好'</code></li>
+<li><code>sh.cell(row,columun).value = '你好'</code></li>
+</ul>
+<p>也可以加公式</p>
+<ul>
+<li>
+<p><code>sheet['A6'] = '=SUM(A1:A5)'</code></p>
+</li>
+<li>
+<p><code>sheet['A6'].value = '=SUM(A1:A5)'</code></p>
+</li>
+<li>
+<p><code>sh.cell(row,columun).value = '=SUM(A1:A5)'</code></p>
+</li>
+</ul>
+<h2 id="huo-qu-dan-yuan-ge-nei-rong">获取单元格内容</h2>
+<p>有两种方法：</p>
+<ol>
+<li><code>value = sh.cell(row,column).value</code></li>
+<li><code>value = sh['A2'].value</code></li>
+</ol>
+<h2 id="huo-qu-zui-da-xing-he-zui-da-lie">获取最大行和最大列</h2>
+<ul>
+<li>最大行：<code>max_row = sh.max_row</code></li>
+<li>最大列：<code>max_col = sh.max_column</code></li>
+</ul>
+<h2 id="bao-cun-wen-jian-ke-zhi-ding-lu-jing-bu-zhi-ding-ze-sheng-cheng-zai-cheng-xu-suo-zai-mu-lu">保存文件（可指定路径，不指定则生成在程序所在目录）</h2>
+<p><code>wb.save('信息.xlsx')</code></p>
+<h2 id="cha-ru-xing">插入行</h2>
+<ul>
+<li>
+<p>在第2行的位置插入1行</p>
+<p><code>sh.insert_rows(2)</code></p>
+</li>
+<li>
+<p>在第3行的位置插入3行</p>
+<p><code>sh.insert_rows(3,3)</code></p>
+</li>
+</ul>
+<h2 id="cha-ru-lie">插入列</h2>
+<ul>
+<li>
+<p>在第2列的位置插入1列</p>
+<p><code>sh.insert_cols(2) </code></p>
+</li>
+<li>
+<p>在第2列的位置插入3列</p>
+<p><code>sh.insert_cols(2,3)</code></p>
+</li>
+</ul>
+<h2 id="shan-chu-xing">删除行</h2>
+<ul>
+<li>
+<p>在第2行的位置删除1行</p>
+<p><code>sh.delete_rows(2)</code></p>
+</li>
+<li>
+<p>在第3行的位置删除3行</p>
+<p><code>sh.delete_rows(3,3)</code></p>
+</li>
+</ul>
+<h2 id="shan-chu-lie">删除列</h2>
+<ul>
+<li>
+<p>在第2列的位置删除1列</p>
+<p><code>sh.delete_cols(2)</code></p>
+</li>
+<li>
+<p>在第3列的位置删除3列</p>
+<p><code>sh.delete_cols(3,3)</code></p>
+</li>
+</ul>
+<p>【注意】</p>
+<p>sheet.cell(row,column)中参数分别是行和列，且必须为整数，如果列为英文字母，可以利用 <strong>openpyxl.utils</strong> 中的 <strong>column_index_from_string</strong>**(char)<strong>进行字母数字的转化。顺便一说，同理也可以利用</strong>get_column_letter(number)**进行数字字母间的转化</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl.utils <span class="keyword">import</span> get_column_letter, column_index_from_string</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对列进行字母/数字转化</span></span><br><span class="line">c_num = column_index_from_string(<span class="string">&#x27;B&#x27;</span>)  <span class="comment"># c_num = 2</span></span><br><span class="line">c_char = get_column_letter(<span class="number">5</span>)          <span class="comment"># c_char = &#x27;E‘</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="bian-li-xing-he-lie">遍历行和列</h2>
+<p>在处理Excel表格有时可能需要对表格进行遍历查找，openpyxl中便提供了一个行和列的生成器**(sheet.rows<strong>和</strong>sheet.columns)**,这两个生成器里面是每一行（或列）的数据，每一行（或列）又由一个tuple包裹，借此可以很方便地完成对行和列的遍历</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对行进行遍历,输出A1,B1,C1 ...</span></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> sheet.rows:</span><br><span class="line">    <span class="comment"># 对当前行的每一个元素进行遍历</span></span><br><span class="line">    <span class="keyword">for</span> cell <span class="keyword">in</span> row:</span><br><span class="line">        <span class="built_in">print</span>(cell.value)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对列进行遍历,输出A1,A2,A3 ...</span></span><br><span class="line"><span class="keyword">for</span> column <span class="keyword">in</span> sheet.columns:</span><br><span class="line">    <span class="comment"># 对当前列的每一个元素进行遍历</span></span><br><span class="line">    <span class="keyword">for</span> cell <span class="keyword">in</span> column:</span><br><span class="line">        <span class="built_in">print</span>(cell.value)</span><br></pre></td></tr></table></figure>
+<p>**list(sheet.rows)[index]**对某一行或列进行遍历</p>
+<p>而在此值得注意的是，由于<code>sheet.rows(或sheet.columns)</code>是生成器类型，是不能直接调用的，需将其转化为一个list类型，然后再通过索引遍历</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对某一特定的行进行遍历</span></span><br><span class="line"><span class="keyword">for</span> cell <span class="keyword">in</span> <span class="built_in">list</span>(sheet.rows)[<span class="number">0</span>]:</span><br><span class="line">    <span class="built_in">print</span>(cell.value)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 对某一特定的行进行遍历</span></span><br><span class="line"><span class="keyword">for</span> cell <span class="keyword">in</span> <span class="built_in">list</span>(sheet.columns)[<span class="number">0</span>]:</span><br><span class="line">    <span class="built_in">print</span>(cell.value)</span><br></pre></td></tr></table></figure>
+<p>同时，也可以通过使用**sheet[行列值:行列值]**来对给定单元格范围进行遍历</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对某一单元格范围进行遍历</span></span><br><span class="line"><span class="keyword">for</span> spaces <span class="keyword">in</span> sheet[<span class="string">&#x27;A1&#x27;</span>:<span class="string">&#x27;B2&#x27;</span>]:</span><br><span class="line">    <span class="keyword">for</span> cell <span class="keyword">in</span> spaces:</span><br><span class="line">        <span class="built_in">print</span>(cell.value)</span><br></pre></td></tr></table></figure>
+<p>**【注意】**这种方法按行遍历</p>
+<p><img src="/2021/09/29/Python/%E7%88%AC%E8%99%AB/openpyxl/openpyxl_1.jpg" alt="alt a"></p>
+<h2 id="yi-xing-huo-duo-xing-xie-ru">一行或多行写入</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 写入一行</span></span><br><span class="line">row = [<span class="number">1</span> ,<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">sh.append(row)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 写入多行</span></span><br><span class="line">rows = [</span><br><span class="line">    [<span class="string">&#x27;ID&#x27;</span>, <span class="string">&#x27;Name&#x27;</span>, <span class="string">&#x27;Department&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;001&#x27;</span>, <span class="string">&#x27;Lee&#x27;</span>,<span class="string">&#x27;CS&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;002&#x27;</span>, <span class="string">&#x27;John&#x27;</span>,<span class="string">&#x27;MA&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;003&#x27;</span>, <span class="string">&#x27;Amy&#x27;</span>,<span class="string">&#x27;IS&#x27;</span>]</span><br><span class="line">]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> rows:</span><br><span class="line">	sh.append(i)</span><br></pre></td></tr></table></figure>
+<h2 id="she-zhi-dan-yuan-ge-yang-shi">设置单元格样式</h2>
+<h3 id="dao-ru-zi-ti-bian-kuang-yan-se-yi-ji-dui-qi-fang-shi-xiang-guan-ku">导入字体、边框、颜色以及对齐方式相关库</h3>
+<p><code>from openpyxl.styles import Font, Border, Side, PatternFill, colors, Alignment</code></p>
+<h3 id="yi-zi-ti">（一）字体</h3>
+<p>设置字体风格为Times New Roman，大小为16，粗体、斜体，颜色蓝色</p>
+<p><code>sh['A1'].font = Font(name='Times New Roman', size=16, bold=True, italic=True, color=colors.BLUE)</code></p>
+<p>常用参数：</p>
+<ul>
+<li><code>name</code>：字体风格名字</li>
+<li><code>size</code>：字体大小</li>
+<li><code>bold</code>：粗体</li>
+<li><code>italic</code>：斜体</li>
+<li><code>color</code>：颜色，也可以用RGB十六进制如：“FF0000”</li>
+</ul>
+<p><img src="/2021/09/29/Python/%E7%88%AC%E8%99%AB/openpyxl/openpyxl_3.jpg" alt="alt 索引颜色"></p>
+<p>还支持旧索引颜色以及主题和色调。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">c = colors.Color(indexed=<span class="number">32</span>)</span><br><span class="line">c = colors.Color(theme=<span class="number">6</span>, tint=<span class="number">0.5</span>)</span><br><span class="line">font = Font(color = c)</span><br></pre></td></tr></table></figure>
+<h3 id="er-dui-qi-fang-shi">（二）对齐方式</h3>
+<p>通过参数horizontal和vertical来设置文字在单元格里的对齐方式，此外设置值还可为left和right</p>
+<p><code>sh['A1'].alignment = Alignment(horizontal='center',vertical='center')</code></p>
+<ul>
+<li>
+<p><strong>horizontal</strong>：水平参数</p>
+</li>
+<li>
+<p>可选：</p>
+<ul>
+<li>
+<p><code>'center'</code>：居中</p>
+</li>
+<li>
+<p><code>'fill'</code>：用该单元格的值显示排满整个格（值不变）</p>
+<p><img src="/2021/09/29/Python/%E7%88%AC%E8%99%AB/openpyxl/openpyxl_2.jpg" alt="alt fill"></p>
+</li>
+<li>
+<p><code>'general'</code>：默认</p>
+</li>
+<li>
+<p><code>'left'</code>：左对齐</p>
+</li>
+<li>
+<p><code>'justify'</code>：自动换行，水平参数为<strong>默认</strong></p>
+</li>
+<li>
+<p><code>'centerContinuous'</code>：</p>
+</li>
+<li>
+<p><code>'right'</code>：右对齐</p>
+</li>
+<li>
+<p><code>'distributed'</code>：自动换行</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>vertical</strong>：竖直参数</p>
+</li>
+<li>
+<p>可选：</p>
+<ul>
+<li><code>'bottom'</code>：底端对齐</li>
+<li><code>'justify'</code>：</li>
+<li>`` ‘top’`：顶端对齐</li>
+<li><code>'center'</code>：垂直居中</li>
+<li><code>'distributed'</code>：自动换行</li>
+</ul>
+</li>
+</ul>
+<p><strong>【注意】</strong><code>'distributed'</code>、<code>'justify'</code>和<code>'centerContinuous'</code>建议不要使用，避免不必要的错误</p>
+<h3 id="san-bian-kuang">（三）边框</h3>
+<p>首先设置边框四个方向的线条种类</p>
+<p><code>left, right, top, bottom = [Side(style='thin', color='000000')] * 4</code></p>
+<p>再将各方向线条作为参数传入Border方法</p>
+<p><code>sh['C1'].border = Border(left=left, right=right, top=top, bottom=bottom)</code></p>
+<h3 id="si-she-zhi-xing-gao-he-lie-kuan">（四）设置行高和列宽</h3>
+<p>行和列的长度大小可以通过<strong>row_dimensions[序号].height</strong>和<strong>column_dimensions[标号].width</strong>来设置</p>
+<ul>
+<li>
+<p>设置行高</p>
+<p><code>sh.row_dimensions[1].height = 25</code></p>
+</li>
+<li>
+<p>设置列宽</p>
+<p><code>sh.column_dimensions['D'].width = 15.5</code></p>
+</li>
+</ul>
+<h3 id="wu-he-bing-he-chai-fen-dan-yuan-ge">（五）合并和拆分单元格</h3>
+<ul>
+<li>
+<p>合并单元格</p>
+<p><code>sh.merge_cells('A1:B2')</code></p>
+<p><code>sh.merge_cells('A3:B4')</code></p>
+</li>
+<li>
+<p>拆分单元格</p>
+<p><code>sh.unmerge_cells('A1:B2')</code></p>
+</li>
+</ul>
+<p><strong>【注意】<strong>除了对角矩形区域化合并，也可以对一行或一列进行合并，只需相应修改参数即可。不过，这里要注意的是，合并后单元格显示的文本内容是</strong>合并前最左上角单元格的内容</strong>，而其他单元格内容则会自动清除。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/excel/" rel="tag"># excel</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/09/28/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%90%86%E8%AE%BA/%E5%9B%9B%E7%A7%8D%E5%BC%80%E5%8F%91%E6%A8%A1%E5%9E%8B/" rel="next" title="四种开发模型">
+                <i class="fa fa-chevron-left"></i> 四种开发模型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/09/29/Python/Excel%E6%A8%A1%E5%9D%97/Excel%E8%AF%BB%E5%86%99%E6%A8%A1%E5%9D%97/" rel="prev" title="读写excel">
+                读写excel <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/m.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/DueGin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#openpyxl"><span class="nav-number">1.</span> <span class="nav-text">openpyxl</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#chuang-jian-xin-excel"><span class="nav-number">1.1.</span> <span class="nav-text">创建新excel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jia-zai-ben-di-excel-wen-jian"><span class="nav-number">1.2.</span> <span class="nav-text">加载本地excel文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#huo-qu-dang-qian-biao-dui-xiang"><span class="nav-number">1.3.</span> <span class="nav-text">获取当前表对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#huo-qu-excel-zhong-suo-you-biao-ming"><span class="nav-number">1.4.</span> <span class="nav-text">获取Excel中所有表名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gen-ju-ming-cheng-huo-qu-mou-ge-gong-zuo-biao-dui-xiang"><span class="nav-number">1.5.</span> <span class="nav-text">根据名称获取某个工作表对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xiu-gai-dang-qian-sheet-de-biao-ti"><span class="nav-number">1.6.</span> <span class="nav-text">修改当前 sheet 的标题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#huo-qu-dang-qian-gong-zuo-biao-de-biao-ming"><span class="nav-number">1.7.</span> <span class="nav-text">获取当前工作表的表名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xin-jian-gong-zuo-biao"><span class="nav-number">1.8.</span> <span class="nav-text">新建工作表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shan-chu-gong-zuo-biao"><span class="nav-number">1.9.</span> <span class="nav-text">删除工作表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xiu-gai-dan-yuan-ge-de-zhi"><span class="nav-number">1.10.</span> <span class="nav-text">修改单元格的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#huo-qu-dan-yuan-ge-nei-rong"><span class="nav-number">1.11.</span> <span class="nav-text">获取单元格内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#huo-qu-zui-da-xing-he-zui-da-lie"><span class="nav-number">1.12.</span> <span class="nav-text">获取最大行和最大列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bao-cun-wen-jian-ke-zhi-ding-lu-jing-bu-zhi-ding-ze-sheng-cheng-zai-cheng-xu-suo-zai-mu-lu"><span class="nav-number">1.13.</span> <span class="nav-text">保存文件（可指定路径，不指定则生成在程序所在目录）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cha-ru-xing"><span class="nav-number">1.14.</span> <span class="nav-text">插入行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cha-ru-lie"><span class="nav-number">1.15.</span> <span class="nav-text">插入列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shan-chu-xing"><span class="nav-number">1.16.</span> <span class="nav-text">删除行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shan-chu-lie"><span class="nav-number">1.17.</span> <span class="nav-text">删除列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bian-li-xing-he-lie"><span class="nav-number">1.18.</span> <span class="nav-text">遍历行和列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yi-xing-huo-duo-xing-xie-ru"><span class="nav-number">1.19.</span> <span class="nav-text">一行或多行写入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#she-zhi-dan-yuan-ge-yang-shi"><span class="nav-number">1.20.</span> <span class="nav-text">设置单元格样式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dao-ru-zi-ti-bian-kuang-yan-se-yi-ji-dui-qi-fang-shi-xiang-guan-ku"><span class="nav-number">1.20.1.</span> <span class="nav-text">导入字体、边框、颜色以及对齐方式相关库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yi-zi-ti"><span class="nav-number">1.20.2.</span> <span class="nav-text">（一）字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#er-dui-qi-fang-shi"><span class="nav-number">1.20.3.</span> <span class="nav-text">（二）对齐方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#san-bian-kuang"><span class="nav-number">1.20.4.</span> <span class="nav-text">（三）边框</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#si-she-zhi-xing-gao-he-lie-kuan"><span class="nav-number">1.20.5.</span> <span class="nav-text">（四）设置行高和列宽</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wu-he-bing-he-chai-fen-dan-yuan-ge"><span class="nav-number">1.20.6.</span> <span class="nav-text">（五）合并和拆分单元格</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DueGin</span>
+
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+<div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv" style='display:none'>
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    <span class="post-meta-divider">|</span>
+</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+</span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

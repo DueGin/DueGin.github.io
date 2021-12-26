@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="c++,算法,数论," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="数论 [TOC] 质数 方法：  试除法判定质数 试除法分解质因数 埃氏筛法求素数 线性筛法求素数  试除法判定质数 时间复杂度 $O(\sqrt{n})$ 模板题：AcWing 866. 试除法判定质数 模版： 123456789&#x2F;&#x2F; 判断 x 是否为质数bool is_prime(int x)&amp;#123;    if (x &lt; 2) return false; &#x2F;&#x2F; 判断1和0    f">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数论">
+<meta property="og:url" content="https://duegin.github.io/2021/12/23/%E7%AE%97%E6%B3%95/%E6%95%B0%E8%AE%BA/%E6%95%B0%E8%AE%BA/index.html">
+<meta property="og:site_name" content="DueGin">
+<meta property="og:description" content="数论 [TOC] 质数 方法：  试除法判定质数 试除法分解质因数 埃氏筛法求素数 线性筛法求素数  试除法判定质数 时间复杂度 $O(\sqrt{n})$ 模板题：AcWing 866. 试除法判定质数 模版： 123456789&#x2F;&#x2F; 判断 x 是否为质数bool is_prime(int x)&amp;#123;    if (x &lt; 2) return false; &#x2F;&#x2F; 判断1和0    f">
+<meta property="og:locale">
+<meta property="og:image" content="https://duegin.github.io/2021/12/23/%E7%AE%97%E6%B3%95/%E6%95%B0%E8%AE%BA/%E6%95%B0%E8%AE%BA/线性筛法例子.png">
+<meta property="og:image" content="https://duegin.github.io/2021/12/23/%E7%AE%97%E6%B3%95/%E6%95%B0%E8%AE%BA/%E6%95%B0%E8%AE%BA/容斥原理.png">
+<meta property="article:published_time" content="2021-12-22T16:39:17.000Z">
+<meta property="article:modified_time" content="2021-12-25T12:53:51.000Z">
+<meta property="article:author" content="DueGin">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="数论">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://duegin.github.io/2021/12/23/%E7%AE%97%E6%B3%95/%E6%95%B0%E8%AE%BA/%E6%95%B0%E8%AE%BA/线性筛法例子.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://duegin.github.io/2021/12/23/算法/数论/数论/"/>
+
+
+
+
+
+  <title>数论 | DueGin</title>
+  
+
+
+
+
+
+
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DueGin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/home/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+    
+  
+  
+
+  <article class="post post-type-normal true" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://duegin.github.io/2021/12/23/%E7%AE%97%E6%B3%95/%E6%95%B0%E8%AE%BA/%E6%95%B0%E8%AE%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/m.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DueGin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数论</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-12-23T00:39:17+08:00">
+                2021-12-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E8%AE%BA/" itemprop="url" rel="index">
+                    <span itemprop="name">数论</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="shu-lun">数论</h1>
+<p>[TOC]</p>
+<h2 id="zhi-shu">质数</h2>
+<p>方法：</p>
+<ul>
+<li>试除法判定质数</li>
+<li>试除法分解质因数</li>
+<li>埃氏筛法求素数</li>
+<li>线性筛法求素数</li>
+</ul>
+<h2 id="shi-chu-fa-pan-ding-zhi-shu">试除法判定质数</h2>
+<p>时间复杂度 $O(\sqrt{n})$</p>
+<p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/868/">AcWing 866. 试除法判定质数</a></p>
+<p>模版：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断 x 是否为质数</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">is_prime</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt; <span class="number">2</span>) <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">// 判断1和0</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= x / i; i ++ ) <span class="comment">//从1～sqrt(x)里找即可</span></span><br><span class="line">        <span class="keyword">if</span> (x % i == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里只需遍历到 $\sqrt{x}$ 的原因是：<br>
+一个数的因数都是<strong>成对存在的</strong>，即：<br>
+$d&lt;={x}/{d}$    $d^2&lt;=x$    $d&lt;=\sqrt{x}$</p>
+<p>例如12的因数有3和4，2 和6，所以我们可以只枚举较小的那一个，即 $\sqrt{x}$ ，假设较小的为d，较大的为 x/d<br>
+其实我认为：$x$ 质因数边界就是 $\sqrt{x}$</p>
+</blockquote>
+<h2 id="shi-chu-fa-fen-jie-zhi-yin-shu">试除法分解质因数</h2>
+<p>时间复杂度：$O(\sqrt{n})$</p>
+<p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/869/">AcWing 867. 分解质因数</a></p>
+<p>模版：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">divide</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cnt; <span class="comment">// 级数</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= x / i; i ++ )</span><br><span class="line">        <span class="keyword">if</span> (x % i == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (x % i == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                x /= i;</span><br><span class="line">                cnt ++ ;</span><br><span class="line">            &#125;</span><br><span class="line">            cout &lt;&lt; i &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; cnt &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="comment">// 扫尾</span></span><br><span class="line">    <span class="keyword">if</span> (x &gt; <span class="number">1</span>) cout &lt;&lt; x &lt;&lt; <span class="string">&#x27; &#x27;</span> &lt;&lt; <span class="number">1</span> &lt;&lt; endl;</span><br><span class="line">    cout &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ai-shi-shai-fa">埃氏筛法</h2>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%9F%83%E6%8B%89%E6%89%98%E6%96%AF%E7%89%B9%E5%B0%BC%E7%AD%9B%E6%B3%95/374984?fr=aladdin#4">埃拉托斯特尼筛法</a>，简称<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%9F%83%E6%B0%8F%E7%AD%9B/5677377">埃氏筛</a>或爱氏筛，是一种由希腊数学家埃拉托斯特尼所提出的一种简单检定素数的算法。要得到自然数n以内的全部素数，必须把不大于 $\sqrt{x}$ 的所有素数的倍数剔除，剩下的就是素数。</p>
+<p>要得到自然数n以内的全部素数，必须把不大于 $\sqrt{n}$ 的所有素数的倍数剔除，剩下的就是素数。</p>
+<p>时间复杂度 $O(nloglogn)$</p>
+<p>模版题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/870/">AcWing 868. 筛质数</a></p>
+<p>模版：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> primes[N], cnt;     <span class="comment">// primes[]存储所有质数</span></span><br><span class="line"><span class="keyword">bool</span> st[N];         <span class="comment">// st[x]存储x是否被筛掉</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_primes</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 筛选 2～n 的所有数</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (st[i]) <span class="keyword">continue</span>;</span><br><span class="line">        primes[cnt ++ ] = i; <span class="comment">// 将 i 存入质数数组中</span></span><br><span class="line">        <span class="comment">// 质数的倍数绝对不是质数，把所有质数的倍数全部丢弃</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + i; j &lt;= n; j += i) <span class="comment">// 将i的所有倍数筛掉，j就是几倍，而 n/i则是i的最大倍数，小学数学</span></span><br><span class="line">            st[j] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>给出要筛数值的范围n，找出以内的素数。先用2去筛，即把2留下，把2的倍数剔除掉；再用下一个质数，也就是3筛，把3留下，把3的倍数剔除掉；接下去用下一个质数5筛，把5留下，把5的倍数剔除掉；不断重复下去…</p>
+</blockquote>
+<h2 id="xian-xing-shai-fa">线性筛法</h2>
+<p>线性筛法，也叫欧拉筛法，是在埃氏筛法的基础上做出优化，我们发现这里面似乎会对某些数标记了很多次其为合数，而线性筛法利用其最小质因数来筛掉合数，每次只标记一次</p>
+<p>时间复杂度 $O(n)$ ，数据量小于1e7的情况下，线性筛法和埃氏筛法差不多，数据量大于1e7则线性筛法比埃氏筛法快一倍</p>
+<p>模版题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/870/">AcWing 868. 筛质数</a></p>
+<p>模版：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> primes[N], cnt;     <span class="comment">// primes[]存储所有素数</span></span><br><span class="line"><span class="keyword">bool</span> st[N];         <span class="comment">// st[x]存储x是否被筛掉</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_primes</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!st[i]) primes[cnt ++ ] = i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; primes[j] &lt;= n / i; j ++ )</span><br><span class="line">        &#123;</span><br><span class="line">            st[primes[j] * i] = <span class="literal">true</span>; <span class="comment">// 用最小质因子去筛合数 primes[j] * i</span></span><br><span class="line">            <span class="keyword">if</span> (i % primes[j] == <span class="number">0</span>) <span class="keyword">break</span>; <span class="comment">// 如果 i 是合数</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>if(i%prime[j]==0) break;</code> 这句代码保证了每个数最多被筛一次，将时间复杂度降到了线性。</p>
+<img src="/2021/12/23/%E7%AE%97%E6%B3%95/%E6%95%B0%E8%AE%BA/%E6%95%B0%E8%AE%BA/线性筛法例子.png" alt="线性筛法例子" style="zoom:75%;">
+<p>例如，$i=6$ 时，第一个素数是2，能整除，筛掉12后就 break；至于第二个素数3，6x3中的最小素因数肯定是前一个素数2，所以它要到 $i=9$，素数取2时才被筛掉。</p>
+<ol>
+<li>
+<p>当 <code>i%primes[j]!=0</code> 时，说明此时遍历到的 <code>primes[j]</code> 不是i的质因子，那么只可能是此时的 <code>primes[j]*i</code> 的最小质因子，所以 <code>primes[j]*i</code> 的最小质因子就是 <code>primes[j]</code></p>
+</li>
+<li>
+<p>当有 <code>i%primes[j]==0</code> 时，说明 i 的最小质因子是 <code>primes[j]</code> ， 因此 <code>primes[j]*i</code> 的最小质因子也就应该是 <code>prime[j]</code>，之后接着用 <code>st[primes[j+1]*i]=true</code> 去筛合数时，就不是用最小质因子去更新了，因为 i 有最小质因子 <code>primes[j]&lt;primes[j+1]</code>，此时的 <code>primes[j+1]</code>不是 <code>primes[j+1]*i</code> 的最小质因子，此时就应该退出循环，避免之后重复进行筛选。</p>
+</li>
+</ol>
+<blockquote>
+<p>补充：一个数乘上合数肯定是合数，所以只需要让遍历到的数 i 乘上其最小质因数 <code>prime[j]</code> 即可，这样的话乘上后的数必是合数，且有质因数是 <code>prime[j]</code></p>
+</blockquote>
+<h1 id="yue-shu">约数</h1>
+<p>方法：</p>
+<ul>
+<li>试除法求所有约数</li>
+<li>约数个数 和 约数之和</li>
+<li>欧几里得算法</li>
+</ul>
+<p>n 与 1～n 的约数互为质数的个数：</p>
+<ul>
+<li>朴素求欧拉函数</li>
+<li>筛法求欧拉函数</li>
+</ul>
+<h2 id="shi-chu-fa-qiu-suo-you-yue-shu">试除法求所有约数</h2>
+<p>模版题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/871/">AcWing 869. 试除法求约数</a></p>
+<p>模版：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回升序的x所有质数</span></span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">get_divisors</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= x / i; i ++ )</span><br><span class="line">        <span class="keyword">if</span> (x % i == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            res.<span class="built_in">push_back</span>(i);</span><br><span class="line">            <span class="keyword">if</span> (i != x / i) res.<span class="built_in">push_back</span>(x / i);</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="built_in">sort</span>(res.<span class="built_in">begin</span>(), res.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>因为约数都是成对存在的，所以只需要遍历到 $\sqrt{x}$ 即可，具体看<strong>试除法求质数</strong></p>
+</blockquote>
+<blockquote>
+<p>第9行：防止当约数重复加入，如25=5*5</p>
+</blockquote>
+<h2 id="yue-shu-ge-shu">约数个数</h2>
+<p>原理： <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BA%A6%E6%95%B0%E4%B8%AA%E6%95%B0%E5%AE%9A%E7%90%86/4926961">约数个数定理</a></p>
+<p>乘法原理，组合数学</p>
+<p>数学结论：</p>
+<p>$N$ 是某个数， $p_i$ 是质因数， $c_i$ 是质因数的级数</p>
+<p>如果 $N = p_1^{c_1} \times p_2^{c_2} \times … \times p_k^{c_k}$</p>
+<p>约数个数： $(c_1 + 1) \times (c_2 + 1) \times … \times (c_k + 1)$</p>
+<p>可以发现：约数个数和质因数是啥无关</p>
+<blockquote>
+<p>百科例题：正整数 378000 共有多少个正约数？</p>
+<p>解：将 378000 分解质因数$378000=2^4×3^3×5^3×7^1$</p>
+<p>由约数个数定理可知378000共有正约数$(4+1)×(3+1)×(3+1)×(1+1)=160$个。</p>
+</blockquote>
+<p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/872/">AcWing 870. 约数个数</a></p>
+<p>模板：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">unordered_map&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; m; <span class="comment">// first为质因数，second为级数</span></span><br><span class="line"><span class="comment">//试除法求约数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">divisors_num</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= x/i; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(x%i==<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            m[i]++;</span><br><span class="line">            x/=i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 扫尾</span></span><br><span class="line">    <span class="keyword">if</span>(x&gt;<span class="number">1</span>) m[x]++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 核心</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> h:m) res=res*(h.second+<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里的扫尾是因为，有可能最后除到 $x$ 是质数了，比如 7 或14 最后只能由扫尾加入 7 这个质因数</p>
+</blockquote>
+<h2 id="yue-shu-zhi-he">约数之和</h2>
+<p>原理： <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BA%A6%E6%95%B0%E5%92%8C%E5%AE%9A%E7%90%86/3808428">约数和定理</a></p>
+<p>模板题： <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/873/">AcWing 871. 约数之和</a></p>
+<p>数学结论：</p>
+<p>$N$ 是某个数， $p_i$ 是质因数， $c_i$ 是质因数的级数</p>
+<p>如果 $N = p_1^{c_1} \times p_2^{c_2} \times … \times p_k^{c_k}$</p>
+<p>约数之和： $(p_1^0 + p_1^1 + … + p_1^{c_1}) * … * (p_k^0 + p_k^1 + … + p_k^{c_k})$</p>
+<blockquote>
+<p>百科例题：正整数360的所有正约数的和是多少？</p>
+<p>解：将360分解质因数可得</p>
+<p>$360=2^3<em>3^2</em>5^1$</p>
+<p>由约数和定理可知，360所有正约数的和为</p>
+<p>$(2^0+2^1+2^2+2^3)×(3^0+3^1+3^2)×(5^0+5^1)=(1+2+4+8)(1+3+9)(1+5)=15×13×6=1170$</p>
+<p>可知360的约数有1、2、3、4、5、6、8、9、10、12、15、18、</p>
+<p>20、24、30、36、40、45、60、72、90、120、180、360；则它们的和为</p>
+<p>1+2+3+4+5+6+8+9+10+12+15+18+20+24+30+36+40+45+60+72+90+120+180+360=1170</p>
+</blockquote>
+<p>模板：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line">unordered_map&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; m; <span class="comment">// first为质因数，second为级数</span></span><br><span class="line"><span class="comment">//试除法求约数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">divisors_num</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= x/i; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(x%i==<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            m[i]++;</span><br><span class="line">            x/=i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 扫尾</span></span><br><span class="line">    <span class="keyword">if</span>(x&gt;<span class="number">1</span>) m[x]++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//核心</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">auto</span> h:m)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> p=h.first,c=h.second; <span class="comment">// a是底数，b是级数</span></span><br><span class="line">    LL t=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(c--) t=t*p+<span class="number">1</span>; <span class="comment">// pi^(0~ak)之和，也可以用等比求和</span></span><br><span class="line">    res*=t; <span class="comment">// 所有pi相乘</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="ou-ji-li-de-suan-fa">欧几里得算法</h2>
+<p>原理：<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%AC%A7%E5%87%A0%E9%87%8C%E5%BE%97%E7%AE%97%E6%B3%95">欧几里得算法</a></p>
+<p>也叫辗转相除法</p>
+<blockquote>
+<p>百科例子：</p>
+<p>假如需要求 1997 和 615 两个正整数的最大公约数,用欧几里得算法，是这样进行的：</p>
+<p>1997 / 615 = 3 (余 152)</p>
+<p>615 / 152 = 4(余7)</p>
+<p>152 / 7 = 21(余5)</p>
+<p>7 / 5 = 1 (余2)</p>
+<p>5 / 2 = 2 (余1)</p>
+<p>2 / 1 = 2 (余0)</p>
+<p>至此，最大公约数为1</p>
+<p>以除数和余数反复做除法运算，当余数为 0 时，取当前算式除数为最大公约数，所以就得出了 1997 和 615 的最大公约数 1。</p>
+</blockquote>
+<p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/874/">AcWing 872. 最大公约数</a></p>
+<p>模板：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b ? <span class="built_in">gcd</span>(b, a % b) : a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里a 和 b无论谁大都可用，我试过了</p>
+</blockquote>
+<h2 id="qiu-ou-la-han-shu">求欧拉函数</h2>
+<p>在数论，对正整数 n，欧拉函数是小于 n 的正整数中与 n <a href="%E4%BA%92%E8%B4%A8%E6%98%AF%E5%85%AC%E7%BA%A6%E6%95%B0%E5%8F%AA%E6%9C%891%E7%9A%84%E4%B8%A4%E4%B8%AA%E6%95%B4%E6%95%B0%EF%BC%8C%E5%8F%AB%E5%81%9A%E4%BA%92%E8%B4%A8%E6%95%B4%E6%95%B0%E3%80%82%E5%85%AC%E7%BA%A6%E6%95%B0%E5%8F%AA%E6%9C%891%E7%9A%84%E4%B8%A4%E4%B8%AA%E8%87%AA%E7%84%B6%E6%95%B0%EF%BC%8C%E5%8F%AB%E5%81%9A%E4%BA%92%E8%B4%A8%E8%87%AA%E7%84%B6%E6%95%B0%EF%BC%8C%E5%90%8E%E8%80%85%E6%98%AF%E5%89%8D%E8%80%85%E7%9A%84%E7%89%B9%E6%AE%8A%E6%83%85%E5%BD%A2%E3%80%82">^互质</a>的数的数目。</p>
+<p>原理： <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%AC%A7%E6%8B%89%E5%87%BD%E6%95%B0/1944850">欧拉函数</a> 容斥原理</p>
+<img src="/2021/12/23/%E7%AE%97%E6%B3%95/%E6%95%B0%E8%AE%BA/%E6%95%B0%E8%AE%BA/容斥原理.png" alt="容斥原理" style="zoom:61%;">
+<p>N的质因数分解： $N=p_1^{c_1}\times p_2^{c_2} \times … \times p_k^{c_k}$</p>
+<p>与 N 互质的数的个数<strong>结论</strong>：</p>
+<p>$φ(N)=N(1-\frac{1}{p_1})(1-\frac{1}{p_2})…(1-\frac{1}{p_k})$</p>
+<p>可以发现：<strong>欧拉函数与质因数的级数无关</strong></p>
+<h3 id="po-su-qiu-fa">朴素求法</h3>
+<p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/875/">AcWing 873. 欧拉函数</a></p>
+<p>模板：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">phi</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = x;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= x / i; i ++ ) <span class="comment">// 试除法求质因数</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (x % i == <span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            res = res / i * (i - <span class="number">1</span>); <span class="comment">// 先除后乘，防止溢出</span></span><br><span class="line">            <span class="keyword">while</span>(x % i == <span class="number">0</span>) x /= i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 扫尾</span></span><br><span class="line">    <span class="keyword">if</span> (x &gt; <span class="number">1</span>) res = res / x * (x - <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="shai-fa-qiu-ou-la-han-shu">筛法求欧拉函数</h3>
+<p>这个思路是利用了线性筛法来求欧拉函数，代码也在线性筛法的基础上作出了小修改，在求质因数的时候，顺便求出了欧拉函数</p>
+<p>思路：</p>
+<ul>
+<li>先写出线性筛法模板</li>
+<li>分情况
+<ul>
+<li>被筛掉的情况
+<ul>
+<li>被筛掉说明是质数，那他的欧拉函数就是 $i-1$</li>
+</ul>
+</li>
+<li>筛选时的情况
+<ul>
+<li>$primes[j]$ 为 $primes[j] \times i$ 的最小质因数</li>
+<li>$i$ 为合数的情况
+<ul>
+<li>$φ(primes[j] \times i)=primes[j] \times φ(i)$</li>
+</ul>
+</li>
+<li>$i$ 为质数的情况
+<ul>
+<li>$φ(primes[j] \times i)=φ(i) \times (primes[j]−1)$</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/876/">AcWing 874. 筛法求欧拉函数</a></p>
+<p>模板：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> primes[N], cnt;     <span class="comment">// primes[]存储所有素数</span></span><br><span class="line"><span class="keyword">int</span> euler[N];           <span class="comment">// 存储每个数的欧拉函数</span></span><br><span class="line"><span class="keyword">bool</span> st[N];         <span class="comment">// st[x]存储x是否被筛掉</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_eulers</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    euler[<span class="number">1</span>] = <span class="number">1</span>; <span class="comment">// 初始化</span></span><br><span class="line">    <span class="comment">// 线性筛法求欧拉函数</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (!st[i])</span><br><span class="line">        &#123;</span><br><span class="line">            primes[cnt ++ ] = i;</span><br><span class="line">            euler[i] = i - <span class="number">1</span>; <span class="comment">// 质数的话，肯定是前面的数，除了0以外互质的数只有1</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; primes[j] &lt;= n / i; j ++ ) <span class="comment">// 遍历质数，用最小质因数筛掉</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> t = primes[j] * i; <span class="comment">// 质数*i </span></span><br><span class="line">            st[t] = <span class="literal">true</span>; </span><br><span class="line">            <span class="keyword">if</span> (i % primes[j] == <span class="number">0</span>) <span class="comment">// i不是质数的情况</span></span><br><span class="line">            &#123;</span><br><span class="line">                euler[t] = euler[i] * primes[j]; <span class="comment">// 直接乘上其最小质因数的欧拉函数即可</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// i是质数的情况</span></span><br><span class="line">            euler[t] = euler[i] * (primes[j] - <span class="number">1</span>); <span class="comment">// 这里是化简后的情况</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>推到过程：</p>
+<p>若 <code>i % primes[j] == 0</code> ，由于 $primes[j]$ 是 $i$ 的一个质因子，并且在计算 $i$ 的欧拉函数的时候已经计算了 $primes[j]$ 出现的情况 $(1−\frac{1}{primes[j]})$ ，所以 $φ(primes[j] \times i)=primes[j] \times φ(i)$ 。</p>
+<p>若 <code>i % primes[j] != 0</code> ， $primes[j]$ 就一定是 $primes[j]×i$ 的最小质因子，而且 $primes[j]$ 不包含在 $i$ 的质因子当中。<br>
+由于 $φ(i)=i \times (1−\frac{1}{p_1}) \times (1−\frac{1}{p_2}) \times … \times (1−\frac{1}{p_k})$ ，<br>
+所以 $φ(primes[j] \times i)=primes[j] \times i \times (1−\frac{1}{p_1}) \times (1−\frac{1}{p_2}) \times … \times (1−\frac{1}{p_k}) \times (1−\frac{1}{primes[j]})$ 。<br>
+最终就可以得到 $φ(primes[j] \times i)=primes[j] \times φ(i) \times (1−\frac{1}{primes[j]})=φ(i) \times (primes[j]−1)$ 。</p>
+<blockquote>
+<p>当 $i$ 未被标记时，即 $i$ 为质数，那肯定是前面的数，除了0以外只有1是互质的数</p>
+</blockquote>
+<p>背过吧…</p>
+<h1 id="kuai-su-mi">快速幂</h1>
+<p>求 $a^k$  mod  $p$，时间复杂度 $O(logk)$</p>
+<p><strong>数学结论：</strong></p>
+<p>传统方法是直接将 $a$ 乘 $b$ 次，但是算法复杂度是 $O(b)$ ，如果遇到 $b$ 很大的情况就很慢。</p>
+<p>其实就是把幂转成二进制，然后来算</p>
+<p>$$a^k=a^{2 \frac{k}{2}}=(a^2)^{\frac{k}{2}}$$</p>
+<p>如果把 k 转成二进制数 $(k)_{10}=(…bcd)_2$</p>
+<p>那么：</p>
+<p>$$a^k=a^{d \  \cdot \ 2^0} \cdot a^{c \  \cdot \ 2^1} \cdot a^{b \  \cdot \ 2^3} \ …$$<br>
+$$a^k=a^{d \  \cdot \ 2^0 + c \ \cdot \ 2^1 + b\ \cdot \ 2^2+ \ …}$$</p>
+<p>可以发现其实就是将幂拆成用二进制表示幂来算</p>
+<p>模版题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/877/">AcWing 875. 快速幂</a></p>
+<p>模板：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// a^k%p</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">qmi</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> k,<span class="keyword">int</span> p)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">1</span>,t = a;</span><br><span class="line">    <span class="keyword">while</span>(k)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(k &amp; <span class="number">1</span>) <span class="comment">// 取二进制个位</span></span><br><span class="line">            res = (LL)res * t % p; <span class="comment">//  把每一项乘起来</span></span><br><span class="line">        k &gt;&gt;= <span class="number">1</span>; <span class="comment">// k把个位去掉（右移一位）</span></span><br><span class="line">        t = (LL)t * t % p; <span class="comment">// 这个就是每一次的(a^2)的级数</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>例子：</p>
+<p>求$5^{11}$</p>
+<p>$$5^{11}=5^{(1011)_2}$$</p>
+<pre><code> 	 $$=5^&#123;2^1+2^2+2^4&#125;$$ 
+</code></pre>
+<p>​        $$=5^{2^1} \ \cdot \ 5^{2^2} \ \cdot \ 5^{2^4}$$</p>
+<p>​        $$=(5^2)^{1} \ \cdot \ (5^2)^{2} \ \cdot \ (5^2)^{4}$$</p>
+</blockquote>
+<p>如此可以发现，与幂的二进制数上的每一位有关</p>
+<h2 id="kuai-su-mi-qiu-ni-yuan">快速幂求逆元</h2>
+<p>给定三个正整数 a,b,p，如果满足：<br>
+$$a·b≡1 \ mod \ p$$</p>
+<p>​ 那么 $b$ 称为在 mod $p$ 的条件下 $a$ 的乘法逆元，记作$a^{−1}$ 。</p>
+<p>​ 注意：不是所有的数在某些模量下都有逆元。</p>
+<p>​ $a$ 存在逆元的充要条件是 <strong>$a$ 与 $p$ 互质</strong>（欧拉函数）。</p>
+<p>费马小定理：如果 $p$ 为质数，那么 $ϕ§=p−1$，此时：<br>
+$$[a^{−1}]_p=[a^{p−2}]_p$$</p>
+<p>$$a/b = a \cdot x (mod \ p)$$<br>
+$$a/b =a \cdot b^{-1} \ (mod \ p)$$</p>
+<p>数学结论：</p>
+<p>实际上就是快速幂的应用</p>
+<p>当 $b$ 于 $p$ 互质时，$b$ 的乘法逆元为$b^{p-2}$</p>
+<p>当 $b$ 为 $p$ 的倍数时，<strong>$b$的逆元不存在</strong>， $b \cdot x%p==0$ ，$b$ 乘任意一个 $x%p$ 一定等于0</p>
+<p>模版题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/878/">AcWing 875. 快速幂求逆元</a></p>
+<p>模版：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(b % p == <span class="number">0</span>) <span class="comment">// b能整除p说明，b和p不互质，即 b mod p的逆元不存在</span></span><br><span class="line">      cout &lt;&lt; <span class="string">&quot;impossible&quot;</span> &lt;&lt; endl;</span><br><span class="line"><span class="keyword">else</span> cout &lt;&lt; <span class="built_in">qmi</span>(b, p<span class="number">-2</span>, p) &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+<h1 id="kuo-zhan-ou-ji-li-de-suan-fa">扩展欧几里得算法</h1>
+<p>用于求解方程 $ax+by=gcd(a,b)$ 的解</p>
+<blockquote>
+<p>贝祖定理：<br>
+​&gt; 有一个线性不定方程<br>
+$ax+by=c$</p>
+</blockquote>
+<p>​&gt; 若此方程有解，那么</p>
+<blockquote>
+<p>$c=k·(a,b), k∈Z+$</p>
+</blockquote>
+<p>当 $b=0$ 时 $ax+by=a$ 故而 $x=1,y=0$，当 $b≠0$ 时因为<br>
+$$gcd(a,b)=gcd(b,a%b)$$<br>
+而<br>
+$$bx′+(a%b)y′=gcd(b,a%b)$$<br>
+$$bx′+(a−⌊a/b⌋\times b)y′=gcd(b,a%b)$$<br>
+$$ay′+b(x′−⌊a/b⌋\times y′)=gcd(b,a%b)=gcd(a,b)$$</p>
+<p>故而<br>
+$$x=y′,y=x′−⌊a/b⌋\times y′$$</p>
+<p>因此可以采取递归算法 先求出下一层的 $x′$ 和 $y′$ 再利用上述公式回代即可</p>
+<p>递归边界：当 $b=0$ 时，$(a,b)=a,x=1,y∈Z$</p>
+<blockquote>
+<p>特别的，用扩展欧几里得算法还可以求出乘法逆元。<br>
+$$ax≡1mod \ p$$ <br>
+$$ax+py=1$$</p>
+<p>​ 当且仅当 $(a,p)=1$ 时有解。</p>
+</blockquote>
+<p>模版题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/879/">AcWing 877. 扩展欧几里得算法</a></p>
+<p>模版：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//ax+by=gcd(a,b)</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">exgcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> &amp;x,<span class="keyword">int</span> &amp;y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!b)</span><br><span class="line">    &#123;</span><br><span class="line">        x=<span class="number">1</span>,y=<span class="number">0</span>; <span class="comment">// 边界，当b=0时，手算出来的边界...，ax+0*y=gcd(a,0)</span></span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> d=<span class="built_in">exgcd</span>(b,a%b,y,x); <span class="comment">// 先求出下一层递归的y=x&#x27;和x=y&#x27;</span></span><br><span class="line">    y-=(a/b)*x; <span class="comment">// y=x&#x27;−⌊a/b⌋*y&#x27;，这里的x&#x27;其实就是下一层递归的x，y&#x27;是下一层的y，因为上面交叉传了</span></span><br><span class="line">    <span class="keyword">return</span> d;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="xian-xing-tong-yu-fang-cheng">线性同余方程</h2>
+<p>扩展欧几里得算法应用<br>
+给定 a,b,p ，求出 x 使其满足<br>
+$$a \cdot x≡b \ mod \ p$$<br>
+​ 这个方程可以写为<br>
+$$ax+py=b$$<br>
+​ 要使该方程有解，则满足<br>
+$$b=k \cdot exgcd(a,p),k∈Z$$<br>
+用扩展欧几里得算法求出 $ax+py=exgcd(a,p)$ 的 $x$ 的解之后，再将 $x$ 乘上 $\frac{b}{exgcd(a,p)}$ 即可。</p>
+<p>模版题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/880/">AcWing 878. 线性同余方程</a></p>
+<p>模版：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> d = <span class="built_in">exgcd</span>(a, m, x, y);</span><br><span class="line"><span class="keyword">if</span>(b % d) <span class="built_in">puts</span>(<span class="string">&quot;impossible&quot;</span>); <span class="comment">// b是d的倍数则无解</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    x = (LL)x * b / d % c;</span><br><span class="line">    cout&lt;&lt;x&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>exgcd()</code>照套就行</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/c/" rel="tag"># c++</a>
+          
+            <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          
+            <a href="/tags/%E6%95%B0%E8%AE%BA/" rel="tag"># 数论</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/12/21/%E7%AE%97%E6%B3%95/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/%E4%BA%8C%E5%88%86%E5%9B%BE/%E4%BA%8C%E5%88%86%E5%9B%BE/" rel="next" title="二分图">
+                <i class="fa fa-chevron-left"></i> 二分图
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/m.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/DueGin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#shu-lun"><span class="nav-number">1.</span> <span class="nav-text">数论</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#zhi-shu"><span class="nav-number">1.1.</span> <span class="nav-text">质数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shi-chu-fa-pan-ding-zhi-shu"><span class="nav-number">1.2.</span> <span class="nav-text">试除法判定质数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shi-chu-fa-fen-jie-zhi-yin-shu"><span class="nav-number">1.3.</span> <span class="nav-text">试除法分解质因数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ai-shi-shai-fa"><span class="nav-number">1.4.</span> <span class="nav-text">埃氏筛法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xian-xing-shai-fa"><span class="nav-number">1.5.</span> <span class="nav-text">线性筛法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#yue-shu"><span class="nav-number">2.</span> <span class="nav-text">约数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shi-chu-fa-qiu-suo-you-yue-shu"><span class="nav-number">2.1.</span> <span class="nav-text">试除法求所有约数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yue-shu-ge-shu"><span class="nav-number">2.2.</span> <span class="nav-text">约数个数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yue-shu-zhi-he"><span class="nav-number">2.3.</span> <span class="nav-text">约数之和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ou-ji-li-de-suan-fa"><span class="nav-number">2.4.</span> <span class="nav-text">欧几里得算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#qiu-ou-la-han-shu"><span class="nav-number">2.5.</span> <span class="nav-text">求欧拉函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#po-su-qiu-fa"><span class="nav-number">2.5.1.</span> <span class="nav-text">朴素求法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shai-fa-qiu-ou-la-han-shu"><span class="nav-number">2.5.2.</span> <span class="nav-text">筛法求欧拉函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kuai-su-mi"><span class="nav-number">3.</span> <span class="nav-text">快速幂</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#kuai-su-mi-qiu-ni-yuan"><span class="nav-number">3.1.</span> <span class="nav-text">快速幂求逆元</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kuo-zhan-ou-ji-li-de-suan-fa"><span class="nav-number">4.</span> <span class="nav-text">扩展欧几里得算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#xian-xing-tong-yu-fang-cheng"><span class="nav-number">4.1.</span> <span class="nav-text">线性同余方程</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DueGin</span>
+
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+<div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv" style='display:none'>
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    <span class="post-meta-divider">|</span>
+</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+</span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

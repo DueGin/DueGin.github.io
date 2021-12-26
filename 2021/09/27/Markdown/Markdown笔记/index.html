@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Markdown," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Markdown # 一级标题 ## 二级标题 #...#以此类推  格式 *斜体文本*	斜体文本	&#x2F;	_斜体文本_	斜体文本 **粗体文本**	粗体文本	&#x2F;	__粗体文本__	粗体文本 ***粗斜体文本***	粗斜体文本	&#x2F;	___粗斜体文本___	粗斜体文本 删除线 ~~删除线~~ ABC的 下划线 &lt;u&gt;下划线&lt;&#x2F;u&gt; 下划线 脚注^脚注 转义 与C一样 12**文本">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markdown">
+<meta property="og:url" content="https://duegin.github.io/2021/09/27/Markdown/Markdown%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="DueGin">
+<meta property="og:description" content="Markdown # 一级标题 ## 二级标题 #...#以此类推  格式 *斜体文本*	斜体文本	&#x2F;	_斜体文本_	斜体文本 **粗体文本**	粗体文本	&#x2F;	__粗体文本__	粗体文本 ***粗斜体文本***	粗斜体文本	&#x2F;	___粗斜体文本___	粗斜体文本 删除线 ~~删除线~~ ABC的 下划线 &lt;u&gt;下划线&lt;&#x2F;u&gt; 下划线 脚注^脚注 转义 与C一样 12**文本">
+<meta property="og:locale">
+<meta property="og:image" content="http://static.runoob.com/images/runoob-logo.png">
+<meta property="og:image" content="http://static.runoob.com/images/runoob-logo.png">
+<meta property="og:image" content="http://static.runoob.com/images/runoob-logo.png">
+<meta property="article:published_time" content="2021-09-27T13:45:24.000Z">
+<meta property="article:modified_time" content="2021-11-24T12:43:30.735Z">
+<meta property="article:author" content="DueGin">
+<meta property="article:tag" content="Markdown">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://static.runoob.com/images/runoob-logo.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://duegin.github.io/2021/09/27/Markdown/Markdown笔记/"/>
+
+
+
+
+
+  <title>Markdown | DueGin</title>
+  
+
+
+
+
+
+
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DueGin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/home/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+    
+  
+  
+
+  <article class="post post-type-normal true" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://duegin.github.io/2021/09/27/Markdown/Markdown%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/m.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DueGin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Markdown</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-09-27T21:45:24+08:00">
+                2021-09-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Markdown/" itemprop="url" rel="index">
+                    <span itemprop="name">Markdown</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="markdown">Markdown</h1>
+<h1 id="code-yi-ji-biao-ti-code"><code># 一级标题</code></h1>
+<h2 id="code-er-ji-biao-ti-code"><code>## 二级标题</code></h2>
+<p><code>#...#以此类推</code></p>
+<hr>
+<h1 id="ge-shi">格式</h1>
+<p><code>*斜体文本*</code>	<em>斜体文本</em>	/	<code>_斜体文本_</code>	<em>斜体文本</em></p>
+<p><code>**粗体文本**</code>	<strong>粗体文本</strong>	/	<code>__粗体文本__</code>	<strong>粗体文本</strong></p>
+<p><code>***粗斜体文本***</code>	<em><strong>粗斜体文本</strong></em>	/	<code>___粗斜体文本___</code>	<em><strong>粗斜体文本</strong></em></p>
+<h2 id="shan-chu-xian">删除线</h2>
+<p><code>~~删除线~~</code></p>
+<p><s>ABC的</s></p>
+<h2 id="xia-hua-xian">下划线</h2>
+<p><code>&lt;u&gt;下划线&lt;/u&gt;</code></p>
+<p><u>下划线</u></p>
+<h2 id="jiao-zhu-a-href-e-6-8-a-8-a-e-9-bc-a-0-e-6-a-0-87-e-5-81-9-c-e-7-95-99-e-5-9-c-a-8-e-8-bf-99-e-9-87-8-c-e-8-83-bd-e-6-98-be-e-7-a-4-ba-e-5-a-4-87-e-6-b-3-a-8-jiao-zhu-a">脚注<a href="%E6%8A%8A%E9%BC%A0%E6%A0%87%E5%81%9C%E7%95%99%E5%9C%A8%E8%BF%99%E9%87%8C%E8%83%BD%E6%98%BE%E7%A4%BA%E5%A4%87%E6%B3%A8">^脚注</a></h2>
+<h2 id="zhuan-yi">转义</h2>
+<p><em><strong>与C一样</strong></em></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="strong">**文本加粗**</span> </span><br><span class="line">\<span class="emphasis">*\*</span> 正常显示星号 \<span class="emphasis">*\*</span></span><br></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<p><strong>文本加粗</strong><br>
+** 正常显示星号 **</p>
+<h2 id="fen-ge-xian">分隔线：</h2>
+<p><code>***</code></p>
+<p><code>*****</code></p>
+<p><code>---</code></p>
+<p><code>-----------×N</code></p>
+<p>**—**按回车后即可生成分隔线</p>
+<hr>
+<h1 id="pai-ban">排版</h1>
+<h2 id="pu-tong-lie-biao">普通列表</h2>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> 第一项</span><br><span class="line"><span class="bullet">*</span> 第二项</span><br><span class="line"><span class="bullet">*</span> 第三项</span><br><span class="line"></span><br><span class="line"><span class="bullet">+</span> 第一项</span><br><span class="line"><span class="bullet">+</span> 第二项</span><br><span class="line"><span class="bullet">+</span> 第三项</span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 第一项</span><br><span class="line"><span class="bullet">-</span> 第二项</span><br><span class="line"><span class="bullet">-</span> 第三项</span><br></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<ul>
+<li>第一项</li>
+<li>第二项</li>
+<li>第三项</li>
+<li>… …</li>
+</ul>
+<h2 id="you-xu-lie-biao">有序列表</h2>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> 第一项</span><br><span class="line"><span class="bullet">2.</span> 第二项</span><br><span class="line"><span class="bullet">3.</span> 第三项</span><br></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<ol>
+<li>第一项</li>
+<li>第二项</li>
+<li>第三项</li>
+</ol>
+<h2 id="lie-biao-qian-tao">列表嵌套</h2>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> 第一项：</span><br><span class="line"><span class="bullet">    -</span> 第一项嵌套的第一个元素</span><br><span class="line"><span class="bullet">    -</span> 第一项嵌套的第二个元素</span><br><span class="line"><span class="bullet">2.</span> 第二项：</span><br><span class="line"><span class="bullet">    -</span> 第二项嵌套的第一个元素</span><br><span class="line"><span class="bullet">    -</span> 第二项嵌套的第二个元素</span><br></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<ol>
+<li>
+<p>第一项：</p>
+<ul>
+<li>第一项嵌套的第一个元素
+<ul>
+<li>第一项嵌套的第一个元素的第一个元素
+<ul>
+<li>第一项嵌套的第一个元素的第一个元素的第一个元素</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第一项嵌套的第二个元素</li>
+</ul>
+</li>
+<li>
+<p>第二项：</p>
+<ul>
+<li>第二项嵌套的第一个元素</li>
+<li>第二项嵌套的第二个元素</li>
+</ul>
+</li>
+</ol>
+<h2 id="qu-kuai">区块</h2>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; 最外层</span></span><br><span class="line"><span class="quote">&gt; &gt; 第一层嵌套</span></span><br><span class="line"><span class="quote">&gt; &gt; &gt; 第二层嵌套</span></span><br></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<blockquote>
+<p>最外层</p>
+<blockquote>
+<p>第一层嵌套</p>
+<blockquote>
+<p>第二层嵌套</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="qu-kuai-zhong-shi-yong-lie-biao">区块中使用列表</h2>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; 区块中使用列表</span></span><br><span class="line"><span class="quote">&gt; 1. 第一项</span></span><br><span class="line"><span class="quote">&gt; 2. 第二项</span></span><br><span class="line"><span class="quote">&gt; - 第一项</span></span><br><span class="line"><span class="quote">&gt; - 第二项</span></span><br><span class="line"><span class="quote">&gt; - 第三项</span></span><br></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<blockquote>
+<p>区块中使用列表</p>
+<ol>
+<li>
+<p>第一项</p>
+</li>
+<li>
+<p>第二项</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>第一项</p>
+</li>
+<li>
+<p>第二项</p>
+</li>
+<li>
+<p>第三项</p>
+</li>
+</ul>
+</blockquote>
+<h2 id="lie-biao-zhong-shi-yong-qu-kuai">列表中使用区块</h2>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> 第一项</span><br><span class="line"><span class="code">    &gt; 菜鸟教程</span></span><br><span class="line"><span class="code">    &gt; 学的不仅是技术更是梦想</span></span><br><span class="line"><span class="code">* 第二项</span></span><br></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<ul>
+<li>
+<p>第一项</p>
+<blockquote>
+<p>菜鸟教程</p>
+<p>学的不仅是技术更是梦想</p>
+</blockquote>
+</li>
+<li>
+<p>第二项</p>
+</li>
+</ul>
+<h2 id="biao-tou-xin-xi">表头信息</h2>
+<p><code>---</code></p>
+<p>信息</p>
+<p><code>---</code></p>
+<p>如：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: Markdown</span><br><span class="line">date: 2021-09-27 21:45:24</span><br><span class="line">tags: [Markdown]</span><br><span class="line"><span class="section">categories: blog1</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="dai-ma-qu-kuai">代码区块</h1>
+<h2 id="dai-ma-pian-duan-yong-strong-strong-bao-qi-lai">代码片段用：(<strong>`</strong>)包起来</h2>
+<p>如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">`printf()`</span><br></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<p>​	<code>printf()</code> 函数</p>
+<h2 id="yong-strong-strong-bao-guo-biao-shi-yi-duan-dai-ma">用(<strong>```</strong>)包裹表示一段代码：</h2>
+<p>输入(<strong>```</strong>)后按回车即可生成代码片段框，可以指定一种语言（也可以不指定）</p>
+<p>如：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">```#include&lt;iostream&gt;using namespace std;int main()&#123;    cout&lt;&lt;&quot;Hello world!&quot;&lt;&lt;endl;    return 0;&#125;```</span></span><br></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span>using namespace std;int main()&#123;    cout&lt;&lt;<span class="meta-string">&quot;Hello world!&quot;</span>&lt;&lt;endl;    return 0;&#125;</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h1 id="lian-jie">链接🔗</h1>
+<h2 id="dian-zi-lian-jie">① 点字链接</h2>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">链接名称</span>](<span class="link">链接地址</span>)或者&lt;链接地址&gt;</span><br></pre></td></tr></table></figure>
+<p>例如：</p>
+<p><code>这是一个链接 [菜鸟教程](https://www.runoob.com)</code></p>
+<p>显示结果如下：</p>
+<p>这是一个链接 <a target="_blank" rel="noopener" href="https://www.runoob.com">菜鸟教程</a></p>
+<h2 id="zhi-jie-shi-yong-lian-jie">② 直接使用链接</h2>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml">&lt;https://www.runoob.com&gt;</span></span><br></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com">https://www.runoob.com</a></p>
+<h2 id="gao-ji-lian-jie">③ 高级链接</h2>
+<p>可以通过变量来设置一个链接，变量赋值在文档末尾进行：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这个链接用 1 作为网址变量 [<span class="string">Google</span>][<span class="symbol">1</span>]这个链接用 runoob 作为网址变量 [<span class="string">Runoob</span>][<span class="symbol">runoob</span>]然后在文档的结尾为变量赋值（网址）  [1]: http://www.google.com/  [runoob]: http://www.runoob.com/</span><br></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<p>这个链接用 1 作为网址变量 <a target="_blank" rel="noopener" href="http://www.google.com/">Google</a><br>
+这个链接用 runoob 作为网址变量 <a target="_blank" rel="noopener" href="http://www.runoob.com/">Runoob</a><br>
+然后在文档的结尾为变量赋值（网址）</p>
+<hr>
+<h1 id="tu-pian">图片</h1>
+<p>两种表示方法</p>
+<h2 id>①</h2>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">alt 属性文本</span>](<span class="link">图片地址</span>)![<span class="string">alt 属性文本</span>](<span class="link">图片地址 &quot;可选标题&quot;</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>开头一个感叹号 !</p>
+</li>
+<li>
+<p>接着一个方括号，里面放上图片的替代文字</p>
+</li>
+<li>
+<p>接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上选择性的 ‘title’ 属性的文字。</p>
+</li>
+</ul>
+<p>例如：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">RUNOOB 图标</span>](<span class="link">http://static.runoob.com/images/runoob-logo.png</span>)![<span class="string">RUNOOB 图标</span>](<span class="link">http://static.runoob.com/images/runoob-logo.png &quot;RUNOOB&quot;</span>)</span><br></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<p><img src="http://static.runoob.com/images/runoob-logo.png" alt="RUNOOB 图标"></p>
+<p><img src="http://static.runoob.com/images/runoob-logo.png" alt="RUNOOB 图标" title="RUNOOB"></p>
+<h2 id="-1">②</h2>
+<p>也可以像网址那样对图片网址使用变量:</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这个链接用 1 作为网址变量 [<span class="string">RUNOOB</span>][<span class="symbol">1</span>].然后在文档的结尾为变量赋值（网址）[1]: http://static.runoob.com/images/runoob-logo.png</span><br></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<p>这个链接用 1 作为网址变量 <a target="_blank" rel="noopener" href="http://www.google.com/">RUNOOB</a>.<br>
+然后在文档的结尾为变量赋值（网址）</p>
+<h2 id="tu-pian-ge-shi-gao-du-kuan-du">图片格式（高度、宽度）</h2>
+<p>Markdown 还没有办法指定图片的高度与宽度，需要的话，可以使用**<img>**标签</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src=&quot;http://static.runoob.com/images/runoob-logo.png&quot; width=&quot;50%&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<img src="http://static.runoob.com/images/runoob-logo.png" width="50%">
+<hr>
+<h1 id="biao-ge">表格</h1>
+<h2 id="yu-fa">语法</h2>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| 表头 | 表头 |</span><br><span class="line">| ---- | ---- |</span><br><span class="line">| 单元格|单元格|</span><br><span class="line">|单元格|单元格|</span><br></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">表头</th>
+<th>表头</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">单元格</td>
+<td>单元格</td>
+</tr>
+<tr>
+<td style="text-align:left">单元格</td>
+<td>单元格</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ge-shi-1">格式</h2>
+<ul>
+<li>
+<p><strong><code>-:</code></strong> 设置内容和标题栏居右对齐。</p>
+</li>
+<li>
+<p><strong><code>:-</code></strong> 设置内容和标题栏居左对齐。</p>
+</li>
+<li>
+<p><strong><code>:-:</code></strong> 设置内容和标题栏居中对齐。</p>
+</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| 左对齐 | 右对齐 | 居中对齐 |</span><br><span class="line">| :-----| ----: | :----: |</span><br><span class="line">| 单元格 | 单元格 | 单元格 |</span><br><span class="line">| 单元格 | 单元格 | 单元格 |</span><br></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">左对齐</th>
+<th style="text-align:right">右对齐</th>
+<th style="text-align:center">居中对齐</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">单元格</td>
+<td style="text-align:right">单元格</td>
+<td style="text-align:center">单元格</td>
+</tr>
+<tr>
+<td style="text-align:left">单元格</td>
+<td style="text-align:right">单元格</td>
+<td style="text-align:center">单元格</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h1 id="html-yuan-su">HTML元素</h1>
+<p>目前支持HTML元素有<code>&lt;kbd&gt; &lt;b&gt; &lt;i&gt; &lt;em&gt; &lt;sup&gt; &lt;sub&gt; &lt;br&gt;</code>等</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用 <span class="xml"><span class="tag">&lt;<span class="name">kbd</span>&gt;</span></span>Ctrl<span class="xml"><span class="tag">&lt;/<span class="name">kbd</span>&gt;</span></span>+<span class="xml"><span class="tag">&lt;<span class="name">kbd</span>&gt;</span></span>Alt<span class="xml"><span class="tag">&lt;/<span class="name">kbd</span>&gt;</span></span>+<span class="xml"><span class="tag">&lt;<span class="name">kbd</span>&gt;</span></span>Del<span class="xml"><span class="tag">&lt;/<span class="name">kbd</span>&gt;</span></span> 重启电脑</span><br></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<p>使用 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd> 重启电脑</p>
+<hr>
+<h1 id="hua-liu-cheng-tu-shi-xu-tu-shun-xu-tu-gan-te-tu">画流程图、时序图(顺序图)、甘特图</h1>
+<h2 id="1-heng-xiang-liu-cheng-tu-yuan-ma-ge-shi">1、横向流程图源码格式：</h2>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">```mermaid</span></span><br><span class="line"><span class="code">graph LR</span></span><br><span class="line"><span class="code">A[方形] --&gt;B(圆角)</span></span><br><span class="line"><span class="code">    B --&gt; C&#123;条件a&#125;</span></span><br><span class="line"><span class="code">    C --&gt;|a=1| D[结果1]</span></span><br><span class="line"><span class="code">    C --&gt;|a=2| E[结果2]</span></span><br><span class="line"><span class="code">    F[横向流程图]</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[方形] --&gt;B(圆角)</span><br><span class="line">    B --&gt; C&#123;条件a&#125;</span><br><span class="line">    C --&gt;|a=1| D[结果1]</span><br><span class="line">    C --&gt;|a=2| E[结果2]</span><br><span class="line">    F[横向流程图]</span><br></pre></td></tr></table></figure>
+<h2 id="2-shu-xiang-liu-cheng-tu-yuan-ma-ge-shi">2、竖向流程图源码格式：</h2>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">```mermaid</span></span><br><span class="line"><span class="code">graph TD</span></span><br><span class="line"><span class="code">A[方形] --&gt; B(圆角)</span></span><br><span class="line"><span class="code">    B --&gt; C&#123;条件a&#125;</span></span><br><span class="line"><span class="code">    C --&gt; |a=1| D[结果1]</span></span><br><span class="line"><span class="code">    C --&gt; |a=2| E[结果2]</span></span><br><span class="line"><span class="code">    F[竖向流程图]</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">graph TD</span><br><span class="line">A[方形] --&gt; B(圆角)</span><br><span class="line">    B --&gt; C&#123;条件a&#125;</span><br><span class="line">    C --&gt; |a=1| D[结果1]</span><br><span class="line">    C --&gt; |a=2| E[结果2]</span><br><span class="line">    F[竖向流程图]</span><br></pre></td></tr></table></figure>
+<h2 id="3-biao-zhun-liu-cheng-tu-yuan-ma-ge-shi">3、标准流程图源码格式：</h2>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">```flow</span></span><br><span class="line"><span class="code">st=&gt;start: 开始框</span></span><br><span class="line"><span class="code">op=&gt;operation: 处理框</span></span><br><span class="line"><span class="code">cond=&gt;condition: 判断框(是或否?)</span></span><br><span class="line"><span class="code">sub1=&gt;subroutine: 子流程</span></span><br><span class="line"><span class="code">io=&gt;inputoutput: 输入输出框</span></span><br><span class="line"><span class="code">e=&gt;end: 结束框</span></span><br><span class="line"><span class="code">st-&gt;op-&gt;cond</span></span><br><span class="line"><span class="code">cond(yes)-&gt;io-&gt;e</span></span><br><span class="line"><span class="code">cond(no)-&gt;sub1(right)-&gt;op</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">st=&gt;start: 开始框</span><br><span class="line">op=&gt;operation: 处理框</span><br><span class="line">cond=&gt;condition: 判断框(是或否?)</span><br><span class="line">sub1=&gt;subroutine: 子流程</span><br><span class="line">io=&gt;inputoutput: 输入输出框</span><br><span class="line">e=&gt;end: 结束框</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;io-&gt;e</span><br><span class="line">cond(no)-&gt;sub1(right)-&gt;op</span><br></pre></td></tr></table></figure>
+<h2 id="4-biao-zhun-liu-cheng-tu-yuan-ma-ge-shi-heng-xiang">4、标准流程图源码格式（横向）：</h2>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">```flow</span></span><br><span class="line"><span class="code">st=&gt;start: 开始框</span></span><br><span class="line"><span class="code">op=&gt;operation: 处理框</span></span><br><span class="line"><span class="code">cond=&gt;condition: 判断框(是或否?)</span></span><br><span class="line"><span class="code">sub1=&gt;subroutine: 子流程</span></span><br><span class="line"><span class="code">io=&gt;inputoutput: 输入输出框</span></span><br><span class="line"><span class="code">e=&gt;end: 结束框</span></span><br><span class="line"><span class="code">st(right)-&gt;op(right)-&gt;cond</span></span><br><span class="line"><span class="code">cond(yes)-&gt;io(bottom)-&gt;e</span></span><br><span class="line"><span class="code">cond(no)-&gt;sub1(right)-&gt;op</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">st=&gt;start: 开始框</span><br><span class="line">op=&gt;operation: 处理框</span><br><span class="line">cond=&gt;condition: 判断框(是或否?)</span><br><span class="line">sub1=&gt;subroutine: 子流程</span><br><span class="line">io=&gt;inputoutput: 输入输出框</span><br><span class="line">e=&gt;end: 结束框</span><br><span class="line">st(right)-&gt;op(right)-&gt;cond</span><br><span class="line">cond(yes)-&gt;io(bottom)-&gt;e</span><br><span class="line">cond(no)-&gt;sub1(right)-&gt;op</span><br></pre></td></tr></table></figure>
+<h2 id="5-uml-shi-xu-tu-yuan-ma-yang-li">5、UML时序图源码样例：</h2>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">```sequence</span></span><br><span class="line"><span class="code">对象A-&gt;对象B: 对象B你好吗?（请求）</span></span><br><span class="line"><span class="code">Note right of 对象B: 对象B的描述</span></span><br><span class="line"><span class="code">Note left of 对象A: 对象A的描述(提示)</span></span><br><span class="line"><span class="code">对象B--&gt;对象A: 我很好(响应)</span></span><br><span class="line"><span class="code">对象A-&gt;对象B: 你真的好吗？</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">对象A-&gt;对象B: 对象B你好吗?（请求）</span><br><span class="line">Note right of 对象B: 对象B的描述</span><br><span class="line">Note left of 对象A: 对象A的描述(提示)</span><br><span class="line">对象B--&gt;对象A: 我很好(响应)</span><br><span class="line">对象A-&gt;对象B: 你真的好吗？</span><br></pre></td></tr></table></figure>
+<h2 id="6-uml-shi-xu-tu-yuan-ma-fu-za-yang-li">6、UML时序图源码复杂样例：</h2>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">```sequence</span></span><br><span class="line"><span class="code">Title: 标题：复杂使用</span></span><br><span class="line"><span class="code">对象A-&gt;对象B: 对象B你好吗?（请求）</span></span><br><span class="line"><span class="code">Note right of 对象B: 对象B的描述</span></span><br><span class="line"><span class="code">Note left of 对象A: 对象A的描述(提示)</span></span><br><span class="line"><span class="code">对象B--&gt;对象A: 我很好(响应)</span></span><br><span class="line"><span class="code">对象B-&gt;小三: 你好吗</span></span><br><span class="line"><span class="code">小三--&gt;&gt;对象A: 对象B找我了</span></span><br><span class="line"><span class="code">对象A-&gt;对象B: 你真的好吗？</span></span><br><span class="line"><span class="code">Note over 小三,对象B: 我们是朋友</span></span><br><span class="line"><span class="code">participant C</span></span><br><span class="line"><span class="code">Note right of C: 没人陪我玩</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Title: 标题：复杂使用</span><br><span class="line">对象A-&gt;对象B: 对象B你好吗?（请求）</span><br><span class="line">Note right of 对象B: 对象B的描述</span><br><span class="line">Note left of 对象A: 对象A的描述(提示)</span><br><span class="line">对象B--&gt;对象A: 我很好(响应)</span><br><span class="line">对象B-&gt;小三: 你好吗</span><br><span class="line">小三--&gt;&gt;对象A: 对象B找我了</span><br><span class="line">对象A-&gt;对象B: 你真的好吗？</span><br><span class="line">Note over 小三,对象B: 我们是朋友</span><br><span class="line">participant C</span><br><span class="line">Note right of C: 没人陪我玩</span><br></pre></td></tr></table></figure>
+<h2 id="7-uml-biao-zhun-shi-xu-tu-yang-li">7、UML标准时序图样例：</h2>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">```mermaid</span></span><br><span class="line"><span class="code">%% 时序图例子,-&gt; 直线，--&gt;虚线，-&gt;&gt;实线箭头</span></span><br><span class="line"><span class="code">  sequenceDiagram</span></span><br><span class="line"><span class="code">    participant 张三</span></span><br><span class="line"><span class="code">    participant 李四</span></span><br><span class="line"><span class="code">    张三-&gt;王五: 王五你好吗？</span></span><br><span class="line"><span class="code">    loop 健康检查</span></span><br><span class="line"><span class="code">        王五-&gt;王五: 与疾病战斗</span></span><br><span class="line"><span class="code">    end</span></span><br><span class="line"><span class="code">    Note right of 王五: 合理 食物 &lt;br/&gt;看医生...</span></span><br><span class="line"><span class="code">    李四--&gt;&gt;张三: 很好!</span></span><br><span class="line"><span class="code">    王五-&gt;李四: 你怎么样?</span></span><br><span class="line"><span class="code">    李四--&gt;王五: 很好!</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">%% 时序图例子,-&gt; 直线，--&gt;虚线，-&gt;&gt;实线箭头</span><br><span class="line">  sequenceDiagram</span><br><span class="line">    participant 张三</span><br><span class="line">    participant 李四</span><br><span class="line">    张三-&gt;王五: 王五你好吗？</span><br><span class="line">    loop 健康检查</span><br><span class="line">        王五-&gt;王五: 与疾病战斗</span><br><span class="line">    end</span><br><span class="line">    Note right of 王五: 合理 食物 &lt;br/&gt;看医生...</span><br><span class="line">    李四--&gt;&gt;张三: 很好!</span><br><span class="line">    王五-&gt;李四: 你怎么样?</span><br><span class="line">    李四--&gt;王五: 很好!</span><br></pre></td></tr></table></figure>
+<h2 id="8-gan-te-tu-yang-li">8、甘特图样例：</h2>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">```mermaid</span></span><br><span class="line"><span class="code">%% 语法示例</span></span><br><span class="line"><span class="code">        gantt</span></span><br><span class="line"><span class="code">        dateFormat  YYYY-MM-DD</span></span><br><span class="line"><span class="code">        title 软件开发甘特图</span></span><br><span class="line"><span class="code">        section 设计</span></span><br><span class="line"><span class="code">        需求                      :done,    des1, 2014-01-06,2014-01-08</span></span><br><span class="line"><span class="code">        原型                      :active,  des2, 2014-01-09, 3d</span></span><br><span class="line"><span class="code">        UI设计                     :         des3, after des2, 5d</span></span><br><span class="line"><span class="code">    未来任务                     :         des4, after des3, 5d</span></span><br><span class="line"><span class="code">        section 开发</span></span><br><span class="line"><span class="code">        学习准备理解需求                      :crit, done, 2014-01-06,24h</span></span><br><span class="line"><span class="code">        设计框架                             :crit, done, after des2, 2d</span></span><br><span class="line"><span class="code">        开发                                 :crit, active, 3d</span></span><br><span class="line"><span class="code">        未来任务                              :crit, 5d</span></span><br><span class="line"><span class="code">        耍                                   :2d</span></span><br><span class="line"><span class="code">        section 测试</span></span><br><span class="line"><span class="code">        功能测试                              :active, a1, after des3, 3d</span></span><br><span class="line"><span class="code">        压力测试                               :after a1  , 20h</span></span><br><span class="line"><span class="code">        测试报告                               : 48h</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure>
+<p>显示结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">%% 语法示例</span><br><span class="line">        gantt</span><br><span class="line">        dateFormat  YYYY-MM-DD</span><br><span class="line">        title 软件开发甘特图</span><br><span class="line">        section 设计</span><br><span class="line">        需求                      :done,    des1, 2014-01-06,2014-01-08</span><br><span class="line">        原型                      :active,  des2, 2014-01-09, 3d</span><br><span class="line">        UI设计                     :         des3, after des2, 5d</span><br><span class="line">    未来任务                     :         des4, after des3, 5d</span><br><span class="line">        section 开发</span><br><span class="line">        学习准备理解需求                      :crit, done, 2014-01-06,24h</span><br><span class="line">        设计框架                             :crit, done, after des2, 2d</span><br><span class="line">        开发                                 :crit, active, 3d</span><br><span class="line">        未来任务                              :crit, 5d</span><br><span class="line">        耍                                   :2d</span><br><span class="line">        section 测试</span><br><span class="line">        功能测试                              :active, a1, after des3, 3d</span><br><span class="line">        压力测试                               :after a1  , 20h</span><br><span class="line">        测试报告                               : 48h</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Markdown/" rel="tag"># Markdown</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/09/27/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/09/28/Python/%E7%88%AC%E8%99%AB/Python%E7%88%AC%E8%99%AB/" rel="prev" title="Python爬虫">
+                Python爬虫 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/m.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/DueGin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#markdown"><span class="nav-number">1.</span> <span class="nav-text">Markdown</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#code-yi-ji-biao-ti-code"><span class="nav-number">2.</span> <span class="nav-text"># 一级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#code-er-ji-biao-ti-code"><span class="nav-number">2.1.</span> <span class="nav-text">## 二级标题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ge-shi"><span class="nav-number">3.</span> <span class="nav-text">格式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#shan-chu-xian"><span class="nav-number">3.1.</span> <span class="nav-text">删除线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xia-hua-xian"><span class="nav-number">3.2.</span> <span class="nav-text">下划线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jiao-zhu-a-href-e-6-8-a-8-a-e-9-bc-a-0-e-6-a-0-87-e-5-81-9-c-e-7-95-99-e-5-9-c-a-8-e-8-bf-99-e-9-87-8-c-e-8-83-bd-e-6-98-be-e-7-a-4-ba-e-5-a-4-87-e-6-b-3-a-8-jiao-zhu-a"><span class="nav-number">3.3.</span> <span class="nav-text">脚注^脚注</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zhuan-yi"><span class="nav-number">3.4.</span> <span class="nav-text">转义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fen-ge-xian"><span class="nav-number">3.5.</span> <span class="nav-text">分隔线：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pai-ban"><span class="nav-number">4.</span> <span class="nav-text">排版</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pu-tong-lie-biao"><span class="nav-number">4.1.</span> <span class="nav-text">普通列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#you-xu-lie-biao"><span class="nav-number">4.2.</span> <span class="nav-text">有序列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lie-biao-qian-tao"><span class="nav-number">4.3.</span> <span class="nav-text">列表嵌套</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#qu-kuai"><span class="nav-number">4.4.</span> <span class="nav-text">区块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#qu-kuai-zhong-shi-yong-lie-biao"><span class="nav-number">4.5.</span> <span class="nav-text">区块中使用列表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lie-biao-zhong-shi-yong-qu-kuai"><span class="nav-number">4.6.</span> <span class="nav-text">列表中使用区块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#biao-tou-xin-xi"><span class="nav-number">4.7.</span> <span class="nav-text">表头信息</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dai-ma-qu-kuai"><span class="nav-number">5.</span> <span class="nav-text">代码区块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dai-ma-pian-duan-yong-strong-strong-bao-qi-lai"><span class="nav-number">5.1.</span> <span class="nav-text">代码片段用：(&#96;)包起来</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yong-strong-strong-bao-guo-biao-shi-yi-duan-dai-ma"><span class="nav-number">5.2.</span> <span class="nav-text">用(&#96;&#96;&#96;)包裹表示一段代码：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lian-jie"><span class="nav-number">6.</span> <span class="nav-text">链接🔗</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dian-zi-lian-jie"><span class="nav-number">6.1.</span> <span class="nav-text">① 点字链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#zhi-jie-shi-yong-lian-jie"><span class="nav-number">6.2.</span> <span class="nav-text">② 直接使用链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gao-ji-lian-jie"><span class="nav-number">6.3.</span> <span class="nav-text">③ 高级链接</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tu-pian"><span class="nav-number">7.</span> <span class="nav-text">图片</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">7.1.</span> <span class="nav-text">①</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#-1"><span class="nav-number">7.2.</span> <span class="nav-text">②</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tu-pian-ge-shi-gao-du-kuan-du"><span class="nav-number">7.3.</span> <span class="nav-text">图片格式（高度、宽度）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#biao-ge"><span class="nav-number">8.</span> <span class="nav-text">表格</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#yu-fa"><span class="nav-number">8.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ge-shi-1"><span class="nav-number">8.2.</span> <span class="nav-text">格式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#html-yuan-su"><span class="nav-number">9.</span> <span class="nav-text">HTML元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hua-liu-cheng-tu-shi-xu-tu-shun-xu-tu-gan-te-tu"><span class="nav-number">10.</span> <span class="nav-text">画流程图、时序图(顺序图)、甘特图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-heng-xiang-liu-cheng-tu-yuan-ma-ge-shi"><span class="nav-number">10.1.</span> <span class="nav-text">1、横向流程图源码格式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-shu-xiang-liu-cheng-tu-yuan-ma-ge-shi"><span class="nav-number">10.2.</span> <span class="nav-text">2、竖向流程图源码格式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-biao-zhun-liu-cheng-tu-yuan-ma-ge-shi"><span class="nav-number">10.3.</span> <span class="nav-text">3、标准流程图源码格式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-biao-zhun-liu-cheng-tu-yuan-ma-ge-shi-heng-xiang"><span class="nav-number">10.4.</span> <span class="nav-text">4、标准流程图源码格式（横向）：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-uml-shi-xu-tu-yuan-ma-yang-li"><span class="nav-number">10.5.</span> <span class="nav-text">5、UML时序图源码样例：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-uml-shi-xu-tu-yuan-ma-fu-za-yang-li"><span class="nav-number">10.6.</span> <span class="nav-text">6、UML时序图源码复杂样例：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-uml-biao-zhun-shi-xu-tu-yang-li"><span class="nav-number">10.7.</span> <span class="nav-text">7、UML标准时序图样例：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-gan-te-tu-yang-li"><span class="nav-number">10.8.</span> <span class="nav-text">8、甘特图样例：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DueGin</span>
+
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+<div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv" style='display:none'>
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    <span class="post-meta-divider">|</span>
+</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+</span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="c++,LinkList,数据结构," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="LinkList   链表是一种物理存储单元上非连续、非顺序的存储结构，数据元素的逻辑顺序是通过链表中的指针链接次序实现的。   链表由一系列结点（链表中每一个元素称为结点）组成，结点可以在运行时动态生成。   每个结点包括两个部分：一个是存储数据元素的数据域，另一个是存储下一个结点地址的指针域。    与顺序表的区别  链表可以充分利用计算机内存空间，实现灵活的内存动态管理，而线性表顺序别构只能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LinkList">
+<meta property="og:url" content="https://duegin.github.io/2021/10/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/LinkList/LinkList/index.html">
+<meta property="og:site_name" content="DueGin">
+<meta property="og:description" content="LinkList   链表是一种物理存储单元上非连续、非顺序的存储结构，数据元素的逻辑顺序是通过链表中的指针链接次序实现的。   链表由一系列结点（链表中每一个元素称为结点）组成，结点可以在运行时动态生成。   每个结点包括两个部分：一个是存储数据元素的数据域，另一个是存储下一个结点地址的指针域。    与顺序表的区别  链表可以充分利用计算机内存空间，实现灵活的内存动态管理，而线性表顺序别构只能">
+<meta property="og:locale">
+<meta property="og:image" content="https://duegin.github.io/2021/10/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/LinkList/LinkList/%E9%93%BE%E8%A1%A8%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84.png">
+<meta property="og:image" content="https://duegin.github.io/2021/10/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/LinkList/LinkList/%E5%A4%B4%E7%BB%93%E7%82%B9.png">
+<meta property="og:image" content="https://duegin.github.io/2021/10/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/LinkList/LinkList/%E9%93%BE%E8%A1%A8%E6%8F%92%E5%85%A5.gif">
+<meta property="og:image" content="https://duegin.github.io/2021/10/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/LinkList/LinkList/%E9%93%BE%E8%A1%A8%E5%88%A0%E9%99%A4.gif">
+<meta property="article:published_time" content="2021-10-07T13:57:17.000Z">
+<meta property="article:modified_time" content="2021-12-04T06:02:28.905Z">
+<meta property="article:author" content="DueGin">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="LinkList">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://duegin.github.io/2021/10/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/LinkList/LinkList/%E9%93%BE%E8%A1%A8%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://duegin.github.io/2021/10/07/数据结构/LinkList/LinkList/"/>
+
+
+
+
+
+  <title>LinkList | DueGin</title>
+  
+
+
+
+
+
+
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DueGin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/home/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+    
+  
+  
+
+  <article class="post post-type-normal true" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://duegin.github.io/2021/10/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/LinkList/LinkList/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/m.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DueGin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">LinkList</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-10-07T21:57:17+08:00">
+                2021-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="link-list">LinkList</h1>
+<ul>
+<li>
+<p>链表是一种物理存储单元上非连续、非顺序的存储结构，数据元素的逻辑顺序是通过链表中的指针链接次序实现的。</p>
+</li>
+<li>
+<p>链表由一系列结点（链表中每一个元素称为结点）组成，结点可以在运行时动态生成。</p>
+</li>
+<li>
+<p>每个结点包括两个部分：一个是存储数据元素的数据域，另一个是存储下一个结点地址的指针域。</p>
+</li>
+</ul>
+<p><img src="/2021/10/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/LinkList/LinkList/%E9%93%BE%E8%A1%A8%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84.png" alt></p>
+<h2 id="yu-shun-xu-biao-de-qu-bie">与顺序表的区别</h2>
+<ul>
+<li>链表可以充分利用计算机内存空间，实现灵活的内存动态管理，而线性表顺序别构只能利用连续的内存空间</li>
+<li>但是链表失去了数组随机读取的优点，同时链表由于增加了结点的指针域，空间开销比较大，而顺序结构能随机存取</li>
+</ul>
+<p><strong>链式结构可以组成多个链表</strong></p>
+<p>先从单链表开始说起，还是以C++为例</p>
+<h2 id="biao-zhong-mei-ge-dan-yuan-ge-de-shu-ju">表中每个单元格的数据</h2>
+<p>以Num为例，根据链表的存储结构，在结构体中定义<strong>要储存的信息</strong>，和<strong>该结构体的指针</strong></p>
+<p><code>typedef</code>是用来为复杂的声明定义简单的别名</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Num</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="comment">//内容</span></span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">    <span class="comment">//下一单元格的地址</span></span><br><span class="line">	Num* next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="chuang-jian-lian-biao">创建链表</h2>
+<p>先创建一个名为LinkList的类：</p>
+<p>里面包含一些属性，每个单元格的指针，即结构体指针，和链表长度，还有一些链表的方法</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkList</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	Num* a0;</span><br><span class="line">	<span class="keyword">int</span> length;</span><br><span class="line">    <span class="comment">//初始化</span></span><br><span class="line">    <span class="built_in">LinkList</span>()</span><br><span class="line">    &#123; &#125;</span><br><span class="line">    <span class="comment">//插入</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> data)</span></span></span><br><span class="line"><span class="function">    </span>&#123; &#125;</span><br><span class="line">    <span class="comment">//查找</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function">    </span>&#123; &#125;</span><br><span class="line">    <span class="comment">//删除</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function">    </span>&#123; &#125;</span><br><span class="line">    <span class="comment">//打印</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123; &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="tou-jie-dian">头结点</h2>
+<ul>
+<li>
+<p>在单链表的开始结点之前附设一个类型相同的结点，称之为头结点。</p>
+</li>
+<li>
+<p>头结点的数据域可以不存储任何信息，头结点的指针域存储指向开始结点的指针（即第一个元素结点的存储位置）。</p>
+</li>
+</ul>
+<p><img src="/2021/10/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/LinkList/LinkList/%E5%A4%B4%E7%BB%93%E7%82%B9.png" alt></p>
+<h3 id="tou-jie-dian-zuo-yong">头结点作用</h3>
+<ol>
+<li>便于受源结点的处理</li>
+<li>便于空表和非空表的统一处理</li>
+</ol>
+<p>【注意】若链表不设头结点，则头指针所指结点为该线性表的首元结点</p>
+<h2 id="chu-shi-hua-lian-biao">初始化链表</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//单链表初始化</span></span><br><span class="line"><span class="built_in">LinkList</span>()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//给结构体指针申请内存</span></span><br><span class="line">    a0 = <span class="keyword">new</span> Num;</span><br><span class="line">    <span class="comment">//将Num结构体里的next指针指向NULL</span></span><br><span class="line">    a0-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="comment">//设置长度为0</span></span><br><span class="line">    <span class="keyword">this</span>-&gt;length = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="cha-ru">插入</h2>
+<ul>
+<li>（判断）插入的时候，需先判断插入位置是否合法</li>
+<li>（遍历）再移动指针，移动到链表最后一个元素或者指定位置的元素</li>
+<li>（赋值）再判断该结点是否为空，指针移动到的位置是否在目标位置后面，若<strong>都为否</strong>，则赋值</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//插入</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> d, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//新建一个局部变量指针帮忙遍历</span></span><br><span class="line">    <span class="comment">//将头结点赋值到局部变量来</span></span><br><span class="line">    Num* temp = <span class="keyword">this</span>-&gt;a0;</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (temp &amp;&amp; j&lt;i<span class="number">-1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//目标位置前一个结点</span></span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">        ++j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//如果temp为空或者遍历到的位置在目标位置后面，则程序无法继续执行且返回</span></span><br><span class="line">    <span class="keyword">if</span> (!temp || j &gt; i<span class="number">-1</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">//新建一个单元格，并给她申请内存</span></span><br><span class="line">    Num* s = <span class="keyword">new</span> Num;</span><br><span class="line">    <span class="comment">//修改新结点的指针指向</span></span><br><span class="line">    s-&gt;next = temp-&gt;next;</span><br><span class="line">    <span class="comment">//修改目标位置前一个结点的指针指向</span></span><br><span class="line">    temp-&gt;next = s;</span><br><span class="line">    s-&gt;data = d;</span><br><span class="line">    ++<span class="keyword">this</span>-&gt;length;<span class="comment">//长度加1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/10/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/LinkList/LinkList/%E9%93%BE%E8%A1%A8%E6%8F%92%E5%85%A5.gif" alt></p>
+<h2 id="cha-zhao">查找</h2>
+<ul>
+<li>（遍历）移动指针至目标位置</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//查找</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//新建一个局部变量指针帮忙遍历</span></span><br><span class="line">    Num* temp = <span class="keyword">this</span>-&gt;a0;</span><br><span class="line">    <span class="keyword">while</span> (temp-&gt;next &amp;&amp; j &lt; i)</span><br><span class="line">    &#123;</span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">        ++j;</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; temp-&gt;data &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="shan-chu">删除</h2>
+<ul>
+<li>（判断）先判断i输入是否合法</li>
+<li>（遍历）再移动指针，移动到目标位置的前一个结点</li>
+<li>（赋值）再判断<strong>该结点的下一结点</strong>和<strong>该结点的下一结点的下一结点</strong>是否为空，若<strong>都非空</strong>，则将<strong>该结点的指针</strong>指向<strong>该结点的下一结点的下一结点</strong></li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(i&gt;<span class="keyword">this</span>-&gt;length||i&lt;<span class="number">0</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cout&lt;&lt;<span class="string">&quot;输入有误！&quot;</span>&lt;&lt;endl;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//新建一个局部变量指针帮忙遍历</span></span><br><span class="line">    Num* temp = <span class="keyword">this</span>-&gt;a0;</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//遍历</span></span><br><span class="line">    <span class="keyword">while</span> (temp-&gt;next &amp;&amp; j &lt; i - <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">        ++j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//判断是否为空</span></span><br><span class="line">    <span class="keyword">if</span> (!temp-&gt;next || !temp-&gt;next-&gt;next) <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">//修改指针指向</span></span><br><span class="line">    temp-&gt;next = temp-&gt;next-&gt;next;</span><br><span class="line">    --<span class="keyword">this</span>-&gt;length;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>只需将蓝色结点的指针指向绿色结点的指针即可</p>
+<p><img src="/2021/10/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/LinkList/LinkList/%E9%93%BE%E8%A1%A8%E5%88%A0%E9%99%A4.gif" alt></p>
+<h2 id="da-yin">打印</h2>
+<ul>
+<li>遍历</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//打印</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//打工仔</span></span><br><span class="line">    Num* temp = <span class="keyword">this</span>-&gt;a0;</span><br><span class="line">    <span class="comment">//遍历打印</span></span><br><span class="line">    <span class="keyword">while</span> (temp-&gt;next)</span><br><span class="line">    &#123;</span><br><span class="line">        temp = temp-&gt;next;</span><br><span class="line">        cout &lt;&lt; temp-&gt;data &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="link-list-quan-bu-dai-ma">LinkList全部代码</h2>
+<h3 id="c-shi-xian">C++实现</h3>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Num</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="comment">//内容</span></span><br><span class="line">	<span class="keyword">int</span> data;</span><br><span class="line">    <span class="comment">//下一单元格的地址</span></span><br><span class="line">	Num* next;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkList</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	Num* a0;</span><br><span class="line">	<span class="keyword">int</span> length;</span><br><span class="line">    <span class="comment">//单链表初始化</span></span><br><span class="line">    <span class="built_in">LinkList</span>()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//给结构体指针申请内存</span></span><br><span class="line">        a0 = <span class="keyword">new</span> Num;</span><br><span class="line">        <span class="comment">//将Num结构体里的next指针指向NULL</span></span><br><span class="line">        a0-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="comment">//设置长度为0</span></span><br><span class="line">        <span class="keyword">this</span>-&gt;length = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//插入</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> d, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//新建一个局部变量指针帮忙遍历</span></span><br><span class="line">        <span class="comment">//将头结点赋值到局部变量来</span></span><br><span class="line">        Num* temp = <span class="keyword">this</span>-&gt;a0;</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (temp &amp;&amp; j&lt;i<span class="number">-1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">//目标位置前一个结点</span></span><br><span class="line">            temp = temp-&gt;next;</span><br><span class="line">            ++j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//如果temp为空或者遍历到的位置在目标位置后面，则程序无法继续执行且返回</span></span><br><span class="line">        <span class="keyword">if</span> (!temp || j &gt; i<span class="number">-1</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="comment">//新建一个单元格，并给她申请内存</span></span><br><span class="line">        Num* s = <span class="keyword">new</span> Num;</span><br><span class="line">        <span class="comment">//修改新结点的指针指向</span></span><br><span class="line">        s-&gt;next = temp-&gt;next;</span><br><span class="line">        <span class="comment">//修改目标位置前一个结点的指针指向</span></span><br><span class="line">        temp-&gt;next = s;</span><br><span class="line">        s-&gt;data = d;</span><br><span class="line">        ++<span class="keyword">this</span>-&gt;length;<span class="comment">//长度加1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//查找</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//新建一个局部变量指针帮忙遍历</span></span><br><span class="line">        Num* temp = <span class="keyword">this</span>-&gt;a0;</span><br><span class="line">        <span class="keyword">while</span> (temp-&gt;next &amp;&amp; j &lt; i)</span><br><span class="line">        &#123;</span><br><span class="line">            temp = temp-&gt;next;</span><br><span class="line">            ++j;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; temp-&gt;data &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//删除</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(i&gt;<span class="keyword">this</span>-&gt;length||i&lt;<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            cout&lt;&lt;<span class="string">&quot;输入有误！&quot;</span>&lt;&lt;endl;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//新建一个局部变量指针帮忙遍历</span></span><br><span class="line">        Num* temp = <span class="keyword">this</span>-&gt;a0;</span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//遍历</span></span><br><span class="line">        <span class="keyword">while</span> (temp-&gt;next &amp;&amp; j &lt; i - <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            temp = temp-&gt;next;</span><br><span class="line">            ++j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//判断是否为空</span></span><br><span class="line">        <span class="keyword">if</span> (!temp-&gt;next || !temp-&gt;next-&gt;next) <span class="keyword">return</span>;</span><br><span class="line">        <span class="comment">//修改指针指向</span></span><br><span class="line">        temp-&gt;next = temp-&gt;next-&gt;next;</span><br><span class="line">        --<span class="keyword">this</span>-&gt;length;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//打印</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//打工仔</span></span><br><span class="line">        Num* temp = <span class="keyword">this</span>-&gt;a0;</span><br><span class="line">        <span class="comment">//遍历打印</span></span><br><span class="line">        <span class="keyword">while</span> (temp-&gt;next)</span><br><span class="line">        &#123;</span><br><span class="line">            temp = temp-&gt;next;</span><br><span class="line">            cout &lt;&lt; temp-&gt;data &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="yong-shu-zu-mo-ni-shi-xian">用数组模拟实现</h1>
+<p>用动态链表这种方式有个明显的缺点，就是不能随机存取。如果要在某个节点之后插入或者删除节点，复杂度是O(n)，因为要从头开始逐个遍历到需要插入或者删除的节点（通过next指针找）。而且还有一个原因就是C++里要new一个node比较慢。</p>
+<p>静态的就是在编译的时候就帮你申请好空间了，而运行时间不算编译时间进去</p>
+<p>如果先生成n个静态结点，那么运行时间会短些，但还是没数组通过下标访问快</p>
+<p>**【注意】**一般做算法题不需要考虑内存内存浪费和内存泄漏问题，这些在写工程的时候才会考虑到</p>
+<h2 id="dan-lian-biao">单链表</h2>
+<p>单链表：</p>
+<ul>
+<li>结点数据</li>
+<li>next指针</li>
+</ul>
+<p>模拟就完事了</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// head存储链表头，e[]存储节点的值，ne[]存储节点的next指针，idx表示当前可用的哪个节点</span></span><br><span class="line"><span class="comment">// 数组下标k-1表示第k个插入的元素</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>; <span class="comment">// 链表容量</span></span><br><span class="line"><span class="keyword">int</span> head, e[N], next[N], idx;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    head = <span class="number">-1</span>;</span><br><span class="line">    idx = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在链表头插入一个数a（头插）</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[idx] = x;</span><br><span class="line">    ne[idx] = head;</span><br><span class="line">    head = idx ++ ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将头结点删除，需要保证头结点存在（头删）</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    head = ne[head];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//将第k个插入的元素的下一个元素删除</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">(<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ne[k]=ne[ne[k]];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="shuang-lian-biao">双链表</h2>
+<p>双链表就是在单链表的基础上多加了一个指向前驱的指针</p>
+<p>双链表：</p>
+<ul>
+<li>结点数据</li>
+<li>prev指针</li>
+<li>next指针</li>
+</ul>
+<p>模拟就完事了</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// e[]表示节点的值，re[]表示节点的prev指针，ne[]表示节点的next指针，idx表示当前可用的哪个节点</span></span><br><span class="line"><span class="comment">// 数组下标k-1表示第k个插入的元素</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>; <span class="comment">// 链表容量</span></span><br><span class="line"><span class="comment">// 初始化</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    head=<span class="number">0</span>;</span><br><span class="line">    ne[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">    ne[<span class="number">1</span>]=<span class="number">-1</span>;</span><br><span class="line">    re[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">    re[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">    idx=<span class="number">2</span>; <span class="comment">// 因为这里下标0和1，分别已经初始化为链表头结点和尾结点</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在第k个结点的后驱添加一个结点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> k,<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    e[idx]=x;</span><br><span class="line">    ne[idx]=ne[k];</span><br><span class="line">    re[idx]=k;</span><br><span class="line">    re[ne[k]]=idx;</span><br><span class="line">    ne[k]=idx;</span><br><span class="line">    idx++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 删除第k个插入的结点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ne[re[k]]=ne[k];</span><br><span class="line">    re[ne[k]]=re[k];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/c/" rel="tag"># c++</a>
+          
+            <a href="/tags/LinkList/" rel="tag"># LinkList</a>
+          
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/10/01/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/SeqList/SeqList/" rel="next" title="SeqList">
+                <i class="fa fa-chevron-left"></i> SeqList
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Queue/SeqQueue/" rel="prev" title="SeqQueue">
+                SeqQueue <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/m.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/DueGin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#link-list"><span class="nav-number">1.</span> <span class="nav-text">LinkList</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#yu-shun-xu-biao-de-qu-bie"><span class="nav-number">1.1.</span> <span class="nav-text">与顺序表的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#biao-zhong-mei-ge-dan-yuan-ge-de-shu-ju"><span class="nav-number">1.2.</span> <span class="nav-text">表中每个单元格的数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chuang-jian-lian-biao"><span class="nav-number">1.3.</span> <span class="nav-text">创建链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#tou-jie-dian"><span class="nav-number">1.4.</span> <span class="nav-text">头结点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tou-jie-dian-zuo-yong"><span class="nav-number">1.4.1.</span> <span class="nav-text">头结点作用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chu-shi-hua-lian-biao"><span class="nav-number">1.5.</span> <span class="nav-text">初始化链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cha-ru"><span class="nav-number">1.6.</span> <span class="nav-text">插入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cha-zhao"><span class="nav-number">1.7.</span> <span class="nav-text">查找</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shan-chu"><span class="nav-number">1.8.</span> <span class="nav-text">删除</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#da-yin"><span class="nav-number">1.9.</span> <span class="nav-text">打印</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#link-list-quan-bu-dai-ma"><span class="nav-number">1.10.</span> <span class="nav-text">LinkList全部代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#c-shi-xian"><span class="nav-number">1.10.1.</span> <span class="nav-text">C++实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#yong-shu-zu-mo-ni-shi-xian"><span class="nav-number">2.</span> <span class="nav-text">用数组模拟实现</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#dan-lian-biao"><span class="nav-number">2.1.</span> <span class="nav-text">单链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shuang-lian-biao"><span class="nav-number">2.2.</span> <span class="nav-text">双链表</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DueGin</span>
+
+  
+</div>
+
+
+
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+<div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv" style='display:none'>
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    <span class="post-meta-divider">|</span>
+</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+</span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
