@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="最小生成树  动画思路 朴素Prim算法 稠密图 时间复杂度是 $O(n^2+m)$ ， $n$ 表示点数，$m$ 表示边数 思路（与dijkstra算法相似）：  所有点到连通块（集合）的距离初始化为正无穷，即所有点初始时都不在连通块中 选取任意一个点作为连通块中的一个点 迭代n次  每次找到 不在集合中 距离最小 的点 t（连通块是当前生成树） 用 t 更新其他点的距离到连通块的距离 把 t">
+<meta name="description" content="最小生成树    动画思路朴素Prim算法稠密图 时间复杂度是 $O(n^2+m)$ ， $n$ 表示点数，$m$ 表示边数 思路（与dijkstra算法相似）：    所有点到连通块（集合）的距离初始化为正无穷，即所有点初始时都不在连通块中   选取任意一个点作为连通块中的一个点 迭代n次   每次找到 不在集合中 距离最小 的点 t（连通块是当前生成树）   用 t 更新其他点的距离到连通块的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="最小生成树汇总">
 <meta property="og:url" content="https://duegin.github.io/2021/12/20/%E7%AE%97%E6%B3%95/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/index.html">
 <meta property="og:site_name" content="DueGin">
-<meta property="og:description" content="最小生成树  动画思路 朴素Prim算法 稠密图 时间复杂度是 $O(n^2+m)$ ， $n$ 表示点数，$m$ 表示边数 思路（与dijkstra算法相似）：  所有点到连通块（集合）的距离初始化为正无穷，即所有点初始时都不在连通块中 选取任意一个点作为连通块中的一个点 迭代n次  每次找到 不在集合中 距离最小 的点 t（连通块是当前生成树） 用 t 更新其他点的距离到连通块的距离 把 t">
+<meta property="og:description" content="最小生成树    动画思路朴素Prim算法稠密图 时间复杂度是 $O(n^2+m)$ ， $n$ 表示点数，$m$ 表示边数 思路（与dijkstra算法相似）：    所有点到连通块（集合）的距离初始化为正无穷，即所有点初始时都不在连通块中   选取任意一个点作为连通块中的一个点 迭代n次   每次找到 不在集合中 距离最小 的点 t（连通块是当前生成树）   用 t 更新其他点的距离到连通块的">
 <meta property="og:locale">
 <meta property="og:image" content="https://duegin.github.io/2021/12/20/%E7%AE%97%E6%B3%95/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/最小生成树.png">
 <meta property="article:published_time" content="2021-12-20T03:58:03.000Z">
@@ -388,37 +388,38 @@
       
 
       
-        <h1 id="zui-xiao-sheng-cheng-shu">最小生成树</h1>
-<img src="/2021/12/20/%E7%AE%97%E6%B3%95/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/最小生成树.png" alt="最小生成树" style="zoom:67%;">
-<h2 id="a-href-https-www-bilibili-com-video-bv-1-eb-41177-d-1-dong-hua-si-lu-a"><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Eb41177d1/">动画思路</a></h2>
-<h1 id="po-su-prim-suan-fa">朴素Prim算法</h1>
-<p>稠密图</p>
+        <h1 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h1><img src="/2021/12/20/%E7%AE%97%E6%B3%95/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/最小生成树.png" alt="最小生成树" style="zoom:67%;">
+
+
+
+<h2 id="动画思路"><a href="#动画思路" class="headerlink" title="动画思路"></a><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Eb41177d1/">动画思路</a></h2><h1 id="朴素Prim算法"><a href="#朴素Prim算法" class="headerlink" title="朴素Prim算法"></a>朴素Prim算法</h1><p>稠密图</p>
 <p>时间复杂度是 $O(n^2+m)$ ， $n$ 表示点数，$m$ 表示边数</p>
 <p><strong>思路</strong>（与dijkstra算法相似）：</p>
 <ul>
-<li>所有点到连通块（集合）的距离初始化为正无穷，即所有点初始时都不在连通块中</li>
-<li>选取任意一个点作为连通块中的一个点</li>
-<li>迭代n次
-<ul>
-<li>每次找到 不在集合中 距离最小 的点 t（连通块是当前生成树）</li>
-<li>用 t 更新其他点的距离到连通块的距离</li>
-<li>把 t 加到集合中</li>
+<li>  所有点到连通块（集合）的距离初始化为正无穷，即所有点初始时都不在连通块中</li>
+<li>  选取任意一个点作为连通块中的一个点</li>
+<li>迭代n次<ul>
+<li>  每次找到 不在集合中 距离最小 的点 t（连通块是当前生成树）</li>
+<li>  用 t 更新其他点的距离到连通块的距离</li>
+<li>  把 t 加到集合中</li>
 </ul>
 </li>
 </ul>
 <p>模板：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n;	<span class="comment">// n表示点数</span></span><br><span class="line"><span class="keyword">int</span> g[N][N];	<span class="comment">// 邻接矩阵，存储所有边</span></span><br><span class="line"><span class="keyword">int</span> dist[N];	<span class="comment">// 存储其他点到当前最小生成树的距离</span></span><br><span class="line"><span class="keyword">bool</span> st[N];		<span class="comment">// 存储每个点是否已经在生成树中</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果图不连通，则返回INF(值是0x3f3f3f3f), 否则返回最小生成树的树边权重之和</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">prim</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dist, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> dist);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++ ) <span class="comment">// 迭代n次（加入n个点）</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> t = <span class="number">-1</span>;</span><br><span class="line">        <span class="comment">// 寻找与i直接联通的边最小值的点的下标</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j ++ ) <span class="comment">// 这里j下标对应g[][]</span></span><br><span class="line">            <span class="keyword">if</span> (!st[j] &amp;&amp; (t == <span class="number">-1</span> || dist[t] &gt; dist[j])) <span class="comment">// 这里一定会更新t的</span></span><br><span class="line">                t = j;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (i &amp;&amp; dist[t] == INF) <span class="keyword">return</span> INF; <span class="comment">//如果最短的距离是INF那说明无法生成最小树了</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (i) res += dist[t]; <span class="comment">// 先累加，因为如果先更新点t到其他点的距离，遇上负环的话，会把自己更新的更小</span></span><br><span class="line">        <span class="comment">// 把点加到连通块</span></span><br><span class="line">        st[t] = <span class="literal">true</span>; </span><br><span class="line">		</span><br><span class="line">        <span class="comment">// 更新点t到其他点的距离</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j ++ )</span><br><span class="line">            dist[j] = <span class="built_in">min</span>(dist[j], g[t][j]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="kruskal-suan-fa">Kruskal算法</h1>
-<p>稀疏图</p>
+
+
+
+
+
+<h1 id="Kruskal算法"><a href="#Kruskal算法" class="headerlink" title="Kruskal算法"></a>Kruskal算法</h1><p>稀疏图</p>
 <p>时间复杂度是 $O(mlogm) $， $n$ 表示点数，$m$ 表示边数</p>
 <p><strong>思路</strong>（类似并查集）：</p>
 <ul>
-<li>将所有边按权重从小到大排序</li>
-<li>枚举每条边a,b 权重c
-<ul>
-<li>if a,b不连通
-<ul>
-<li>将这条边加入连通块（集合）</li>
+<li>  将所有边按权重从小到大排序</li>
+<li>枚举每条边a,b 权重c<ul>
+<li>if a,b不连通<ul>
+<li>  将这条边加入连通块（集合）</li>
 </ul>
 </li>
 </ul>
@@ -427,6 +428,15 @@
 <p>具体可以参考动画思路，先按边的权重排序，如果点 a,b 不在集合中，则将这条边加入集合中，即将 点 a 的祖宗节点指向 b 即可（a 和 b 掉转也行），这样就能将 a 与 b 归为一个集合，重复上诉操作，而这样是不会有环的，因为每次只会加入一个点，而且已经加入的点是不会再更新的</p>
 <p>模板：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n, m;       <span class="comment">// n是点数，m是边数</span></span><br><span class="line"><span class="keyword">int</span> fa[N];       <span class="comment">// 并查集的父节点数组</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">E</span>     // 存储边</span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> a, b, w;</span><br><span class="line">	<span class="comment">// 重载 小于号</span></span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>&lt; (<span class="keyword">const</span> Edge &amp;e1)<span class="keyword">const</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">return</span> w &lt; e1.w;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;e[M];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span>     <span class="comment">// 并查集核心操作, 查找x的祖宗结点</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (fa[x] != x) fa[x] = <span class="built_in">find</span>(fa[x]);</span><br><span class="line">    <span class="keyword">return</span> fa[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">kruskal</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">sort</span>(edges, edges + m);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ ) fa[i] = i;    <span class="comment">// 初始化并查集</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>, cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> a = edges[i].a, b = edges[i].b, w = edges[i].w;</span><br><span class="line"></span><br><span class="line">        a = <span class="built_in">find</span>(a), b = <span class="built_in">find</span>(b);</span><br><span class="line">        <span class="keyword">if</span> (a != b)     <span class="comment">// 如果两个连通块不连通，则将这两个连通块合并</span></span><br><span class="line">        &#123;</span><br><span class="line">            p[a] = b; <span class="comment">// 归到一个集合中</span></span><br><span class="line">            res += w;</span><br><span class="line">            cnt ++ ;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (cnt &lt; n - <span class="number">1</span>) <span class="keyword">return</span> INF;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
 
       
     </div>
@@ -617,7 +627,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#zui-xiao-sheng-cheng-shu"><span class="nav-number">1.</span> <span class="nav-text">最小生成树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#a-href-https-www-bilibili-com-video-bv-1-eb-41177-d-1-dong-hua-si-lu-a"><span class="nav-number">1.1.</span> <span class="nav-text">动画思路</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#po-su-prim-suan-fa"><span class="nav-number">2.</span> <span class="nav-text">朴素Prim算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#kruskal-suan-fa"><span class="nav-number">3.</span> <span class="nav-text">Kruskal算法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91"><span class="nav-number">1.</span> <span class="nav-text">最小生成树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E7%94%BB%E6%80%9D%E8%B7%AF"><span class="nav-number">1.1.</span> <span class="nav-text">动画思路</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%B4%E7%B4%A0Prim%E7%AE%97%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">朴素Prim算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Kruskal%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">Kruskal算法</span></a></li></ol></div>
             
 
           </div>
@@ -644,7 +654,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -657,8 +667,6 @@
 
 
 
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 <div>

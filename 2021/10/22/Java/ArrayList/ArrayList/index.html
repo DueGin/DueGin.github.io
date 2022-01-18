@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="ArrayList 集合，是一种容器 这个ArrayList和c++的vector容器相似 构造方法  函数原型：public ArrayList()  使用： 需要用&lt;&gt;指定类型  ArrayList&lt;Type&gt; array &#x3D; new ArrayList&lt;&gt;()	此使用形式后面的&lt;&gt;可通过前面推断类型 ArrayList&lt;Type&gt;">
+<meta name="description" content="ArrayList集合，是一种容器 这个ArrayList和c++的vector容器相似 构造方法 函数原型：public ArrayList()  使用： 需要用&lt;&gt;指定类型  ArrayList&lt;Type&gt; array &#x3D; new ArrayList&lt;&gt;()    此使用形式后面的&lt;&gt;可通过前面推断类型 ArrayList&lt;Type&gt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ArrayList">
 <meta property="og:url" content="https://duegin.github.io/2021/10/22/Java/ArrayList/ArrayList/index.html">
 <meta property="og:site_name" content="DueGin">
-<meta property="og:description" content="ArrayList 集合，是一种容器 这个ArrayList和c++的vector容器相似 构造方法  函数原型：public ArrayList()  使用： 需要用&lt;&gt;指定类型  ArrayList&lt;Type&gt; array &#x3D; new ArrayList&lt;&gt;()	此使用形式后面的&lt;&gt;可通过前面推断类型 ArrayList&lt;Type&gt;">
+<meta property="og:description" content="ArrayList集合，是一种容器 这个ArrayList和c++的vector容器相似 构造方法 函数原型：public ArrayList()  使用： 需要用&lt;&gt;指定类型  ArrayList&lt;Type&gt; array &#x3D; new ArrayList&lt;&gt;()    此使用形式后面的&lt;&gt;可通过前面推断类型 ArrayList&lt;Type&gt;">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-10-21T17:57:31.000Z">
 <meta property="article:modified_time" content="2021-12-24T16:12:17.263Z">
@@ -384,33 +384,28 @@
       
 
       
-        <h1 id="array-list">ArrayList</h1>
-<p><strong>集合</strong>，是一种容器</p>
+        <h1 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h1><p><strong>集合</strong>，是一种容器</p>
 <p>这个ArrayList和c++的vector容器相似</p>
-<h2 id="gou-zao-fang-fa">构造方法</h2>
-<ul>
+<h2 id="构造方法"><a href="#构造方法" class="headerlink" title="构造方法"></a>构造方法</h2><ul>
 <li>函数原型：<code>public ArrayList()</code></li>
 </ul>
 <p>使用：</p>
 <p>需要用&lt;&gt;指定类型</p>
 <ul>
-<li><code>ArrayList&lt;Type&gt; array = new ArrayList&lt;&gt;()</code>	此使用形式后面的&lt;&gt;可通过前面推断类型</li>
+<li><code>ArrayList&lt;Type&gt; array = new ArrayList&lt;&gt;()</code>    此使用形式后面的&lt;&gt;可通过前面推断类型</li>
 <li><code>ArrayList&lt;Type&gt; array = new ArrayList&lt;Type&gt;()</code></li>
 </ul>
-<h2 id="chang-yong-fang-fa">常用方法</h2>
-<p><code>ArrayList&lt;Type&gt; array = new ArrayList&lt;&gt;()</code></p>
+<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><p><code>ArrayList&lt;Type&gt; array = new ArrayList&lt;&gt;()</code></p>
 <p>（一）往集合添加元素：</p>
 <ul>
-<li>
-<p>添加到集合末尾：</p>
+<li><p>添加到集合末尾：</p>
 <ul>
 <li>函数原型：<code>public boolean add(Type element)</code></li>
 <li>返回true即添加成功，反之…</li>
 <li>使用：<code>array.add(Type element)</code></li>
 </ul>
 </li>
-<li>
-<p>添加到指定位置：</p>
+<li><p>添加到指定位置：</p>
 <ul>
 <li>函数原型：<code>public void add(int index, Type element)</code></li>
 <li>使用：<code>add(index, element)</code></li>
@@ -420,8 +415,7 @@
 </ul>
 <p>（二）删除元素：</p>
 <ul>
-<li>
-<p>删除指定元素：</p>
+<li><p>删除指定元素：</p>
 <ul>
 <li>函数原型：<code>public boolean remove(Type element)</code></li>
 <li>返回删除是否成功</li>
@@ -429,8 +423,7 @@
 <li>例如：<code>array.remove(&quot;hello&quot;)</code></li>
 </ul>
 </li>
-<li>
-<p>删除指定索引处的元素：</p>
+<li><p>删除指定索引处的元素：</p>
 <ul>
 <li>函数原型：<code>public Type remove(int index)</code></li>
 <li>返回值：被删除的元素</li>
@@ -440,8 +433,7 @@
 </ul>
 <p>（三）修改元素：</p>
 <ul>
-<li>修改指定索引处的元素：
-<ul>
+<li>修改指定索引处的元素：<ul>
 <li>函数原型：<code>public Type set(int index, Type element)</code></li>
 <li>返回值：被修改的元素</li>
 <li>使用：<code>array.set(index, element)</code></li>
@@ -450,15 +442,13 @@
 </ul>
 <p>（四）获取集合中的信息</p>
 <ul>
-<li>获取指定索引处的元素：
-<ul>
+<li>获取指定索引处的元素：<ul>
 <li>函数原型：<code>public Type get(int index)</code></li>
 <li>返回值：指定索引处的元素</li>
 <li>使用：<code>array.get(index)</code></li>
 </ul>
 </li>
-<li>获取集合中的元素个数：
-<ul>
+<li>获取集合中的元素个数：<ul>
 <li>函数原型：<code>public int size()</code></li>
 <li>使用：<code>array.size()</code></li>
 </ul>
@@ -650,7 +640,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#array-list"><span class="nav-number">1.</span> <span class="nav-text">ArrayList</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gou-zao-fang-fa"><span class="nav-number">1.1.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#chang-yong-fang-fa"><span class="nav-number">1.2.</span> <span class="nav-text">常用方法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ArrayList"><span class="nav-number">1.</span> <span class="nav-text">ArrayList</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">构造方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">常用方法</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -677,7 +667,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -690,8 +680,6 @@
 
 
 
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 <div>

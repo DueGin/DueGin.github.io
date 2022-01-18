@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="xpath  xpath解析原理：  实例化一个etree的对象，且需要将被解析的页面源码数据加载到该对象中。 调用etree对象中的xpath方法结合着xpath表达式实现标签的定位和内容的捕获。   环境的安装：  pip install lxml    xpath模板 123456789- 本地文件：tree &#x3D; etree.parse(文件名)data &#x3D; tree.xpath(&amp;quot">
+<meta name="description" content="xpath xpath解析原理： 实例化一个etree的对象，且需要将被解析的页面源码数据加载到该对象中。 调用etree对象中的xpath方法结合着xpath表达式实现标签的定位和内容的捕获。   环境的安装： pip install lxml    xpath模板123456789- 本地文件：tree &#x3D; etree.parse(文件名)data &#x3D; tree.xpath(&quot;xpa">
 <meta property="og:type" content="article">
 <meta property="og:title" content="xpath">
 <meta property="og:url" content="https://duegin.github.io/2021/09/29/Python/%E7%88%AC%E8%99%AB/xpath/index.html">
 <meta property="og:site_name" content="DueGin">
-<meta property="og:description" content="xpath  xpath解析原理：  实例化一个etree的对象，且需要将被解析的页面源码数据加载到该对象中。 调用etree对象中的xpath方法结合着xpath表达式实现标签的定位和内容的捕获。   环境的安装：  pip install lxml    xpath模板 123456789- 本地文件：tree &#x3D; etree.parse(文件名)data &#x3D; tree.xpath(&amp;quot">
+<meta property="og:description" content="xpath xpath解析原理： 实例化一个etree的对象，且需要将被解析的页面源码数据加载到该对象中。 调用etree对象中的xpath方法结合着xpath表达式实现标签的定位和内容的捕获。   环境的安装： pip install lxml    xpath模板123456789- 本地文件：tree &#x3D; etree.parse(文件名)data &#x3D; tree.xpath(&quot;xpa">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-09-28T16:32:57.000Z">
 <meta property="article:modified_time" content="2021-11-24T12:43:11.475Z">
@@ -385,81 +385,68 @@
       
 
       
-        <h1 id="xpath">xpath</h1>
-<ul>
-<li>xpath解析原理：
-<ol>
+        <h1 id="xpath"><a href="#xpath" class="headerlink" title="xpath"></a>xpath</h1><ul>
+<li>xpath解析原理：<ol>
 <li>实例化一个etree的对象，且需要将被解析的页面源码数据加载到该对象中。</li>
 <li>调用etree对象中的xpath方法结合着xpath表达式实现标签的定位和内容的捕获。</li>
 </ol>
 </li>
-<li>环境的安装：
-<ul>
+<li>环境的安装：<ul>
 <li>pip install lxml</li>
 </ul>
 </li>
 </ul>
-<h2 id="xpath-mo-ban">xpath模板</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- 本地文件：</span><br><span class="line">tree = etree.parse(文件名)</span><br><span class="line">data = tree.xpath(<span class="string">&quot;xpath表达式&quot;</span>)</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"></span><br><span class="line">- 网络数据：</span><br><span class="line">tree = etree.HTML(网页内容字符串)</span><br><span class="line">data = tree.xpath(<span class="string">&quot;xpath表达式&quot;</span>)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<h2 id="strong-chang-yong-xpath-biao-da-shi-strong"><strong>常用xpath表达式</strong></h2>
-<ul>
-<li>
-<p>如何实例化一个etree对象：<code>from lxml import etree</code></p>
+<h2 id="xpath模板"><a href="#xpath模板" class="headerlink" title="xpath模板"></a>xpath模板</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- 本地文件：</span><br><span class="line">tree = etree.parse(文件名)</span><br><span class="line">data = tree.xpath(<span class="string">&quot;xpath表达式&quot;</span>)</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"></span><br><span class="line">- 网络数据：</span><br><span class="line">tree = etree.HTML(网页内容字符串)</span><br><span class="line">data = tree.xpath(<span class="string">&quot;xpath表达式&quot;</span>)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="常用xpath表达式"><a href="#常用xpath表达式" class="headerlink" title="常用xpath表达式"></a><strong>常用xpath表达式</strong></h2><ul>
+<li><p>如何实例化一个etree对象：<code>from lxml import etree</code></p>
 <ol>
-<li>
-<p>将本地的html文档中的源码数据加载到etree对象中：<br>
-<code>etree.parse(filePath)</code></p>
+<li><p>将本地的html文档中的源码数据加载到etree对象中：</p>
+<pre><code>`etree.parse(filePath)`
+</code></pre>
 </li>
-<li>
-<p>可以将从互联网上获取的源码数据加载到该对象中<br>
-<code>etree.HTML('page_text')</code></p>
+<li><p>可以将从互联网上获取的源码数据加载到该对象中</p>
+<pre><code>`etree.HTML(&#39;page_text&#39;)`
+</code></pre>
 </li>
 </ol>
 <ul>
-<li>
-<p><code>etree.xpath('xpath表达式')</code></p>
+<li><p><code>etree.xpath(&#39;xpath表达式&#39;)</code></p>
 <ol>
-<li>
-<p><strong>/</strong>：表示的是从根节点开始定位。表示的是一个层级。</p>
+<li><p>**/**：表示的是从根节点开始定位。表示的是一个层级。</p>
 </li>
-<li>
-<p><strong>//</strong>：表示的是多个层级。可以表示从任意位置开始定位。</p>
+<li><p>**//**：表示的是多个层级。可以表示从任意位置开始定位。</p>
 </li>
-<li>
-<p><strong>属性定位：</strong></p>
+<li><p><strong>属性定位：</strong></p>
 <ul>
-<li>
-<p>找到class属性值为song的div标签</p>
+<li><p>找到class属性值为song的div标签</p>
 </li>
-<li>
-<p><code>//div[@class=&quot;song&quot;] </code></p>
+<li><p><code>//div[@class=&quot;song&quot;] </code></p>
 </li>
 </ul>
 </li>
-<li>
-<p><strong>索引定位：</strong></p>
+<li><p><strong>索引定位：</strong></p>
 <ul>
 <li><em><strong>索引是从1开始的</strong></em></li>
 <li>找到class属性值为tang的div的直系子标签ul下的第二个子标签li下的直系子标签a</li>
 <li><code>//div[@class=&quot;tang&quot;]/ul/li[2]/a</code></li>
 </ul>
 </li>
-<li>
-<p><strong>逻辑运算：</strong></p>
+<li><p><strong>逻辑运算：</strong></p>
 <ul>
 <li>找到href属性值为空且class属性值为du的a标签</li>
 <li><code>//a[@href=&quot;&quot; and @class=&quot;du&quot;]</code></li>
 </ul>
 </li>
-<li>
-<p><strong>模糊匹配：</strong></p>
+<li><p><strong>模糊匹配：</strong></p>
 <ul>
 <li><code>//div[contains(@class, &quot;ng&quot;)]</code></li>
 <li><code>//div[starts-with(@class, &quot;ta&quot;)]</code></li>
 </ul>
 </li>
-<li>
-<p><strong>取文本：</strong></p>
+<li><p><strong>取文本：</strong></p>
 <ul>
 <li>/text() 获取的是标签中直系的文本内容</li>
 <li>//text() 标签中直系和非直系的文本内容（所有的文本内容）</li>
@@ -467,8 +454,7 @@
 <li><code>//div[@class=&quot;tang&quot;]//text()</code></li>
 </ul>
 </li>
-<li>
-<p><strong>取属性：</strong></p>
+<li><p><strong>取属性：</strong></p>
 <ul>
 <li><code>//div[@class=&quot;tang&quot;]//li[2]/a/@href</code></li>
 </ul>
@@ -481,9 +467,12 @@
 <p><em><strong>解析后标签仍是标签的，还能再解析</strong></em></p>
 <p>例如：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">li_list = tree.xpath(&#x27;//ul[@class=&quot;house-list-wrap&quot;]/li&#x27;)</span><br><span class="line">title = li_list[0].xpath(&#x27;.//div[@class=&quot;list-info&quot;]/h2/a/text()&#x27;)[0]</span><br></pre></td></tr></table></figure>
-<h2 id="shi-li">实例：</h2>
-<p>解析彼岸图网的图片，并打印出网址和图片名http://pic.netbian.com/4kmeinv/</p>
+
+
+
+<h2 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h2><p>解析彼岸图网的图片，并打印出网址和图片名<a target="_blank" rel="noopener" href="http://pic.netbian.com/4kmeinv/">http://pic.netbian.com/4kmeinv/</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree </span><br><span class="line">url = <span class="string">&#x27;http://pic.netbian.com/4kmeinv/&#x27;</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">&#x27;User-Agent&#x27;</span>:<span class="string">&#x27;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">response = requests.get(url=url,headers=headers)</span><br><span class="line"><span class="comment">#获取页面原始编码格式</span></span><br><span class="line"><span class="built_in">print</span>(response.encoding)</span><br><span class="line">page_text = response.text</span><br><span class="line">tree = etree.HTML(page_text)</span><br><span class="line">li_list = tree.xpath(<span class="string">&#x27;//div[@class=&quot;slist&quot;]/ul/li&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> li <span class="keyword">in</span> li_list:</span><br><span class="line">    img_url = <span class="string">&#x27;http://pic.netbian.com&#x27;</span>+li.xpath(<span class="string">&#x27;./a/img/@src&#x27;</span>)[<span class="number">0</span>]</span><br><span class="line">    img_name = li.xpath(<span class="string">&#x27;./a/img/@alt&#x27;</span>)[<span class="number">0</span>]</span><br><span class="line">    img_name = img_name.encode(<span class="string">&#x27;iso-8859-1&#x27;</span>).decode(<span class="string">&#x27;gbk&#x27;</span>)</span><br><span class="line">    <span class="built_in">print</span>(img_url,img_name)</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -672,7 +661,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#xpath"><span class="nav-number">1.</span> <span class="nav-text">xpath</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#xpath-mo-ban"><span class="nav-number">1.1.</span> <span class="nav-text">xpath模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#strong-chang-yong-xpath-biao-da-shi-strong"><span class="nav-number">1.2.</span> <span class="nav-text">常用xpath表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shi-li"><span class="nav-number">1.3.</span> <span class="nav-text">实例：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#xpath"><span class="nav-number">1.</span> <span class="nav-text">xpath</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#xpath%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.1.</span> <span class="nav-text">xpath模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8xpath%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">常用xpath表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B%EF%BC%9A"><span class="nav-number">1.3.</span> <span class="nav-text">实例：</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -699,7 +688,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -712,8 +701,6 @@
 
 
 
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 <div>

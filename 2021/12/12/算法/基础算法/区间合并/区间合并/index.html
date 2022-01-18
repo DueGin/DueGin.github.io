@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="区间合并 AcWing 803. 区间合并 给定 $n$ 个区间 $[l_i,r_i]$，要求合并所有有交集的区间。 注意如果在端点处相交，也算有交集。 输出合并完成后的区间个数。 例如：$[1,3]$ 和 $[2,6]$ 可以合并为一个区间 $[1,6]$ 。 123456789101112131415161718typedef pair&lt;int, int&gt; PII;void mer">
+<meta name="description" content="区间合并AcWing 803. 区间合并 给定 $n$ 个区间 $[l_i,r_i]$，要求合并所有有交集的区间。 注意如果在端点处相交，也算有交集。 输出合并完成后的区间个数。 例如：$[1,3]$ 和 $[2,6]$ 可以合并为一个区间 $[1,6]$ 。 123456789101112131415161718typedef pair&lt;int, int&gt; PII;void merg">
 <meta property="og:type" content="article">
 <meta property="og:title" content="区间合并">
 <meta property="og:url" content="https://duegin.github.io/2021/12/12/%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6/%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6/index.html">
 <meta property="og:site_name" content="DueGin">
-<meta property="og:description" content="区间合并 AcWing 803. 区间合并 给定 $n$ 个区间 $[l_i,r_i]$，要求合并所有有交集的区间。 注意如果在端点处相交，也算有交集。 输出合并完成后的区间个数。 例如：$[1,3]$ 和 $[2,6]$ 可以合并为一个区间 $[1,6]$ 。 123456789101112131415161718typedef pair&lt;int, int&gt; PII;void mer">
+<meta property="og:description" content="区间合并AcWing 803. 区间合并 给定 $n$ 个区间 $[l_i,r_i]$，要求合并所有有交集的区间。 注意如果在端点处相交，也算有交集。 输出合并完成后的区间个数。 例如：$[1,3]$ 和 $[2,6]$ 可以合并为一个区间 $[1,6]$ 。 123456789101112131415161718typedef pair&lt;int, int&gt; PII;void merg">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-12-12T08:01:17.000Z">
 <meta property="article:modified_time" content="2021-12-12T08:01:18.664Z">
@@ -386,13 +386,17 @@
       
 
       
-        <h1 id="qu-jian-he-bing">区间合并</h1>
-<p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/805/">AcWing 803. 区间合并</a></p>
+        <h1 id="区间合并"><a href="#区间合并" class="headerlink" title="区间合并"></a>区间合并</h1><p><a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/description/805/">AcWing 803. 区间合并</a></p>
 <p>给定 $n$ 个区间 $[l_i,r_i]$，要求合并所有有交集的区间。</p>
 <p>注意如果在端点处相交，也算有交集。</p>
 <p>输出合并完成后的区间个数。</p>
 <p>例如：$[1,3]$ 和 $[2,6]$ 可以合并为一个区间 $[1,6]$ 。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; PII;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vector&lt;PII&gt; res;</span><br><span class="line">    l=<span class="number">-2e9</span>,r=<span class="number">-2e9</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(r&lt;a[i].first) <span class="comment">// 只需判断扩张区间是不是断了</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(l!=<span class="number">-2e9</span>) res.<span class="built_in">push_back</span>(&#123;l,r&#125;); <span class="comment">// 第一次的时候，肯定是不执行的，所以这个是存入上一次的合并区间</span></span><br><span class="line">            l=a[i].first,r=a[i].second; <span class="comment">// 那合并区间断了，肯定要重新定左端点和右端点啊</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            r=<span class="built_in">max</span>(r,a[i].second); <span class="comment">// 没断的话，取右端点最大值就好了</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(l!=<span class="number">-2e9</span>) res.<span class="built_in">push_back</span>(&#123;l,r&#125;); <span class="comment">//因为是存入上一次的合并区间，所以这次的还没存</span></span><br><span class="line">    a=res; <span class="comment">// 结果数组赋值回去罢了</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
 
       
     </div>
@@ -583,7 +587,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#qu-jian-he-bing"><span class="nav-number">1.</span> <span class="nav-text">区间合并</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6"><span class="nav-number">1.</span> <span class="nav-text">区间合并</span></a></li></ol></div>
             
 
           </div>
@@ -610,7 +614,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -623,8 +627,6 @@
 
 
 
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 <div>

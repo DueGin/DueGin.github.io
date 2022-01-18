@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="位运算 求整数$n$二进制的第$k$位 结论：n &gt;&gt; k &amp; 1  例子： 10的二进制数是1010 10 &gt;&gt; 1  —&gt;  101 10 &gt;&gt; 2  —&gt;  10 10 &gt;&gt; 3  —&gt;  1 10 &gt;&gt; 4  —&gt;  0 我把它们理解成在前面补零，比如10 &gt;&gt; 2  —&gt;  00">
+<meta name="description" content="位运算求整数$n$二进制的第$k$位结论：n &gt;&gt; k &amp; 1    例子：   10的二进制数是1010   10 &gt;&gt; 1  —&gt;  101   10 &gt;&gt; 2  —&gt;  10   10 &gt;&gt; 3  —&gt;  1   10 &gt;&gt; 4  —&gt;  0   我把它们理解成在前面补零，比如10 &gt;&gt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="位运算">
 <meta property="og:url" content="https://duegin.github.io/2021/12/01/%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E4%BD%8D%E8%BF%90%E7%AE%97/%E4%BD%8D%E8%BF%90%E7%AE%97/index.html">
 <meta property="og:site_name" content="DueGin">
-<meta property="og:description" content="位运算 求整数$n$二进制的第$k$位 结论：n &gt;&gt; k &amp; 1  例子： 10的二进制数是1010 10 &gt;&gt; 1  —&gt;  101 10 &gt;&gt; 2  —&gt;  10 10 &gt;&gt; 3  —&gt;  1 10 &gt;&gt; 4  —&gt;  0 我把它们理解成在前面补零，比如10 &gt;&gt; 2  —&gt;  00">
+<meta property="og:description" content="位运算求整数$n$二进制的第$k$位结论：n &gt;&gt; k &amp; 1    例子：   10的二进制数是1010   10 &gt;&gt; 1  —&gt;  101   10 &gt;&gt; 2  —&gt;  10   10 &gt;&gt; 3  —&gt;  1   10 &gt;&gt; 4  —&gt;  0   我把它们理解成在前面补零，比如10 &gt;&gt;">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-11-30T16:39:17.000Z">
 <meta property="article:modified_time" content="2021-12-19T16:06:09.921Z">
@@ -386,36 +386,36 @@
       
 
       
-        <h1 id="wei-yun-suan">位运算</h1>
-<h2 id="qiu-zheng-shu-n-er-jin-zhi-de-di-k-wei">求整数$n$二进制的第$k$位</h2>
-<p><strong>结论：</strong><code>n &gt;&gt; k &amp; 1</code></p>
+        <h1 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h1><h2 id="求整数-n-二进制的第-k-位"><a href="#求整数-n-二进制的第-k-位" class="headerlink" title="求整数$n$二进制的第$k$位"></a>求整数$n$二进制的第$k$位</h2><p><strong>结论：</strong><code>n &gt;&gt; k &amp; 1</code></p>
 <blockquote>
-<p>例子：</p>
-<p>10的二进制数是1010</p>
-<p><code>10 &gt;&gt; 1</code>  —&gt;  101</p>
-<p><code>10 &gt;&gt; 2</code>  —&gt;  10</p>
-<p><code>10 &gt;&gt; 3</code>  —&gt;  1</p>
-<p><code>10 &gt;&gt; 4</code>  —&gt;  0</p>
-<p>我把它们理解成在前面补零，比如<code>10 &gt;&gt; 2</code>  —&gt;  0010</p>
+<p>  例子：</p>
+<p>  10的二进制数是1010</p>
+<p>  <code>10 &gt;&gt; 1</code>  —&gt;  101</p>
+<p>  <code>10 &gt;&gt; 2</code>  —&gt;  10</p>
+<p>  <code>10 &gt;&gt; 3</code>  —&gt;  1</p>
+<p>  <code>10 &gt;&gt; 4</code>  —&gt;  0</p>
+<p>  我把它们理解成在前面补零，比如<code>10 &gt;&gt; 2</code>  —&gt;  0010</p>
 </blockquote>
 <blockquote>
-<p><code>&amp;</code>按位与</p>
-<p>只有一种情况是1，凡是出现0都为0</p>
-<p><code>1 &amp; 1 = 1</code></p>
-<p><code>0 &amp; 1 = 0</code></p>
-<p><code>1 &amp; 0 = 0</code></p>
-<p><code>0 &amp; 0 = 0</code></p>
+<p>  <code>&amp;</code>按位与</p>
+<p>  只有一种情况是1，凡是出现0都为0</p>
+<p>  <code>1 &amp; 1 = 1</code></p>
+<p>  <code>0 &amp; 1 = 0</code></p>
+<p>  <code>1 &amp; 0 = 0</code></p>
+<p>  <code>0 &amp; 0 = 0</code></p>
 </blockquote>
-<h2 id="qiu-zheng-shu-er-jin-zhi-zhong-chu-xian-1-de-ci-shu">求整数二进制中出现1的次数</h2>
-<p><strong>结论：</strong></p>
+<h2 id="求整数二进制中出现1的次数"><a href="#求整数二进制中出现1的次数" class="headerlink" title="求整数二进制中出现1的次数"></a>求整数二进制中出现1的次数</h2><p><strong>结论：</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回最后一位1，包括1后面的所有0</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &amp; -x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 <blockquote>
-<p><code>-x = ~x + 1</code></p>
-<p>例如：</p>
-<p><code>x = 1011</code></p>
-<p><code>~x = 0100</code></p>
-<p><code>~x + 1 = 0101</code></p>
-<p>即 -11=0101</p>
+<p>  <code>-x = ~x + 1</code></p>
+<p>  例如：</p>
+<p>  <code>x = 1011</code></p>
+<p>  <code>~x = 0100</code></p>
+<p>  <code>~x + 1 = 0101</code></p>
+<p>  即 -11=0101</p>
 </blockquote>
 
       
@@ -607,7 +607,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#wei-yun-suan"><span class="nav-number">1.</span> <span class="nav-text">位运算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#qiu-zheng-shu-n-er-jin-zhi-de-di-k-wei"><span class="nav-number">1.1.</span> <span class="nav-text">求整数$n$二进制的第$k$位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#qiu-zheng-shu-er-jin-zhi-zhong-chu-xian-1-de-ci-shu"><span class="nav-number">1.2.</span> <span class="nav-text">求整数二进制中出现1的次数</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="nav-number">1.</span> <span class="nav-text">位运算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%82%E6%95%B4%E6%95%B0-n-%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%9A%84%E7%AC%AC-k-%E4%BD%8D"><span class="nav-number">1.1.</span> <span class="nav-text">求整数$n$二进制的第$k$位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%82%E6%95%B4%E6%95%B0%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD%E5%87%BA%E7%8E%B01%E7%9A%84%E6%AC%A1%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">求整数二进制中出现1的次数</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -634,7 +634,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -647,8 +647,6 @@
 
 
 
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 <div>

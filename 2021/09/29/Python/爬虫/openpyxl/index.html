@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="openpyxl 主要方法 创建新excel 创建时会自动创建一张新表 wb &#x3D; openpyxl.Workbook() 加载本地excel文件 wb &#x3D; openpyxl.load_workbook(&#39;e:\python lianxi\income.xlsx&#39;) 获取当前表对象 sh &#x3D; wb.active 获取Excel中所有表名 是列表wb.sheetnames 根据名称获取某个工作表对象">
+<meta name="description" content="openpyxl主要方法 创建新excel创建时会自动创建一张新表 wb &#x3D; openpyxl.Workbook()   加载本地excel文件wb &#x3D; openpyxl.load_workbook(&#39;e:\python lianxi\income.xlsx&#39;) 获取当前表对象sh &#x3D; wb.active   获取Excel中所有表名是列表wb.sheetnames 根据名称获取某">
 <meta property="og:type" content="article">
 <meta property="og:title" content="openpyxl">
 <meta property="og:url" content="https://duegin.github.io/2021/09/29/Python/%E7%88%AC%E8%99%AB/openpyxl/index.html">
 <meta property="og:site_name" content="DueGin">
-<meta property="og:description" content="openpyxl 主要方法 创建新excel 创建时会自动创建一张新表 wb &#x3D; openpyxl.Workbook() 加载本地excel文件 wb &#x3D; openpyxl.load_workbook(&#39;e:\python lianxi\income.xlsx&#39;) 获取当前表对象 sh &#x3D; wb.active 获取Excel中所有表名 是列表wb.sheetnames 根据名称获取某个工作表对象">
+<meta property="og:description" content="openpyxl主要方法 创建新excel创建时会自动创建一张新表 wb &#x3D; openpyxl.Workbook()   加载本地excel文件wb &#x3D; openpyxl.load_workbook(&#39;e:\python lianxi\income.xlsx&#39;) 获取当前表对象sh &#x3D; wb.active   获取Excel中所有表名是列表wb.sheetnames 根据名称获取某">
 <meta property="og:locale">
 <meta property="og:image" content="https://duegin.github.io/2021/09/29/Python/%E7%88%AC%E8%99%AB/openpyxl/openpyxl_1.jpg">
 <meta property="og:image" content="https://duegin.github.io/2021/09/29/Python/%E7%88%AC%E8%99%AB/openpyxl/openpyxl_3.jpg">
@@ -389,221 +389,183 @@
       
 
       
-        <h1 id="openpyxl">openpyxl</h1>
-<p><strong>主要方法</strong></p>
-<h2 id="chuang-jian-xin-excel">创建新excel</h2>
-<p>创建时会自动创建一张新表</p>
-<p><code>wb = openpyxl.Workbook()</code></p>
-<h2 id="jia-zai-ben-di-excel-wen-jian">加载本地excel文件</h2>
-<p><code>wb = openpyxl.load_workbook('e:\python lianxi\income.xlsx')</code></p>
-<h2 id="huo-qu-dang-qian-biao-dui-xiang">获取当前表对象</h2>
-<p><code>sh = wb.active</code></p>
-<h2 id="huo-qu-excel-zhong-suo-you-biao-ming">获取Excel中所有表名</h2>
-<p>是列表<code>wb.sheetnames</code></p>
-<h2 id="gen-ju-ming-cheng-huo-qu-mou-ge-gong-zuo-biao-dui-xiang">根据名称获取某个工作表对象</h2>
-<p><code>sh = wb['工资表']</code></p>
-<h2 id="xiu-gai-dang-qian-sheet-de-biao-ti">修改当前 sheet 的标题</h2>
-<p><code>sh.title = '工资表'</code></p>
-<h2 id="huo-qu-dang-qian-gong-zuo-biao-de-biao-ming">获取当前工作表的表名</h2>
-<p><code>sheet_name = sh.title</code></p>
-<h2 id="xin-jian-gong-zuo-biao">新建工作表</h2>
-<p><strong>建在最前：</strong></p>
-<p><code>sh1 = wb.create_sheet('年龄表-最前',0)</code>（0为插入位置）</p>
+        <h1 id="openpyxl"><a href="#openpyxl" class="headerlink" title="openpyxl"></a>openpyxl</h1><p><strong>主要方法</strong></p>
+<h2 id="创建新excel"><a href="#创建新excel" class="headerlink" title="创建新excel"></a>创建新excel</h2><p>创建时会自动创建一张新表</p>
+<p><code>wb = openpyxl.Workbook()</code>  </p>
+<h2 id="加载本地excel文件"><a href="#加载本地excel文件" class="headerlink" title="加载本地excel文件"></a>加载本地excel文件</h2><p><code>wb = openpyxl.load_workbook(&#39;e:\python lianxi\income.xlsx&#39;)</code></p>
+<h2 id="获取当前表对象"><a href="#获取当前表对象" class="headerlink" title="获取当前表对象"></a>获取当前表对象</h2><p><code>sh = wb.active</code>  </p>
+<h2 id="获取Excel中所有表名"><a href="#获取Excel中所有表名" class="headerlink" title="获取Excel中所有表名"></a>获取Excel中所有表名</h2><p>是列表<code>wb.sheetnames</code></p>
+<h2 id="根据名称获取某个工作表对象"><a href="#根据名称获取某个工作表对象" class="headerlink" title="根据名称获取某个工作表对象"></a>根据名称获取某个工作表对象</h2><p><code>sh = wb[&#39;工资表&#39;]</code></p>
+<h2 id="修改当前-sheet-的标题"><a href="#修改当前-sheet-的标题" class="headerlink" title="修改当前 sheet 的标题"></a>修改当前 sheet 的标题</h2><p><code>sh.title = &#39;工资表&#39;</code>  </p>
+<h2 id="获取当前工作表的表名"><a href="#获取当前工作表的表名" class="headerlink" title="获取当前工作表的表名"></a>获取当前工作表的表名</h2><p><code>sheet_name = sh.title</code></p>
+<h2 id="新建工作表"><a href="#新建工作表" class="headerlink" title="新建工作表"></a>新建工作表</h2><p><strong>建在最前：</strong></p>
+<p><code>sh1 = wb.create_sheet(&#39;年龄表-最前&#39;,0)</code>（0为插入位置）</p>
 <p><strong>建在最后：</strong></p>
-<p><code>sh2 = wb.create_sheet('年龄表-最后')</code></p>
-<h2 id="shan-chu-gong-zuo-biao">删除工作表</h2>
-<p>按工作表名字删除</p>
-<p><code>wb.remove('sheet')</code></p>
-<h2 id="xiu-gai-dan-yuan-ge-de-zhi">修改单元格的值</h2>
-<p>三种方法（都一样）</p>
+<p><code>sh2 = wb.create_sheet(&#39;年龄表-最后&#39;)</code>  </p>
+<h2 id="删除工作表"><a href="#删除工作表" class="headerlink" title="删除工作表"></a>删除工作表</h2><p>按工作表名字删除</p>
+<p><code>wb.remove(&#39;sheet&#39;)</code></p>
+<h2 id="修改单元格的值"><a href="#修改单元格的值" class="headerlink" title="修改单元格的值"></a>修改单元格的值</h2><p>三种方法（都一样）</p>
 <ul>
-<li><code>sh['A1'] = '你好'</code></li>
-<li><code>sh['A1'].value= '你好'</code></li>
-<li><code>sh.cell(row,columun).value = '你好'</code></li>
+<li><code>sh[&#39;A1&#39;] = &#39;你好&#39;</code></li>
+<li><code>sh[&#39;A1&#39;].value= &#39;你好&#39;</code></li>
+<li><code>sh.cell(row,columun).value = &#39;你好&#39;</code></li>
 </ul>
 <p>也可以加公式</p>
 <ul>
-<li>
-<p><code>sheet['A6'] = '=SUM(A1:A5)'</code></p>
+<li><p><code>sheet[&#39;A6&#39;] = &#39;=SUM(A1:A5)&#39;</code></p>
 </li>
-<li>
-<p><code>sheet['A6'].value = '=SUM(A1:A5)'</code></p>
+<li><p><code>sheet[&#39;A6&#39;].value = &#39;=SUM(A1:A5)&#39;</code></p>
 </li>
-<li>
-<p><code>sh.cell(row,columun).value = '=SUM(A1:A5)'</code></p>
+<li><p><code>sh.cell(row,columun).value = &#39;=SUM(A1:A5)&#39;</code></p>
 </li>
 </ul>
-<h2 id="huo-qu-dan-yuan-ge-nei-rong">获取单元格内容</h2>
-<p>有两种方法：</p>
+<h2 id="获取单元格内容"><a href="#获取单元格内容" class="headerlink" title="获取单元格内容"></a>获取单元格内容</h2><p>有两种方法：</p>
 <ol>
 <li><code>value = sh.cell(row,column).value</code></li>
-<li><code>value = sh['A2'].value</code></li>
+<li><code>value = sh[&#39;A2&#39;].value</code></li>
 </ol>
-<h2 id="huo-qu-zui-da-xing-he-zui-da-lie">获取最大行和最大列</h2>
-<ul>
-<li>最大行：<code>max_row = sh.max_row</code></li>
-<li>最大列：<code>max_col = sh.max_column</code></li>
+<h2 id="获取最大行和最大列"><a href="#获取最大行和最大列" class="headerlink" title="获取最大行和最大列"></a>获取最大行和最大列</h2><ul>
+<li>最大行：<code>max_row = sh.max_row</code> </li>
+<li>最大列：<code>max_col = sh.max_column</code> </li>
 </ul>
-<h2 id="bao-cun-wen-jian-ke-zhi-ding-lu-jing-bu-zhi-ding-ze-sheng-cheng-zai-cheng-xu-suo-zai-mu-lu">保存文件（可指定路径，不指定则生成在程序所在目录）</h2>
-<p><code>wb.save('信息.xlsx')</code></p>
-<h2 id="cha-ru-xing">插入行</h2>
-<ul>
-<li>
-<p>在第2行的位置插入1行</p>
+<h2 id="保存文件（可指定路径，不指定则生成在程序所在目录）"><a href="#保存文件（可指定路径，不指定则生成在程序所在目录）" class="headerlink" title="保存文件（可指定路径，不指定则生成在程序所在目录）"></a>保存文件（可指定路径，不指定则生成在程序所在目录）</h2><p><code>wb.save(&#39;信息.xlsx&#39;)</code>  </p>
+<h2 id="插入行"><a href="#插入行" class="headerlink" title="插入行"></a>插入行</h2><ul>
+<li><p>在第2行的位置插入1行 </p>
 <p><code>sh.insert_rows(2)</code></p>
 </li>
-<li>
-<p>在第3行的位置插入3行</p>
-<p><code>sh.insert_rows(3,3)</code></p>
+<li><p>在第3行的位置插入3行</p>
+<p> <code>sh.insert_rows(3,3)</code></p>
 </li>
 </ul>
-<h2 id="cha-ru-lie">插入列</h2>
-<ul>
-<li>
-<p>在第2列的位置插入1列</p>
+<h2 id="插入列"><a href="#插入列" class="headerlink" title="插入列"></a>插入列</h2><ul>
+<li><p>在第2列的位置插入1列</p>
 <p><code>sh.insert_cols(2) </code></p>
 </li>
-<li>
-<p>在第2列的位置插入3列</p>
+<li><p>在第2列的位置插入3列</p>
 <p><code>sh.insert_cols(2,3)</code></p>
 </li>
 </ul>
-<h2 id="shan-chu-xing">删除行</h2>
-<ul>
-<li>
-<p>在第2行的位置删除1行</p>
+<h2 id="删除行"><a href="#删除行" class="headerlink" title="删除行"></a>删除行</h2><ul>
+<li><p>在第2行的位置删除1行</p>
 <p><code>sh.delete_rows(2)</code></p>
 </li>
-<li>
-<p>在第3行的位置删除3行</p>
+<li><p>在第3行的位置删除3行</p>
 <p><code>sh.delete_rows(3,3)</code></p>
 </li>
 </ul>
-<h2 id="shan-chu-lie">删除列</h2>
-<ul>
-<li>
-<p>在第2列的位置删除1列</p>
+<h2 id="删除列"><a href="#删除列" class="headerlink" title="删除列"></a>删除列</h2><ul>
+<li><p>在第2列的位置删除1列</p>
 <p><code>sh.delete_cols(2)</code></p>
 </li>
-<li>
-<p>在第3列的位置删除3列</p>
+<li><p>在第3列的位置删除3列</p>
 <p><code>sh.delete_cols(3,3)</code></p>
 </li>
 </ul>
 <p>【注意】</p>
 <p>sheet.cell(row,column)中参数分别是行和列，且必须为整数，如果列为英文字母，可以利用 <strong>openpyxl.utils</strong> 中的 <strong>column_index_from_string</strong>**(char)<strong>进行字母数字的转化。顺便一说，同理也可以利用</strong>get_column_letter(number)**进行数字字母间的转化</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> openpyxl.utils <span class="keyword">import</span> get_column_letter, column_index_from_string</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对列进行字母/数字转化</span></span><br><span class="line">c_num = column_index_from_string(<span class="string">&#x27;B&#x27;</span>)  <span class="comment"># c_num = 2</span></span><br><span class="line">c_char = get_column_letter(<span class="number">5</span>)          <span class="comment"># c_char = &#x27;E‘</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="bian-li-xing-he-lie">遍历行和列</h2>
-<p>在处理Excel表格有时可能需要对表格进行遍历查找，openpyxl中便提供了一个行和列的生成器**(sheet.rows<strong>和</strong>sheet.columns)**,这两个生成器里面是每一行（或列）的数据，每一行（或列）又由一个tuple包裹，借此可以很方便地完成对行和列的遍历</p>
+
+
+
+<h2 id="遍历行和列"><a href="#遍历行和列" class="headerlink" title="遍历行和列"></a>遍历行和列</h2><p>在处理Excel表格有时可能需要对表格进行遍历查找，openpyxl中便提供了一个行和列的生成器**(sheet.rows<strong>和</strong>sheet.columns)**,这两个生成器里面是每一行（或列）的数据，每一行（或列）又由一个tuple包裹，借此可以很方便地完成对行和列的遍历</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对行进行遍历,输出A1,B1,C1 ...</span></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> sheet.rows:</span><br><span class="line">    <span class="comment"># 对当前行的每一个元素进行遍历</span></span><br><span class="line">    <span class="keyword">for</span> cell <span class="keyword">in</span> row:</span><br><span class="line">        <span class="built_in">print</span>(cell.value)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对列进行遍历,输出A1,A2,A3 ...</span></span><br><span class="line"><span class="keyword">for</span> column <span class="keyword">in</span> sheet.columns:</span><br><span class="line">    <span class="comment"># 对当前列的每一个元素进行遍历</span></span><br><span class="line">    <span class="keyword">for</span> cell <span class="keyword">in</span> column:</span><br><span class="line">        <span class="built_in">print</span>(cell.value)</span><br></pre></td></tr></table></figure>
+
+
+
 <p>**list(sheet.rows)[index]**对某一行或列进行遍历</p>
 <p>而在此值得注意的是，由于<code>sheet.rows(或sheet.columns)</code>是生成器类型，是不能直接调用的，需将其转化为一个list类型，然后再通过索引遍历</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对某一特定的行进行遍历</span></span><br><span class="line"><span class="keyword">for</span> cell <span class="keyword">in</span> <span class="built_in">list</span>(sheet.rows)[<span class="number">0</span>]:</span><br><span class="line">    <span class="built_in">print</span>(cell.value)</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 对某一特定的行进行遍历</span></span><br><span class="line"><span class="keyword">for</span> cell <span class="keyword">in</span> <span class="built_in">list</span>(sheet.columns)[<span class="number">0</span>]:</span><br><span class="line">    <span class="built_in">print</span>(cell.value)</span><br></pre></td></tr></table></figure>
+
+
+
 <p>同时，也可以通过使用**sheet[行列值:行列值]**来对给定单元格范围进行遍历</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对某一单元格范围进行遍历</span></span><br><span class="line"><span class="keyword">for</span> spaces <span class="keyword">in</span> sheet[<span class="string">&#x27;A1&#x27;</span>:<span class="string">&#x27;B2&#x27;</span>]:</span><br><span class="line">    <span class="keyword">for</span> cell <span class="keyword">in</span> spaces:</span><br><span class="line">        <span class="built_in">print</span>(cell.value)</span><br></pre></td></tr></table></figure>
-<p>**【注意】**这种方法按行遍历</p>
+
+<p><strong>【注意】</strong>这种方法按行遍历</p>
 <p><img src="/2021/09/29/Python/%E7%88%AC%E8%99%AB/openpyxl/openpyxl_1.jpg" alt="alt a"></p>
-<h2 id="yi-xing-huo-duo-xing-xie-ru">一行或多行写入</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 写入一行</span></span><br><span class="line">row = [<span class="number">1</span> ,<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">sh.append(row)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 写入多行</span></span><br><span class="line">rows = [</span><br><span class="line">    [<span class="string">&#x27;ID&#x27;</span>, <span class="string">&#x27;Name&#x27;</span>, <span class="string">&#x27;Department&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;001&#x27;</span>, <span class="string">&#x27;Lee&#x27;</span>,<span class="string">&#x27;CS&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;002&#x27;</span>, <span class="string">&#x27;John&#x27;</span>,<span class="string">&#x27;MA&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;003&#x27;</span>, <span class="string">&#x27;Amy&#x27;</span>,<span class="string">&#x27;IS&#x27;</span>]</span><br><span class="line">]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> rows:</span><br><span class="line">	sh.append(i)</span><br></pre></td></tr></table></figure>
-<h2 id="she-zhi-dan-yuan-ge-yang-shi">设置单元格样式</h2>
-<h3 id="dao-ru-zi-ti-bian-kuang-yan-se-yi-ji-dui-qi-fang-shi-xiang-guan-ku">导入字体、边框、颜色以及对齐方式相关库</h3>
-<p><code>from openpyxl.styles import Font, Border, Side, PatternFill, colors, Alignment</code></p>
-<h3 id="yi-zi-ti">（一）字体</h3>
-<p>设置字体风格为Times New Roman，大小为16，粗体、斜体，颜色蓝色</p>
-<p><code>sh['A1'].font = Font(name='Times New Roman', size=16, bold=True, italic=True, color=colors.BLUE)</code></p>
+<h2 id="一行或多行写入"><a href="#一行或多行写入" class="headerlink" title="一行或多行写入"></a>一行或多行写入</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 写入一行</span></span><br><span class="line">row = [<span class="number">1</span> ,<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">sh.append(row)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 写入多行</span></span><br><span class="line">rows = [</span><br><span class="line">    [<span class="string">&#x27;ID&#x27;</span>, <span class="string">&#x27;Name&#x27;</span>, <span class="string">&#x27;Department&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;001&#x27;</span>, <span class="string">&#x27;Lee&#x27;</span>,<span class="string">&#x27;CS&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;002&#x27;</span>, <span class="string">&#x27;John&#x27;</span>,<span class="string">&#x27;MA&#x27;</span>],</span><br><span class="line">    [<span class="string">&#x27;003&#x27;</span>, <span class="string">&#x27;Amy&#x27;</span>,<span class="string">&#x27;IS&#x27;</span>]</span><br><span class="line">]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> rows:</span><br><span class="line">	sh.append(i)</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="设置单元格样式"><a href="#设置单元格样式" class="headerlink" title="设置单元格样式"></a>设置单元格样式</h2><h3 id="导入字体、边框、颜色以及对齐方式相关库"><a href="#导入字体、边框、颜色以及对齐方式相关库" class="headerlink" title="导入字体、边框、颜色以及对齐方式相关库"></a>导入字体、边框、颜色以及对齐方式相关库</h3><p><code>from openpyxl.styles import Font, Border, Side, PatternFill, colors, Alignment</code></p>
+<h3 id="（一）字体"><a href="#（一）字体" class="headerlink" title="（一）字体"></a>（一）字体</h3><p>设置字体风格为Times New Roman，大小为16，粗体、斜体，颜色蓝色</p>
+<p><code>sh[&#39;A1&#39;].font = Font(name=&#39;Times New Roman&#39;, size=16, bold=True, italic=True, color=colors.BLUE)</code></p>
 <p>常用参数：</p>
 <ul>
 <li><code>name</code>：字体风格名字</li>
 <li><code>size</code>：字体大小</li>
 <li><code>bold</code>：粗体</li>
 <li><code>italic</code>：斜体</li>
-<li><code>color</code>：颜色，也可以用RGB十六进制如：“FF0000”</li>
+<li><code>color</code>：颜色，也可以用RGB十六进制如：”FF0000”</li>
 </ul>
 <p><img src="/2021/09/29/Python/%E7%88%AC%E8%99%AB/openpyxl/openpyxl_3.jpg" alt="alt 索引颜色"></p>
 <p>还支持旧索引颜色以及主题和色调。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">c = colors.Color(indexed=<span class="number">32</span>)</span><br><span class="line">c = colors.Color(theme=<span class="number">6</span>, tint=<span class="number">0.5</span>)</span><br><span class="line">font = Font(color = c)</span><br></pre></td></tr></table></figure>
-<h3 id="er-dui-qi-fang-shi">（二）对齐方式</h3>
-<p>通过参数horizontal和vertical来设置文字在单元格里的对齐方式，此外设置值还可为left和right</p>
-<p><code>sh['A1'].alignment = Alignment(horizontal='center',vertical='center')</code></p>
+
+
+
+<h3 id="（二）对齐方式"><a href="#（二）对齐方式" class="headerlink" title="（二）对齐方式"></a>（二）对齐方式</h3><p>通过参数horizontal和vertical来设置文字在单元格里的对齐方式，此外设置值还可为left和right</p>
+<p><code>sh[&#39;A1&#39;].alignment = Alignment(horizontal=&#39;center&#39;,vertical=&#39;center&#39;)</code></p>
 <ul>
-<li>
-<p><strong>horizontal</strong>：水平参数</p>
+<li><p><strong>horizontal</strong>：水平参数</p>
 </li>
-<li>
-<p>可选：</p>
+<li><p>可选：</p>
 <ul>
-<li>
-<p><code>'center'</code>：居中</p>
+<li><p><code>&#39;center&#39;</code>：居中</p>
 </li>
-<li>
-<p><code>'fill'</code>：用该单元格的值显示排满整个格（值不变）</p>
+<li><p><code>&#39;fill&#39;</code>：用该单元格的值显示排满整个格（值不变）</p>
 <p><img src="/2021/09/29/Python/%E7%88%AC%E8%99%AB/openpyxl/openpyxl_2.jpg" alt="alt fill"></p>
 </li>
-<li>
-<p><code>'general'</code>：默认</p>
+<li><p><code>&#39;general&#39;</code>：默认</p>
 </li>
-<li>
-<p><code>'left'</code>：左对齐</p>
+<li><p><code>&#39;left&#39;</code>：左对齐</p>
 </li>
-<li>
-<p><code>'justify'</code>：自动换行，水平参数为<strong>默认</strong></p>
+<li><p><code>&#39;justify&#39;</code>：自动换行，水平参数为<strong>默认</strong></p>
 </li>
-<li>
-<p><code>'centerContinuous'</code>：</p>
+<li><p><code>&#39;centerContinuous&#39;</code>：</p>
 </li>
-<li>
-<p><code>'right'</code>：右对齐</p>
+<li><p><code>&#39;right&#39;</code>：右对齐</p>
 </li>
-<li>
-<p><code>'distributed'</code>：自动换行</p>
+<li><p><code>&#39;distributed&#39;</code>：自动换行</p>
 </li>
 </ul>
 </li>
-<li>
-<p><strong>vertical</strong>：竖直参数</p>
+<li><p><strong>vertical</strong>：竖直参数</p>
 </li>
-<li>
-<p>可选：</p>
+<li><p>可选：</p>
 <ul>
-<li><code>'bottom'</code>：底端对齐</li>
-<li><code>'justify'</code>：</li>
+<li><code>&#39;bottom&#39;</code>：底端对齐</li>
+<li> <code>&#39;justify&#39;</code>：</li>
 <li>`` ‘top’`：顶端对齐</li>
-<li><code>'center'</code>：垂直居中</li>
-<li><code>'distributed'</code>：自动换行</li>
+<li><code>&#39;center&#39;</code>：垂直居中</li>
+<li><code>&#39;distributed&#39;</code>：自动换行</li>
 </ul>
 </li>
 </ul>
-<p><strong>【注意】</strong><code>'distributed'</code>、<code>'justify'</code>和<code>'centerContinuous'</code>建议不要使用，避免不必要的错误</p>
-<h3 id="san-bian-kuang">（三）边框</h3>
-<p>首先设置边框四个方向的线条种类</p>
-<p><code>left, right, top, bottom = [Side(style='thin', color='000000')] * 4</code></p>
+<p><strong>【注意】</strong><code>&#39;distributed&#39;</code>、<code>&#39;justify&#39;</code>和<code>&#39;centerContinuous&#39;</code>建议不要使用，避免不必要的错误</p>
+<h3 id="（三）边框"><a href="#（三）边框" class="headerlink" title="（三）边框"></a>（三）边框</h3><p>首先设置边框四个方向的线条种类</p>
+<p><code>left, right, top, bottom = [Side(style=&#39;thin&#39;, color=&#39;000000&#39;)] * 4</code></p>
 <p>再将各方向线条作为参数传入Border方法</p>
-<p><code>sh['C1'].border = Border(left=left, right=right, top=top, bottom=bottom)</code></p>
-<h3 id="si-she-zhi-xing-gao-he-lie-kuan">（四）设置行高和列宽</h3>
-<p>行和列的长度大小可以通过<strong>row_dimensions[序号].height</strong>和<strong>column_dimensions[标号].width</strong>来设置</p>
+<p><code>sh[&#39;C1&#39;].border = Border(left=left, right=right, top=top, bottom=bottom)</code></p>
+<h3 id="（四）设置行高和列宽"><a href="#（四）设置行高和列宽" class="headerlink" title="（四）设置行高和列宽"></a>（四）设置行高和列宽</h3><p>行和列的长度大小可以通过<strong>row_dimensions[序号].height</strong>和<strong>column_dimensions[标号].width</strong>来设置</p>
 <ul>
-<li>
-<p>设置行高</p>
+<li><p>设置行高</p>
 <p><code>sh.row_dimensions[1].height = 25</code></p>
 </li>
-<li>
-<p>设置列宽</p>
-<p><code>sh.column_dimensions['D'].width = 15.5</code></p>
+<li><p>设置列宽</p>
+<p><code>sh.column_dimensions[&#39;D&#39;].width = 15.5</code></p>
 </li>
 </ul>
-<h3 id="wu-he-bing-he-chai-fen-dan-yuan-ge">（五）合并和拆分单元格</h3>
-<ul>
-<li>
-<p>合并单元格</p>
-<p><code>sh.merge_cells('A1:B2')</code></p>
-<p><code>sh.merge_cells('A3:B4')</code></p>
+<h3 id="（五）合并和拆分单元格"><a href="#（五）合并和拆分单元格" class="headerlink" title="（五）合并和拆分单元格"></a>（五）合并和拆分单元格</h3><ul>
+<li><p>合并单元格</p>
+<p><code>sh.merge_cells(&#39;A1:B2&#39;)</code></p>
+<p><code>sh.merge_cells(&#39;A3:B4&#39;)</code></p>
 </li>
-<li>
-<p>拆分单元格</p>
-<p><code>sh.unmerge_cells('A1:B2')</code></p>
+<li><p>拆分单元格</p>
+<p><code>sh.unmerge_cells(&#39;A1:B2&#39;)</code></p>
 </li>
 </ul>
-<p><strong>【注意】<strong>除了对角矩形区域化合并，也可以对一行或一列进行合并，只需相应修改参数即可。不过，这里要注意的是，合并后单元格显示的文本内容是</strong>合并前最左上角单元格的内容</strong>，而其他单元格内容则会自动清除。</p>
+<p><strong>【注意】</strong>除了对角矩形区域化合并，也可以对一行或一列进行合并，只需相应修改参数即可。不过，这里要注意的是，合并后单元格显示的文本内容是<strong>合并前最左上角单元格的内容</strong>，而其他单元格内容则会自动清除。</p>
 
       
     </div>
@@ -792,7 +754,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#openpyxl"><span class="nav-number">1.</span> <span class="nav-text">openpyxl</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#chuang-jian-xin-excel"><span class="nav-number">1.1.</span> <span class="nav-text">创建新excel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jia-zai-ben-di-excel-wen-jian"><span class="nav-number">1.2.</span> <span class="nav-text">加载本地excel文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#huo-qu-dang-qian-biao-dui-xiang"><span class="nav-number">1.3.</span> <span class="nav-text">获取当前表对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#huo-qu-excel-zhong-suo-you-biao-ming"><span class="nav-number">1.4.</span> <span class="nav-text">获取Excel中所有表名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gen-ju-ming-cheng-huo-qu-mou-ge-gong-zuo-biao-dui-xiang"><span class="nav-number">1.5.</span> <span class="nav-text">根据名称获取某个工作表对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xiu-gai-dang-qian-sheet-de-biao-ti"><span class="nav-number">1.6.</span> <span class="nav-text">修改当前 sheet 的标题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#huo-qu-dang-qian-gong-zuo-biao-de-biao-ming"><span class="nav-number">1.7.</span> <span class="nav-text">获取当前工作表的表名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xin-jian-gong-zuo-biao"><span class="nav-number">1.8.</span> <span class="nav-text">新建工作表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shan-chu-gong-zuo-biao"><span class="nav-number">1.9.</span> <span class="nav-text">删除工作表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#xiu-gai-dan-yuan-ge-de-zhi"><span class="nav-number">1.10.</span> <span class="nav-text">修改单元格的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#huo-qu-dan-yuan-ge-nei-rong"><span class="nav-number">1.11.</span> <span class="nav-text">获取单元格内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#huo-qu-zui-da-xing-he-zui-da-lie"><span class="nav-number">1.12.</span> <span class="nav-text">获取最大行和最大列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bao-cun-wen-jian-ke-zhi-ding-lu-jing-bu-zhi-ding-ze-sheng-cheng-zai-cheng-xu-suo-zai-mu-lu"><span class="nav-number">1.13.</span> <span class="nav-text">保存文件（可指定路径，不指定则生成在程序所在目录）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cha-ru-xing"><span class="nav-number">1.14.</span> <span class="nav-text">插入行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cha-ru-lie"><span class="nav-number">1.15.</span> <span class="nav-text">插入列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shan-chu-xing"><span class="nav-number">1.16.</span> <span class="nav-text">删除行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shan-chu-lie"><span class="nav-number">1.17.</span> <span class="nav-text">删除列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bian-li-xing-he-lie"><span class="nav-number">1.18.</span> <span class="nav-text">遍历行和列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#yi-xing-huo-duo-xing-xie-ru"><span class="nav-number">1.19.</span> <span class="nav-text">一行或多行写入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#she-zhi-dan-yuan-ge-yang-shi"><span class="nav-number">1.20.</span> <span class="nav-text">设置单元格样式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#dao-ru-zi-ti-bian-kuang-yan-se-yi-ji-dui-qi-fang-shi-xiang-guan-ku"><span class="nav-number">1.20.1.</span> <span class="nav-text">导入字体、边框、颜色以及对齐方式相关库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#yi-zi-ti"><span class="nav-number">1.20.2.</span> <span class="nav-text">（一）字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#er-dui-qi-fang-shi"><span class="nav-number">1.20.3.</span> <span class="nav-text">（二）对齐方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#san-bian-kuang"><span class="nav-number">1.20.4.</span> <span class="nav-text">（三）边框</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#si-she-zhi-xing-gao-he-lie-kuan"><span class="nav-number">1.20.5.</span> <span class="nav-text">（四）设置行高和列宽</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#wu-he-bing-he-chai-fen-dan-yuan-ge"><span class="nav-number">1.20.6.</span> <span class="nav-text">（五）合并和拆分单元格</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#openpyxl"><span class="nav-number">1.</span> <span class="nav-text">openpyxl</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0excel"><span class="nav-number">1.1.</span> <span class="nav-text">创建新excel</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E6%9C%AC%E5%9C%B0excel%E6%96%87%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">加载本地excel文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E8%A1%A8%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.3.</span> <span class="nav-text">获取当前表对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96Excel%E4%B8%AD%E6%89%80%E6%9C%89%E8%A1%A8%E5%90%8D"><span class="nav-number">1.4.</span> <span class="nav-text">获取Excel中所有表名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E5%90%8D%E7%A7%B0%E8%8E%B7%E5%8F%96%E6%9F%90%E4%B8%AA%E5%B7%A5%E4%BD%9C%E8%A1%A8%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.5.</span> <span class="nav-text">根据名称获取某个工作表对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%BD%93%E5%89%8D-sheet-%E7%9A%84%E6%A0%87%E9%A2%98"><span class="nav-number">1.6.</span> <span class="nav-text">修改当前 sheet 的标题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E5%B7%A5%E4%BD%9C%E8%A1%A8%E7%9A%84%E8%A1%A8%E5%90%8D"><span class="nav-number">1.7.</span> <span class="nav-text">获取当前工作表的表名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E5%B7%A5%E4%BD%9C%E8%A1%A8"><span class="nav-number">1.8.</span> <span class="nav-text">新建工作表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%B7%A5%E4%BD%9C%E8%A1%A8"><span class="nav-number">1.9.</span> <span class="nav-text">删除工作表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E5%8D%95%E5%85%83%E6%A0%BC%E7%9A%84%E5%80%BC"><span class="nav-number">1.10.</span> <span class="nav-text">修改单元格的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%8D%95%E5%85%83%E6%A0%BC%E5%86%85%E5%AE%B9"><span class="nav-number">1.11.</span> <span class="nav-text">获取单元格内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E6%9C%80%E5%A4%A7%E8%A1%8C%E5%92%8C%E6%9C%80%E5%A4%A7%E5%88%97"><span class="nav-number">1.12.</span> <span class="nav-text">获取最大行和最大列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BF%9D%E5%AD%98%E6%96%87%E4%BB%B6%EF%BC%88%E5%8F%AF%E6%8C%87%E5%AE%9A%E8%B7%AF%E5%BE%84%EF%BC%8C%E4%B8%8D%E6%8C%87%E5%AE%9A%E5%88%99%E7%94%9F%E6%88%90%E5%9C%A8%E7%A8%8B%E5%BA%8F%E6%89%80%E5%9C%A8%E7%9B%AE%E5%BD%95%EF%BC%89"><span class="nav-number">1.13.</span> <span class="nav-text">保存文件（可指定路径，不指定则生成在程序所在目录）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E8%A1%8C"><span class="nav-number">1.14.</span> <span class="nav-text">插入行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E5%85%A5%E5%88%97"><span class="nav-number">1.15.</span> <span class="nav-text">插入列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E8%A1%8C"><span class="nav-number">1.16.</span> <span class="nav-text">删除行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A0%E9%99%A4%E5%88%97"><span class="nav-number">1.17.</span> <span class="nav-text">删除列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%8D%E5%8E%86%E8%A1%8C%E5%92%8C%E5%88%97"><span class="nav-number">1.18.</span> <span class="nav-text">遍历行和列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E8%A1%8C%E6%88%96%E5%A4%9A%E8%A1%8C%E5%86%99%E5%85%A5"><span class="nav-number">1.19.</span> <span class="nav-text">一行或多行写入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%8D%95%E5%85%83%E6%A0%BC%E6%A0%B7%E5%BC%8F"><span class="nav-number">1.20.</span> <span class="nav-text">设置单元格样式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E5%85%A5%E5%AD%97%E4%BD%93%E3%80%81%E8%BE%B9%E6%A1%86%E3%80%81%E9%A2%9C%E8%89%B2%E4%BB%A5%E5%8F%8A%E5%AF%B9%E9%BD%90%E6%96%B9%E5%BC%8F%E7%9B%B8%E5%85%B3%E5%BA%93"><span class="nav-number">1.20.1.</span> <span class="nav-text">导入字体、边框、颜色以及对齐方式相关库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E5%AD%97%E4%BD%93"><span class="nav-number">1.20.2.</span> <span class="nav-text">（一）字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E5%AF%B9%E9%BD%90%E6%96%B9%E5%BC%8F"><span class="nav-number">1.20.3.</span> <span class="nav-text">（二）对齐方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E8%BE%B9%E6%A1%86"><span class="nav-number">1.20.4.</span> <span class="nav-text">（三）边框</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E5%9B%9B%EF%BC%89%E8%AE%BE%E7%BD%AE%E8%A1%8C%E9%AB%98%E5%92%8C%E5%88%97%E5%AE%BD"><span class="nav-number">1.20.5.</span> <span class="nav-text">（四）设置行高和列宽</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EF%BC%88%E4%BA%94%EF%BC%89%E5%90%88%E5%B9%B6%E5%92%8C%E6%8B%86%E5%88%86%E5%8D%95%E5%85%83%E6%A0%BC"><span class="nav-number">1.20.6.</span> <span class="nav-text">（五）合并和拆分单元格</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -819,7 +781,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -832,8 +794,6 @@
 
 
 
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 <div>

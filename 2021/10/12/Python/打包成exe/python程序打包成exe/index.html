@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="打包基本命令 打包需要使用pyinstaller 需要用 pip 安装 pip install pyinstaller 简单的打包命令：pyinstaller -F setup.py 这里的 setup.py是你所需要打包的 py 文件 你需要使用 CMD 命令窗口，然后把工作目录转到某个文件夹中，打包时，他会在这个文件夹中生成三个文件。  在 dist 文件夹中就有打包完的 exe 文件，.sp">
+<meta name="description" content="打包基本命令打包需要使用pyinstaller需要用 pip 安装pip install pyinstaller简单的打包命令：pyinstaller -F setup.py这里的 setup.py是你所需要打包的 py 文件 你需要使用 CMD 命令窗口，然后把工作目录转到某个文件夹中，打包时，他会在这个文件夹中生成三个文件。  在 dist 文件夹中就有打包完的 exe 文件，.spec 文件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python程序打包成exe">
 <meta property="og:url" content="https://duegin.github.io/2021/10/12/Python/%E6%89%93%E5%8C%85%E6%88%90exe/python%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E6%88%90exe/index.html">
 <meta property="og:site_name" content="DueGin">
-<meta property="og:description" content="打包基本命令 打包需要使用pyinstaller 需要用 pip 安装 pip install pyinstaller 简单的打包命令：pyinstaller -F setup.py 这里的 setup.py是你所需要打包的 py 文件 你需要使用 CMD 命令窗口，然后把工作目录转到某个文件夹中，打包时，他会在这个文件夹中生成三个文件。  在 dist 文件夹中就有打包完的 exe 文件，.sp">
+<meta property="og:description" content="打包基本命令打包需要使用pyinstaller需要用 pip 安装pip install pyinstaller简单的打包命令：pyinstaller -F setup.py这里的 setup.py是你所需要打包的 py 文件 你需要使用 CMD 命令窗口，然后把工作目录转到某个文件夹中，打包时，他会在这个文件夹中生成三个文件。  在 dist 文件夹中就有打包完的 exe 文件，.spec 文件">
 <meta property="og:locale">
 <meta property="og:image" content="https://duegin.github.io/2021/10/12/Python/%E6%89%93%E5%8C%85%E6%88%90exe/python%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E6%88%90exe/%E6%89%93%E5%8C%85%E5%AE%8C%E7%9A%84%E6%96%87%E4%BB%B6.png">
 <meta property="og:image" content="https://duegin.github.io/2021/10/12/Python/%E6%89%93%E5%8C%85%E6%88%90exe/python%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E6%88%90exe/%E5%AE%8C%E6%95%B4%E5%91%BD%E4%BB%A4.png">
@@ -388,43 +388,31 @@
       
 
       
-        <h1 id="da-bao-ji-ben-ming-ling">打包基本命令</h1>
-<p>打包需要使用<strong>pyinstaller</strong><br>
-需要用 pip 安装<br>
-<code>pip install pyinstaller</code><br>
-简单的打包命令：<code>pyinstaller -F setup.py</code><br>
-这里的 <code>setup.py</code>是你所需要打包的 py 文件</p>
+        <h1 id="打包基本命令"><a href="#打包基本命令" class="headerlink" title="打包基本命令"></a>打包基本命令</h1><p>打包需要使用<strong>pyinstaller</strong><br>需要用 pip 安装<br><code>pip install pyinstaller</code><br>简单的打包命令：<code>pyinstaller -F setup.py</code><br>这里的 <code>setup.py</code>是你所需要打包的 py 文件</p>
 <p>你需要使用 CMD 命令窗口，然后把工作目录转到某个文件夹中，打包时，他会在这个文件夹中生成三个文件。</p>
-<p><img src="/2021/10/12/Python/%E6%89%93%E5%8C%85%E6%88%90exe/python%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E6%88%90exe/%E6%89%93%E5%8C%85%E5%AE%8C%E7%9A%84%E6%96%87%E4%BB%B6.png" alt></p>
-<p>在 <strong>dist</strong> 文件夹中就有打包完的 exe 文件，.spec 文件是打包的缓存文件。<br>
-在 -F 后面可加一些参数</p>
+<p><img src="/2021/10/12/Python/%E6%89%93%E5%8C%85%E6%88%90exe/python%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E6%88%90exe/%E6%89%93%E5%8C%85%E5%AE%8C%E7%9A%84%E6%96%87%E4%BB%B6.png"></p>
+<p>在 <strong>dist</strong> 文件夹中就有打包完的 exe 文件，.spec 文件是打包的缓存文件。<br>在 -F 后面可加一些参数</p>
 <table>
 <thead>
 <tr>
-<th style="text-align:center">命令</th>
-<th style="text-align:center">描述</th>
+<th align="center">命令</th>
+<th align="center">描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">-w</td>
-<td style="text-align:center">执行时不显示命令行窗口</td>
+<tbody><tr>
+<td align="center">-w</td>
+<td align="center">执行时不显示命令行窗口</td>
 </tr>
 <tr>
-<td style="text-align:center">-i xxx.ico</td>
-<td style="text-align:center">指定 exe 文件的图标</td>
+<td align="center">-i xxx.ico</td>
+<td align="center">指定 exe 文件的图标</td>
 </tr>
-</tbody>
-</table>
-<p>这些命令都需要放到<code>-F</code>后面 <a target="_blank" rel="noopener" href="http://setup.py">setup.py</a> 前面</p>
-<p><img src="/2021/10/12/Python/%E6%89%93%E5%8C%85%E6%88%90exe/python%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E6%88%90exe/%E5%AE%8C%E6%95%B4%E5%91%BD%E4%BB%A4.png" alt></p>
-<h1 id="pyinstaller-da-bao-ji-zhi">pyinstaller打包机制</h1>
-<ul>
+</tbody></table>
+<p>这些命令都需要放到<code>-F</code>后面 setup.py 前面</p>
+<p><img src="/2021/10/12/Python/%E6%89%93%E5%8C%85%E6%88%90exe/python%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E6%88%90exe/%E5%AE%8C%E6%95%B4%E5%91%BD%E4%BB%A4.png"></p>
+<h1 id="pyinstaller打包机制"><a href="#pyinstaller打包机制" class="headerlink" title="pyinstaller打包机制"></a>pyinstaller打包机制</h1><ul>
 <li>我们写的python脚本是不能脱离python解释器单独运行的，所以在打包的时候，至少会将python解释器和脚本一起打包，同样，为了打包的exe能正常运行，会把我们所有安装的第三方包一并打包到exe。</li>
-<li>也就是说我们需要确保打包的程序中所使用的模块是 pip 已经安装，否则打包之后的 exe 文件会提示错误，找不到模块。<br>
-可以通过<code>pip list</code>查看<br>
-如：<br>
-<img src="/2021/10/12/Python/%E6%89%93%E5%8C%85%E6%88%90exe/python%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E6%88%90exe/pip_list.jpg" alt></li>
+<li>也就是说我们需要确保打包的程序中所使用的模块是 pip 已经安装，否则打包之后的 exe 文件会提示错误，找不到模块。<br>可以通过<code>pip list</code>查看<br>如：<br><img src="/2021/10/12/Python/%E6%89%93%E5%8C%85%E6%88%90exe/python%E7%A8%8B%E5%BA%8F%E6%89%93%E5%8C%85%E6%88%90exe/pip_list.jpg"></li>
 </ul>
 
       
@@ -612,7 +600,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#da-bao-ji-ben-ming-ling"><span class="nav-number">1.</span> <span class="nav-text">打包基本命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pyinstaller-da-bao-ji-zhi"><span class="nav-number">2.</span> <span class="nav-text">pyinstaller打包机制</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%93%E5%8C%85%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">打包基本命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pyinstaller%E6%89%93%E5%8C%85%E6%9C%BA%E5%88%B6"><span class="nav-number">2.</span> <span class="nav-text">pyinstaller打包机制</span></a></li></ol></div>
             
 
           </div>
@@ -639,7 +627,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -652,8 +640,6 @@
 
 
 
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 <div>

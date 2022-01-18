@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="接口 文件类型选择：Interface 类继承接口需要用：implements而非extends，extends是继承类的关键字 类也可以同时继承类和接口，需先继承类，后继承接口 如：public class Cat extends Animal implements Jumpping &amp;#123;&amp;#125; 特点：   接口里的成员变量只能是常量 public static final int">
+<meta name="description" content="接口文件类型选择：Interface 类继承接口需要用：implements而非extends，extends是继承类的关键字 类也可以同时继承类和接口，需先继承类，后继承接口 如：public class Cat extends Animal implements Jumpping &amp;#123;&amp;#125; 特点：  接口里的成员变量只能是常量 public static final int n">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java接口类型文件">
 <meta property="og:url" content="https://duegin.github.io/2021/10/27/Java/%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B/java%E6%8E%A5%E5%8F%A3/index.html">
 <meta property="og:site_name" content="DueGin">
-<meta property="og:description" content="接口 文件类型选择：Interface 类继承接口需要用：implements而非extends，extends是继承类的关键字 类也可以同时继承类和接口，需先继承类，后继承接口 如：public class Cat extends Animal implements Jumpping &amp;#123;&amp;#125; 特点：   接口里的成员变量只能是常量 public static final int">
+<meta property="og:description" content="接口文件类型选择：Interface 类继承接口需要用：implements而非extends，extends是继承类的关键字 类也可以同时继承类和接口，需先继承类，后继承接口 如：public class Cat extends Animal implements Jumpping &amp;#123;&amp;#125; 特点：  接口里的成员变量只能是常量 public static final int n">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-10-27T12:44:31.000Z">
 <meta property="article:modified_time" content="2021-11-24T12:44:12.223Z">
@@ -384,26 +384,22 @@
       
 
       
-        <h1 id="jie-kou">接口</h1>
-<p>文件类型选择：Interface</p>
+        <h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><p>文件类型选择：Interface</p>
 <p>类继承接口需要用：<code>implements</code>而非<code>extends</code>，extends是继承类的关键字</p>
 <p>类也可以同时继承类和接口，需先继承类，后继承接口</p>
 <p>如：<code>public class Cat extends Animal implements Jumpping &#123;&#125;</code></p>
 <p>特点：</p>
 <ul>
-<li>
-<p>接口里的成员变量只能是常量</p>
+<li><p>接口里的成员变量只能是常量</p>
 <p><code>public static final int num = 10</code></p>
 <p><code>public final int num = 10</code></p>
 <p><code>public int num = 10</code></p>
 <p>这三句都一样，默认修饰符是<code>public static final</code></p>
 </li>
-<li>
-<p>接口中没有构造方法，因为接口主要是对行为进行抽象的，是没有具体存在</p>
+<li><p>接口中没有构造方法，因为接口主要是对行为进行抽象的，是没有具体存在</p>
 <p>一个类如果没有父类，默认继承Object类</p>
 </li>
-<li>
-<p>成员方法</p>
+<li><p>成员方法</p>
 <p>接口中只允许抽象方法</p>
 <p>若接口中不写<code>权限 abstract</code>的话，默认为抽象方法</p>
 <p>如：<code>void show()</code></p>
@@ -412,10 +408,14 @@
 <p>如果实现接口多态</p>
 <p>如：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> <span class="keyword">implements</span> <span class="title">Jumpping</span> </span>&#123;<span class="comment">//里面含有jump方法</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Jumpping j = <span class="keyword">new</span> Cat();</span><br><span class="line">        j.jump();</span><br><span class="line">        <span class="comment">//j.eat();报错</span></span><br><span class="line">        Animal a = <span class="keyword">new</span> Cat();</span><br><span class="line">        a.eat();</span><br><span class="line">        <span class="comment">//a.jump();报错</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>上述两种多态方法一般不用</p>
 <p>因为，在使用时，Jumpping接口和Cat类，Animal类和Cat类都要有的方法才能调用</p>
 <p>即一般使用原始方法：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> <span class="keyword">implements</span> <span class="title">Jumpping</span> </span>&#123;<span class="comment">//里面含有jump方法</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Cat c = <span class="keyword">new</span> Cat();</span><br><span class="line">        c.eat();</span><br><span class="line">        c.jump();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
 
       
     </div>
@@ -446,8 +446,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/10/27/Java/%E8%AF%AD%E6%B3%95%E7%BB%86%E8%8A%82/java%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="next" title="Java抽象类">
-                <i class="fa fa-chevron-left"></i> Java抽象类
+              <a href="/2021/10/26/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Tree/LinkTree/" rel="next" title="链式二叉树">
+                <i class="fa fa-chevron-left"></i> 链式二叉树
               </a>
             
           </div>
@@ -456,8 +456,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/10/28/Java/%E8%AF%AD%E6%B3%95%E7%BB%86%E8%8A%82/static%E5%92%8Cfinal/" rel="prev" title="static和final">
-                static和final <i class="fa fa-chevron-right"></i>
+              <a href="/2021/10/27/Java/%E8%AF%AD%E6%B3%95%E7%BB%86%E8%8A%82/java%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="prev" title="Java抽象类">
+                Java抽象类 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -602,7 +602,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#jie-kou"><span class="nav-number">1.</span> <span class="nav-text">接口</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.</span> <span class="nav-text">接口</span></a></li></ol></div>
             
 
           </div>
@@ -629,7 +629,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -642,8 +642,6 @@
 
 
 
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 <div>

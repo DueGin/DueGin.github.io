@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="树与图遍历 时间复杂度 $O(n+m)$ ， $n$ 表示点数，$m$ 表示边数 深度优先遍历 模板题：AcWing 846. 树的重心 模板： 12345678910int dfs(int u)&amp;#123;    vis[u] &#x3D; true; &#x2F;&#x2F; vis[u] 表示点u已经被遍历过    for (int i &#x3D; h[u]; i !&#x3D; -1; i &#x3D; ne[i])    &amp;#123;">
+<meta name="description" content="树与图遍历时间复杂度 $O(n+m)$ ， $n$ 表示点数，$m$ 表示边数 深度优先遍历模板题：AcWing 846. 树的重心 模板： 12345678910int dfs(int u)&amp;#123;    vis[u] &#x3D; true; &#x2F;&#x2F; vis[u] 表示点u已经被遍历过    for (int i &#x3D; h[u]; i !&#x3D; -1; i &#x3D; ne[i])    &amp;#123;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树与图遍历">
 <meta property="og:url" content="https://duegin.github.io/2021/12/17/%E7%AE%97%E6%B3%95/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/%E6%A0%91%E4%B8%8E%E5%9B%BE%E9%81%8D%E5%8E%86/%E6%A0%91%E4%B8%8E%E5%9B%BE%E9%81%8D%E5%8E%86/index.html">
 <meta property="og:site_name" content="DueGin">
-<meta property="og:description" content="树与图遍历 时间复杂度 $O(n+m)$ ， $n$ 表示点数，$m$ 表示边数 深度优先遍历 模板题：AcWing 846. 树的重心 模板： 12345678910int dfs(int u)&amp;#123;    vis[u] &#x3D; true; &#x2F;&#x2F; vis[u] 表示点u已经被遍历过    for (int i &#x3D; h[u]; i !&#x3D; -1; i &#x3D; ne[i])    &amp;#123;">
+<meta property="og:description" content="树与图遍历时间复杂度 $O(n+m)$ ， $n$ 表示点数，$m$ 表示边数 深度优先遍历模板题：AcWing 846. 树的重心 模板： 12345678910int dfs(int u)&amp;#123;    vis[u] &#x3D; true; &#x2F;&#x2F; vis[u] 表示点u已经被遍历过    for (int i &#x3D; h[u]; i !&#x3D; -1; i &#x3D; ne[i])    &amp;#123;">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-12-16T16:27:03.000Z">
 <meta property="article:modified_time" content="2021-12-16T16:27:28.536Z">
@@ -386,16 +386,21 @@
       
 
       
-        <h1 id="shu-yu-tu-bian-li">树与图遍历</h1>
-<p>时间复杂度 $O(n+m)$ ， $n$ 表示点数，$m$ 表示边数</p>
-<h3 id="shen-du-you-xian-bian-li">深度优先遍历</h3>
-<p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/848/">AcWing 846. 树的重心</a></p>
+        <h1 id="树与图遍历"><a href="#树与图遍历" class="headerlink" title="树与图遍历"></a>树与图遍历</h1><p>时间复杂度 $O(n+m)$ ， $n$ 表示点数，$m$ 表示边数</p>
+<h3 id="深度优先遍历"><a href="#深度优先遍历" class="headerlink" title="深度优先遍历"></a>深度优先遍历</h3><p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/848/">AcWing 846. 树的重心</a></p>
 <p>模板：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vis[u] = <span class="literal">true</span>; <span class="comment">// vis[u] 表示点u已经被遍历过</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = h[u]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> j = e[i];</span><br><span class="line">        <span class="keyword">if</span> (!st[j]) <span class="built_in">dfs</span>(j);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="kuan-du-you-xian-bian-li">宽度优先遍历</h3>
-<p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/849/">AcWing 847. 图中点的层次</a></p>
+
+
+
+<h3 id="宽度优先遍历"><a href="#宽度优先遍历" class="headerlink" title="宽度优先遍历"></a>宽度优先遍历</h3><p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/849/">AcWing 847. 图中点的层次</a></p>
 <p>模板：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">queue&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">vis[<span class="number">1</span>] = <span class="literal">true</span>; <span class="comment">// 表示1号点已经被遍历过</span></span><br><span class="line">q.<span class="built_in">push</span>(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (q.<span class="built_in">size</span>())</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> t = q.<span class="built_in">front</span>();</span><br><span class="line">    q.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = h[t]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> j = e[i];</span><br><span class="line">        <span class="keyword">if</span> (!vis[j])</span><br><span class="line">        &#123;</span><br><span class="line">            vis[j] = <span class="literal">true</span>; <span class="comment">// 表示点j已经被遍历过</span></span><br><span class="line">            q.<span class="built_in">push</span>(j);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
 
       
     </div>
@@ -586,7 +591,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#shu-yu-tu-bian-li"><span class="nav-number">1.</span> <span class="nav-text">树与图遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#shen-du-you-xian-bian-li"><span class="nav-number">1.0.1.</span> <span class="nav-text">深度优先遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kuan-du-you-xian-bian-li"><span class="nav-number">1.0.2.</span> <span class="nav-text">宽度优先遍历</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%91%E4%B8%8E%E5%9B%BE%E9%81%8D%E5%8E%86"><span class="nav-number">1.</span> <span class="nav-text">树与图遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="nav-number">1.0.1.</span> <span class="nav-text">深度优先遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="nav-number">1.0.2.</span> <span class="nav-text">宽度优先遍历</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -613,7 +618,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -626,8 +631,6 @@
 
 
 
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 <div>

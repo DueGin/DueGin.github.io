@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="Scanner 扫描输入文本的一个类 （一）从键盘输入 需包含 import java.util.Scanner 基本方法 1234567891011121314151617181920import java.util.Scanner;Scanner reader &#x3D; new Scanner(System.in);&#x2F;&#x2F;接收byte型数据byte by &#x3D; reader.nextByte();&#x2F;&#x2F;接">
+<meta name="description" content="Scanner扫描输入文本的一个类 （一）从键盘输入需包含 import java.util.Scanner 基本方法1234567891011121314151617181920import java.util.Scanner;Scanner reader &#x3D; new Scanner(System.in);&#x2F;&#x2F;接收byte型数据byte by &#x3D; reader.nextByte();&#x2F;&#x2F;接收in">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Scanner类">
 <meta property="og:url" content="https://duegin.github.io/2021/09/29/Java/Scanner%E7%B1%BB/Scanner%E7%B1%BB/index.html">
 <meta property="og:site_name" content="DueGin">
-<meta property="og:description" content="Scanner 扫描输入文本的一个类 （一）从键盘输入 需包含 import java.util.Scanner 基本方法 1234567891011121314151617181920import java.util.Scanner;Scanner reader &#x3D; new Scanner(System.in);&#x2F;&#x2F;接收byte型数据byte by &#x3D; reader.nextByte();&#x2F;&#x2F;接">
+<meta property="og:description" content="Scanner扫描输入文本的一个类 （一）从键盘输入需包含 import java.util.Scanner 基本方法1234567891011121314151617181920import java.util.Scanner;Scanner reader &#x3D; new Scanner(System.in);&#x2F;&#x2F;接收byte型数据byte by &#x3D; reader.nextByte();&#x2F;&#x2F;接收in">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-09-29T12:23:17.000Z">
 <meta property="article:modified_time" content="2021-11-24T12:43:44.879Z">
@@ -384,35 +384,28 @@
       
 
       
-        <h1 id="scanner">Scanner</h1>
-<p>扫描输入文本的一个类</p>
-<h2 id="yi-cong-jian-pan-shu-ru">（一）从键盘输入</h2>
-<p>需包含 <code>import java.util.Scanner</code></p>
-<h3 id="ji-ben-fang-fa">基本方法</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line">Scanner reader = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line"><span class="comment">//接收byte型数据</span></span><br><span class="line"><span class="keyword">byte</span> by = reader.nextByte();</span><br><span class="line"></span><br><span class="line"><span class="comment">//接收int型的数据</span></span><br><span class="line"><span class="keyword">int</span> in = reader.nextInt();</span><br><span class="line"></span><br><span class="line"><span class="comment">//接收double型数据</span></span><br><span class="line"><span class="keyword">double</span> <span class="keyword">do</span> = reader.nextDouble();</span><br><span class="line"></span><br><span class="line"><span class="comment">//接收float型数据</span></span><br><span class="line"><span class="keyword">float</span> fl = reader.nextFloat();</span><br><span class="line"></span><br><span class="line"><span class="comment">//扫描并接收整行数据，并返回String类型</span></span><br><span class="line">String str1 = reader.nextLine();</span><br><span class="line"></span><br><span class="line"><span class="comment">//扫描至第一个空格或回车前的有效字符，并返回String类型</span></span><br><span class="line">String str2 = reader.next();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        <h1 id="Scanner"><a href="#Scanner" class="headerlink" title="Scanner"></a>Scanner</h1><p>扫描输入文本的一个类</p>
+<h2 id="（一）从键盘输入"><a href="#（一）从键盘输入" class="headerlink" title="（一）从键盘输入"></a>（一）从键盘输入</h2><p>需包含 <code>import java.util.Scanner</code></p>
+<h3 id="基本方法"><a href="#基本方法" class="headerlink" title="基本方法"></a>基本方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line">Scanner reader = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line"><span class="comment">//接收byte型数据</span></span><br><span class="line"><span class="keyword">byte</span> by = reader.nextByte();</span><br><span class="line"></span><br><span class="line"><span class="comment">//接收int型的数据</span></span><br><span class="line"><span class="keyword">int</span> in = reader.nextInt();</span><br><span class="line"></span><br><span class="line"><span class="comment">//接收double型数据</span></span><br><span class="line"><span class="keyword">double</span> <span class="keyword">do</span> = reader.nextDouble();</span><br><span class="line"></span><br><span class="line"><span class="comment">//接收float型数据</span></span><br><span class="line"><span class="keyword">float</span> fl = reader.nextFloat();</span><br><span class="line"></span><br><span class="line"><span class="comment">//扫描并接收整行数据，并返回String类型</span></span><br><span class="line">String str1 = reader.nextLine();</span><br><span class="line"></span><br><span class="line"><span class="comment">//扫描至第一个空格或回车前的有效字符，并返回String类型</span></span><br><span class="line">String str2 = reader.next();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p><strong>next()</strong></p>
 <p>在缓冲区中读取到有效字符后才结束输入</p>
 <ol start="2">
-<li>
-<p>对输入有效字符之前遇到的空白，next() 方法会自动将其去掉</p>
+<li><p>对输入有效字符之前遇到的空白，next() 方法会自动将其去掉</p>
 </li>
-<li>
-<p>只有输入有效字符后才将其后面输入的空白作为分隔符或者结束符</p>
+<li><p>只有输入有效字符后才将其后面输入的空白作为分隔符或者结束符</p>
 </li>
-<li>
-<p>next() 不能得到带有空格的字符串</p>
+<li><p>next() 不能得到带有空格的字符串</p>
 </li>
 </ol>
 </blockquote>
 <blockquote>
 <p><strong>nextLine()</strong></p>
 <ol>
-<li>
-<p>以Enter为结束符，也就是说，nextLine() 方法返回的是输入回车之前的所有字符</p>
+<li><p>以Enter为结束符，也就是说，nextLine() 方法返回的是输入回车之前的所有字符</p>
 </li>
-<li>
-<p>可以获得空格符</p>
+<li><p>可以获得空格符</p>
 </li>
 </ol>
 </blockquote>
@@ -429,47 +422,29 @@
 </ul>
 </blockquote>
 <p>当然，<strong>hasNext也可以在后面直接加类型</strong>，像从扫描器读取有效字符一样，如：<code>hasNextDouble()</code>可以判断缓冲区中是否有双精度类型的数据。常用的还有<code>hasNextInt()</code>、<code>hasNextFloat()</code>。</p>
-<h3 id="shi-li">实例</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Example</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入若干个数,每输入一个数用回车确认&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;最后输入一个非数字结束输入操作&quot;</span>);</span><br><span class="line">        Scanner reader=<span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">    	<span class="keyword">double</span> sum=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> m=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(reader.hasNextDouble())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">double</span> x=reader.nextDouble();</span><br><span class="line">            m=m+<span class="number">1</span>;</span><br><span class="line">            sum=sum+x;</span><br><span class="line">        &#125;</span><br><span class="line">            System.out.printf(<span class="string">&quot;%d个数的和为%f\n&quot;</span>,m,sum);</span><br><span class="line">            System.out.printf(<span class="string">&quot;%d个数的平均值是%f\n&quot;</span>,m,sum/m);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="er-shi-yong-scanner-lai-fen-ge-wen-ben">（二）使用Scanner来分割文本</h2>
-<p>默认使用空格分隔</p>
-<p>用<code>s.useDelimiter(&quot;分割字符&quot;)</code>来指定分割方式来分割字符串，（<strong>&quot;</strong>）里填写分割的字符</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Example</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;请输入若干个数,每输入一个数用回车确认&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;最后输入一个非数字结束输入操作&quot;</span>);</span><br><span class="line">        Scanner reader=<span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">    	<span class="keyword">double</span> sum=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> m=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(reader.hasNextDouble())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">double</span> x=reader.nextDouble();</span><br><span class="line">            m=m+<span class="number">1</span>;</span><br><span class="line">            sum=sum+x;</span><br><span class="line">        &#125;</span><br><span class="line">            System.out.printf(<span class="string">&quot;%d个数的和为%f\n&quot;</span>,m,sum);</span><br><span class="line">            System.out.printf(<span class="string">&quot;%d个数的平均值是%f\n&quot;</span>,m,sum/m);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="（二）使用Scanner来分割文本"><a href="#（二）使用Scanner来分割文本" class="headerlink" title="（二）使用Scanner来分割文本"></a>（二）使用Scanner来分割文本</h2><p>默认使用空格分隔</p>
+<p>用<code>s.useDelimiter(&quot;分割字符&quot;)</code>来指定分割方式来分割字符串，（**”**）里填写分割的字符</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Scanner s = <span class="keyword">new</span> Scanner(<span class="string">&quot;123 asdf sd 45 789 sdf asdfl,sdf.sdfl,asdf    ......asdfkl    las&quot;</span>);</span><br><span class="line"><span class="comment">//分割</span></span><br><span class="line"><span class="comment">//s.useDelimiter(&quot; |,|\\.&quot;); </span></span><br><span class="line"><span class="keyword">while</span> (s.hasNext()) &#123; </span><br><span class="line">	System.out.println(s.next()); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>运行结果：</p>
-<p>123<br>
-asdf<br>
-sd<br>
-45<br>
-789<br>
-sdf<br>
-asdfl,sdf.sdfl,asdf<br>
-…asdfkl<br>
-las</p>
+<p>123<br>asdf<br>sd<br>45<br>789<br>sdf<br>asdfl,sdf.sdfl,asdf<br>……asdfkl<br>las</p>
 </blockquote>
 <blockquote>
-<p><strong>将注释行去掉</strong>，使用<strong>空格</strong>或<strong>逗号</strong>或<strong>点号</strong>作为分隔符，输出结果如下：<br>
-123<br>
-asdf<br>
-sd<br>
-45<br>
-789<br>
-sdf<br>
-asdfl<br>
-sdf<br>
-sdfl<br>
-asdf<br>
-asdfkl<br>
-las</p>
+<p><strong>将注释行去掉</strong>，使用<strong>空格</strong>或<strong>逗号</strong>或<strong>点号</strong>作为分隔符，输出结果如下：<br>123<br>asdf<br>sd<br>45<br>789<br>sdf<br>asdfl<br>sdf<br>sdfl<br>asdf<br>asdfkl<br>las </p>
 </blockquote>
-<h2 id="san-shi-yong-scanner-du-qu-bing-fen-xi-wen-ben-wen-jian-hrinfo-txt">（三）使用Scanner读取并分析文本文件：hrinfo.txt</h2>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FileNotFoundException;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">readhuman</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">readfile</span><span class="params">(String filename)</span> </span>&#123;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">   Scanner scanner = <span class="keyword">new</span> Scanner(<span class="keyword">new</span> File(filename));</span><br><span class="line">   scanner.useDelimiter(System.getProperty(<span class="string">&quot;line.separator&quot;</span>));</span><br><span class="line">   <span class="keyword">while</span> (scanner.hasNext()) &#123;</span><br><span class="line">      parseline(scanner.next());</span><br><span class="line">   &#125;</span><br><span class="line">   scanner.close();</span><br><span class="line">&#125;<span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">   System.out.println(e);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">parseline</span><span class="params">(String line)</span> </span>&#123;</span><br><span class="line">    Scanner linescanner = <span class="keyword">new</span> Scanner(line);</span><br><span class="line">    linescanner.www.gzlij.<span class="function">com <span class="title">useDelimiter</span><span class="params">(<span class="string">&quot;,&quot;</span>)</span></span>;</span><br><span class="line">    <span class="comment">//可以修改usedelimiter参数以读取不同分隔符分隔的内容</span></span><br><span class="line">    String name = linescanner.next();</span><br><span class="line">    <span class="keyword">int</span> age = linescanner.nextInt();</span><br><span class="line">    String idate = linescanner.next();</span><br><span class="line">    <span class="keyword">boolean</span> iscertified = linescanner.nextBoolean();</span><br><span class="line">    System.out.println(<span class="string">&quot;姓名：&quot;</span>+name+<span class="string">&quot; ，年龄：&quot;</span>+ age+<span class="string">&quot; ，入司时间：&quot;</span>+ idate+<span class="string">&quot; ，验证标记：&quot;</span>+iscertified );</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (args.length != <span class="number">1</span>) &#123;</span><br><span class="line">   System.err.println(<span class="string">&quot;usage: java readhuman file location&quot;</span>);</span><br><span class="line">   System.exit(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">   readfile(args[<span class="number">0</span>]);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="（三）使用Scanner读取并分析文本文件：hrinfo-txt"><a href="#（三）使用Scanner读取并分析文本文件：hrinfo-txt" class="headerlink" title="（三）使用Scanner读取并分析文本文件：hrinfo.txt"></a>（三）使用Scanner读取并分析文本文件：hrinfo.txt</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.FileNotFoundException;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">readhuman</span> </span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">readfile</span><span class="params">(String filename)</span> </span>&#123;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">   Scanner scanner = <span class="keyword">new</span> Scanner(<span class="keyword">new</span> File(filename));</span><br><span class="line">   scanner.useDelimiter(System.getProperty(<span class="string">&quot;line.separator&quot;</span>));</span><br><span class="line">   <span class="keyword">while</span> (scanner.hasNext()) &#123;</span><br><span class="line">      parseline(scanner.next());</span><br><span class="line">   &#125;</span><br><span class="line">   scanner.close();</span><br><span class="line">&#125;<span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">   System.out.println(e);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">parseline</span><span class="params">(String line)</span> </span>&#123;</span><br><span class="line">    Scanner linescanner = <span class="keyword">new</span> Scanner(line);</span><br><span class="line">    linescanner.www.gzlij.<span class="function">com <span class="title">useDelimiter</span><span class="params">(<span class="string">&quot;,&quot;</span>)</span></span>;</span><br><span class="line">    <span class="comment">//可以修改usedelimiter参数以读取不同分隔符分隔的内容</span></span><br><span class="line">    String name = linescanner.next();</span><br><span class="line">    <span class="keyword">int</span> age = linescanner.nextInt();</span><br><span class="line">    String idate = linescanner.next();</span><br><span class="line">    <span class="keyword">boolean</span> iscertified = linescanner.nextBoolean();</span><br><span class="line">    System.out.println(<span class="string">&quot;姓名：&quot;</span>+name+<span class="string">&quot; ，年龄：&quot;</span>+ age+<span class="string">&quot; ，入司时间：&quot;</span>+ idate+<span class="string">&quot; ，验证标记：&quot;</span>+iscertified );</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (args.length != <span class="number">1</span>) &#123;</span><br><span class="line">   System.err.println(<span class="string">&quot;usage: java readhuman file location&quot;</span>);</span><br><span class="line">   System.exit(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">   readfile(args[<span class="number">0</span>]);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <blockquote>
 <p>运行结果：C:\java&gt;java   readhuman hrinfo.txt</p>
-<p>姓名：老赵 ，年龄：28 ，入司时间：feb-01 ，验证标记：true</p>
-<p>姓名：小竹 ，年龄：22 ，入司时间：dec-03 ，验证标记：false</p>
-<p>姓名：阿波 ，年龄：21 ，入司时间：dec-03 ，验证标记：false</p>
-<p>姓名：凯子，年龄：25 ，入司时间：dec-03 ，验证标记：true</p>
+<p>   姓名：老赵 ，年龄：28 ，入司时间：feb-01 ，验证标记：true</p>
+<p>   姓名：小竹 ，年龄：22 ，入司时间：dec-03 ，验证标记：false</p>
+<p>   姓名：阿波 ，年龄：21 ，入司时间：dec-03 ，验证标记：false</p>
+<p>   姓名：凯子，年龄：25 ，入司时间：dec-03 ，验证标记：true</p>
 </blockquote>
 
       
@@ -657,7 +632,7 @@ las</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#scanner"><span class="nav-number">1.</span> <span class="nav-text">Scanner</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#yi-cong-jian-pan-shu-ru"><span class="nav-number">1.1.</span> <span class="nav-text">（一）从键盘输入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ji-ben-fang-fa"><span class="nav-number">1.1.1.</span> <span class="nav-text">基本方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shi-li"><span class="nav-number">1.1.2.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#er-shi-yong-scanner-lai-fen-ge-wen-ben"><span class="nav-number">1.2.</span> <span class="nav-text">（二）使用Scanner来分割文本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#san-shi-yong-scanner-du-qu-bing-fen-xi-wen-ben-wen-jian-hrinfo-txt"><span class="nav-number">1.3.</span> <span class="nav-text">（三）使用Scanner读取并分析文本文件：hrinfo.txt</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Scanner"><span class="nav-number">1.</span> <span class="nav-text">Scanner</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%88%E4%B8%80%EF%BC%89%E4%BB%8E%E9%94%AE%E7%9B%98%E8%BE%93%E5%85%A5"><span class="nav-number">1.1.</span> <span class="nav-text">（一）从键盘输入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.1.</span> <span class="nav-text">基本方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B"><span class="nav-number">1.1.2.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%88%E4%BA%8C%EF%BC%89%E4%BD%BF%E7%94%A8Scanner%E6%9D%A5%E5%88%86%E5%89%B2%E6%96%87%E6%9C%AC"><span class="nav-number">1.2.</span> <span class="nav-text">（二）使用Scanner来分割文本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EF%BC%88%E4%B8%89%EF%BC%89%E4%BD%BF%E7%94%A8Scanner%E8%AF%BB%E5%8F%96%E5%B9%B6%E5%88%86%E6%9E%90%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6%EF%BC%9Ahrinfo-txt"><span class="nav-number">1.3.</span> <span class="nav-text">（三）使用Scanner读取并分析文本文件：hrinfo.txt</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -684,7 +659,7 @@ las</p>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -697,8 +672,6 @@ las</p>
 
 
 
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 <div>

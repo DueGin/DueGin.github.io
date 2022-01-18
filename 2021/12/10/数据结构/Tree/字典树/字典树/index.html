@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="Trie 字典树 例如：存几个单词“ word ”、“ world ”、“ work ”  存储方式就像是一颗树 每个结点都有一层数组，在第p层，而每个结点son[p][u] 都是存储下一个结点在第几层 假设依次存储三个单词：“abc” ，“abd” ，“acb”  模板： 1234567891011121314151617181920212223242526272829303132int son">
+<meta name="description" content="Trie字典树 例如：存几个单词“ word ”、“ world ”、“ work ”   存储方式就像是一颗树 每个结点都有一层数组，在第p层，而每个结点son[p][u] 都是存储下一个结点在第几层 假设依次存储三个单词：“abc” ，“abd” ，“acb”   模板： 1234567891011121314151617181920212223242526272829303132int so">
 <meta property="og:type" content="article">
 <meta property="og:title" content="字典树">
 <meta property="og:url" content="https://duegin.github.io/2021/12/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Tree/%E5%AD%97%E5%85%B8%E6%A0%91/%E5%AD%97%E5%85%B8%E6%A0%91/index.html">
 <meta property="og:site_name" content="DueGin">
-<meta property="og:description" content="Trie 字典树 例如：存几个单词“ word ”、“ world ”、“ work ”  存储方式就像是一颗树 每个结点都有一层数组，在第p层，而每个结点son[p][u] 都是存储下一个结点在第几层 假设依次存储三个单词：“abc” ，“abd” ，“acb”  模板： 1234567891011121314151617181920212223242526272829303132int son">
+<meta property="og:description" content="Trie字典树 例如：存几个单词“ word ”、“ world ”、“ work ”   存储方式就像是一颗树 每个结点都有一层数组，在第p层，而每个结点son[p][u] 都是存储下一个结点在第几层 假设依次存储三个单词：“abc” ，“abd” ，“acb”   模板： 1234567891011121314151617181920212223242526272829303132int so">
 <meta property="og:locale">
 <meta property="og:image" content="https://duegin.github.io/2021/12/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Tree/%E5%AD%97%E5%85%B8%E6%A0%91/%E5%AD%97%E5%85%B8%E6%A0%91/Tire例子.png">
 <meta property="og:image" content="https://duegin.github.io/2021/12/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Tree/%E5%AD%97%E5%85%B8%E6%A0%91/%E5%AD%97%E5%85%B8%E6%A0%91/Trie.gif">
@@ -389,16 +389,26 @@
       
 
       
-        <h1 id="trie">Trie</h1>
-<p>字典树</p>
+        <h1 id="Trie"><a href="#Trie" class="headerlink" title="Trie"></a>Trie</h1><p>字典树</p>
 <p>例如：存几个单词“ word ”、“ world ”、“ work ”</p>
 <img src="/2021/12/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Tree/%E5%AD%97%E5%85%B8%E6%A0%91/%E5%AD%97%E5%85%B8%E6%A0%91/Tire例子.png" alt="Tire例子" style="zoom: 50%;">
+
 <p>存储方式就像是一颗树</p>
 <p>每个结点都有一层数组，在第p层，而每个结点<code>son[p][u]</code> 都是存储下一个结点在第几层</p>
 <p>假设依次存储三个单词：“abc” ，“abd” ，“acb”</p>
 <img src="/2021/12/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Tree/%E5%AD%97%E5%85%B8%E6%A0%91/%E5%AD%97%E5%85%B8%E6%A0%91/Trie.gif" alt="Trie" style="zoom: 40%;">
+
 <p><strong>模板：</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> son[N][<span class="number">26</span>], cnt[N], idx;</span><br><span class="line"><span class="comment">// 0号点既是根节点，又是空节点</span></span><br><span class="line"><span class="comment">// son[][]存储树中每个节点的下一个节点在第几层</span></span><br><span class="line"><span class="comment">// cnt[]存储以每个节点结尾的单词数量，初始化为0</span></span><br><span class="line"><span class="comment">// idx当前最后一个加进来结点的层数</span></span><br><span class="line"><span class="comment">// 例如：将字母映射成0~25的下标</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 插入一个字符串</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(string s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.<span class="built_in">size</span>(); i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u = s[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">        <span class="keyword">if</span> (!son[p][u]) son[p][u] = ++ idx;</span><br><span class="line">        p = son[p][u]; <span class="comment">//跳转到第p层</span></span><br><span class="line">    &#125;</span><br><span class="line">    cnt[p] ++ ;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查询字符串出现的次数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(string s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.<span class="built_in">size</span>(); i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u = s[i] - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">        <span class="keyword">if</span> (!son[p][u]) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        p = son[p][u];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt[p];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
 
       
     </div>
@@ -589,7 +599,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#trie"><span class="nav-number">1.</span> <span class="nav-text">Trie</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Trie"><span class="nav-number">1.</span> <span class="nav-text">Trie</span></a></li></ol></div>
             
 
           </div>
@@ -616,7 +626,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -629,8 +639,6 @@
 
 
 
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 <div>
