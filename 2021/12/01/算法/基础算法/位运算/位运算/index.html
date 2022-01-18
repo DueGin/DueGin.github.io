@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="位运算求整数$n$二进制的第$k$位结论：n &gt;&gt; k &amp; 1    例子：   10的二进制数是1010   10 &gt;&gt; 1  —&gt;  101   10 &gt;&gt; 2  —&gt;  10   10 &gt;&gt; 3  —&gt;  1   10 &gt;&gt; 4  —&gt;  0   我把它们理解成在前面补零，比如10 &gt;&gt;">
+<meta name="description" content="求整数$n$二进制的第$k$位结论：n &gt;&gt; k &amp; 1    例子：   10的二进制数是1010   10 &gt;&gt; 1  —&gt;  101   10 &gt;&gt; 2  —&gt;  10   10 &gt;&gt; 3  —&gt;  1   10 &gt;&gt; 4  —&gt;  0   我把它们理解成在前面补零，比如10 &gt;&gt; 2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="位运算">
 <meta property="og:url" content="https://duegin.github.io/2021/12/01/%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E4%BD%8D%E8%BF%90%E7%AE%97/%E4%BD%8D%E8%BF%90%E7%AE%97/index.html">
 <meta property="og:site_name" content="DueGin">
-<meta property="og:description" content="位运算求整数$n$二进制的第$k$位结论：n &gt;&gt; k &amp; 1    例子：   10的二进制数是1010   10 &gt;&gt; 1  —&gt;  101   10 &gt;&gt; 2  —&gt;  10   10 &gt;&gt; 3  —&gt;  1   10 &gt;&gt; 4  —&gt;  0   我把它们理解成在前面补零，比如10 &gt;&gt;">
+<meta property="og:description" content="求整数$n$二进制的第$k$位结论：n &gt;&gt; k &amp; 1    例子：   10的二进制数是1010   10 &gt;&gt; 1  —&gt;  101   10 &gt;&gt; 2  —&gt;  10   10 &gt;&gt; 3  —&gt;  1   10 &gt;&gt; 4  —&gt;  0   我把它们理解成在前面补零，比如10 &gt;&gt; 2">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-11-30T16:39:17.000Z">
-<meta property="article:modified_time" content="2021-12-19T16:06:09.921Z">
+<meta property="article:modified_time" content="2022-01-18T13:02:24.404Z">
 <meta property="article:author" content="DueGin">
 <meta property="article:tag" content="c++">
 <meta property="article:tag" content="算法">
@@ -386,7 +386,7 @@
       
 
       
-        <h1 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h1><h2 id="求整数-n-二进制的第-k-位"><a href="#求整数-n-二进制的第-k-位" class="headerlink" title="求整数$n$二进制的第$k$位"></a>求整数$n$二进制的第$k$位</h2><p><strong>结论：</strong><code>n &gt;&gt; k &amp; 1</code></p>
+        <h1 id="求整数-n-二进制的第-k-位"><a href="#求整数-n-二进制的第-k-位" class="headerlink" title="求整数$n$二进制的第$k$位"></a>求整数$n$二进制的第$k$位</h1><p><strong>结论：</strong><code>n &gt;&gt; k &amp; 1</code></p>
 <blockquote>
 <p>  例子：</p>
 <p>  10的二进制数是1010</p>
@@ -404,7 +404,7 @@
 <p>  <code>1 &amp; 0 = 0</code></p>
 <p>  <code>0 &amp; 0 = 0</code></p>
 </blockquote>
-<h2 id="求整数二进制中出现1的次数"><a href="#求整数二进制中出现1的次数" class="headerlink" title="求整数二进制中出现1的次数"></a>求整数二进制中出现1的次数</h2><p><strong>结论：</strong></p>
+<h1 id="求整数二进制中出现1的次数"><a href="#求整数二进制中出现1的次数" class="headerlink" title="求整数二进制中出现1的次数"></a>求整数二进制中出现1的次数</h1><p><strong>结论：</strong></p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回最后一位1，包括1后面的所有0</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &amp; -x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
@@ -416,6 +416,32 @@
 <p>  <code>~x = 0100</code></p>
 <p>  <code>~x + 1 = 0101</code></p>
 <p>  即 -11=0101</p>
+</blockquote>
+<h1 id="amp"><a href="#amp" class="headerlink" title="&amp;"></a>&amp;</h1><p>按位与操作，<code>0 &amp; 0 = 0</code>，<code>0 &amp; 1 = 0</code>，<code>1 &amp; 0 = 0</code>，<code>1 &amp; 1 = 1</code></p>
+<p><code>x &amp; 1</code> 可以取最低位</p>
+<blockquote>
+<p>  例如：</p>
+<p>  0 &amp; 1 = 0</p>
+<p>  1 &amp; 1 = 1</p>
+<p>  2 &amp; 1 = 10 &amp; 01 = 0</p>
+<p>  3 &amp; 1 = 11 &amp; 01 = 1</p>
+</blockquote>
+<h1 id><a href="#" class="headerlink" title="^"></a>^</h1><p>异或操作，如果a、b两个值不相同，则异或结果为1。如果a、b两个值相同，异或结果为0。</p>
+<p><code>x ^ 1</code> ==&gt; 可以加1，和减1 操作</p>
+<blockquote>
+<p>  例如：</p>
+<p>  0 ^ 1 = 0 ^ 1 =1</p>
+<p>  1 ^ 1 = 1 ^ 1 = 0</p>
+<p>  2 ^ 1 = 10 ^ 01= 11</p>
+<p>  3 ^ 1 = 11 ^ 01 = 10</p>
+</blockquote>
+<p>以此类推，可以发现 0 和 1，2 和 3，4 和 5，6 和 7，8 和 9，10 和 11 … …为一对</p>
+<p><code>x ^ 0 = x</code> 好像没啥卵用 <code>0 ^ 0</code></p>
+<blockquote>
+<p>  0 ^ 0 = 0</p>
+<p>  1 ^ 0 = 1</p>
+<p>  2 ^ 0 = 10 ^ 00 = 10</p>
+<p>  3 ^ 0 = 11 ^ 00 = 11</p>
 </blockquote>
 
       
@@ -607,7 +633,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97"><span class="nav-number">1.</span> <span class="nav-text">位运算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%82%E6%95%B4%E6%95%B0-n-%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%9A%84%E7%AC%AC-k-%E4%BD%8D"><span class="nav-number">1.1.</span> <span class="nav-text">求整数$n$二进制的第$k$位</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B1%82%E6%95%B4%E6%95%B0%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD%E5%87%BA%E7%8E%B01%E7%9A%84%E6%AC%A1%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">求整数二进制中出现1的次数</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B1%82%E6%95%B4%E6%95%B0-n-%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%9A%84%E7%AC%AC-k-%E4%BD%8D"><span class="nav-number">1.</span> <span class="nav-text">求整数$n$二进制的第$k$位</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B1%82%E6%95%B4%E6%95%B0%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%AD%E5%87%BA%E7%8E%B01%E7%9A%84%E6%AC%A1%E6%95%B0"><span class="nav-number">2.</span> <span class="nav-text">求整数二进制中出现1的次数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#amp"><span class="nav-number">3.</span> <span class="nav-text">&amp;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">^</span></a></li></ol></div>
             
 
           </div>
