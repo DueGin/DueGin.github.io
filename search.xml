@@ -3984,40 +3984,25 @@
 <p>  设 $M=m_1 \times m_2 \times … \times m_n = \prod_{i=1}^{n}{m_i}$ ，$M_i=\frac{M}{m_i}$ 是除了<em>m</em>i以外的<em>n</em>- 1个整数的乘积，$M_i^{-1}$ 是 $M_i$ 模 $m_i$ 意义下的逆元。</p>
 <p>  则方程组的通解为</p>
 <p>   $x=a_1M_1M_1^{-1}+a_2M_2M_2^{-1}+…+a_nM_nM_n^{-1}+kM=kM+\sum_{i=1}^{n}a_iM_iM_i^{-1},k∈Z$ </p>
-<p>  在模 $M$ 的意义下，方程组只有一个解：</p>
-<p>  ​                                                                                $$x=(\sum^{n}_{i=1}a_iM_iM_i^{-1}) \ mod \ M$$</p>
-<p>  即：</p>
-<p>  ​                                                                                $$x=(\sum^{n}_{i=1}a_i \frac{M}{m_i} (\frac{M}{m_i})^{-1}) \ mod \ M$$</p>
+<p>  在模 $M$ 的意义下，方程组只有一个解：<br>                                                                               $$x=(\sum^{n}_{i=1}a_iM_iM_i^{-1}) \ mod \ M$$</p>
+<p>即：<br>                                                                                  $$x=(\sum^{n}_{i=1}a_i \frac{M}{m_i} (\frac{M}{m_i})^{-1}) \ mod \ M$$</p>
 </blockquote>
 <p>思路：将多个方程组合为一个方程来求解，即将两个线性同余方程合为一个，以此类推。</p>
 <p>推导：</p>
-<p>首先考虑前两个线性同余方程：</p>
-<p>​                                                                                        $$x≡a_1 \ mod \ m_1$$<br>​                                                                                        $$x≡a_2 \ mod \ m_2$$ </p>
+<p>首先考虑前两个线性同余方程：<br>                                                                                        $$x≡a_1 \ mod \ m_1$$<br>​                                                                                        $$x≡a_2 \ mod \ m_2$$ </p>
 <p>转化为：<br>                                                                                        $$x=m_1⋅k_1+a_1$$<br>                                                                                        $$x=m_2⋅k_2+a_2$$ </p>
 <p>将这两个方程合并移项，可得：<br>                                                                                        $$m_1⋅k_1−m_2⋅k_2=a_2−a_1$$</p>
 <p> 即：<br>                                                                                        $$m_1⋅k_1+m_2⋅(-k_2)=a_2−a_1$$</p>
-<p><strong>这个方程有解必须满足：</strong></p>
-<p>​                                                                                        $$(a_2-a_1)\ % \ d==0$$</p>
-<p>若有解，我们可以通过求<strong>线性同余方程的通解</strong>来得出</p>
-<p>​                                                                                        $$k_1=k_1+\frac{m_2}{d} \cdot k \ ,k∈Z$$</p>
-<p>​                                                                                        $$k_2=k_2+\frac{m_1}{d} \cdot k \ , k∈Z$$</p>
-<p>将 $k_1$ 带回 $x=m_1 \cdot k_1 +a_1$ 得：</p>
-<p>​                                                                                        $$x=k_1 \cdot m_1 +a_1$$</p>
-<p>​                                                                                        $$x=(k_1+k \cdot \frac{m_2}{d}) \cdot m_1 + a_1$$</p>
-<p>展开：</p>
-<p>​                                                                                        $$x=\frac{m_1m_2}{d} \cdot k+k_1m_1+a_1$$</p>
-<p>$\frac{m_1m_2}{d}$ 为 $m_1$ 和 $m_2$  的最小公倍数，即：</p>
-<p>​                                                                                        $$x=[m_1,m_2] \cdot k+k_1m_1+a_1 \ ①$$</p>
-<p>可以发现上面的方程与这方程相类似</p>
-<p>​                                                                                        $$x=m⋅k+a$$</p>
-<p>对比发现：</p>
-<p>​                                                                                        $$m=[m_1,m_2]$$</p>
-<p>​                                                                                        $$a=k_1m_1+a_1$$</p>
+<p><strong>这个方程有解必须满足：</strong><br>                                                                                        $$(a_2-a_1)\ % \ d==0$$</p>
+<p>若有解，我们可以通过求<strong>线性同余方程的通解</strong>来得出<br>                                                                                        $$k_1=k_1+\frac{m_2}{d} \cdot k \ ,k∈Z$$<br>                                                                                        $$k_2=k_2+\frac{m_1}{d} \cdot k \ , k∈Z$$</p>
+<p>将 $k_1$ 带回 $x=m_1 \cdot k_1 +a_1$ 得：<br>                                                                                        $$x=k_1 \cdot m_1 +a_1$$<br>                                                                                        $$x=(k_1+k \cdot \frac{m_2}{d}) \cdot m_1 + a_1$$</p>
+<p>展开：<br>                                                                                        $$x=\frac{m_1m_2}{d} \cdot k+k_1m_1+a_1$$</p>
+<p>$\frac{m_1m_2}{d}$ 为 $m_1$ 和 $m_2$  的最小公倍数，即：<br>                                                                                        $$x=[m_1,m_2] \cdot k+k_1m_1+a_1 \ ①$$</p>
+<p>可以发现上面的方程与这方程相类似<br>                                                                                        $$x=m⋅k+a$$</p>
+<p>对比发现：<br>                                                                                        $$m=[m_1,m_2]$$<br>                                                                                        $$a=k_1m_1+a_1$$</p>
 <p>将得到的方程①与下一个同余方程合并，直到最后只剩一个方程时：$x=m \cdot k+a$</p>
-<p>即求：</p>
-<p>​                                                                                        $$x \ mod \ m ≡ a$$</p>
-<p>即求：</p>
-<p>​                                                                                        $$x=a \ mod \ m$$</p>
+<p>即求：<br>                                                                                        $$x \ mod \ m ≡ a$$</p>
+<p>即求：<br>                                                                                        $$x=a \ mod \ m$$</p>
 <p>最后直接用合并后方程的 $a$ 和 $m$ 求一个最小正整数解即可： $(a % m +m )%m$ </p>
 <p>思路就是按照推导过程去实现</p>
 <p>模板题：<a href="https://www.acwing.com/problem/content/206/">AcWing 204. 表达整数的奇怪方式</a></p>
