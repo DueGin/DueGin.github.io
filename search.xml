@@ -1611,9 +1611,9 @@
       </tags>
   </entry>
   <entry>
-    <title>SeqQueue</title>
+    <title>队列</title>
     <url>/2021/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Queue/SeqQueue/</url>
-    <content><![CDATA[<h1 id="队列Queue"><a href="#队列Queue" class="headerlink" title="队列Queue"></a>队列Queue</h1><ul>
+    <content><![CDATA[<h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><ul>
 <li><p>队列是一种特殊的线性表，特殊之处在于它只允许在表的前端（front）进行删除操作，而在表的后端（rear）进行插入操作，和栈一样，队列是一种操作受限制的线性表</p>
 </li>
 <li><p>进行插入操作的端称为队尾，进行删除操作的端称为队头。队列中没有元素时，称为空队列。</p>
@@ -1623,6 +1623,16 @@
 <li><p>先进先出，像实际生活中的排队</p>
 </li>
 </ul>
+<h1 id="单调队列"><a href="#单调队列" class="headerlink" title="单调队列"></a>单调队列</h1><p>模板题：<a href="https://www.acwing.com/problem/content/156/">AcWing 154. 滑动窗口</a></p>
+<p>模型：找出滑动窗口中的最大值/最小值</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> front = <span class="number">0</span>, rear = <span class="number">-1</span>; <span class="comment">// 队头、队尾指针</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++ )</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span> (front &lt;= rear &amp;&amp; <span class="built_in">check_out</span>(q[front])) front ++ ;  <span class="comment">// 判断队头是否滑出窗口</span></span><br><span class="line">    <span class="keyword">while</span> (front &lt;= rear &amp;&amp; <span class="built_in">check</span>(q[rear], i)) rear -- ;</span><br><span class="line">    q[ ++ rear] = i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>逻辑：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// a[]为需要找的数组，k为滑动窗口大小</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (front &lt;= rear &amp;&amp; i - k + <span class="number">1</span> &gt; q[front]) <span class="comment">// 判断队头是否滑出窗口</span></span><br><span class="line">        front++;</span><br><span class="line">    <span class="keyword">while</span> (front &lt;= rear &amp;&amp; a[i] &lt;= a[q[rear]])</span><br><span class="line">        rear--; <span class="comment">// 清除当前队列中的元素</span></span><br><span class="line">    que[++rear] = i;</span><br><span class="line">    <span class="keyword">if</span> (i &gt;= k - <span class="number">1</span>)</span><br><span class="line">        cout &lt;&lt; a[q[front]] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当找最小值时，队列中队头元素是最小的，依次往后排都是比前一个大的元素，当当前元素<code>a[i]&lt;=</code>队头的最小元素时，循环判断队列中的元素是否有小于<code>a[i]</code>，没有则继续从后向前判断，并将队头出队</p>
 <h1 id="顺序队列"><a href="#顺序队列" class="headerlink" title="顺序队列"></a>顺序队列</h1><p>建立顺序队列结构必须为其静态分配或动态申请一片连续的存储空间，并设置两个指针进行管理。一个是队头指针front，它指向队头元素；另一个是队尾指针rear，它指向下一个入队元素的存储位置</p>
 <p><img src="/2021/10/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Queue/SeqQueue/%E9%A1%BA%E5%BA%8F%E9%98%9F%E5%88%97.png" alt="顺序队列"></p>
 <p>顺序队列中的溢出现象：</p>
@@ -1723,17 +1733,14 @@
 <h3 id="（二）非设置标志方法"><a href="#（二）非设置标志方法" class="headerlink" title="（二）非设置标志方法"></a>（二）<strong>非设置标志方法</strong></h3><p>==实际容量=MaxSize-1==</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">//队列容量上限</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize 5</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Queue</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">//结点内容</span></span><br><span class="line">	string* base;</span><br><span class="line">	<span class="comment">//队头</span></span><br><span class="line">	<span class="keyword">int</span> front;</span><br><span class="line">	<span class="comment">//队尾</span></span><br><span class="line">	<span class="keyword">int</span> rear;</span><br><span class="line">	<span class="comment">//初始化</span></span><br><span class="line">	<span class="built_in">Queue</span>()</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="comment">//给循环队列申请连续内存</span></span><br><span class="line">		base = <span class="keyword">new</span> string[MaxSize];</span><br><span class="line">		<span class="comment">//判断是否创建成功</span></span><br><span class="line">		<span class="keyword">if</span> (!<span class="keyword">this</span>-&gt;base) <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">		<span class="comment">//设置队头和队尾为0</span></span><br><span class="line">		<span class="keyword">this</span>-&gt;front = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">this</span>-&gt;rear = <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//获取长度</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">Qlength</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">//取模求长度</span></span><br><span class="line">		<span class="keyword">int</span> len = (<span class="keyword">this</span>-&gt;rear - <span class="keyword">this</span>-&gt;front + MaxSize) % MaxSize;</span><br><span class="line">		<span class="keyword">return</span> len;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//入队</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">push</span><span class="params">(string data)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">//判断队是否为满</span></span><br><span class="line">		<span class="keyword">if</span> ((<span class="keyword">this</span>-&gt;rear + <span class="number">1</span>) % MaxSize == <span class="keyword">this</span>-&gt;front)</span><br><span class="line">		&#123;</span><br><span class="line">			cout &lt;&lt; <span class="string">&quot;队满&quot;</span> &lt;&lt; endl;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">this</span>-&gt;base[<span class="keyword">this</span>-&gt;rear] = data;</span><br><span class="line">		<span class="comment">//队尾+1</span></span><br><span class="line">		<span class="keyword">this</span>-&gt;rear = (<span class="keyword">this</span>-&gt;rear + <span class="number">1</span>) % MaxSize;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//出队</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">//判断队是否为空</span></span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">this</span>-&gt;front == <span class="keyword">this</span>-&gt;rear)</span><br><span class="line">		&#123;</span><br><span class="line">			cout &lt;&lt; <span class="string">&quot;队为空&quot;</span> &lt;&lt; endl;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;弹出&quot;</span> &lt;&lt; <span class="keyword">this</span>-&gt;base[<span class="keyword">this</span>-&gt;front] &lt;&lt; endl;</span><br><span class="line">		<span class="keyword">this</span>-&gt;front = (<span class="keyword">this</span>-&gt;front + <span class="number">1</span>) % MaxSize;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//获取队头</span></span><br><span class="line">	<span class="function">string <span class="title">get_head</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">this</span>-&gt;front != <span class="keyword">this</span>-&gt;rear)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">this</span>-&gt;base[<span class="keyword">this</span>-&gt;front];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">return</span> <span class="string">&quot;队列为空&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-
-
-<h2 id="Java实现"><a href="#Java实现" class="headerlink" title="Java实现"></a>Java实现</h2><p>pass</p>
 ]]></content>
       <categories>
         <category>数据结构</category>
       </categories>
       <tags>
         <tag>c++</tag>
-        <tag>Queue</tag>
         <tag>数据结构</tag>
+        <tag>队列</tag>
       </tags>
   </entry>
   <entry>
@@ -1834,7 +1841,16 @@
   <entry>
     <title>栈</title>
     <url>/2021/10/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/Stack/%E6%A0%88/</url>
-    <content><![CDATA[<h1 id="栈Stack"><a href="#栈Stack" class="headerlink" title="栈Stack"></a>栈Stack</h1><h1 id="顺序栈"><a href="#顺序栈" class="headerlink" title="顺序栈"></a>顺序栈</h1><ul>
+    <content><![CDATA[<h1 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h1><p>计数方式：</p>
+<ul>
+<li>  将元素留在栈中计数</li>
+</ul>
+<p>模板题： <a href="https://www.acwing.com/problem/content/832/">AcWing 830. 单调栈</a></p>
+<p>模型：找出每个数左边离它最近的比它大/小的数</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> top = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">while</span> (top &amp;&amp; <span class="built_in">check</span>(st[top - <span class="number">1</span>], i)) top -- ;</span><br><span class="line">    st[ ++ top] = i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>check()</code> 就是判断栈顶元素与其他元素之间的关系，与题目有关</p>
+<h1 id="顺序栈"><a href="#顺序栈" class="headerlink" title="顺序栈"></a>顺序栈</h1><ul>
 <li><p>栈（stack）又名堆栈，它是一种运算受限的线性表。</p>
 </li>
 <li><p>限定仅在表尾进行插入和删除操作的线性表。这一端被称为栈顶，相对地，把另一端称为栈底。</p>
@@ -1883,7 +1899,8 @@
       </categories>
       <tags>
         <tag>c++</tag>
-        <tag>SeqStack</tag>
+        <tag>数据结构</tag>
+        <tag>栈</tag>
       </tags>
   </entry>
   <entry>
@@ -2445,16 +2462,24 @@
 
 
 
-<h2 id="（三）维护到祖宗节点距离的并查集："><a href="#（三）维护到祖宗节点距离的并查集：" class="headerlink" title="（三）维护到祖宗节点距离的并查集："></a>（三）维护到祖宗节点距离的并查集：</h2><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> p[N], d[N];</span><br><span class="line"><span class="comment">//p[]存储每个点的祖宗节点, d[x]存储x到p[x]的距离</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回x的祖宗节点</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (p[x] != x)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u = <span class="built_in">find</span>(p[x]); <span class="comment">// u存放x的祖宗结点</span></span><br><span class="line">        d[x] += d[p[x]]; <span class="comment">// x到根结点的距离，距离量视题目情况而定</span></span><br><span class="line">        p[x] = u; <span class="comment">// x的祖宗结点赋值为u</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> p[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化，假定节点编号是1~n</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )</span><br><span class="line">&#123;</span><br><span class="line">    p[i] = i;</span><br><span class="line">    d[i] = <span class="number">0</span>; <span class="comment">//初始化距离都为0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 合并a和b所在的两个集合：</span></span><br><span class="line">p[<span class="built_in">find</span>(a)] = <span class="built_in">find</span>(b);</span><br><span class="line">d[<span class="built_in">find</span>(a)] = distance; <span class="comment">// 根据具体问题，初始化find(a)的偏移量</span></span><br></pre></td></tr></table></figure>
+<h2 id="（三）维护到祖宗节点距离的并查集："><a href="#（三）维护到祖宗节点距离的并查集：" class="headerlink" title="（三）维护到祖宗节点距离的并查集："></a>（三）维护到祖宗节点距离的并查集：</h2><p><strong>有权并查集</strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> p[N], d[N];</span><br><span class="line"><span class="comment">//p[]存储每个点的祖宗节点, d[x]存储x到p[x]的距离</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回x的祖宗节点</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (p[x] != x)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> u = <span class="built_in">find</span>(p[x]); <span class="comment">// u存放x的祖宗结点</span></span><br><span class="line">        d[x] += d[p[x]]; <span class="comment">// x到根结点的距离，距离量视题目情况而定</span></span><br><span class="line">        p[x] = u; <span class="comment">// x的祖宗结点赋值为u</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> p[x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化，假定节点编号是1~n</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )</span><br><span class="line">&#123;</span><br><span class="line">    p[i] = i;</span><br><span class="line">    d[i] = <span class="number">0</span>; <span class="comment">//初始化距离都为0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 合并a和b所在的两个集合：</span></span><br><span class="line">p[<span class="built_in">find</span>(a)] = <span class="built_in">find</span>(b);</span><br><span class="line">d[<span class="built_in">find</span>(a)] = distance; <span class="comment">// 根据具体问题，初始化find(a)的偏移量</span></span><br></pre></td></tr></table></figure>
 
 <p>例题：**<a href="https://www.acwing.com/problem/content/242/">ACWing 240. 食物链</a>**</p>
+<img src="/2021/12/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B6%E6%9F%A5%E9%9B%86/%E5%B9%B6%E6%9F%A5%E9%9B%86/有权并查集同类.png" alt="有权并查集同类" style="zoom:61%;">
+
+<img src="/2021/12/07/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B6%E6%9F%A5%E9%9B%86/%E5%B9%B6%E6%9F%A5%E9%9B%86/有权并查集x吃y.png" alt="有权并查集x吃y" style="zoom:61%;">
+
+<p><code>px</code> 是 <code>x</code> 的祖宗结点，<code>py</code> 是 <code>y</code> 的祖宗节点</p>
+<p><code>d[]</code> 是点到其父节点的距离，其实通过<code>find()</code> 后，他的距离就是到根节点的距离，因为 <code>find()</code> 会路径压缩</p>
+<p> <code>px == py</code> 可以确定俩点在同一个集合，即在这食物链这题中为同类</p>
 ]]></content>
       <categories>
         <category>数据结构</category>
       </categories>
       <tags>
         <tag>c++</tag>
-        <tag>算法</tag>
+        <tag>数据结构</tag>
         <tag>并查集</tag>
       </tags>
   </entry>
