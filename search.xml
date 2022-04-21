@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Test</title>
-    <url>/2021/10/26/test/test/</url>
-    <content><![CDATA[<h1 id="test"><a href="#test" class="headerlink" title="test"></a>test</h1><p><img src="/2021/10/26/test/test/%E4%BA%8C%E7%BB%B4%E5%B7%AE%E5%88%86%E7%9F%A9%E9%98%B5.png" alt="二维差分矩阵"></p>
-]]></content>
-  </entry>
-  <entry>
     <title>STL</title>
     <url>/2021/12/09/C++/STL/STL/</url>
     <content><![CDATA[<h1 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h1><h1 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h1><p>常用的，不多说</p>
@@ -1012,11 +1006,18 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/2022/04/21/C++/valarray/</url>
+    <title>valarry</title>
+    <url>/2022/04/15/C++/valarray/</url>
     <content><![CDATA[<h1 id="valarray模板类"><a href="#valarray模板类" class="headerlink" title="valarray模板类"></a>valarray模板类</h1><p>头文件：<code>valarray</code></p>
 <p>用于处理数值（或具有类似特性的类），它支持诸如将数组中所有元素的值相加以及在数组中找出最大和最小的值等操作。valarray被定义为一个模板类</p>
 ]]></content>
+      <categories>
+        <category>C/C++</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>valarry</tag>
+      </tags>
   </entry>
   <entry>
     <title>左值引用和右值引用</title>
@@ -1149,43 +1150,43 @@
   </entry>
   <entry>
     <title>English</title>
-    <url>/2022/04/21/English/English/</url>
-    <content><![CDATA[<h1 id="非谓语"><a href="#非谓语" class="headerlink" title="非谓语"></a>非谓语</h1><p><img src="/2022/04/21/English/English/图片/Screenshots/屏幕截图(84).png" alt="屏幕截图(84)"></p>
+    <url>/2022/04/04/English/English/</url>
+    <content><![CDATA[<h1 id="非谓语"><a href="#非谓语" class="headerlink" title="非谓语"></a>非谓语</h1><p><img src="/2022/04/04/English/English/图片/Screenshots/屏幕截图(84).png" alt="屏幕截图(84)"></p>
 <h2 id="不定式"><a href="#不定式" class="headerlink" title="不定式"></a>不定式</h2><p>不定式也叫非限定动词，即不像谓语那样，有限定条件，大概可理解为不受时间或人的限制，是不定的状态</p>
 <p>通常的形式为：<code>to + 动词原形</code>，有时候，<code>to</code>也可以省略</p>
-<p><img src="/2022/04/21/English/English/图片/Screenshots/屏幕截图(102).png" alt="屏幕截图(102)"></p>
-<h3 id="作主语"><a href="#作主语" class="headerlink" title="作主语"></a>作主语</h3><p><img src="/2022/04/21/English/English/图片/Screenshots/屏幕截图(106).png" alt="屏幕截图(106)"></p>
+<p><img src="/2022/04/04/English/English/图片/Screenshots/屏幕截图(102).png" alt="屏幕截图(102)"></p>
+<h3 id="作主语"><a href="#作主语" class="headerlink" title="作主语"></a>作主语</h3><p><img src="/2022/04/04/English/English/图片/Screenshots/屏幕截图(106).png" alt="屏幕截图(106)"></p>
 <h3 id="作宾语"><a href="#作宾语" class="headerlink" title="作宾语"></a>作宾语</h3><p>某些动词后面不能直接接不定式：<del>The rabbit ==likes==  ==to eat== carrots</del></p>
 <p>或者用<code>it</code> 作形式宾语</p>
 <p>这里我认为 <code>important</code> 是修饰 <code>it</code> 的形容词</p>
-<p><img src="/2022/04/21/English/English/图片/Screenshots/屏幕截图(107).png" alt="屏幕截图(107)"></p>
+<p><img src="/2022/04/04/English/English/图片/Screenshots/屏幕截图(107).png" alt="屏幕截图(107)"></p>
 <h3 id="作宾补"><a href="#作宾补" class="headerlink" title="作宾补"></a>作宾补</h3><p>谓语动词后接不定时时，有无 <code>to</code> 对语义不影响</p>
-<p><img src="/2022/04/21/English/English/图片/Screenshots/屏幕截图(108).png" alt="屏幕截图(108)"></p>
-<h3 id="作表语"><a href="#作表语" class="headerlink" title="作表语"></a>作表语</h3><p><img src="/2022/04/21/English/English/图片/Screenshots/屏幕截图(109).png" alt="屏幕截图(109)"></p>
+<p><img src="/2022/04/04/English/English/图片/Screenshots/屏幕截图(108).png" alt="屏幕截图(108)"></p>
+<h3 id="作表语"><a href="#作表语" class="headerlink" title="作表语"></a>作表语</h3><p><img src="/2022/04/04/English/English/图片/Screenshots/屏幕截图(109).png" alt="屏幕截图(109)"></p>
 <p><strong>这句话也相当于不定式作主语</strong></p>
-<p><img src="/2022/04/21/English/English/图片/Screenshots/屏幕截图(110).png" alt="屏幕截图(110)"></p>
+<p><img src="/2022/04/04/English/English/图片/Screenshots/屏幕截图(110).png" alt="屏幕截图(110)"></p>
 <h3 id="作定语"><a href="#作定语" class="headerlink" title="作定语"></a>作定语</h3><p>作后置定语修饰 <code>carrots</code>，表示胡萝卜是会被吃的</p>
-<p><img src="/2022/04/21/English/English/图片/Screenshots/屏幕截图(111).png" alt="屏幕截图(111)"></p>
-<h3 id="作状语"><a href="#作状语" class="headerlink" title="作状语"></a>作状语</h3><p><img src="/2022/04/21/English/English/图片/Screenshots/屏幕截图(82).png" alt="屏幕截图(82)"></p>
-<p><img src="/2022/04/21/English/English/图片/Screenshots/屏幕截图(83).png" alt="屏幕截图(83)"></p>
-<p><img src="/2022/04/21/English/English/图片/Screenshots/屏幕截图(87).png" alt="屏幕截图(86)"></p>
+<p><img src="/2022/04/04/English/English/图片/Screenshots/屏幕截图(111).png" alt="屏幕截图(111)"></p>
+<h3 id="作状语"><a href="#作状语" class="headerlink" title="作状语"></a>作状语</h3><p><img src="/2022/04/04/English/English/图片/Screenshots/屏幕截图(82).png" alt="屏幕截图(82)"></p>
+<p><img src="/2022/04/04/English/English/图片/Screenshots/屏幕截图(83).png" alt="屏幕截图(83)"></p>
+<p><img src="/2022/04/04/English/English/图片/Screenshots/屏幕截图(87).png" alt="屏幕截图(86)"></p>
 <h2 id="过去分词"><a href="#过去分词" class="headerlink" title="过去分词"></a>过去分词</h2><p>做表语时：暗含<strong>被动</strong>关系</p>
 <p>并非笼统的定义，<del>过去分词修饰人，现在分词修饰物</del></p>
 <p>需要搞清楚表达的意思是<strong>主动</strong>还是<strong>被动</strong></p>
-<p><img src="/2022/04/21/English/English/图片/Screenshots/屏幕截图(93).png" alt="屏幕截图(93)"></p>
-<p><img src="/2022/04/21/English/English/图片/Screenshots/屏幕截图(94).png" alt="屏幕截图(94)"></p>
-<h3 id="作宾补-1"><a href="#作宾补-1" class="headerlink" title="作宾补"></a>作宾补</h3><p><img src="/2022/04/21/English/English/图片/Screenshots/屏幕截图(95).png" alt="屏幕截图(95)"></p>
-<h3 id="作状语-1"><a href="#作状语-1" class="headerlink" title="作状语"></a>作状语</h3><p><img src="/2022/04/21/English/English/图片/Screenshots/屏幕截图(96).png" alt="屏幕截图(96)"></p>
+<p><img src="/2022/04/04/English/English/图片/Screenshots/屏幕截图(93).png" alt="屏幕截图(93)"></p>
+<p><img src="/2022/04/04/English/English/图片/Screenshots/屏幕截图(94).png" alt="屏幕截图(94)"></p>
+<h3 id="作宾补-1"><a href="#作宾补-1" class="headerlink" title="作宾补"></a>作宾补</h3><p><img src="/2022/04/04/English/English/图片/Screenshots/屏幕截图(95).png" alt="屏幕截图(95)"></p>
+<h3 id="作状语-1"><a href="#作状语-1" class="headerlink" title="作状语"></a>作状语</h3><p><img src="/2022/04/04/English/English/图片/Screenshots/屏幕截图(96).png" alt="屏幕截图(96)"></p>
 <p>区别在于需要搞清楚逻辑主语与非谓语是<strong>主动</strong>还是<strong>被动</strong>关系</p>
-<p><img src="/2022/04/21/English/English/图片/Screenshots/屏幕截图(97).png" alt="屏幕截图(97)"></p>
-<p><img src="/2022/04/21/English/English/图片/Screenshots/屏幕截图(98).png" alt="屏幕截图(98)"></p>
-<h3 id="独立主格"><a href="#独立主格" class="headerlink" title="独立主格"></a>独立主格</h3><p><img src="/2022/04/21/English/English/图片/Screenshots/屏幕截图(99).png" alt="屏幕截图(99)"></p>
-<p><img src="/2022/04/21/English/English/图片/Screenshots/屏幕截图(100).png" alt="屏幕截图(100)"></p>
+<p><img src="/2022/04/04/English/English/图片/Screenshots/屏幕截图(97).png" alt="屏幕截图(97)"></p>
+<p><img src="/2022/04/04/English/English/图片/Screenshots/屏幕截图(98).png" alt="屏幕截图(98)"></p>
+<h3 id="独立主格"><a href="#独立主格" class="headerlink" title="独立主格"></a>独立主格</h3><p><img src="/2022/04/04/English/English/图片/Screenshots/屏幕截图(99).png" alt="屏幕截图(99)"></p>
+<p><img src="/2022/04/04/English/English/图片/Screenshots/屏幕截图(100).png" alt="屏幕截图(100)"></p>
 <h2 id="现在分词"><a href="#现在分词" class="headerlink" title="现在分词"></a>现在分词</h2><p>做表语时：暗含<strong>主动</strong>关系</p>
 <p>做宾补时：暗含正在做的状态</p>
-<p><img src="/2022/04/21/English/English/图片/Screenshots/屏幕截图(91).png" alt="屏幕截图(91)"></p>
-<h2 id="动名词"><a href="#动名词" class="headerlink" title="动名词"></a>动名词</h2><h3 id="作主语-1"><a href="#作主语-1" class="headerlink" title="作主语"></a>作主语</h3><p><img src="/2022/04/21/English/English/图片/Screenshots/屏幕截图(89).png" alt="屏幕截图(89)"></p>
-<h3 id="作表语-1"><a href="#作表语-1" class="headerlink" title="作表语"></a>作表语</h3><p><img src="/2022/04/21/English/English/图片/Screenshots/屏幕截图(90).png" alt="屏幕截图(90)"></p>
+<p><img src="/2022/04/04/English/English/图片/Screenshots/屏幕截图(91).png" alt="屏幕截图(91)"></p>
+<h2 id="动名词"><a href="#动名词" class="headerlink" title="动名词"></a>动名词</h2><h3 id="作主语-1"><a href="#作主语-1" class="headerlink" title="作主语"></a>作主语</h3><p><img src="/2022/04/04/English/English/图片/Screenshots/屏幕截图(89).png" alt="屏幕截图(89)"></p>
+<h3 id="作表语-1"><a href="#作表语-1" class="headerlink" title="作表语"></a>作表语</h3><p><img src="/2022/04/04/English/English/图片/Screenshots/屏幕截图(90).png" alt="屏幕截图(90)"></p>
 <h3 id="作定语-1"><a href="#作定语-1" class="headerlink" title="作定语"></a>作定语</h3>]]></content>
       <categories>
         <category>English</category>
@@ -2626,15 +2627,22 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/2022/04/21/C++/%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0/%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0/</url>
+    <title>内建函数</title>
+    <url>/2022/03/05/C++/%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0/%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<h1 id="统计某个数-x-二进制中有多少个1"><a href="#统计某个数-x-二进制中有多少个1" class="headerlink" title="统计某个数 $x$ 二进制中有多少个1"></a>统计某个数 $x$ 二进制中有多少个1</h1><p><code>__builtin_popcount(unsigned x)</code></p>
 <p><code>__builtin_popcountll(unsigned long long x)</code></p>
 ]]></content>
+      <categories>
+        <category>C/C++</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>内建函数</tag>
+      </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/2022/04/21/C++/%E7%BB%A7%E6%89%BF/%E7%BB%A7%E6%89%BF/</url>
+    <title>C++继承</title>
+    <url>/2022/04/15/C++/%E7%BB%A7%E6%89%BF/%E7%BB%A7%E6%89%BF/</url>
     <content><![CDATA[<p><img src="http://duegin.gitee.io/pic/pictures/cpp/cpp%E7%BB%A7%E6%89%BF.png"></p>
 <h1 id="公有继承"><a href="#公有继承" class="headerlink" title="公有继承"></a>公有继承</h1><p>公有继承不能继承父类的的私有属性，但是可以直接把公有和保护的属性拿过来，作为公有属性。</p>
 <figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Father</span> &#123;</span></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Son</span>:</span> <span class="keyword">public</span> Father &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -2674,6 +2682,13 @@
 
 
 ]]></content>
+      <categories>
+        <category>C/C++</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>继承</tag>
+      </tags>
   </entry>
   <entry>
     <title>python程序打包成exe</title>
@@ -4011,8 +4026,8 @@
       </tags>
   </entry>
   <entry>
-    <title></title>
-    <url>/2022/04/21/%E7%AE%97%E6%B3%95/1.%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E7%A6%BB%E6%95%A3%E5%8C%96/%E7%A6%BB%E6%95%A3%E5%8C%96/</url>
+    <title>离散化</title>
+    <url>/2022/01/14/%E7%AE%97%E6%B3%95/1.%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E7%A6%BB%E6%95%A3%E5%8C%96/%E7%A6%BB%E6%95%A3%E5%8C%96/</url>
     <content><![CDATA[<h1 id="离散化"><a href="#离散化" class="headerlink" title="离散化"></a>离散化</h1><p>离散化是哈希的一种特殊形式，我觉得也是映射，<strong>值映射到下标</strong></p>
 <p>适用于：整个<strong>数据范围跨度很大</strong>，但只用的数据不多，很稀疏</p>
 <p>模板题：<a href="https://www.acwing.com/problem/content/description/804/">AcWing 802. 区间和</a></p>
@@ -4041,6 +4056,13 @@
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>基础算法</category>
+      </categories>
+      <tags>
+        <tag>c++</tag>
+        <tag>算法</tag>
+      </tags>
   </entry>
   <entry>
     <title>KMP算法</title>
@@ -7342,7 +7364,7 @@
   </entry>
   <entry>
     <title>Python爬虫</title>
-    <url>/2022/04/21/Python/Python%E7%88%AC%E8%99%AB/Python%E7%88%AC%E8%99%AB/</url>
+    <url>/2021/09/29/Python/Python%E7%88%AC%E8%99%AB/Python%E7%88%AC%E8%99%AB/</url>
     <content><![CDATA[<h1 id="Python爬虫"><a href="#Python爬虫" class="headerlink" title="Python爬虫"></a>Python爬虫</h1><h2 id="pip"><a href="#pip" class="headerlink" title="pip"></a>pip</h2><p>pip 是 Python 包管理工具，该工具提供了对Python 包的查找、下载、安装、卸载的功能。</p>
 <p>目前如果你在 <a href="https://www.python.org/">python.org</a> 下载最新版本的安装包，则是已经自带了该工具。</p>
 <p><em>注意：Python 2.7.9 + 或 Python 3.4+ 以上版本都自带 pip 工具。</em></p>

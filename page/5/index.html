@@ -287,200 +287,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://duegin.github.io/2021/12/01/%E7%AE%97%E6%B3%95/1.%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E9%AB%98%E7%B2%BE%E5%BA%A6%E7%AE%97%E6%B3%95/%E9%AB%98%E7%B2%BE%E5%BA%A6%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/m.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DueGin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/12/01/%E7%AE%97%E6%B3%95/1.%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E9%AB%98%E7%B2%BE%E5%BA%A6%E7%AE%97%E6%B3%95/%E9%AB%98%E7%B2%BE%E5%BA%A6%E7%AE%97%E6%B3%95/" itemprop="url">高精度算法</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-12-01T21:51:17+08:00">
-                2021-12-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
-                    <span itemprop="name">基础算法</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="高精度算法"><a href="#高精度算法" class="headerlink" title="高精度算法"></a>高精度算法</h1><ul>
-<li>  <code>+</code></li>
-<li>  <code>-</code></li>
-<li>  <code>×</code></li>
-<li>  <code>÷</code></li>
-</ul>
-<p>思路：</p>
-<ul>
-<li>  用字符串接收，转成数组，然后对每一位处理</li>
-<li>  过程模拟用手算的思维</li>
-</ul>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">change</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt; &amp;a, vector&lt;<span class="keyword">int</span>&gt; &amp;b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    string A, B;</span><br><span class="line">    cin &gt;&gt; A &gt;&gt; B;</span><br><span class="line">    <span class="comment">//小端模式（个位在前）</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = A.<span class="built_in">size</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">        a.<span class="built_in">push_back</span>(A[i] - <span class="string">&#x27;0&#x27;</span>); <span class="comment">//比如&quot;1234&quot; --&gt; [4,3,2,1]</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = B.<span class="built_in">size</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">        b.<span class="built_in">push_back</span>(B[i] - <span class="string">&#x27;0&#x27;</span>); <span class="comment">//同理</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>将数组倒序，需要包含头文件<code>#include&lt;algorithm&gt;</code></p>
-<p>调用<code>reverse(a.begin(),a.end())</code></p>
-<p>传进去的参数是数组范围<strong>左闭右开</strong></p>
-<h1 id="高精度加法"><a href="#高精度加法" class="headerlink" title="高精度加法"></a>高精度加法</h1><p><strong>模板</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C = A + B, A &gt;= 0, B &gt;= 0</span></span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">add</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt; &amp;a, vector&lt;<span class="keyword">int</span>&gt; &amp;b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t = <span class="number">0</span>; <span class="comment">//进位标志刚开始肯定是0</span></span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; c;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.<span class="built_in">size</span>() || i &lt; b.<span class="built_in">size</span>(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (i &lt; a.<span class="built_in">size</span>()) <span class="comment">// a还没到尽头就加上</span></span><br><span class="line">            t += a[i];</span><br><span class="line">        <span class="keyword">if</span> (i &lt; b.<span class="built_in">size</span>()) <span class="comment">// b还没到尽头就加上</span></span><br><span class="line">            t += b[i];</span><br><span class="line">        c.<span class="built_in">push_back</span>(t % <span class="number">10</span>); <span class="comment">//加得的数如果大于10，那么只保留个位作为当前位的数字，比如3和13取模10，结果一样是3</span></span><br><span class="line">        t /= <span class="number">10</span>; <span class="comment">// 进位标志</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//扫尾，避免比如20+80=100等类似的情况</span></span><br><span class="line">    <span class="keyword">if</span> (t)</span><br><span class="line">        c.<span class="built_in">push_back</span>(<span class="number">1</span>); </span><br><span class="line">    <span class="keyword">return</span> c; <span class="comment">//返回的是倒序的数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="高精度减法"><a href="#高精度减法" class="headerlink" title="高精度减法"></a>高精度减法</h1><p>减法需要注意的是有负号的问题，所以这里要分开处理，多加一个比较函数，<strong>让大减小，最后答案输出时加上负号</strong></p>
-<p>比较函数参考：</p>
-<p>a大则返回 true</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt; &amp;a, vector&lt;<span class="keyword">int</span>&gt; &amp;b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a.<span class="built_in">size</span>() != b.<span class="built_in">size</span>())</span><br><span class="line">        <span class="keyword">return</span> a.<span class="built_in">size</span>() &gt; b.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = a.<span class="built_in">size</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">        <span class="keyword">if</span> (a[i] != b[i])</span><br><span class="line">            <span class="keyword">return</span> a[i] &gt; b[i];</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>模板</strong></p>
-<p><strong>大（a）减小（b）</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C = A - B, 满足A &gt;= B, A &gt;= 0, B &gt;= 0</span></span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">sub</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt; &amp;a, vector&lt;<span class="keyword">int</span>&gt; &amp;b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t = <span class="number">0</span>;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; c;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.<span class="built_in">size</span>(); i++)</span><br><span class="line">    &#123;</span><br><span class="line">        t = a[i] - t; <span class="comment">// 一开始先减去借位1或0</span></span><br><span class="line">        <span class="keyword">if</span> (i &lt; b.<span class="built_in">size</span>())</span><br><span class="line">            t -= b[i];</span><br><span class="line">        c.<span class="built_in">push_back</span>((t + <span class="number">10</span>) % <span class="number">10</span>); <span class="comment">//当t&lt;10的时候，t%10; 当t&gt;=10的时候，(t+10)%10，比如13和3求余结果都一样</span></span><br><span class="line">        <span class="comment">//判断借位标志</span></span><br><span class="line">        <span class="keyword">if</span> (t &lt; <span class="number">0</span>)</span><br><span class="line">            t = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            t = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//去掉前导0</span></span><br><span class="line">    <span class="keyword">while</span> (c.<span class="built_in">size</span>() &gt; <span class="number">1</span> &amp;&amp; c.<span class="built_in">back</span>() == <span class="number">0</span>) <span class="comment">// a-b的数有可能是==0，那剩余1位数的时候就不能再删掉那个0了</span></span><br><span class="line">        c.<span class="built_in">pop_back</span>();</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果出现负数减法的话，可以转化为加法处理</p>
-<h1 id="加法和减法测试模板"><a href="#加法和减法测试模板" class="headerlink" title="加法和减法测试模板"></a>加法和减法测试模板</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="comment">//比较函数</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt; &amp;a, vector&lt;<span class="keyword">int</span>&gt; &amp;b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a.<span class="built_in">size</span>() != b.<span class="built_in">size</span>())</span><br><span class="line">        <span class="keyword">return</span> a.<span class="built_in">size</span>() &gt; b.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = a.<span class="built_in">size</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">        <span class="keyword">if</span> (a[i] != b[i])</span><br><span class="line">            <span class="keyword">return</span> a[i] &gt; b[i];</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    string A, B;</span><br><span class="line">    cin &gt;&gt; A &gt;&gt; B;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; a, b;</span><br><span class="line">    <span class="comment">//小端模式（个位在前）</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = A.<span class="built_in">size</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">        a.<span class="built_in">push_back</span>(A[i] - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = B.<span class="built_in">size</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">        b.<span class="built_in">push_back</span>(B[i] - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//加法</span></span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; c = <span class="built_in">add</span>(a, b);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = c.<span class="built_in">size</span>() - <span class="number">1</span>;i &gt;= <span class="number">0</span>; i--) cout &lt;&lt; c[i];</span><br><span class="line">    <span class="comment">//减法</span></span><br><span class="line">    <span class="comment">/*if (cmp(a, b))</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        auto c = sub(a, b);</span></span><br><span class="line"><span class="comment">        for (int i = c.size() - 1; i &gt;= 0; i--)</span></span><br><span class="line"><span class="comment">            cout &lt;&lt; c[i];</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    else</span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        auto c = sub(b, a);</span></span><br><span class="line"><span class="comment">        cout &lt;&lt; &quot;-&quot;;</span></span><br><span class="line"><span class="comment">        for (int i = c.size() - 1; i &gt;= 0; i--)</span></span><br><span class="line"><span class="comment">            cout &lt;&lt; c[i];</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h1 id="高精度乘低精度"><a href="#高精度乘低精度" class="headerlink" title="高精度乘低精度"></a>高精度乘低精度</h1><p><strong>模板</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C = A * b, A &gt;= 0, b &gt;= 0</span></span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">mul</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt; &amp;a, <span class="keyword">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; c;</span><br><span class="line">    <span class="keyword">int</span> t = <span class="number">0</span>; <span class="comment">//进位标志</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.<span class="built_in">size</span>() || t; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (i &lt; a.<span class="built_in">size</span>())</span><br><span class="line">            t += a[i] * b; <span class="comment">// 先b*a[i]再+进位标志</span></span><br><span class="line">        c.<span class="built_in">push_back</span>(t % <span class="number">10</span>); <span class="comment">//跟加法一样，留下余数</span></span><br><span class="line">        t /= <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//去除前导0</span></span><br><span class="line">    <span class="keyword">while</span> (c.<span class="built_in">size</span>() &gt; <span class="number">1</span> &amp;&amp; c.<span class="built_in">back</span>() == <span class="number">0</span>)</span><br><span class="line">        c.<span class="built_in">pop_back</span>(); <span class="comment">//比如：12345*0 那结果就是00000</span></span><br><span class="line">    <span class="keyword">return</span> c; <span class="comment">//返回的是倒序结果</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果高精度乘高精度的话，其实可以模拟高精度乘低精度的过程，我是这么想的：取位数比较多的数<code>a[]</code>作为固定的乘数，然后用一层循环，将为位数较少的数<code>b[]</code>，每次取一位数乘<code>a[]</code>，第一次取数时，$b[0]*10^0$，第二次取数时，$b[1]*10^1$，第n-1次取数时，<code>b[i]*pow(10,i)</code>，同样模拟手算过程，然后再用几次高精度加法即可</p>
-<h1 id="高精度除以低精度"><a href="#高精度除以低精度" class="headerlink" title="高精度除以低精度"></a>高精度除以低精度</h1><p><strong>模板</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// A / b = C ... r, A &gt;= 0, b &gt; 0</span></span><br><span class="line"><span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">div</span><span class="params">(vector&lt;<span class="keyword">int</span>&gt; &amp;a, <span class="keyword">int</span> b, <span class="keyword">int</span> &amp;r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; c;</span><br><span class="line">    r = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//从后往前，因为除法从高位开始算起，而后面是高位</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = a.<span class="built_in">size</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">    &#123;</span><br><span class="line">        r = r * <span class="number">10</span> + a[i]; <span class="comment">//下一个被除数就是上一次的商*10再加上下一位数字</span></span><br><span class="line">        c.<span class="built_in">push_back</span>(r / b); <span class="comment">//将商存入</span></span><br><span class="line">        r = r % b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//反转，变成前面是高位</span></span><br><span class="line">    <span class="built_in">reverse</span>(c.<span class="built_in">begin</span>(), c.<span class="built_in">end</span>());</span><br><span class="line">    <span class="comment">//去除前导0</span></span><br><span class="line">    <span class="keyword">while</span> (c.<span class="built_in">size</span>() &gt; <span class="number">1</span> &amp;&amp; c.<span class="built_in">back</span>() == <span class="number">0</span>)</span><br><span class="line">        c.<span class="built_in">pop_back</span>();</span><br><span class="line">    <span class="keyword">return</span> c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="乘法和除法测试模板"><a href="#乘法和除法测试模板" class="headerlink" title="乘法和除法测试模板"></a>乘法和除法测试模板</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    string A;</span><br><span class="line">    <span class="keyword">int</span> b;</span><br><span class="line">    cin &gt;&gt; A &gt;&gt; b;</span><br><span class="line">    vector&lt;<span class="keyword">int</span>&gt; a;</span><br><span class="line">    <span class="comment">//小端方式</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = A.<span class="built_in">size</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">        a.<span class="built_in">push_back</span>(A[i] - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//乘法</span></span><br><span class="line">    <span class="keyword">auto</span> c = <span class="built_in">mul</span>(a, b);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = c.<span class="built_in">size</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">        cout &lt;&lt; c[i];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//除法</span></span><br><span class="line">    <span class="comment">/*int r;//商</span></span><br><span class="line"><span class="comment">    auto c=div(a,b,r);</span></span><br><span class="line"><span class="comment">    for(int i=c.size()-1;i&gt;=0;i--) cout&lt;&lt;c[i];</span></span><br><span class="line"><span class="comment">    cout&lt;&lt;endl&lt;&lt;r;*/</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://duegin.github.io/2021/12/01/%E7%AE%97%E6%B3%95/1.%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E4%BD%8D%E8%BF%90%E7%AE%97/%E4%BD%8D%E8%BF%90%E7%AE%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2504,6 +2310,190 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://duegin.github.io/2021/11/09/%E7%AE%97%E6%B3%95/1.%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%88%86/%E4%BA%8C%E5%88%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/m.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DueGin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/11/09/%E7%AE%97%E6%B3%95/1.%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E4%BA%8C%E5%88%86/%E4%BA%8C%E5%88%86/" itemprop="url">二分查找</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-11-09T20:35:17+08:00">
+                2021-11-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">搜索算法</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Binary-Search"><a href="#Binary-Search" class="headerlink" title="Binary Search"></a>Binary Search</h1><p>应用：</p>
+<ul>
+<li><p>  搜索元素或区间</p>
+</li>
+<li><p>  查找中位数</p>
+</li>
+</ul>
+<p><strong>二分查找核心</strong>：通过不断取数组中间索引来确定收缩搜索区间</p>
+<p>二分法搜索思路：</p>
+<ul>
+<li><p>（一）利用以下公式来确定数组中间索引，left和 right为区间左、右索引</p>
+<p>  <code>int mid = (left + right) / 2</code>  此公式left+right容易溢出</p>
+<p>  所以，使用这公式，以防止溢出</p>
+<p>  <code>int mid = left + (right - left) / 2</code></p>
+</li>
+<li><p>  （二）根据mid处值的判断条件，来确定<strong>向左收缩</strong>还是<strong>向右收缩</strong></p>
+</li>
+</ul>
+<h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;<span class="comment">/* ... */</span>&#125; <span class="comment">// 检查x是否满足某种性质</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找区间左端点</span></span><br><span class="line"><span class="comment">// 区间[l, r]被划分成[l, mid]和[mid + 1, r]时使用：</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bsearch_1</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// if(key &lt;= q[mid]) r = mid;</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check</span>(mid)) r = mid;    <span class="comment">// check()判断mid是否满足性质</span></span><br><span class="line">        <span class="keyword">else</span> l = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找区间右端点</span></span><br><span class="line"><span class="comment">// 区间[l, r]被划分成[l, mid - 1]和[mid, r]时使用：</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bsearch_2</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = l + r + <span class="number">1</span> &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// if(q[mid] &lt;= key) l = mid;</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check</span>(mid)) l = mid;</span><br><span class="line">        <span class="keyword">else</span> r = mid - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述两个板子我认为用 $mid$ 记就好：</p>
+<ul>
+<li><p>  不需要 + 1，则是查找左端点，且 $key &lt;= q[mid]$，</p>
+</li>
+<li><p>  需要 +  1，则是查找右端点，且 $q[mid] &lt;= key$ </p>
+</li>
+</ul>
+<h1 id="边界问题"><a href="#边界问题" class="headerlink" title="边界问题"></a>边界问题</h1><p>在选择查找区间左端点时，mid 一定不能选 r ，因为当只有两个数时，<code>l</code> 指针在左值，mid 和 r 指针在右值，如果这时 <code>mid = l + r + 1 &gt;&gt; 1</code>，即是上取整，那么 mid 还是等于 r 。同理，在查找区间右端点时，mid 如果<code>mid = l + r &gt;&gt; 1</code>，<code>l</code> 和 mid 指针在左值，r 指针在右值，同理，mid一直等于 <code>l</code></p>
+<p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/791/">AcWing 789. 数的范围</a> </p>
+<img src="http://duegin.gitee.io/pic/pictures/1.基础算法/二分端点.png" alt="二分端点" style="zoom:70%;">
+
+<p><strong>上述两个板子分别是查找 $key$ 的左边界和右边界，但还发现了以下性质</strong></p>
+<p>这两个板子，判断条件的意思与查找的值一致</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 查找大于key的第一个数，即右端点的后一个数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bsearch_1</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = l + r &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(key &lt; q[mid]) r = mid; <span class="comment">// 注意这里是 &lt;</span></span><br><span class="line">        <span class="keyword">else</span> l = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 查找小于key的第一个数，即左端点的前一个数</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bsearch_2</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (l &lt; r)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> mid = l + r + <span class="number">1</span> &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(q[mid] &lt; key) l = mid; <span class="comment">// 注意这里是 &lt;</span></span><br><span class="line">        <span class="keyword">else</span> r = mid - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> l;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -2555,7 +2545,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2577,7 +2567,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
