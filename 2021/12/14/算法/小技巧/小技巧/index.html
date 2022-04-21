@@ -87,8 +87,9 @@
 <meta property="og:description" content="小技巧一维转二维s[]: 1 2 3 4 5 6 7 c 8 9 10 11 12345s[4][3]:1  2  3 4  5  67  c  89  10 11  若我们求 $c$ 的坐标 $(x,y)$ ，我们要先知道 $c$ 在一维中的是第 $k$ 个元素，然后可以用一次函数的思想 $y&#x3D;ax+b$ ，因为一次函数是二维的嘛，而这里的 $a$ 可以看作是 s[][] 一层中共有  $a$">
 <meta property="og:locale">
 <meta property="og:image" content="https://duegin.github.io/2021/12/14/%E7%AE%97%E6%B3%95/%E5%B0%8F%E6%8A%80%E5%B7%A7/%E5%B0%8F%E6%8A%80%E5%B7%A7/一次函数.png">
+<meta property="og:image" content="https://duegin.github.io/2021/12/14/%E7%AE%97%E6%B3%95/%E5%B0%8F%E6%8A%80%E5%B7%A7/%E5%B0%8F%E6%8A%80%E5%B7%A7/斜线.png">
 <meta property="article:published_time" content="2021-12-14T14:30:17.000Z">
-<meta property="article:modified_time" content="2021-12-14T14:35:38.370Z">
+<meta property="article:modified_time" content="2022-01-04T13:35:24.327Z">
 <meta property="article:author" content="DueGin">
 <meta property="article:tag" content="c++">
 <meta property="article:tag" content="小技巧">
@@ -403,12 +404,18 @@
 <p><code>s[]:</code> <code>1 2 3 4 5 6 7 c 8 9 10 11</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">s[4][3]:</span><br><span class="line">1  2  3 </span><br><span class="line">4  5  6</span><br><span class="line">7  c  8</span><br><span class="line">9  10 11</span><br></pre></td></tr></table></figure>
 
-<p><code>s[x][y]</code> ，求 x 和 y ：已知 $c$ 在一维数组中的下标 <code>k = 7</code></p>
-<p><code>x = k / a</code><br><code>y = k % a</code></p>
+<p><code>s[x][y]</code> ，求 x 和 y ：已知 $c$ 在二维数组中的下标 <code>x = 2, y = 1</code>，且 <code>a = 3</code></p>
+<p><code>k = a * x + y</code></p>
+<p> 即 <code>k = 3 * 2 + 1 = 7</code></p>
+<p><code>s[k] = c</code></p>
 <blockquote>
-<p>  <code>x = 7 / 3 = 2</code></p>
-<p>  <code>y = 7 % 3 = 1</code></p>
-<p>  <code>s[2][1] = c</code></p>
+<p><code>1 2 3 4 5 6 7 8 9</code></p>
+   <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 2 3</span><br><span class="line">4 5 6</span><br><span class="line">7 8 9</span><br></pre></td></tr></table></figure>
+
+<p>表示二维数组上的斜线上的点的下标，可以用截距 $b$ 表示：<br>右上左下斜线元素下标：<code>b = a * x - y + a</code>     这里 $+a$ 是因为防止相减后为负数<br>左上右下斜线元素下标：<code>b = a * x + y</code></p>
+<p>但不能直接从一维访问数组中直接访问</p>
+<p>右上左下斜线的元素下标：</p>
+<img src="/2021/12/14/%E7%AE%97%E6%B3%95/%E5%B0%8F%E6%8A%80%E5%B7%A7/%E5%B0%8F%E6%8A%80%E5%B7%A7/斜线.png" alt="斜线" style="zoom:61%;">
 </blockquote>
 
       
@@ -442,7 +449,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/12/12/%E7%AE%97%E6%B3%95/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6/%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6/" rel="next" title="区间合并">
+              <a href="/2021/12/12/%E7%AE%97%E6%B3%95/1.%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6/%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6/" rel="next" title="区间合并">
                 <i class="fa fa-chevron-left"></i> 区间合并
               </a>
             
@@ -452,7 +459,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2021/12/17/%E7%AE%97%E6%B3%95/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/" rel="prev" title="最短路径汇总">
+              <a href="/2021/12/17/%E7%AE%97%E6%B3%95/3.%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/" rel="prev" title="最短路径汇总">
                 最短路径汇总 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -533,7 +540,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">72</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -544,7 +551,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -555,7 +562,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">66</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

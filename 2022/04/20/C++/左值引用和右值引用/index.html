@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="c++,引用," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="结论   等号左边是左值，等号右边是右值   std::move(xxx) 可以将左值强制转换为右值引用，且返回一个右值引用，其本身不改变对 xxx 的操控权，且不会对性能有好处，但在实际场景中，右值引用和 std::move 被广泛用于在 STL 和自定义类中实现移动语义，避免拷贝，从而提升程序性能。    对于 &amp;&amp; ，函数返回的必是右值引用类型，而直接声明的变量是左值（包括形">
+<meta property="og:type" content="article">
+<meta property="og:title" content="左值引用和右值引用">
+<meta property="og:url" content="https://duegin.github.io/2022/04/20/C++/%E5%B7%A6%E5%80%BC%E5%BC%95%E7%94%A8%E5%92%8C%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8/index.html">
+<meta property="og:site_name" content="DueGin">
+<meta property="og:description" content="结论   等号左边是左值，等号右边是右值   std::move(xxx) 可以将左值强制转换为右值引用，且返回一个右值引用，其本身不改变对 xxx 的操控权，且不会对性能有好处，但在实际场景中，右值引用和 std::move 被广泛用于在 STL 和自定义类中实现移动语义，避免拷贝，从而提升程序性能。    对于 &amp;&amp; ，函数返回的必是右值引用类型，而直接声明的变量是左值（包括形">
+<meta property="og:locale">
+<meta property="og:image" content="http://duegin.gitee.io/pic/pictures/cpp/%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B.png">
+<meta property="article:published_time" content="2022-04-20T15:39:17.000Z">
+<meta property="article:modified_time" content="2022-04-21T12:50:06.338Z">
+<meta property="article:author" content="DueGin">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="引用">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://duegin.gitee.io/pic/pictures/cpp/%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://duegin.github.io/2022/04/20/C++/左值引用和右值引用/"/>
+
+
+
+
+
+  <title>左值引用和右值引用 | DueGin</title>
+  
+
+
+
+
+
+
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DueGin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/home/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+    
+  
+  
+
+  <article class="post post-type-normal true" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://duegin.github.io/2022/04/20/C++/%E5%B7%A6%E5%80%BC%E5%BC%95%E7%94%A8%E5%92%8C%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/m.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DueGin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">左值引用和右值引用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-04-20T23:39:17+08:00">
+                2022-04-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><ul>
+<li>  等号左边是左值，等号右边是右值</li>
+<li>  <code>std::move(xxx)</code> 可以将左值强制转换为右值引用，且返回一个右值引用，其本身不改变对 xxx 的操控权，且不会对性能有好处，但在实际场景中，右值引用和 <code>std::move</code> 被广泛用于在 STL 和自定义类中<strong>实现移动语义，避免拷贝，从而提升程序性能</strong>。 </li>
+<li>  对于 <code>&amp;&amp;</code> ，函数返回的必是右值引用类型，而直接声明的变量是左值（包括形参列表）</li>
+</ul>
+<h1 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h1><p>先来看一张图</p>
+<p><img src="http://duegin.gitee.io/pic/pictures/cpp/%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B.png"></p>
+<ul>
+<li>  一个 lvalue 是通常可以放在等号左边的表达式，左值</li>
+<li>  一个 rvalue 是通常只能放在等号右边的表达式，右值</li>
+<li>  一个 glvalue 是 generalized lvalue，广义左值</li>
+<li>  一个 xvalue 是 expiring lvalue，将亡值</li>
+<li>  一个 prvalue 是 pure rvalue，纯右值</li>
+</ul>
+<h1 id="一、什么是左值、右值"><a href="#一、什么是左值、右值" class="headerlink" title="一、什么是左值、右值"></a>一、什么是左值、右值</h1><p>首先不考虑引用以减少干扰，可以从2个角度判断：左值（ rvalue ）<strong>可以取地址、位于等号左边</strong>；而右值（ glvalue ）<strong>没法取地址，位于等号右边</strong>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">5</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  a可以通过 &amp; 取地址，位于等号左边，所以a是左值。</li>
+<li>  5位于等号右边，5没法通过 &amp; 取地址，所以5是个右值。</li>
+</ul>
+<h1 id="二、什么是左值引用、右值引用"><a href="#二、什么是左值引用、右值引用" class="headerlink" title="二、什么是左值引用、右值引用"></a>二、什么是左值引用、右值引用</h1><p>引用本质是别名，可以通过引用修改变量的值，传参时传引用可以避免拷贝，其实现原理和指针类似。</p>
+<h2 id="左值引用"><a href="#左值引用" class="headerlink" title="左值引用"></a>左值引用</h2><p><strong>能指向左值，不能指向右值的就是左值引用</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> &amp;ref_a = a; <span class="comment">// 左值引用指向左值，编译通过</span></span><br><span class="line"><span class="keyword">int</span> &amp;ref_a = <span class="number">5</span>; <span class="comment">// 左值引用指向了右值，会编译失败</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>引用是变量的别名，由于右值没有地址，没法被修改，所以左值引用无法指向右值。</strong></p>
+<p>但是，<strong>const左值引用是可以指向右值的：</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> &amp;ref_a = <span class="number">5</span>;  <span class="comment">// 编译通过</span></span><br></pre></td></tr></table></figure>
+
+<p>const左值引用不会修改指向值，因此可以指向右值，这也是为什么要使用<code>const &amp;</code>作为函数参数的原因之一，如<code>std::vector</code>的<code>push_back</code>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">push_back</span> <span class="params">(<span class="keyword">const</span> value_type&amp; val)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果没有<code>const</code>，<code>v.push_back(5)</code>这样的代码就无法编译通过了。</p>
+<h2 id="右值引用"><a href="#右值引用" class="headerlink" title="右值引用"></a>右值引用</h2><p>右值引用的标志是<code>&amp;&amp;</code>，顾名思义，右值引用专门为右值而生，<strong>可以指向右值，不能指向左值</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> &amp;&amp;ref_a_right = <span class="number">5</span>; <span class="comment">// ok</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">int</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> &amp;&amp;ref_a_left = a; <span class="comment">// 编译不过，右值引用不可以指向左值</span></span><br><span class="line"> </span><br><span class="line">ref_a_right = <span class="number">6</span>; <span class="comment">// 右值引用的用途：可以修改右值</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="右值引用也有办法指向左值！"><a href="#右值引用也有办法指向左值！" class="headerlink" title="右值引用也有办法指向左值！"></a>右值引用也有办法指向左值！</h2><p><code>std::move</code>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">5</span>; <span class="comment">// a是个左值</span></span><br><span class="line"><span class="keyword">int</span> &amp;ref_a_left = a; <span class="comment">// 左值引用指向左值</span></span><br><span class="line"><span class="keyword">int</span> &amp;&amp;ref_a_right = std::<span class="built_in">move</span>(a); <span class="comment">// 通过std::move将左值转化为右值，可以被右值引用指向</span></span><br><span class="line"> </span><br><span class="line">cout &lt;&lt; a; <span class="comment">// 打印结果：5</span></span><br></pre></td></tr></table></figure>
+
+<p>在上边的代码里，看上去是左值 <code>a</code> 通过 <code>std::move</code> 移动到了右值 <code>ref_a_right</code> 中，但 <code>a</code> 里边仍有值，且值仍为 5。</p>
+<p>事实上，**<code>std::move</code> 唯一的功能是把左值强制转化为右值**，让右值引用可以指向左值，并没有发生本质上的移动，且单纯的 <strong><code>std::move(xxx)</code> 不会有性能提升</strong>。<br>而下面说的移动构造函数，把值传进去后，传进去的变量的值就没了，是因为传进去的类里面剥夺了这个变量对其内存的控制权。</p>
+<p>同样的，<strong>右值引用能指向右值，本质上也是把右值提升为一个左值</strong>，并定义一个右值引用通过 <code>std::move</code> 指向该左值：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> &amp;&amp;ref_a = <span class="number">5</span>;</span><br><span class="line">ref_a = <span class="number">6</span>; </span><br><span class="line"> </span><br><span class="line">等同于以下代码：</span><br><span class="line"> </span><br><span class="line"><span class="keyword">int</span> temp = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> &amp;&amp;ref_a = std::<span class="built_in">move</span>(temp);</span><br><span class="line">ref_a = <span class="number">6</span>;</span><br></pre></td></tr></table></figure>
+
+<p>可以理解为：<code>std::move(xxx)</code> 将 <code>xxx</code> 转换为一个有名字的右值引用并且返回。</p>
+<h1 id="三、左值引用、右值引用本身是左值还是右值？"><a href="#三、左值引用、右值引用本身是左值还是右值？" class="headerlink" title="三、左值引用、右值引用本身是左值还是右值？"></a>三、左值引用、右值引用本身是左值还是右值？</h1><p><strong>直接声明出来的左、右值引用都是左值；作为函数返回值的 &amp;&amp; 是右值</strong>。 </p>
+<ul>
+<li>  因为被声明出的左右值引用是有地址的，也位于等号左边。</li>
+<li>  而作为函数，例如 <code>std::move</code> 返回的是<strong>右值</strong>引用</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 形参是个右值引用</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">change</span><span class="params">(<span class="keyword">int</span>&amp;&amp; right_value)</span> </span>&#123;</span><br><span class="line">    right_value = <span class="number">8</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">5</span>; <span class="comment">// a是个左值</span></span><br><span class="line">    <span class="keyword">int</span> &amp;ref_a_left = a; <span class="comment">// ref_a_left是个左值引用</span></span><br><span class="line">    <span class="keyword">int</span> &amp;&amp;ref_a_right = std::<span class="built_in">move</span>(a); <span class="comment">// ref_a_right是个右值引用</span></span><br><span class="line"> </span><br><span class="line">    <span class="comment">// change(a); // 编译不过，a是左值，change参数要求右值</span></span><br><span class="line">    <span class="comment">// change(ref_a_left); // 编译不过，左值引用ref_a_left本身也是个左值</span></span><br><span class="line">    <span class="comment">// change(ref_a_right); // 编译不过，右值引用ref_a_right本身也是个左值</span></span><br><span class="line">     </span><br><span class="line">    <span class="built_in">change</span>(std::<span class="built_in">move</span>(a)); <span class="comment">// 编译通过</span></span><br><span class="line">    <span class="built_in">change</span>(std::<span class="built_in">move</span>(ref_a_right)); <span class="comment">// 编译通过</span></span><br><span class="line">    <span class="built_in">change</span>(std::<span class="built_in">move</span>(ref_a_left)); <span class="comment">// 编译通过</span></span><br><span class="line"> </span><br><span class="line">    <span class="built_in">change</span>(<span class="number">5</span>); <span class="comment">// 当然可以直接接右值，编译通过</span></span><br><span class="line">     </span><br><span class="line">    cout &lt;&lt; &amp;a &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    cout &lt;&lt; &amp;ref_a_left &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    cout &lt;&lt; &amp;ref_a_right;</span><br><span class="line">    <span class="comment">// 打印这三个左值的地址，都是一样的</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>或者说：<strong>右值引用既可以是左值也可以是右值，如果有名称则为左值，否则是右值</strong>。</p>
+<p>那这样的话，右值的判定方式：其实引用和普通变量是一样的，<code>int &amp;&amp;ref = std::move(a)</code> 和 <code>int a = 5</code> 没有什么区别，<strong>等号左边就是左值，右边就是右值</strong>。</p>
+<h1 id="四、右值引用在构造函数中产生的性能优化"><a href="#四、右值引用在构造函数中产生的性能优化" class="headerlink" title="四、右值引用在构造函数中产生的性能优化"></a>四、右值引用在构造函数中产生的性能优化</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Array</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Array</span>(<span class="keyword">int</span> size) : <span class="built_in">size_</span>(size) &#123;</span><br><span class="line">        data = <span class="keyword">new</span> <span class="keyword">int</span>[size_];</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="comment">// 深拷贝构造</span></span><br><span class="line">    <span class="built_in">Array</span>(<span class="keyword">const</span> Array&amp; temp_array) &#123;</span><br><span class="line">        size_ = temp_array.size_;</span><br><span class="line">        data_ = <span class="keyword">new</span> <span class="keyword">int</span>[size_];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size_; i ++) &#123;</span><br><span class="line">            data_[i] = temp_array.data_[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">    <span class="comment">// 深拷贝赋值</span></span><br><span class="line">    Array&amp; <span class="keyword">operator</span>=(<span class="keyword">const</span> Array&amp; temp_array) &#123;</span><br><span class="line">        <span class="keyword">delete</span>[] data_;</span><br><span class="line"> </span><br><span class="line">        size_ = temp_array.size_;</span><br><span class="line">        data_ = <span class="keyword">new</span> <span class="keyword">int</span>[size_];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size_; i ++) &#123;</span><br><span class="line">            data_[i] = temp_array.data_[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    ~<span class="built_in">Array</span>() &#123;</span><br><span class="line">        <span class="keyword">delete</span>[] data_;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> *data_;</span><br><span class="line">    <span class="keyword">int</span> size_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>该类的拷贝构造函数、赋值运算符重载函数已经通过使用左值引用传参来避免一次多余拷贝了，但是内部实现要深拷贝，无法避免。但可以实现一个<code>移动构造函数</code>，把被拷贝者的数据移动过来，被拷贝者后边就不要了，这样就可以避免深拷贝了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 移动构造函数，可以浅拷贝</span></span><br><span class="line"><span class="built_in">Array</span>(<span class="keyword">const</span> Array&amp; temp_array, <span class="keyword">bool</span> move) &#123;</span><br><span class="line">    data_ = temp_array.data_;</span><br><span class="line">    size_ = temp_array.size_;</span><br><span class="line">    <span class="comment">// 为防止temp_array析构时delete data，提前置空其data_      </span></span><br><span class="line">    temp_array.data_ = <span class="literal">nullptr</span>; <span class="comment">// 报错，因为const不允许其修改</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果添加一个这样的移动构造函数会有两个问题：</p>
+<ul>
+<li>  在实现移动构造函数时，还需要额外一个参数来表示移动语义</li>
+<li>  无法将被拷贝者置空</li>
+</ul>
+<p>但是右值引用却很好的解决了这个问题：</p>
+<p>可以发现，在STL的很多容器中，都实现了以<strong>右值引用为参数</strong>的 <code>移动构造函数</code> 和 <code>移动赋值重载函数</code>，或者其他函数，最常见的如 <code>std::vector</code> 的 <code>push_back</code> 和 <code>emplace_back</code>。参数为左值引用意味着拷贝，为右值引用意味着移动。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Array</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    ......</span><br><span class="line">    <span class="built_in">Array</span>(Array&amp;&amp; temp_array) &#123;</span><br><span class="line">        data_ = temp_array.data_;</span><br><span class="line">        size_ = temp_array.size_;</span><br><span class="line">        <span class="comment">// 为防止temp_array析构时delete data_，提前置空其data_</span></span><br><span class="line">        temp_array.data_ = <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> *data_;</span><br><span class="line">    <span class="keyword">int</span> size_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h1><p>C++ 的规则是：一个临时对象会在包含这个临时对象的完整表达式估值完成后、按生成顺序的逆序被销毁，<strong>除非有生命周期延长发生</strong>。</p>
+<h3 id="没有生命周期延长的基本情况："><a href="#没有生命周期延长的基本情况：" class="headerlink" title="没有生命周期延长的基本情况："></a>没有生命周期延长的基本情况：</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">process_shape</span>(<span class="built_in">circle</span>(), <span class="built_in">triangle</span>());</span><br></pre></td></tr></table></figure>
+
+<p>我们生成了临时对象，一个圆和一个三角形，它们会在 process_shape 函数执行完成并生成结果对象后被销毁。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">shape</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">shape</span>() &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">circle</span> :</span> <span class="keyword">public</span> shape &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">circle</span>() &#123; <span class="built_in">puts</span>(<span class="string">&quot;circle()&quot;</span>); &#125;</span><br><span class="line">    ~<span class="built_in">circle</span>() &#123; <span class="built_in">puts</span>(<span class="string">&quot;~circle()&quot;</span>); &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">triangle</span> :</span> <span class="keyword">public</span> shape &#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">triangle</span>() &#123; <span class="built_in">puts</span>(<span class="string">&quot;triangle()&quot;</span>); &#125;</span><br><span class="line">    ~<span class="built_in">triangle</span>() &#123; <span class="built_in">puts</span>(<span class="string">&quot;~triangle()&quot;</span>); &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">result</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">result</span>() &#123; <span class="built_in">puts</span>(<span class="string">&quot;result()&quot;</span>); &#125;</span><br><span class="line">    ~<span class="built_in">result</span>() &#123; <span class="built_in">puts</span>(<span class="string">&quot;~result()&quot;</span>); &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">result <span class="title">process_shape</span><span class="params">(<span class="keyword">const</span> shape&amp; shape1,<span class="keyword">const</span> shape&amp; shape2)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;process_shape()&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">result</span>();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;main()&quot;</span>);</span><br><span class="line">    <span class="built_in">process_shape</span>(<span class="built_in">circle</span>(), <span class="built_in">triangle</span>());</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;something else&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<blockquote>
+<p>  main()<br>  circle()<br>  triangle()<br>  process_shape()<br>  <strong>result()<br>  ~result()</strong><br>  ~triangle()<br>  ~circle()<br>  something else</p>
+</blockquote>
+<p>可以发现，结果的临时对象（result）最后生成、最先析构</p>
+<h3 id="生命周期延长的情况："><a href="#生命周期延长的情况：" class="headerlink" title="生命周期延长的情况："></a>生命周期延长的情况：</h3><p>为了方便对临时对象的使用，C++ 对临时对象有特殊的生命周期延长规则。这条规则是：</p>
+<blockquote>
+<p>  如果一个 prvalue 被绑定到一个引用上，它的生命周期则会<strong>延长到跟这个引用变量一样长</strong>。</p>
+</blockquote>
+<p>若改成这样：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result&amp;&amp; r = <span class="built_in">process_shape</span>(<span class="built_in">circle</span>(), <span class="built_in">triangle</span>());</span><br></pre></td></tr></table></figure>
+
+<p>我们就能看到不同的结果了：</p>
+<blockquote>
+<p>  main()<br>  circle()<br>  triangle()<br>  process_shape()<br>  <strong>result()</strong><br>  <del>triangle()<br>  ~circle()<br>  something else<br>  **</del>result()**</p>
+</blockquote>
+<p>现在 <code>result</code> 的生成还在原来的位置，但析构被延到了 <code>main</code> 的最后。</p>
+<p>需要注意的是，这条生命期延长规则只对 prvalue 有效，而对 xvalue 无效。如果由于某种原因，prvalue 在绑定到引用之前已经变成了 xvalue，那生命期就不会延长。</p>
+<p>正如这样就不对了：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;utility&gt;</span> <span class="comment">// std::move</span></span></span><br><span class="line">…</span><br><span class="line">result&amp;&amp; r = std::<span class="built_in">move</span>(<span class="built_in">process_shape</span>(<span class="built_in">circle</span>(), <span class="built_in">triangle</span>()));</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
+<li> 从性能上讲，左右值引用没有区别，传参使用左右值引用都可以避免拷贝。</li>
+<li> 右值引用可以直接指向右值，也可以通过 <code>std::move</code> 指向左值；而左值引用只能指向左值（ const 左值引用也能指向右值）。</li>
+<li> 作为函数形参时，右值引用更灵活。虽然 const 左值引用也可以做到左右值都接受，但它无法修改，有一定局限性。</li>
+</ol>
+<p>各语言中对内存变量的操作：</p>
+<ul>
+<li><p>  在C++ 里，所有的原生类型、枚举、结构、联合、类都代表值类型，只有引用（&amp;）和指针（*）才是引用类型。</p>
+</li>
+<li><p>  在 Java 里，数字等原生类型是值类型，类则属于引用类型。</p>
+</li>
+<li><p>  在Python 里，一切类型都是引用类型。</p>
+</li>
+</ul>
+<h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><p>[1]. <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/335994370">一文读懂C++右值引用和std::move - 知乎 (zhihu.com)</a></p>
+<p>[2]. 03 | 右值和移动究竟解决了什么问题？（极客时间PDF）</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/c/" rel="tag"># c++</a>
+          
+            <a href="/tags/%E5%BC%95%E7%94%A8/" rel="tag"># 引用</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/04/20/C++/move()/" rel="next" title="move和forward">
+                <i class="fa fa-chevron-left"></i> move和forward
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/04/21/English/English/" rel="prev" title="English">
+                English <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/m.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/DueGin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BB%93%E8%AE%BA"><span class="nav-number">1.</span> <span class="nav-text">结论</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BC%95%E5%85%A5"><span class="nav-number">2.</span> <span class="nav-text">引入</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%B7%A6%E5%80%BC%E3%80%81%E5%8F%B3%E5%80%BC"><span class="nav-number">3.</span> <span class="nav-text">一、什么是左值、右值</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E5%B7%A6%E5%80%BC%E5%BC%95%E7%94%A8%E3%80%81%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">二、什么是左值引用、右值引用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A6%E5%80%BC%E5%BC%95%E7%94%A8"><span class="nav-number">4.1.</span> <span class="nav-text">左值引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8"><span class="nav-number">4.2.</span> <span class="nav-text">右值引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8%E4%B9%9F%E6%9C%89%E5%8A%9E%E6%B3%95%E6%8C%87%E5%90%91%E5%B7%A6%E5%80%BC%EF%BC%81"><span class="nav-number">4.3.</span> <span class="nav-text">右值引用也有办法指向左值！</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%B7%A6%E5%80%BC%E5%BC%95%E7%94%A8%E3%80%81%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8%E6%9C%AC%E8%BA%AB%E6%98%AF%E5%B7%A6%E5%80%BC%E8%BF%98%E6%98%AF%E5%8F%B3%E5%80%BC%EF%BC%9F"><span class="nav-number">5.</span> <span class="nav-text">三、左值引用、右值引用本身是左值还是右值？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8%E5%9C%A8%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E4%B8%AD%E4%BA%A7%E7%94%9F%E7%9A%84%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="nav-number">6.</span> <span class="nav-text">四、右值引用在构造函数中产生的性能优化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">7.</span> <span class="nav-text">生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B2%A1%E6%9C%89%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%BB%B6%E9%95%BF%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%83%85%E5%86%B5%EF%BC%9A"><span class="nav-number">7.0.1.</span> <span class="nav-text">没有生命周期延长的基本情况：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%BB%B6%E9%95%BF%E7%9A%84%E6%83%85%E5%86%B5%EF%BC%9A"><span class="nav-number">7.0.2.</span> <span class="nav-text">生命周期延长的情况：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%EF%BC%9A"><span class="nav-number">9.</span> <span class="nav-text">参考：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DueGin</span>
+
+  
+</div>
+
+
+
+
+
+
+
+<div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv" style='display:none'>
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    <span class="post-meta-divider">|</span>
+</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+</span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1829 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/%E5%85%AB%E5%8D%A6%E5%9B%BE.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Linux,thrift,shell,vim,tmux,ssh," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="常用命令常用文件管理命令   ctrl + c： 取消命令，并且换行    ctrl + u： 清空本行命令    tab键： 可以补全命令和文件名，如果补全不了快速按两下tab键，可以显示备选选项  ls： 列出当前目录下所有文件，蓝色的是文件夹，白色的是普通文件，绿色的是可执行文件    可以加上路径，则列出路径中文件夹下所有文件    -a： 查看全部文件，包括隐藏文件（.XXX 点开头的文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux">
+<meta property="og:url" content="https://duegin.github.io/2022/02/12/Linux/Linux/index.html">
+<meta property="og:site_name" content="DueGin">
+<meta property="og:description" content="常用命令常用文件管理命令   ctrl + c： 取消命令，并且换行    ctrl + u： 清空本行命令    tab键： 可以补全命令和文件名，如果补全不了快速按两下tab键，可以显示备选选项  ls： 列出当前目录下所有文件，蓝色的是文件夹，白色的是普通文件，绿色的是可执行文件    可以加上路径，则列出路径中文件夹下所有文件    -a： 查看全部文件，包括隐藏文件（.XXX 点开头的文">
+<meta property="og:locale">
+<meta property="og:image" content="http://duegin.gitee.io/pic/pictures/Linux/Linux文件权限.png">
+<meta property="article:published_time" content="2022-02-11T17:23:17.000Z">
+<meta property="article:modified_time" content="2022-04-21T12:47:28.176Z">
+<meta property="article:author" content="DueGin">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="thrift">
+<meta property="article:tag" content="shell">
+<meta property="article:tag" content="vim">
+<meta property="article:tag" content="tmux">
+<meta property="article:tag" content="ssh">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://duegin.gitee.io/pic/pictures/Linux/Linux文件权限.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://duegin.github.io/2022/02/12/Linux/Linux/"/>
+
+
+
+
+
+  <title>Linux | DueGin</title>
+  
+
+
+
+
+
+
+
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DueGin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/home/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+    
+  
+  
+
+  <article class="post post-type-normal true" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://duegin.github.io/2022/02/12/Linux/Linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/m.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DueGin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-02-12T01:23:17+08:00">
+                2022-02-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><h2 id="常用文件管理命令"><a href="#常用文件管理命令" class="headerlink" title="常用文件管理命令"></a>常用文件管理命令</h2><ul>
+<li><p>  <code>ctrl + c</code>： 取消命令，并且换行</p>
+</li>
+<li><p>  <code>ctrl + u</code>： 清空本行命令</p>
+</li>
+<li><p>  <code>tab键</code>： 可以补全命令和文件名，如果补全不了快速按两下tab键，可以显示备选选项</p>
+</li>
+<li><p><code>ls</code>： 列出当前目录下所有文件，蓝色的是文件夹，白色的是普通文件，绿色的是可执行文件</p>
+<ul>
+<li><p>  可以加上路径，则列出路径中文件夹下所有文件</p>
+</li>
+<li><p>  <code>-a</code>： 查看全部文件，包括隐藏文件（<code>.XXX</code> 点开头的文件即为隐藏文件）</p>
+</li>
+</ul>
+</li>
+<li><p>  <code>pwd</code>： 显示当前路径</p>
+</li>
+<li><p>  <code>cd XXX</code>： 进入XXX目录下， <code>cd ..</code>： 返回上层目录</p>
+</li>
+<li><p>  <code>cp XXX YYY</code>： 将XXX文件复制成YYY，XXX和YYY可以是一个路径</p>
+</li>
+<li><p><code>mkdir XXX</code>： 创建目录XXX</p>
+<ul>
+<li>  创建多级目录： <code>-p</code> </li>
+</ul>
+</li>
+<li><p><code>rm XXX</code>： 删除普通文件</p>
+<ul>
+<li><p>  <code>-r</code>： 删除文件夹</p>
+</li>
+<li><p>  <code>-rf</code>：加权限删除文件夹</p>
+</li>
+</ul>
+</li>
+<li><p><code>mv XXX YYY</code>： 将XXX文件移动到YYY，和 cp 命令一样，XXX和YYY可以是一个路径；</p>
+<ul>
+<li>  重命名也是用这个命令</li>
+</ul>
+</li>
+<li><p>  <code>touch XXX</code>： 创建一个文件，需要自己写后缀名，如 <code>test.txt</code></p>
+</li>
+<li><p>  <code>cat XXX</code>： 展示文件XXX中的内容</p>
+</li>
+<li><p>  复制文本 windows/Linux下：<code>Ctrl + insert</code>，Mac下：<code>command + c</code></p>
+</li>
+<li><p>  粘贴文本 windows/Linux下：<code>Shift + insert</code>，Mac下：<code>command + v</code></p>
+</li>
+</ul>
+<h2 id="用户和组操作"><a href="#用户和组操作" class="headerlink" title="用户和组操作"></a>用户和组操作</h2><ul>
+<li>  <code>su 用户名</code>：切换用户</li>
+<li>  <code>id 用户名</code>：查看用户所有属性</li>
+<li><code>adduser 用户名</code>：创建用户<ul>
+<li>  <code>—-gid ID</code>：将用户归到gid为ID的组下</li>
+<li>  <code>—-uid ID</code>：将用户的uid设置为ID</li>
+</ul>
+</li>
+<li>  <code>deluser 用户名</code>：删除用户</li>
+<li><code>useradd 用户名</code>：创建用户<ul>
+<li>  <code>-m</code>：生成家目录</li>
+<li>  <code>-u ID</code>：指定用户uid</li>
+<li>  <code>-g ID</code>：指定用户分配入为ID的组</li>
+</ul>
+</li>
+<li>  <code>userdel -r 用户名</code>：删除用户</li>
+<li><code>useradd</code> 和 <code>adduser</code> 区别：<ul>
+<li>  <code>useradd</code> 需要手动配置，手动创建家目录，而 <code>adduser</code> 一气呵成</li>
+<li>  同理删除用户命令也一样。</li>
+</ul>
+</li>
+<li><code>addgroup 组名</code>：创建组<ul>
+<li>  <code>—-gid ID</code>：指定组的gid</li>
+</ul>
+</li>
+<li>  <code>delgroup 组名</code>：删除组</li>
+<li>  <code>groupadd 组名</code> 和 <code>groupdel 组名</code>：同上，需手动</li>
+<li><code>groupmod</code>：修改组的属性<ul>
+<li>  <code>-g ID 组名</code>：修改该组gid为ID</li>
+<li>  <code>-n 新组名 旧组名</code>：修改组名</li>
+</ul>
+</li>
+<li>  <code>usermod -aG sudo 用户名</code>：在 $root$ 用户下给某个用户分配 $sudo$ 权限</li>
+<li>  <code>usermod -l new_username old_username</code>：在 $root$ 用户下重命名某个用户</li>
+<li>  <code>sudo passwd</code>：修改当前用户密码</li>
+<li>  <code>passwd 用户名</code>：修改某用户密码 </li>
+</ul>
+<h2 id="系统状况"><a href="#系统状况" class="headerlink" title="系统状况"></a>系统状况</h2><ul>
+<li><code>top</code>：查看所有进程的信息（Linux的任务管理器）<ul>
+<li>  打开后，输入<code>M</code>：按使用内存排序</li>
+<li>  打开后，输入<code>P</code>：按使用CPU排序</li>
+<li>  打开后，输入<code>q</code>：退出</li>
+</ul>
+</li>
+<li>  <code>df -h</code>：查看硬盘使用情况</li>
+<li>  <code>free -h</code>：查看内存使用情况</li>
+<li>  <code>du -sh</code>：查看当前目录占用的硬盘空间</li>
+<li>  <code>ps aux</code>：查看所有进程</li>
+<li><code>kill -9 pid</code>：杀死编号为pid的进程<ul>
+<li>  传递某个具体的信号：<code>kill -s SIGTERM pid</code></li>
+</ul>
+</li>
+<li>  <code>netstat -nt</code>：查看所有网络连接</li>
+<li>  <code>w</code>：列出当前登陆的用户</li>
+<li>  <code>ping www.baidu.com</code>：检查是否连网</li>
+</ul>
+<h2 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h2><p>文件权限由10位组成，如：<code>drwxrwxr-x</code></p>
+<p>第一位如果是d，那就是文件夹，否则为<code>-</code>，<code>r</code>为可读，<code>w</code>为可写，<code>x</code>为可执行</p>
+<img src="http://duegin.gitee.io/pic/pictures/Linux/Linux文件权限.png" alt="Linux文件权限" style="zoom:61%;">
+
+<ul>
+<li>  <code>ll</code>：查看当前目录下所有文件的权限</li>
+<li>  <code>chmod</code>：修改文件权限</li>
+<li>  <code>chmod +x xxx</code>：给xxx添加可执行权限</li>
+<li>  <code>chmod -x xxx</code>：去掉xxx的可执行权限</li>
+<li>  <code>chmod 777 xxx</code>：将xxx的权限改成777 （三位）</li>
+<li>  <code>chmod 777 xxx -R</code>：递归修改整个文件夹的权限</li>
+</ul>
+<h2 id="文件检索"><a href="#文件检索" class="headerlink" title="文件检索"></a>文件检索</h2><ul>
+<li>  <code>find /path/to/directory/ -name &#39;*.py&#39;</code>：搜索某个文件路径下的所有<code>*.py</code>文件</li>
+<li>  <code>grep xxx</code>：从 $stdin$ 中读入若干行数据，如果某行中包含xxx，则输出该行；否则忽略该行。</li>
+<li><code>wc</code>：统计行数、单词数、字节数<ul>
+<li>  既可以从stdin中直接读入内容；也可以在命令行参数中传入文件名列表；</li>
+<li>  <code>wc -l</code>：统计行数</li>
+<li>  <code>wc -w</code>：统计单词数</li>
+<li>  <code>wc -c</code>：统计字节数</li>
+</ul>
+</li>
+<li><code>tree</code>：展示当前目录的文件结构<ul>
+<li>  <code>tree /path/to/directory/</code>：展示某个目录的文件结构</li>
+<li>  <code>tree -a</code>：展示隐藏文件</li>
+</ul>
+</li>
+<li>  <code>ag xxx</code>：搜索当前目录下的所有文件，检索xxx字符串</li>
+<li><code>cut</code>：分割一行内容<ul>
+<li>  从stdin中读入多行数据</li>
+<li>  <code>echo $PATH | cut -d &#39;:&#39; -f 3,5</code>：输出PATH用:分割后第3、5列数据</li>
+<li>  <code>echo $PATH | cut -d &#39;:&#39; -f 3-5</code>：输出PATH用:分割后第3-5列数据</li>
+<li>  <code>echo $PATH | cut -c 3,5</code>：输出PATH的第3、5个字符</li>
+<li>  <code>echo $PATH | cut -c 3-5</code>：输出PATH的第3-5个字符</li>
+</ul>
+</li>
+<li><code>sort</code>：将每行内容按字典序排序<ul>
+<li>  可以从stdin中读取多行数据</li>
+<li>  可以从命令行参数中读取文件名列表</li>
+</ul>
+</li>
+<li><code>xargs</code>：将stdin中的数据用空格或回车分割成命令行参数<ul>
+<li>  <code>find . -name &#39;*.py&#39; | xargs cat | wc -l</code>：统计当前目录下所有python文件的总行数</li>
+<li>  例如<code>cat</code> 需要传入文件参数，则不能直接从stdin中读取，而需要先通过<code>xargs</code>转成命令所需参数</li>
+</ul>
+</li>
+</ul>
+<h2 id="查看文件内容"><a href="#查看文件内容" class="headerlink" title="查看文件内容"></a>查看文件内容</h2><ul>
+<li><code>more</code>：浏览文件内容<ul>
+<li>  <code>回车</code>：下一行</li>
+<li>  <code>空格</code>：下一页</li>
+<li>  <code>b</code>：上一页</li>
+<li>  <code>q</code>：退出</li>
+</ul>
+</li>
+<li><code>less</code>：与more类似，功能更全<ul>
+<li>  <code>回车</code>：下一行</li>
+<li>  <code>y</code>：上一行</li>
+<li>  <code>Page Down</code>：下一页</li>
+<li>  <code>Page Up</code>：上一页</li>
+<li>  <code>q</code>：退出</li>
+</ul>
+</li>
+<li><code>head -3 xxx</code>：展示xxx的前3行内容<br>  同时支持从stdin读入内容</li>
+<li><code>tail -3 xxx</code>：展示xxx末尾3行内容<br>  同时支持从stdin读入内容</li>
+</ul>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><ul>
+<li><code>md5sum</code>：计算md5哈希值<ul>
+<li>  可以从stdin读入内容</li>
+<li>  也可以在命令行参数中传入文件名列表；</li>
+</ul>
+</li>
+<li>  <code>time command</code>：统计command命令的执行时间</li>
+<li><code>ipython3</code>：交互式python3环境。可以当做计算器，或者批量管理文件。<ul>
+<li>  <code>! echo &quot;Hello World&quot;</code>：!表示执行shell脚本</li>
+</ul>
+</li>
+<li>  <code>watch -n 0.1 command</code>：每0.1秒执行一次command命令</li>
+<li><code>tar</code>：压缩文件<ul>
+<li>  <code>tar -zcvf xxx.tar.gz /path/to/file/</code>：压缩</li>
+<li>  <code>tar -zxvf xxx.tar.gz</code>：解压</li>
+</ul>
+</li>
+<li>  <code>diff xxx yyy</code>：查找文件xxx与yyy的不同点</li>
+<li><code>crontab</code>：定期执行程序的命令<ul>
+<li>  crond 命令每分钟会定期检查是否有要执行的工作，如果有要执行的工作便会自动执行该工作。</li>
+<li>  <strong>注意：</strong>新创建的 cron 任务，不会马上执行，至少要过 2 分钟后才可以，当然你可以重启 cron 来马上执行。</li>
+<li>参数：<ul>
+<li>  <code>-r</code>：删除目前的时程表</li>
+<li>  <code>-l</code>：列出目前的时程表</li>
+</ul>
+</li>
+<li>  具体如何设定时间表，现查现用–&gt;<a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-comm-crontab.html">菜鸟教程</a> </li>
+</ul>
+</li>
+</ul>
+<h2 id="安装软件"><a href="#安装软件" class="headerlink" title="安装软件"></a>安装软件</h2><ul>
+<li>  <code>sudo command</code>：以 $root$ 身份执行 $command$ 命令</li>
+<li>  <code>apt-get install xxx</code>：安装软件</li>
+<li>  <code>pip install xxx --user --upgrade</code>：安装$python$包</li>
+</ul>
+<h2 id="C-编译链接命令"><a href="#C-编译链接命令" class="headerlink" title="C++编译链接命令"></a>C++编译链接命令</h2><p>编译链接并命名为<code>main</code></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ main.cpp -o main</span><br></pre></td></tr></table></figure>
+
+
+
+<p>只编译—&gt; 生成<code>.o</code>文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ -c main.cpp</span><br></pre></td></tr></table></figure>
+
+<p>链接<code>.o</code>文件，生成名为<code>main</code>的可执行文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ *.o -o main</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>  <code>-l</code>：指定所使用到的函数库</li>
+<li>  <code>-L</code>：指定函数库所在的文件夹</li>
+<li>  <code>-I</code>：指定头文件所在的文件夹</li>
+<li>  <code>-O2</code>：开启O2优化</li>
+<li>  <code>-Wall</code>：打印gcc提供的警告信息</li>
+<li>  <code>-std=c++11</code>：指定c++版本为11</li>
+</ul>
+<p>链接所有<code>.o</code>文件以及<code>thrift</code>库和线程库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ *.o -o -lthrift -pthread</span><br></pre></td></tr></table></figure>
+
+<p>至于这里的thread为啥用<code>-p</code>，是<code>gcc</code>手册里规定的</p>
+<h1 id="tmux"><a href="#tmux" class="headerlink" title="tmux"></a>tmux</h1><p>主要用途：</p>
+<ul>
+<li>  分屏</li>
+<li>  允许断开Terminal连接后，继续运行进程。</li>
+</ul>
+<blockquote>
+<p>  结构：<br>      一个tmux可以包含多个session，一个session可以包含多个window，一个window可以包含多个pane。</p>
+<p>  tmux:</p>
+<ul>
+<li>session 0:<ul>
+<li>window 0:<ul>
+<li>  pane 0</li>
+<li>  pane 1</li>
+<li>  pane 2</li>
+<li>  …</li>
+</ul>
+</li>
+<li>  window 1</li>
+<li>  window 2</li>
+<li>  …</li>
+</ul>
+</li>
+<li>  session 1</li>
+<li>  session 2</li>
+<li>  …</li>
+</ul>
+</blockquote>
+<p>当打开新的tmux时，已经在pane中了，当window中没有pane时，其window会退出，当session没有window时，其session也会退出</p>
+<p>操作：</p>
+<ol>
+<li><p>  <code>tmux</code>：新建一个session，其中包含一个window，window中包含一个pane，pane里打开了一个shell对话框。</p>
+</li>
+<li><p>  按下 <code>Ctrl + a</code> 后手指松开，然后按 <code>%</code>：将当前pane左右平分成两个pane。</p>
+</li>
+<li><p>  按下 <code>Ctrl + a</code> 后手指松开，然后按 <code>&quot;</code>（注意是双引号”）：将当前pane上下平分成两个pane。</p>
+</li>
+<li><p>  <code>Ctrl + d</code>：关闭当前pane；如果当前window的所有pane均已关闭，则自动关闭window；如果当前session的所有window均已关闭，则自动关闭session。</p>
+</li>
+<li><p>选择pane：</p>
+<ul>
+<li>  鼠标点击pane</li>
+<li>  按下 <code>Ctrl + a</code> 后手指松开，然后按方向键</li>
+</ul>
+</li>
+<li><p>调整分割线位置：</p>
+<ul>
+<li><p>  鼠标拖动pane之间的分割线</p>
+</li>
+<li><p>  按住ctrl + a的同时按方向键</p>
+</li>
+</ul>
+</li>
+<li><p>  按下 <code>Ctrl + a</code> 后手指松开，然后按 <code>z</code>：将当前pane全屏/取消全屏。</p>
+</li>
+<li><p>  按下 <code>Ctrl + a</code> 后手指松开，然后按 <code>d</code>：挂起当前session。</p>
+</li>
+<li><p>  <code>tmux a</code>：打开之前挂起的session。</p>
+</li>
+<li><p>按下 <code>Ctrl + a</code> 后手指松开，然后按 <code>s</code>：选择其它session。</p>
+<ul>
+<li>  方向键 —— 上：选择上一项 session/window/pane</li>
+<li>  方向键 —— 下：选择下一项 session/window/pane</li>
+<li>  方向键 —— 右：展开当前项 session/window</li>
+<li>  方向键 —— 左：闭合当前项 session/window</li>
+</ul>
+</li>
+<li><p>  按下 <code>Ctrl + a</code> 后手指松开，然后按 <code>c</code>：在当前session中创建一个新的window。</p>
+</li>
+<li><p>  按下 <code>Ctrl + a</code> 后手指松开，然后按 <code>w</code>：选择其他window，操作方法与(12)完全相同。</p>
+</li>
+<li><p>翻阅当前pane的内容：</p>
+<ul>
+<li>  鼠标滚轮</li>
+<li>  按下 <code>Ctrl + a</code> 后手指松开，然后按 <code>PageUp</code>  / <code>PageDown</code></li>
+</ul>
+</li>
+<li><p>选中文本：</p>
+<ul>
+<li><p>  在tmux中选中文本时，需要按住shift键。（仅支持Windows和Linux，不支持Mac，不过该操作并不是必须的，因此影响不大）</p>
+</li>
+<li><p>tmux中复制/粘贴文本的<strong>通用方式</strong>：</p>
+<ol>
+<li><p>  按下 <code>Ctrl + a</code> 后松开手指，然后按 <code>[</code></p>
+</li>
+<li><p>  用鼠标选中文本，被选中的文本会被自动复制到<strong>tmux的剪贴板</strong></p>
+</li>
+<li><p>  按下 <code>Ctrl + a</code> 后松开手指，然后按 <code>]</code>，会将剪贴板中的内容粘贴到光标处</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<p>想要复制选中的文本到Linux外面，只能通过 <code>Ctrl + insert</code> 复制</p>
+<h1 id="vim教程"><a href="#vim教程" class="headerlink" title="vim教程"></a>vim教程</h1><p>功能：</p>
+<ol>
+<li><p>  命令行模式下的文本编辑器。</p>
+</li>
+<li><p>  根据文件扩展名自动判别编程语言。支持代码缩进、代码高亮等功能。</p>
+</li>
+<li><p>使用方式：<code>vim filename</code></p>
+<ul>
+<li><p>  如果已有该文件，则打开它。</p>
+</li>
+<li><p>  如果没有该文件，则打开个一个新的文件，并命名为filename</p>
+</li>
+<li><p>模式：</p>
+<ul>
+<li><p>一般命令模式</p>
+<pre><code>  默认模式。命令输入方式：类似于打游戏放技能，按不同字符，即可进行不同操作。可以复制、粘贴、删除文本等。
+</code></pre>
+</li>
+<li><p>编辑模式</p>
+<p>  ​    在一般命令模式里按下i，会进入编辑模式。<br>  ​    按下ESC会退出编辑模式，返回到一般命令模式。</p>
+</li>
+<li><p>命令行模式</p>
+<p>  ​    在一般命令模式里按下:/?三个字母中的任意一个，会进入命令行模式。命令行在最下面。</p>
+<p>  ​    可以查找、替换、保存、退出、配置编辑器等。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>命令行和一般命令模式操作：</p>
+<ol>
+<li><p>  <code>i</code>：进入编辑模式</p>
+</li>
+<li><p>  <code>&lt;ESC&gt;</code>：进入一般命令模式</p>
+</li>
+<li><p>移动光标：</p>
+<ul>
+<li><p>  方向键</p>
+</li>
+<li><p><code>h j k l</code>：</p>
+<p>  ​    <code>h</code>： 左箭头键</p>
+<p>  ​    <code>j</code>：下箭头键</p>
+<p>  ​    <code>k</code>：上箭头键</p>
+<p>  ​    <code>l</code>：右箭头键</p>
+</li>
+</ul>
+</li>
+<li><p>  <code>n&lt;Space&gt;</code>：<code>n</code>表示数字，按下数字后再按空格，光标会向右移动这一行的n个字符</p>
+</li>
+<li><p>  <code>0</code> 或 功能键 <code>[Home]</code>：光标移动到本行开头</p>
+</li>
+<li><p>  <code>$</code> 或 功能键 <code>[End]</code>：光标移动到本行末尾</p>
+</li>
+<li><p>  <code>G</code>：光标移动到最后一行</p>
+</li>
+<li><p>  <code>:n</code> 或 <code>nG</code>：n为数字，光标移动到第n行</p>
+</li>
+<li><p>  <code>gg</code>：光标移动到第一行，相当于 <code>1G</code></p>
+</li>
+<li><p>  <code>n&lt;Enter&gt;</code>：n为数字，光标向下移动n行</p>
+</li>
+<li><p>查找某一字符串：</p>
+<ul>
+<li>  <code>/word</code>：向光标之下寻找第一个值为word的字符串。</li>
+<li>  <code>?word</code>：向光标之上寻找第一个值为word的字符串。</li>
+<li>  <code>n</code>：重复前一个查找操作</li>
+<li>  <code>N</code>：反向重复前一个查找操作</li>
+</ul>
+</li>
+<li><p>替换某一字符串</p>
+<ul>
+<li>  <code>:n1,n2s/word1/word2/g</code>：<code>n1</code>与<code>n2</code>为数字，在第<code>n1</code>行与<code>n2</code>行之间寻找<code>word1</code>这个字符串，并将该字符串替换为<code>word2</code></li>
+<li>  <code>:1,$s/word1/word2/g</code>：将全文的<code>word1</code>替换为<code>word2</code></li>
+<li>  <code>:1,$s/word1/word2/gc</code>：将全文的<code>word1</code>替换为<code>word2</code>，且在替换前<strong>要求用户确认</strong>。</li>
+</ul>
+</li>
+<li><p>  <code>v</code>：选中文本</p>
+</li>
+<li><p><code>d</code>：删除选中的文本，相当于剪切</p>
+<ul>
+<li>  删除后n位：<code>dn&lt;Space&gt;</code></li>
+<li>  删除到第n行：<code>dnG</code></li>
+</ul>
+</li>
+<li><p>  <code>dd</code>：删除当前行，相当于剪切</p>
+</li>
+<li><p>  <code>y</code>：复制选中的文本，与删除操作类似</p>
+</li>
+<li><p>  <code>yy</code>：复制当前行</p>
+</li>
+<li><p><code>p</code>：将复制/剪切的数据在光标的下一行/下一个位置粘贴</p>
+<ol>
+<li>  当复制（yy）/剪切（dd）一整行时，粘贴的位置会在光标本行的下一行</li>
+<li>  当复制（y）/ 剪切（d）不为一整行时，粘贴的位置会在光标右移一个位置出粘贴</li>
+<li>  注意手动选中整行复制（y）/剪切（d）仍为第2种情况</li>
+</ol>
+</li>
+<li><p>  <code>u</code>：撤销</p>
+</li>
+<li><p>  <code>Ctrl + r</code>：取消撤销</p>
+</li>
+<li><p>  大于号 <code>&gt;</code>：将选中的文本整体向右缩进一次</p>
+</li>
+<li><p>  小于号 <code>&lt;</code>：将选中的文本整体向左缩进一次</p>
+</li>
+<li><p>  <code>:w</code> 保存</p>
+</li>
+<li><p>  <code>:w!</code> 强制保存</p>
+</li>
+<li><p>  <code>:q</code>  退出</p>
+</li>
+<li><p>  <code>:q!</code>  强制退出</p>
+</li>
+<li><p>  <code>:wq</code>  保存并退出</p>
+</li>
+<li><p>  <code>:set paste</code>  设置成粘贴模式，取消代码自动缩进</p>
+</li>
+<li><p>  <code>:set nopaste</code>  取消粘贴模式，开启代码自动缩进</p>
+</li>
+<li><p>  <code>:set nu</code>  显示行号</p>
+</li>
+<li><p>  <code>:set nonu</code>  隐藏行号</p>
+</li>
+<li><p>  <code>gg=G</code> ：将全文代码格式化</p>
+</li>
+<li><p>  <code>:noh</code>  关闭查找关键词高亮</p>
+</li>
+<li><p>  <code>Ctrl + q</code>：当vim卡死时，可以取消当前正在执行的命令</p>
+</li>
+<li><p>异常处理：</p>
+<ul>
+<li><p>  每次用vim编辑文件时，会自动创建一个<code>.filename.swp</code>的临时文件。</p>
+</li>
+<li><p>如果打开某个文件时，该文件的swp文件已存在，则会报错。此时解决办法有两种：</p>
+<ul>
+<li><p>  找到正在打开该文件的程序，并退出</p>
+</li>
+<li><p>  直接删掉该swp文件即可</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h1 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h1><p>具体参考<a target="_blank" rel="noopener" href="https://www.acwing.com/file_system/file/content/whole/index/content/2855883/">AcWing shell语法</a> 我觉得已经比较详细了，懒得整理了</p>
+<h1 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h1><h2 id="登陆"><a href="#登陆" class="headerlink" title="登陆"></a>登陆</h2><p><strong>远程登录服务器</strong></p>
+<p><code>ssh user@hostname</code></p>
+<ul>
+<li>  <code>user</code>：用户名</li>
+<li>  <code>hostname</code>：IP地址或域名</li>
+</ul>
+<p>第一次登陆时会提示是否要连接，输入<code>yes</code></p>
+<p>这样会将该服务器的信息记录在<code>~/.ssh/known_hosts</code>文件中。</p>
+<p>然后输入密码即可登录到远程服务器中。</p>
+<p><strong>端口</strong></p>
+<p>默认登录端口号为22，如果想登录某一特定端口：</p>
+<p><code>ssh user@hostname -p 22</code></p>
+<p><strong>配置文件</strong><br>创建文件 <code>~/.ssh/config</code></p>
+<p>然后在文件中输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Host myserver1</span><br><span class="line">    HostName IP地址或域名</span><br><span class="line">    User 用户名</span><br><span class="line"></span><br><span class="line">Host myserver2</span><br><span class="line">    HostName IP地址或域名</span><br><span class="line">    User 用户名</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>之后再使用服务器时，可以直接使用别名myserver1、myserver2</p>
+<p>即<code>ssh myserver1</code></p>
+<p><strong>密钥登陆</strong></p>
+<p>创建密钥：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
+
+
+<p>然后一直回车即可。</p>
+<p>执行结束后，<code>~/.ssh/</code>目录下会多两个文件：</p>
+<ul>
+<li>  id_rsa：私钥</li>
+<li>  id_rsa.pub：公钥</li>
+</ul>
+<p>之后想免密码登录哪个服务器，就将公钥传给哪个服务器即可。</p>
+<p>例如，想免密登录myserver服务器。则将公钥中的内容，复制到myserver中的<code>~/.ssh/authorized_keys</code>文件里即可。</p>
+<p>也可以使用如下命令一键添加公钥：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id myserver</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>执行命令</strong></p>
+<p>假如，我们有上百台服务器，但是每个服务器都只做同样的操作，完全没可能先ssh登陆到服务器执行操作，再ssh去到另一台服务器上做操作，这样效率显然太低，所以可以进行下面优化，ssh会帮助我们完成登陆服务器，执行完操作，退出服务器。</p>
+<p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh user@hostname command</span><br></pre></td></tr></table></figure>
+
+<p>如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh user@hostname ls -a</span><br></pre></td></tr></table></figure>
+
+<p>结果会打印在本地终端</p>
+<p>或者</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">单引号中的$i可以求值</span><br><span class="line">ssh myserver &#x27;for ((i = 0; i &lt; 10; i ++ )) do echo $i; done&#x27;</span><br></pre></td></tr></table></figure>
+<p>又或者</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">双引号中的$i不可以求值</span><br><span class="line">ssh myserver &quot;for ((i = 0; i &lt; 10; i ++ )) do echo $i; done&quot;</span><br></pre></td></tr></table></figure>
+
+<p>实在不行，其实可以将命令写入shell文件，然后执行文件即可</p>
+<h2 id="scp传文件"><a href="#scp传文件" class="headerlink" title="scp传文件"></a>scp传文件</h2><p>命令格式：</p>
+<p><strong>复制文件</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp source destination</span><br></pre></td></tr></table></figure>
+<p>将source路径下的文件复制到destination中</p>
+<p><strong>复制文件夹</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r dir destination</span><br></pre></td></tr></table></figure>
+
+<p>将dir文件夹复制到destination中</p>
+<p>一次复制多个文件/文件夹：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp source1 source2/dir destination</span><br></pre></td></tr></table></figure>
+
+
+
+
+<blockquote>
+<p>将本地家目录中的tmp文件夹复制到myserver服务器中的<code>/home/acs/</code>目录下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r ~/tmp myserver:/home/acs/</span><br></pre></td></tr></table></figure>
+
+
+
+<p>将本地家目录中的tmp文件夹复制到myserver服务器中的<code>~/homework/</code>目录下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r ~/tmp myserver:homework/</span><br></pre></td></tr></table></figure>
+
+
+
+<p>将myserver服务器中的<code>~/homework/</code>文件夹复制到本地的当前路径下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp -r myserver:homework .</span><br></pre></td></tr></table></figure>
+
+</blockquote>
+<p>注意：</p>
+<ul>
+<li>  终点路径只能有一个，但复制的文件路径可以有多个</li>
+<li>  访问服务器文件时，默认从服务器家目录出发</li>
+</ul>
+<p>当然也可以指定端口，但是这里是：<code>-P</code></p>
+<h1 id="thrift"><a href="#thrift" class="headerlink" title="thrift"></a>thrift</h1><p><a target="_blank" rel="noopener" href="https://thrift.apache.org/">thrift官网</a></p>
+<p>作用：</p>
+<ul>
+<li>  实现多语言调用，且有现成的服务端和客户端框架可用</li>
+</ul>
+<p>使用：</p>
+<ul>
+<li><p>  先新建一个<code>xxx.thrift</code> 文件，用于存储不同语言间的通信接口</p>
+</li>
+<li><p>  使用<code>thrift -r --gen cpp xxx.thrift文件路径</code> 在当前目录生成代码框架</p>
+</li>
+<li><p><code>gen-cpp</code> 即为新生成的文件，里面的<code>xxx.skeleton.cpp</code> 就是服务端代码框架，需要修改里面的部分代码即可</p>
+<ul>
+<li>  如果不需要服务端，则应该把他删掉</li>
+<li>  此cpp文件需要修改的就是在<code>xxx.thrift</code>中定义的接口的函数体</li>
+<li>  以<code>cpp</code>为例，开多线程模式需要在官网 –&gt; C++ Tutorial 下的 Server 代码的main函数TThreadedServer的定义抄下来，还需要把上面的<code>CalculatorCloneFactory</code> 这一个类抄下来，需要注意的是，通篇<strong>需要改名字</strong></li>
+</ul>
+</li>
+<li><p>服务端和客户端可用不同语言实现，客户端代码需要在 thrift官网 –&gt; Tutorial 上找到相关语言的client代码去复制下来，然后修改</p>
+<ul>
+<li>  以<code>cpp</code>为例，这个需要修改的就是<code>transport-&gt;open();</code> 和 <code>transport-&gt;close();</code>之间的代码</li>
+</ul>
+</li>
+</ul>
+<p>也可以通过上手项目来了解</p>
+<p><a target="_blank" rel="noopener" href="https://git.acwing.com/DueGin/thrift_lesson">入门项目：实现一个按分值的匹配系统</a></p>
+<h1 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h1><p>环境变量类似于全局变量，可以被各个进程访问到。我们可以通过修改环境变量来方便地修改系统配置。</p>
+<p><strong>查看</strong><br>列出当前环境下的所有环境变量：</p>
+<ul>
+<li>  <code>env</code>  显示当前用户的变量</li>
+<li>  <code>set</code>  显示当前shell的变量，包括当前用户的变量</li>
+<li>  <code>export</code> 显示当前导出成用户变量的shell变量</li>
+</ul>
+<p><strong>修改</strong></p>
+<p>如：修改环境变量PATH： <code>export PATH=...</code> ，但这种方法，当你重新登陆服务器时，则会又会恢复回去。</p>
+<p>为了可持久化，可以加到<code>~/.bashrc</code> 下，因为每次登陆、ssh或者用tmux开一个新的pane时，都会先执行一遍<code>~/.bashrc</code>，为了方便，只需将修改加到最后一行即可，因为程序从上往下执行，修改完后，立即生效则需<code>source ~/.bashrc</code> 一下。</p>
+<p>例如：将此<code>export PATH=/home/acs/homework/lesson_7/homework_0:$PATH</code>加到最后一行，则将<code>homework_0</code>文件夹添加到了PATH中，需要注意的是：添加文件夹时，不用写后面的<code>/</code>，而且每个参数都用<code>:</code>隔开，需要我们加上之前的PATH</p>
+<p>如果我们想创建自己的命令，则可以将该文件或所在目录添加到环境变量的PATH中</p>
+<p><strong>常见环境变量</strong></p>
+<ul>
+<li>  <code>HOME</code>：用户的家目录。</li>
+<li>  <code>PATH</code>：可执行文件（命令）的存储路径。路径与路径之间用:分隔。当某个可执行文件同时出现在多个路径中时，会选择从左到右数第一个路径中的执行。下列所有存储路径的环境变量，均采用从左到右的优先顺序。</li>
+<li>  <code>LD_LIBRARY_PATH</code>：用于指定动态链接库(.so文件)的路径，其内容是以冒号分隔的路径列表。</li>
+<li>  <code>C_INCLUDE_PATH</code>：C语言的头文件路径，内容是以冒号分隔的路径列表。</li>
+<li>  <code>CPLUS_INCLUDE_PATH</code>：CPP的头文件路径，内容是以冒号分隔的路径列表。</li>
+<li>  <code>PYTHONPATH</code>：Python导入包的路径，内容是以冒号分隔的路径列表。</li>
+<li>  <code>JAVA_HOME</code>：jdk的安装目录。</li>
+<li>  <code>CLASSPATH</code>：存放Java导入类的路径，内容是以冒号分隔的路径列表。</li>
+</ul>
+<h1 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h1><p><strong>概念</strong><br>管道类似于文件重定向，可以将前一个命令的stdout重定向到下一个命令的stdin</p>
+<p><strong>要点</strong></p>
+<ol>
+<li>  管道命令仅处理stdout，会忽略stderr。</li>
+<li>  管道右边的命令必须能接受stdin。</li>
+<li>  多个管道命令可以串联。</li>
+</ol>
+<p><strong>与文件重定向的区别</strong></p>
+<ul>
+<li>  文件重定向左边为命令，右边为文件。</li>
+<li>  管道左右两边均为命令，左边有stdout，右边有stdin</li>
+</ul>
+<p><strong>常用的管道命令</strong></p>
+<ul>
+<li><p>  <code>find . -name &#39;*.cpp&#39; | xargs cat | wc -l</code>：查看当前目录下<code>.cpp</code>文件的代码行数</p>
+</li>
+<li><p>  <code>find . -name &#39;*.py&#39; | xargs cat | grep xxx &gt; a.txt</code>：统计当前目录下<code>.py</code>文件有多少行代码包含<code>xxx</code>字符串且保存到<code>a.txt</code>中</p>
+</li>
+<li><p>  <code>cat xxx.txt | cut -d &#39; &#39; -f 1 &gt; a.txt</code>：将<code>xxx.txt</code>中以<code>空格</code>隔开的字符串第一列存入<code>a.txt</code>中</p>
+</li>
+<li><p><code>ipython3</code>中：</p>
+<ul>
+<li><p>计算$2^{112} + 3^{78}$并存入<code>xxx.txt</code></p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; t = <span class="number">2</span> ** <span class="number">112</span> + <span class="number">3</span> ** <span class="number">78</span></span><br><span class="line">&gt; ! echo $t &gt; xxx.txt</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h1 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h1><p>更多命令参考<a target="_blank" rel="noopener" href="https://docs.docker.com/get-started/overview/">docker官方文档</a></p>
+<h2 id="启动-docker："><a href="#启动-docker：" class="headerlink" title="启动 docker："></a>启动 <code>docker</code>：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure>
+
+<h2 id="设置开机启动："><a href="#设置开机启动：" class="headerlink" title="设置开机启动："></a>设置开机启动：</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable docker.service</span><br><span class="line">sudo systemctl enable containerd.service</span><br></pre></td></tr></table></figure>
+
+<p>用 <code>disable</code> 禁用开机启动：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl disable docker.service</span><br><span class="line">sudo systemctl disable containerd.service</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="镜像-images"><a href="#镜像-images" class="headerlink" title="镜像(images)"></a>镜像(images)</h2><ul>
+<li>  <code>docker pull ubuntu:20.04</code>：拉取一个镜像</li>
+<li>  <code>docker images</code>：列出本地所有镜像</li>
+<li>  <code>docker image rm ubuntu:20.04</code> 或 <code>docker rmi ubuntu:20.04</code>：删除镜像<code>ubuntu:20.04</code></li>
+<li>  <code>docker commit CONTAINER IMAGE_NAME:TAG</code>：创建某个<code>CONTAINER</code>的镜像</li>
+<li>  <code>docker save -o ubuntu_20_04.tar ubuntu:20.04</code>：将镜像<code>ubuntu:20.04</code>导出到本地文件<code>ubuntu_20_04.tar</code>中</li>
+<li>  <code>docker load -i ubuntu_20_04.tar</code>：将镜像<code>ubuntu:20.04</code>从本地文件<code>ubuntu_20_04.tar</code>中加载出来</li>
+</ul>
+<h2 id="容器-container"><a href="#容器-container" class="headerlink" title="容器(container)"></a>容器(container)</h2><ul>
+<li>  <code>docker create -it ubuntu:20.04</code>：利用镜像<code>ubuntu:20.04</code>创建一个容器。</li>
+<li>  <code>docker run -p 20000:22 --name test -itd ubuntu:20.04</code>：利用镜像<code>ubuntu:20.04</code>创建并运行一个容器，且起名为 $test$ ，且本地端口号 $20000$ 映射到容器端口号 $22$</li>
+<li><code>docker ps</code>：查看本地的所有正在运行的容器<ul>
+<li>  <code>-a</code>：查看本地的所有容器</li>
+</ul>
+</li>
+<li>  <code>docker start CONTAINER</code>：启动容器<code>CONTAINER</code></li>
+<li>  <code>docker stop CONTAINER</code>：停止容器<code>CONTAINER</code></li>
+<li>  <code>docker restart CONTAINER</code>：重启容器<code>CONTAINER</code></li>
+<li><code>docker attach CONTAINER</code>：进入容器<code>CONTAINER</code><ul>
+<li>  先按<code>Ctrl-p</code>，再按<code>Ctrl-q</code>可以挂起容器</li>
+<li>  <code>Ctrl-d</code>，退出容器，且停止容器</li>
+</ul>
+</li>
+<li>  <code>docker exec CONTAINER COMMAND</code>：在容器<code>CONTAINER</code>中执行命令<code>COMMAND</code></li>
+<li>  <code>docker top CONTAINER</code>：查看容器<code>CONTAINER</code>内的所有进程</li>
+<li>  <code>docker [container] rm CONTAINER</code>：删除容器<code>CONTAINER</code></li>
+<li>  <code>docker container prune</code>：删除所有已停止的容器</li>
+<li>  <code>docker export -o xxx.tar CONTAINER</code>：将容器<code>CONTAINER</code>导出到本地文件<code>xxx.tar</code>中</li>
+<li>  <code>docker import xxx.tar image_name:tag</code>：将本地文件<code>xxx.tar</code>导入成镜像，并将镜像命名为<code>image_name:tag</code></li>
+<li><code>docker export/import</code>与<code>docker save/load</code>的区别：<ul>
+<li>  <code>export/import</code>会丢弃历史记录和元数据信息，仅保存容器当时的快照状态</li>
+<li>  <code>save/load</code>会保存完整记录，体积更大</li>
+</ul>
+</li>
+<li>  <code>docker stats</code>：查看所有容器的统计信息，包括CPU、内存、存储、网络等信息</li>
+<li>  <code>docker cp xxx CONTAINER:xxx</code> 或 <code>docker cp CONTAINER:xxx xxx</code>：在本地和容器<code>CONTAINER</code>间复制文件</li>
+<li>  <code>docker rename old_name new_name</code>：重命名容器</li>
+<li>  <code>docker update CONTAINER --memory 500MB</code>：修改容器<code>CONTAINER</code>限制</li>
+</ul>
+<h1 id="crontab"><a href="#crontab" class="headerlink" title="crontab"></a>crontab</h1>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+            <a href="/tags/thrift/" rel="tag"># thrift</a>
+          
+            <a href="/tags/shell/" rel="tag"># shell</a>
+          
+            <a href="/tags/vim/" rel="tag"># vim</a>
+          
+            <a href="/tags/tmux/" rel="tag"># tmux</a>
+          
+            <a href="/tags/ssh/" rel="tag"># ssh</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/01/23/%E7%AE%97%E6%B3%95/2.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%AE%B5%E6%A0%91/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="next" title="线段树">
+                <i class="fa fa-chevron-left"></i> 线段树
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/03/22/MySQL/MySQL/" rel="prev" title="MySQL">
+                MySQL <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/m.jpg"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+                <a href="/archives">
+                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/DueGin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">常用命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.</span> <span class="nav-text">常用文件管理命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E5%92%8C%E7%BB%84%E6%93%8D%E4%BD%9C"><span class="nav-number">1.2.</span> <span class="nav-text">用户和组操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E7%8A%B6%E5%86%B5"><span class="nav-number">1.3.</span> <span class="nav-text">系统状况</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%9D%83%E9%99%90"><span class="nav-number">1.4.</span> <span class="nav-text">文件权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%A3%80%E7%B4%A2"><span class="nav-number">1.5.</span> <span class="nav-text">文件检索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="nav-number">1.6.</span> <span class="nav-text">查看文件内容</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-number">1.7.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6"><span class="nav-number">1.8.</span> <span class="nav-text">安装软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-%E7%BC%96%E8%AF%91%E9%93%BE%E6%8E%A5%E5%91%BD%E4%BB%A4"><span class="nav-number">1.9.</span> <span class="nav-text">C++编译链接命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tmux"><span class="nav-number">2.</span> <span class="nav-text">tmux</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vim%E6%95%99%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">vim教程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell"><span class="nav-number">4.</span> <span class="nav-text">Shell</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ssh"><span class="nav-number">5.</span> <span class="nav-text">ssh</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%99%BB%E9%99%86"><span class="nav-number">5.1.</span> <span class="nav-text">登陆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scp%E4%BC%A0%E6%96%87%E4%BB%B6"><span class="nav-number">5.2.</span> <span class="nav-text">scp传文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#thrift"><span class="nav-number">6.</span> <span class="nav-text">thrift</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-number">7.</span> <span class="nav-text">环境变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%A1%E9%81%93"><span class="nav-number">8.</span> <span class="nav-text">管道</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#docker"><span class="nav-number">9.</span> <span class="nav-text">docker</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8-docker%EF%BC%9A"><span class="nav-number">9.1.</span> <span class="nav-text">启动 docker：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%EF%BC%9A"><span class="nav-number">9.2.</span> <span class="nav-text">设置开机启动：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%95%9C%E5%83%8F-images"><span class="nav-number">9.3.</span> <span class="nav-text">镜像(images)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%B9%E5%99%A8-container"><span class="nav-number">9.4.</span> <span class="nav-text">容器(container)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#crontab"><span class="nav-number">10.</span> <span class="nav-text">crontab</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DueGin</span>
+
+  
+</div>
+
+
+
+
+
+
+
+<div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<span id="busuanzi_container_site_pv" style='display:none'>
+    本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    <span class="post-meta-divider">|</span>
+</span>
+<span id="busuanzi_container_site_uv" style='display:none'>
+    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
+</span>
+</div>
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
