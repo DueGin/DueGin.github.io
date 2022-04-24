@@ -287,6 +287,656 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://duegin.github.io/2022/03/22/MySQL/MySQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/Rin.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DueGin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2022/03/22/MySQL/MySQL/" itemprop="url">MySQL</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-03-22T21:39:17+08:00">
+                2022-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="yu-yi">语义</h1>
+<p>括号<code>[]</code>表示可选</p>
+<h1 id="my-sql-8-0-an-zhuang">MySQL 8.0安装</h1>
+<h3 id="yi-zai-ubuntu-shang-an-zhuang-my-sql-8-0">一、在Ubuntu上安装MySQL 8.0</h3>
+<p>先更新一下<code>apt</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+<p>通过<code>apt</code>安装：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install mysql-server</span><br></pre></td></tr></table></figure>
+<p>验证 MySQL 服务器是否正在运行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status mysql</span><br></pre></td></tr></table></figure>
+<p>若显示以下内容，则应该是已经启动并正在运行了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql.service - MySQL Community Server</span><br><span class="line">     Loaded: loaded (/lib/systemd/system/mysql.service; enabled; vendor preset: enabled)</span><br><span class="line">     Active: active (running) since Tue 2020-04-28 20:59:52 UTC; 10min ago</span><br><span class="line">   Main PID: 8617 (mysqld)</span><br><span class="line">     Status: &quot;Server is operational&quot;</span><br><span class="line">     ...</span><br></pre></td></tr></table></figure>
+<p>若开启的话，去第二部分，<strong>没有的话</strong>，走一下下面流程：</p>
+<blockquote>
+<ol>
+<li><code>su root </code>且输入密码切换成超级用户</li>
+<li><code>cd /var</code>进入此文件夹，输入<code>service mysql start</code>开启<code>mysql</code>服务</li>
+<li><code>netstat -na</code> 查看3306端口是否开启，没有则开启一下</li>
+</ol>
+</blockquote>
+<h3 id="er-bao-hu-jia-gu-my-sql">二、保护加固MySQL</h3>
+<p>MySQL 安装文件附带了一个名为<code>mysql_secure_installation</code>的脚本，它允许你很容易地提高数据库服务器的安全性。</p>
+<p>不带参数运行这个脚本：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mysql_secure_installation</span><br></pre></td></tr></table></figure>
+<p>你将会被要求配置<code>VALIDATE PASSWORD PLUGIN</code>，它被用来测试 MySQL 用户密码的强度，并且提高安全性：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Securing the MySQL server deployment.</span><br><span class="line"></span><br><span class="line">Connecting to MySQL using a blank password.</span><br><span class="line"></span><br><span class="line">VALIDATE PASSWORD COMPONENT can be used to test passwords</span><br><span class="line">and improve security. It checks the strength of password</span><br><span class="line">and allows the users to set only those passwords which are</span><br><span class="line">secure enough. Would you like to setup VALIDATE PASSWORD component?</span><br><span class="line"></span><br><span class="line">Press y|Y for Yes, any other key for No: y</span><br></pre></td></tr></table></figure>
+<p>有三个级别的密码验证策略，低级，中级，高级。如果你想设置验证密码插件，按<code>y</code>或者其他任何按键，移动到下一个步骤：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">There are three levels of password validation policy:</span><br><span class="line"></span><br><span class="line">LOW    Length &gt;= 8</span><br><span class="line">MEDIUM Length &gt;= 8, numeric, mixed case, and special characters</span><br><span class="line">STRONG Length &gt;= 8, numeric, mixed case, special characters and dictionary                  file</span><br><span class="line"></span><br><span class="line">Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 2</span><br></pre></td></tr></table></figure>
+<p>下一步被提示时，你将被要求为 MySQL root 用户设置一个密码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Please set the password for root here.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">New password: </span><br><span class="line"></span><br><span class="line">Re-enter new password: </span><br></pre></td></tr></table></figure>
+<p>如果你设置了验证密码插件，这个脚本将会显示你的新密码强度。输入<code>y</code>确认密码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Estimated strength of the password: 50 </span><br><span class="line">Do you wish to continue with the password provided?(Press y|Y for Yes, any other key for No) : y</span><br></pre></td></tr></table></figure>
+<p>下一步，是否移除匿名用户</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">By default, a MySQL installation has an anonymous user,</span><br><span class="line">allowing anyone to log into MySQL without having to have</span><br><span class="line">a user account created for them. This is intended only for</span><br><span class="line">testing, and to make the installation go a bit smoother.</span><br><span class="line">You should remove them before moving into a production</span><br><span class="line">environment.</span><br><span class="line"></span><br><span class="line">Remove anonymous users? (Press y|Y for Yes, any other key for No) : y</span><br></pre></td></tr></table></figure>
+<p>下一步，是否禁止 root 用户远程连接</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Normally, root should only be allowed to connect from</span><br><span class="line">&#x27;localhost&#x27;. This ensures that someone cannot guess at</span><br><span class="line">the root password from the network.</span><br><span class="line"></span><br><span class="line">Disallow root login remotely? (Press y|Y for Yes, any other key for No) : y</span><br></pre></td></tr></table></figure>
+<p>下一步，是否移除测试数据库，这个看个人吧，我一般保留</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">By default, MySQL comes with a database named &#x27;test&#x27; that</span><br><span class="line">anyone can access. This is also intended only for testing,</span><br><span class="line">and should be removed before moving into a production</span><br><span class="line">environment.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Remove test database and access to it? (Press y|Y for Yes, any other key for No) : n</span><br></pre></td></tr></table></figure>
+<p>下一步，是否现在重新加载特权表</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Reloading the privilege tables will ensure that all changes</span><br><span class="line">made so far will take effect immediately.</span><br><span class="line"></span><br><span class="line">Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y</span><br></pre></td></tr></table></figure>
+<h3 id="san-yi-root-yong-hu-shen-fen-deng-lu-my-sql">三、以 root 用户身份登录MySQL</h3>
+<p>在MySQL 8.0上，root 用户默认通过<code>auth_socket</code>插件授权。</p>
+<p><code>auth_socket</code>插件通过 Unix socket 文件来验证所有连接到<code>localhost</code>的用户。这意味着你不能通过提供密码，验证为 root。</p>
+<p>以 root 用户身份登录 MySQL服务器</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mysql -u root -p</span><br></pre></td></tr></table></figure>
+<p>输入密码后，看到以下信息即登陆成功</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Welcome to the MySQL monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is 16</span><br><span class="line">Server version: 8.0.28-0ubuntu0.20.04.3 (Ubuntu)</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2022, Oracle and/or its affiliates.</span><br><span class="line"></span><br><span class="line">Oracle is a registered trademark of Oracle Corporation and/or its</span><br><span class="line">affiliates. Other names may be trademarks of their respective</span><br><span class="line">owners.</span><br><span class="line"></span><br><span class="line">Type &#x27;help;&#x27; or &#x27;\h&#x27; for help. Type &#x27;\c&#x27; to clear the current input statement.</span><br><span class="line"></span><br><span class="line">(root@localhost)[(none)]&gt;</span><br></pre></td></tr></table></figure>
+<p>执行这句：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select host,user,plugin,authentication_string from mysql.user;</span><br></pre></td></tr></table></figure>
+<p>修改权限：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &#x27;root&#x27;@&#x27;localhost&#x27; IDENTIFIED WITH mysql_native_password BY &#x27;你的密码&#x27;</span><br></pre></td></tr></table></figure>
+<p>刷新配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+<p><em><strong>OK</strong></em></p>
+<p>至于查看mysql的状态还是显示如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root@b6beb613ab1f:/var# sudo systemctl status mysql</span><br><span class="line">System has not been booted with systemd as init system (PID 1). Can&#x27;t operate.</span><br><span class="line">Failed to connect to bus: Host is down</span><br></pre></td></tr></table></figure>
+<p>这个我也不知道，总之就是MySQL能用</p>
+<h1 id="dao-chu-shu-ju">导出数据</h1>
+<p>导出为 <code>.txt</code> 和  <code>.sql</code> 都一样，因为里面的内容都一样的</p>
+<h2 id="dao-chu-mou-ge-shu-ju-ku">导出某个数据库</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -uroot -p 某个数据库 &gt; database_dump.sql</span><br></pre></td></tr></table></figure>
+<p>导出全部数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u root -p --all-databases &gt; database_dump.sql</span><br></pre></td></tr></table></figure>
+<h2 id="dao-chu-mou-ge-shu-ju-biao">导出某个数据表</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysqldump -u root -p 数据库名 某个数据表 &gt; database_dump.sql</span><br></pre></td></tr></table></figure>
+<h1 id="dao-ru-shu-ju">导入数据</h1>
+<h2 id="dao-ru-mou-ge-shu-ju-ku">导入某个数据库</h2>
+<ul>
+<li>直接导入（没试过能行）</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u用户名 -p密码 &lt; 要导入的数据库数据(runoob.sql)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用source导入</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database abc;      # 创建数据库</span><br><span class="line">mysql&gt; use abc;                  # 使用已创建的数据库 </span><br><span class="line">mysql&gt; set names utf8;           # 设置编码</span><br><span class="line">mysql&gt; source /home/abc/abc.txt  # 导入备份数据库</span><br></pre></td></tr></table></figure>
+<h1 id="code-constraint-code"><code>constraint</code></h1>
+<p>起名</p>
+<h1 id="yue-shu">约束</h1>
+<p>SQL 约束用于规定表中的数据规则。</p>
+<p>如果存在违反约束的数据行为，行为会被约束终止。</p>
+<p>约束可以在创建表时规定（通过 CREATE TABLE 语句），或者在表创建之后规定（通过 ALTER TABLE 语句）。</p>
+<p>对表中的数据进行限定，保证数据的正确性，有效性和完整性。</p>
+<p><strong>分类：</strong></p>
+<ul>
+<li>主键：<code>primary key</code></li>
+<li>非空约束：<code>not null</code></li>
+<li>唯一约束：<code>unique</code></li>
+<li>外键约束：<code>foreign key</code></li>
+<li><code>check</code></li>
+</ul>
+<h2 id="fei-kong-yue-shu">非空约束</h2>
+<p><code>not null</code>，值不能为空</p>
+<ul>
+<li><strong>创建表时添加非空约束</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE stu(</span><br><span class="line">    id INT,</span><br><span class="line">    name VARCHAR(20) NOT NULL</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>创建完表后，添加非空约束</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table stu modify name VARCHAR(20) not null;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>删除非空约束</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE stu MODIFY name VARCHAR(20);</span><br></pre></td></tr></table></figure>
+<h2 id="wei-yi-yue-shu">唯一约束</h2>
+<p><code>unique</code>，值不能重复</p>
+<ul>
+<li><strong>创建表时添加唯一约束</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CREATE stu(</span><br><span class="line">    id INT;</span><br><span class="line">    phone_number VARCHAR(20) UNIQUE</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>**注意：**MySQL 中，唯一约束限定的列的值可以有多个 <code>null</code>。</p>
+<p>给唯一约束起名 <code>uq_cname</code></p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">create table course(</span><br><span class="line">    课号 char(4) not null,</span><br><span class="line">    课名 char(20),</span><br><span class="line">    学分 int,</span><br><span class="line">    constraint uq_cname unique(课名)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>创建表完后，添加唯一约束</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE stu MODIFY phone_number VARCHAR(20) UNIQUE;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>删除唯一约束</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table stu drop index phone_number;</span><br></pre></td></tr></table></figure>
+<h2 id="zhu-jian-yue-shu">主键约束</h2>
+<p><code>primary key</code></p>
+<ul>
+<li>非空且唯一</li>
+<li>一张表只能有一个字段为主键</li>
+<li>主键就是表中记录的唯一标识</li>
+</ul>
+<h3 id="chuang-jian-biao-shi">创建表时</h3>
+<ul>
+<li><strong>添加主键约束</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create table stu( </span><br><span class="line">    id int primary key,</span><br><span class="line">    name varchar(20)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>添加组合主键</strong></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table stu( </span><br><span class="line">    id int,</span><br><span class="line">    name varchar(20),</span><br><span class="line">    primary key(id, name)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h4 id="code-auto-increment-code-zi-dong-zeng-chang"><code>auto_increment</code> 自动增长</h4>
+<p>对某个主键声明，则可以使其在添加数据的时候，自增</p>
+<ul>
+<li>
+<p>建表时，添加主键约束，并且完成主键自动增长</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table stu(</span><br><span class="line">    id int primary key auto_increment,</span><br><span class="line">    name varchar(20)</span><br><span class="line">);</span><br><span class="line">#自动增长会根据当前列的最后一行的值往后增加。</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>创建表完后，在添加自动增长</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table stu modify id int auto_increment;</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>删除自动增长</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">alter table stu modify id INT;</span><br><span class="line">#这样只会删除自动增长，主键删不掉。</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>有自增主键是插入数据：</strong></p>
+</li>
+</ul>
+<blockquote>
+<p>如</p>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create table stu (</span><br><span class="line">    id int not null primary key auto_increment,</span><br><span class="line">    name varchar(8)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>三种方法：</p>
+<ul>
+<li>
+<p><strong>将该自增主键设置为null</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into stu values(null, &quot;张三&quot;);</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>将该自增主键设置为0</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into stu values(0, &quot;张三&quot;);</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>插入时提前声明属性列</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">insert into stu(name) values(&quot;张三&quot;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<h3 id="chuang-jian-biao-wan-hou-tian-jia-zhu-jian">创建表完后，添加主键</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table stu modify id int primary key;</span><br></pre></td></tr></table></figure>
+<h3 id="shan-chu-zhu-jian">删除主键</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table stu drop primary key;</span><br></pre></td></tr></table></figure>
+<h2 id="wai-jian-yue-shu">外键约束</h2>
+<p><code>foreign ley</code>，让表与表产生关系，从而保证数据的正确性</p>
+<ul>
+<li>
+<p><strong>在创建表时，可以添加外键</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">create table sc(</span><br><span class="line">    学号 char(4) not null,</span><br><span class="line">    课号 char(4) not null,</span><br><span class="line">    成绩 decimal(5,2) check(成绩 between 0 and 100),</span><br><span class="line">    primary key(学号,课号),</span><br><span class="line">    constraint fk_sno foreign key(学号) references stu(学号)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>创建表之后，添加外键</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 add constraint 外键名称 foreign key(外键字段名称) references 主表名称(主表列名称);</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>删除外键</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 drop foreign key 外键名称;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="code-check-code"><code>check</code></h2>
+<p>利用 <code>check</code> 可以对数值<strong>设置取值范围</strong></p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">create table sc(</span><br><span class="line">    学号 char(4) not null,</span><br><span class="line">    课号 char(4) not null,</span><br><span class="line">    成绩 decimal(5,2) check(成绩 between 0 and 100), # 0 ≤ 成绩 ≤ 100</span><br><span class="line">    primary key(学号,课号),</span><br><span class="line">    constraint fk_sno foreign key (学号) references stu(学号)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h1 id="ji-lian-geng-xin-he-ji-lian-shan-chu">级联更新和级联删除</h1>
+<p><code>on delete cascade</code> 级联删除<br>
+<code>on update cascade</code> 级联更新</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wangwanchao/p/5105562.html">Oracle系列–级联删除和级联更新 - impwang - 博客园 (cnblogs.com)</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">-- 班级表</span><br><span class="line">CRATE TABLE TB_CLASS</span><br><span class="line">(</span><br><span class="line">  ID    NUMBER NOT NULL, --班级主键</span><br><span class="line">  NAME  VARCHAR2(50), --班级名称</span><br><span class="line">  CONSTRAINT PK_TB_CLASS PRIMARY KEY (ID)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">-- 学生表</span><br><span class="line">CREATE TABLE TB_STUDENT</span><br><span class="line">(</span><br><span class="line">  ID        NUMBER NOT NULL,   --学生主键</span><br><span class="line">  NAME      VARCHAR2(50),      --学生姓名</span><br><span class="line">  CLASS_ID  NUMBER,            --学生所属班级，外键</span><br><span class="line"></span><br><span class="line">  --主键约束</span><br><span class="line">  CONSTRAINT PK_TB_STUDENT PRIMARY KEY (ID),</span><br><span class="line"></span><br><span class="line">  --外键约束</span><br><span class="line">  --设置级联删除为NO ACTION</span><br><span class="line">  CONSTRAINT FK_TB_STUDENT_CLASS_ID FOREIGN KEY (CLASS_ID) REFERENCES TB_CLASS (ID)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">-- 添加班级数据</span><br><span class="line">INSERT INTO TB_CLASS (ID, NAME) VALUES (1, &#x27;一班&#x27;);</span><br><span class="line">INSERT INTO TB_CLASS (ID, NAME) VALUES (2, &#x27;二班&#x27;);</span><br><span class="line">INSERT INTO TB_CLASS (ID, NAME) VALUES (3, &#x27;三班&#x27;);</span><br><span class="line"></span><br><span class="line">-- 添加学生数据</span><br><span class="line">INSERT INTO TB_STUDENT (ID, NAME, CLASS_ID) VALUES (1, &#x27;小明&#x27;, 1);</span><br><span class="line">INSERT INTO TB_STUDENT (ID, NAME, CLASS_ID) VALUES (2, &#x27;小刚&#x27;, 1);</span><br><span class="line">INSERT INTO TB_STUDENT (ID, NAME, CLASS_ID) VALUES (3, &#x27;小王&#x27;, 1);</span><br><span class="line">INSERT INTO TB_STUDENT (ID, NAME, CLASS_ID) VALUES (4, &#x27;二明&#x27;, 2);</span><br><span class="line">INSERT INTO TB_STUDENT (ID, NAME, CLASS_ID) VALUES (5, &#x27;二刚&#x27;, 2);</span><br><span class="line">INSERT INTO TB_STUDENT (ID, NAME, CLASS_ID) VALUES (6, &#x27;二王&#x27;, 2);</span><br><span class="line">INSERT INTO TB_STUDENT (ID, NAME, CLASS_ID) VALUES (7, &#x27;大明&#x27;, 3);</span><br><span class="line">INSERT INTO TB_STUDENT (ID, NAME, CLASS_ID) VALUES (8, &#x27;大刚&#x27;, 3);</span><br><span class="line">INSERT INTO TB_STUDENT (ID, NAME, CLASS_ID) VALUES (9, &#x27;大王&#x27;, 3);</span><br></pre></td></tr></table></figure>
+<h1 id="hong-fa-qi">触发器</h1>
+<p>触发器是一种与表操作有关的数据库对象，当触发器所在表上出现指定事件时，将调用该对象 ，即表的操作事件触发表上的触发器的执行。</p>
+<h2 id="chuang-jian-hong-fa-qi">创建触发器</h2>
+<p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">delimiter //</span><br><span class="line"></span><br><span class="line">create trigger 触发器名字 before|after 触发事件名 on 表名 for each row</span><br><span class="line">begin</span><br><span class="line"> -- 触发器逻辑....</span><br><span class="line">end;</span><br><span class="line"></span><br><span class="line">delimiter ;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>触发器名字：</p>
+<p>必须在当前数据库中唯一</p>
+</li>
+<li>
+<p>触发事件：</p>
+<p><code>insert</code> 或 <code>update</code> 或 <code>delete</code></p>
+</li>
+<li>
+<p><code>before</code> 或 <code>after</code>：</p>
+<p>触发器被触发的时刻，表示触发器是在激活它的语句之前或之后触发</p>
+</li>
+</ul>
+<p>例如：</p>
+<p>当 <code>stu</code> 表新加一条数据后，将添加新数据时的时间加到 <code>test</code> 表中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">delimiter //</span><br><span class="line"></span><br><span class="line">create trigger test_trig after insert on stu for each row</span><br><span class="line">begin</span><br><span class="line">insert into test values(sysdate());</span><br><span class="line">end//</span><br><span class="line"></span><br><span class="line">delimiter ;</span><br></pre></td></tr></table></figure>
+<h2 id="cha-kan-hong-fa-qi">查看触发器</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show triggers [from 表名|视图|数据库] \G;</span><br></pre></td></tr></table></figure>
+<p>在查看</p>
+<h2 id="shan-chu-he-xiu-gai-hong-fa-qi">删除和修改触发器</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop trigger [ if exists ] [数据库名] 触发器名</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>if exists</code>：避免在没有触发器的情况下删除触发器。</li>
+</ul>
+<p>删除一个表的同时，也会自动删除该表上的触发器。</p>
+<p>如果想要修改触发器，必须先把他删掉，重新创建才行</p>
+<h1 id="you-biao">游标</h1>
+<p>有时，需要在检索出来的行中前进或后退一行或多行。这就是使用游标的原因。游标（cursor）是一个存储在MySQL服务器上的数据库查询，它不是一条SELECT语句，而是被该语句检索出来的结果集。在存储了游标之后，应用程序可以根据需要滚动或浏览其中的数据。</p>
+<p>游标主要用于交互式应用，其中用户需要滚动屏幕上的数据，并对数据进行浏览或做出更改。</p>
+<p>在 MySQL 中，存储过程或函数中的查询有时会返回多条记录，而使用简单的 SELECT 语句，没有办法得到第一行、下一行或前十行的数据，这时可以使用游标来逐条读取查询结果集中的记录。游标在部分资料中也被称为光标。</p>
+<p>关系数据库管理系统实质是面向集合的，在 MySQL 中并没有一种描述表中单一记录的表达形式，除非使用 WHERE 子句来限制只有一条记录被选中。所以有时我们必须借助于游标来进行单条记录的数据处理。</p>
+<p>一般通过游标定位到结果集的某一行进行数据修改。</p>
+<blockquote>
+<p>结果集是符合 SQL 语句的所有记录的集合。</p>
+</blockquote>
+<h2 id="1-sheng-ming-you-biao">1、声明游标</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">declare 游标名 cursor for select操作</span><br></pre></td></tr></table></figure>
+<p>可以返回一行或多行数据</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">declare classCursor </span><br><span class="line">cursor for</span><br><span class="line">select avg(g.分数) from curriculum c, grade g where c.课程编号=g.课程编号 and c.课程名称=name;</span><br></pre></td></tr></table></figure>
+<h2 id="2-da-kai-you-biao">2、打开游标</h2>
+<p>声明游标之后，要想从游标中提取数据，必须首先打开游标</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open 游标名;</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，打开一个游标时，游标并不指向第一条记录，而是指向第一条记录的前边。</p>
+<p>在程序中，一个游标可以打开多次。用户打开游标后，其他用户或程序可能正在更新数据表，所以有时会导致用户每次打开游标后，显示的结果都不同。所以记得关闭游标（在下面）。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open classCursor;</span><br></pre></td></tr></table></figure>
+<h2 id="3-shi-yong-you-biao">3、使用游标</h2>
+<p>可以使用 <code>FETCH</code> 语句分别访问它的每一行。<code>FETCH</code> 指定检索什么数据（所需的列），检索出来的数据存储在什么地方。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fetch classCursor into 变量名1, ...</span><br></pre></td></tr></table></figure>
+<p>使用游标类似高级语言中的数组遍历，当第一次使用游标时，此时游标指向结果集的第一条记录。</p>
+<p>MySQL 的游标是只读的，也就是说，你<strong>只能顺序地从开始往后读取</strong>结果集，不能从后往前，也不能直接跳到中间的记录。</p>
+<p>例如：</p>
+<p>从第一行到最后一行，循环检索当前行的 order_num 列</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- 遍历所有行</span><br><span class="line">repeat</span><br><span class="line">	fetch ordernumbers into k;</span><br><span class="line">-- end of loop</span><br><span class="line">until done end repeat;</span><br></pre></td></tr></table></figure>
+<p>这个例子使用 <code>FETCH</code> 检索当前 <code>ordernumbers</code> 到声明的名为 <code>k</code> 的变量中。但与前一个例子不一样的是，这个例子中的 <code>FETCH</code> 是在 <code>REPEAT</code> 内，因此它反复执行直到 <code>done</code> 为真</p>
+<p>当然，变量 <code>k</code> 需要在此之前需先声明</p>
+<h2 id="4-guan-bi-you-biao">4、关闭游标</h2>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">close 游标名;</span><br></pre></td></tr></table></figure>
+<p>在函数或存储过程中，如果你不明确关闭游标，MySQL将会在到达END语句时自动关闭它。</p>
+<p>例如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">delimiter //</span><br><span class="line"></span><br><span class="line">create procedure avg_func(name varchar(50))</span><br><span class="line">begin</span><br><span class="line">declare res decimal;</span><br><span class="line">declare classCursor cursor for</span><br><span class="line">select avg(g.分数) from curriculum c, grade g where c.课程编号=g.课程编号 and c.课程名称=name;</span><br><span class="line">open classCursor;</span><br><span class="line">fetch classCursor into res;</span><br><span class="line">close classCursor;</span><br><span class="line">select res 平均分;</span><br><span class="line">end//</span><br><span class="line"></span><br><span class="line">delimiter ;</span><br></pre></td></tr></table></figure>
+<h1 id="chuang-jian-han-shu">创建函数</h1>
+<p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">delimiter //</span><br><span class="line"></span><br><span class="line">create function 函数名(变量名 变量类型)</span><br><span class="line">returns 返回值类型</span><br><span class="line">begin</span><br><span class="line">...</span><br><span class="line">return 返回值</span><br><span class="line">end//</span><br><span class="line"></span><br><span class="line">delimiter ;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>若出现以下错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This function has none of DETERMINISTIC, NO SQL, or READS SQL DATA in its declaration and binary logging is enabled (you *might* want to use the less safe log_bin_trust_function_creators variable)</span><br></pre></td></tr></table></figure>
+<p>则：</p>
+<p><strong>临时生效，重启后失效</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set global log_bin_trust_function_creators=TRUE;</span><br></pre></td></tr></table></figure>
+<p><strong>永久生效</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">log_bin_trust_function_creators=1</span><br></pre></td></tr></table></figure>
+<h1 id="suo-yin">索引</h1>
+<p>只有表才能创建索引</p>
+<p>如果是<code>char</code>，<code>varchar</code>类型，<code>length</code> 可以小于字段实际长度；如果是 <code>blob</code> 和 <code>text</code> 类型，必须指定 <code>length</code>。</p>
+<ul>
+<li>创建<strong>普通</strong>索引（它没有任何限制）</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create index 索引名 on 表名(属性1[(length)], ..);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>修改表索引</p>
+<ul>
+<li>
+<p>添加索引（也可以用来创建索引）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table 表名 add index 索引名(属性1, ..);</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p>删除索引</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop index 索引名 on 表名;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li>
+<p>创建表时，创建索引：</p>
+</li>
+</ul>
+<p>如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table test(</span><br><span class="line">    id int not null,</span><br><span class="line">    username varchar(16) not null,</span><br><span class="line">    index indexname(username(10))</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>删除索引：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">drop index 索引名 on 表名;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建<strong>唯一</strong>索引</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create unique index 索引名 on 表名(属性1[(length)], ..);</span><br></pre></td></tr></table></figure>
+<h1 id="shi-tu">视图</h1>
+<p>视图是一个虚拟表，其内容由查询定义。与table一样，同样能执行查询修改操作，不过其修改内容直接同步到原表。一般不要在视图上修改。</p>
+<h2 id="chuang-jian-shi-tu">创建视图</h2>
+<p>创建视图由 <code>select</code> 操作筛选出来</p>
+<p>两种写法：</p>
+<ul>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create view 视图名 as select操作;</span><br></pre></td></tr></table></figure>
+<ul>
+<li></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create view 视图名(属性名, ...) as select操作;</span><br></pre></td></tr></table></figure>
+<h2 id="cha-kan-shi-tu">查看视图</h2>
+<p>与查看 <code>table</code> 一样</p>
+<ul>
+<li>查看视图属性：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">desc 视图名;</span><br><span class="line">或</span><br><span class="line">describe 视图名;</span><br></pre></td></tr></table></figure>
+<p>前者命令只是后者的<strong>缩写</strong></p>
+<ul>
+<li>查看视图数据：与查看 <code>table</code> 一样，用 <code>select</code> 操作</li>
+</ul>
+<h2 id="xiu-gai-shi-tu">修改视图</h2>
+<p>修改视图属性</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter view 视图名(属性1, ..) as select操作;</span><br></pre></td></tr></table></figure>
+<p>和创建新视图差不多</p>
+<h2 id="geng-xin-shi-tu">更新视图</h2>
+<p>修改视图中的数据会修改原表的数据，一般不要直接从视图修改。</p>
+<ul>
+<li>修改某一条数据</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update view 视图名 set 属性名=... where 定位;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>添加一条数据</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">insert into 视图名 values(数据1, ..);</span><br><span class="line">或</span><br><span class="line">insert into 视图名(属性1, ..) values(数据1, ..);</span><br></pre></td></tr></table></figure>
+<p>与 <code>table</code> 一样</p>
+<ul>
+<li>删除一条数据</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delete from 视图名 where 定位;</span><br></pre></td></tr></table></figure>
+<p>与 <code>table</code> 一样</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://duegin.github.io/2022/03/05/C++/%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0/%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/Rin.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DueGin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2022/03/05/C++/%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0/%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0/" itemprop="url">内建函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2022-03-05T22:45:00+08:00">
+                2022-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/" itemprop="url" rel="index">
+                    <span itemprop="name">C/C++</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="统计某个数-x-二进制中有多少个1"><a href="#统计某个数-x-二进制中有多少个1" class="headerlink" title="统计某个数 $x$ 二进制中有多少个1"></a>统计某个数 $x$ 二进制中有多少个1</h1><p><code>__builtin_popcount(unsigned x)</code></p>
+<p><code>__builtin_popcountll(unsigned long long x)</code></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://duegin.github.io/2022/02/12/Linux/Linux/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2803,435 +3453,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://duegin.github.io/2021/12/17/%E7%AE%97%E6%B3%95/3.%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/%E6%A0%91%E4%B8%8E%E5%9B%BE%E9%81%8D%E5%8E%86/%E6%A0%91%E4%B8%8E%E5%9B%BE%E9%81%8D%E5%8E%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/Rin.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DueGin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/12/17/%E7%AE%97%E6%B3%95/3.%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/%E6%A0%91%E4%B8%8E%E5%9B%BE%E9%81%8D%E5%8E%86/%E6%A0%91%E4%B8%8E%E5%9B%BE%E9%81%8D%E5%8E%86/" itemprop="url">树与图遍历</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-12-17T00:27:03+08:00">
-                2021-12-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/" itemprop="url" rel="index">
-                    <span itemprop="name">搜索与图论</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="树与图遍历"><a href="#树与图遍历" class="headerlink" title="树与图遍历"></a>树与图遍历</h1><p>时间复杂度 $O(n+m)$ ， $n$ 表示点数，$m$ 表示边数</p>
-<h3 id="深度优先遍历"><a href="#深度优先遍历" class="headerlink" title="深度优先遍历"></a>深度优先遍历</h3><p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/848/">AcWing 846. 树的重心</a></p>
-<p>模板：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    vis[u] = <span class="literal">true</span>; <span class="comment">// vis[u] 表示点u已经被遍历过</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = h[u]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> j = e[i];</span><br><span class="line">        <span class="keyword">if</span> (!st[j]) <span class="built_in">dfs</span>(j);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="宽度优先遍历"><a href="#宽度优先遍历" class="headerlink" title="宽度优先遍历"></a>宽度优先遍历</h3><p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/849/">AcWing 847. 图中点的层次</a></p>
-<p>模板：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">queue&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">vis[<span class="number">1</span>] = <span class="literal">true</span>; <span class="comment">// 表示1号点已经被遍历过</span></span><br><span class="line">q.<span class="built_in">push</span>(<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> (q.<span class="built_in">size</span>())</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> t = q.<span class="built_in">front</span>();</span><br><span class="line">    q.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = h[t]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> j = e[i];</span><br><span class="line">        <span class="keyword">if</span> (!vis[j])</span><br><span class="line">        &#123;</span><br><span class="line">            vis[j] = <span class="literal">true</span>; <span class="comment">// 表示点j已经被遍历过</span></span><br><span class="line">            q.<span class="built_in">push</span>(j);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://duegin.github.io/2021/12/17/%E7%AE%97%E6%B3%95/3.%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/Rin.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DueGin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/12/17/%E7%AE%97%E6%B3%95/3.%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/" itemprop="url">最短路径汇总</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-12-17T00:00:03+08:00">
-                2021-12-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/" itemprop="url" rel="index">
-                    <span itemprop="name">搜索与图论</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="最短路径汇总"><a href="#最短路径汇总" class="headerlink" title="最短路径汇总"></a>最短路径汇总</h1><img src="http://duegin.gitee.io/pic/pictures/3.搜索与图论/最短路径.png" alt="最短路径" style="zoom: 50%;">
-
-<h1 id="遍历点"><a href="#遍历点" class="headerlink" title="遍历点"></a>遍历点</h1><h2 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h2><p>基本思路：（基于贪心）</p>
-<ul>
-<li>  先初始化所有点到根结点的距离为正无穷，每个点是否确认为最短路径的点初始化为 $false$</li>
-<li>  将1号点到根结点的距离初始化为0，默认从1号点到n号点</li>
-<li>迭代 $n-1$ 次（或 用堆的大小判断循环结束）<ul>
-<li>  寻找当前 <code>dist[]</code> 中路径最小值，并保存其下标 <code>t</code></li>
-<li>  用 <code>t</code> 更新其他点的距离</li>
-<li>  将点 <code>t</code> 设为最短路径上的点</li>
-</ul>
-</li>
-</ul>
-<h2 id="朴素Dijkstra算法"><a href="#朴素Dijkstra算法" class="headerlink" title="朴素Dijkstra算法"></a>朴素Dijkstra算法</h2><p>稠密图</p>
-<p>时间复杂是 $O(n^2+m)$， $n$ 表示点数，$m$ 表示边数</p>
-<p><strong><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1zz4y1m7Nq?spm_id_from=333.1007.top_right_bar_window_custom_collection.content.click">动画算法思路</a></strong></p>
-<p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/851/">AcWing 849. Dijkstra求最短路 I</a></p>
-<p>这里只需迭代 $n-1$ 次是因为要加入所有点，而加入 n 个点需要加入 $n-1$ 条边，其实迭代到最后只有一个点的时候，最后的点是无法再更新其他点到这个点的最短距离了，而每次更新距离数组的时候，都是存最小值，所以最后的 <code>dist[n]</code> 也必是最短的。当然，你迭代 n 次也没错</p>
-<p>模板：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> g[N][N];  <span class="comment">// 存储每条边</span></span><br><span class="line"><span class="keyword">int</span> dist[N];  <span class="comment">// 存储1号点到每个点的最短距离</span></span><br><span class="line"><span class="keyword">bool</span> st[N];   <span class="comment">// 存储每个点的最短路是否已经确定</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 自环不影响，重环的话取最短的即可</span></span><br><span class="line"><span class="comment">// 贪心 + 宽搜</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 求1号点到n号点的最短路，如果不存在则返回-1</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dijkstra</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dist, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> dist);</span><br><span class="line">    dist[<span class="number">1</span>] = <span class="number">0</span>; <span class="comment">// dist[]从1开始</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i ++ ) <span class="comment">// 循环n-1次</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> t = <span class="number">-1</span>;     <span class="comment">// 在还未确定最短路的点中，寻找距离最小的点</span></span><br><span class="line">        <span class="comment">// 寻找当前dist[]中路径最小值</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j ++ ) <span class="comment">// dist[]从1开始</span></span><br><span class="line">            <span class="keyword">if</span> (!st[j] &amp;&amp; (t == <span class="number">-1</span> || dist[t] &gt; dist[j])) <span class="comment">// 没有被加入 且 t==-1 或 这次路径比上次最小路径小</span></span><br><span class="line">                t = j;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 用t更新其他点的距离</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j ++ ) <span class="comment">// dist[]从1开始</span></span><br><span class="line">            dist[j] = <span class="built_in">min</span>(dist[j], dist[t] + g[t][j]);</span><br><span class="line"></span><br><span class="line">        st[t] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    <span class="keyword">if</span> (dist[n] == <span class="number">0x3f3f3f3f</span>) <span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">// 从1号点到不了n号点</span></span><br><span class="line">    <span class="keyword">return</span> dist[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="堆优化Dijkstra算法"><a href="#堆优化Dijkstra算法" class="headerlink" title="堆优化Dijkstra算法"></a>堆优化Dijkstra算法</h2><p>稀疏图</p>
-<p>时间复杂度 $O(mlogn)$， $n$ 表示点数，$m$ 表示边数</p>
-<p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/852/">AcWing 850. Dijkstra求最短路 II</a></p>
-<p>模板：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span> <span class="comment">// 优先队列头文件</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;functional&gt;</span> <span class="comment">// greater&lt;&gt;头文件</span></span></span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; PII; <span class="comment">//first是路径长度，second是结点编号</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n; <span class="comment">// 点的数量</span></span><br><span class="line"><span class="keyword">int</span> h[N], w[N], e[N], ne[N], idx; <span class="comment">// 邻接表存储所有边</span></span><br><span class="line"><span class="keyword">int</span> dist[N]; <span class="comment">// 存储所有点到1号点的距离</span></span><br><span class="line"><span class="keyword">bool</span> st[N]; <span class="comment">// 存储每个点的最短距离是否已确定</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 贪心（核心） + 宽搜 + 堆优化</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 求1号点到n号点的最短距离，如果不存在，则返回-1</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dijkstra</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dist, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> dist);</span><br><span class="line">    dist[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    priority_queue&lt;PII, vector&lt;PII&gt;, greater&lt;PII&gt;&gt; heap; <span class="comment">// 小根堆</span></span><br><span class="line">    heap.<span class="built_in">push</span>(&#123;<span class="number">0</span>, <span class="number">1</span>&#125;);      <span class="comment">// first存储距离，second存储节点编号</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (heap.<span class="built_in">size</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 获取路径最小的点</span></span><br><span class="line">        PII t = heap.<span class="built_in">top</span>();</span><br><span class="line">        heap.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> ver = t.second, distance = t.first;</span><br><span class="line">	</span><br><span class="line">        <span class="keyword">if</span> (st[ver]) <span class="keyword">continue</span>; <span class="comment">// 如果这个点已经确定为最短路径的点，则不执行以下操作了</span></span><br><span class="line">        st[ver] = <span class="literal">true</span>; <span class="comment">//设置该点为已确定最短路径</span></span><br><span class="line">		</span><br><span class="line">        <span class="comment">// 同样的，更新dist[]中每个点的最短路径，只不过这里是放入小根堆，小根堆会维护升序序列</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = h[ver]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> j = e[i];</span><br><span class="line">            <span class="keyword">if</span> (dist[j] &gt; distance + w[i])</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j] = distance + w[i];</span><br><span class="line">                heap.<span class="built_in">push</span>(&#123;dist[j], j&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (dist[n] == <span class="number">0x3f3f3f3f</span>) <span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">// 从1号点到不了n号点</span></span><br><span class="line">    <span class="keyword">return</span> dist[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-<h1 id="遍历边"><a href="#遍历边" class="headerlink" title="遍历边"></a>遍历边</h1><h2 id="Bellman-Ford算法"><a href="#Bellman-Ford算法" class="headerlink" title="Bellman_Ford算法"></a>Bellman_Ford算法</h2><p>时间复杂度 $O(nm)$ ， $n$ 表示点数，$m$ 表示边数</p>
-<p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/855/">AcWing 853. 有边数限制的最短路</a></p>
-<p>思路：（基于离散数学）</p>
-<ul>
-<li><strong>初始化所有点的距离到 1 号点的距离为正无穷，并设置 1 号点距离为 0</strong></li>
-<li>经过 1～n 条边（有边数限制 k 的话，替换成 k ）<ul>
-<li>将上一轮各点的距离都备份一下</li>
-<li>更新所有点到 1 号点的距离（松弛不等式）</li>
-</ul>
-</li>
-</ul>
-<p>⚠️注意更新所有点的距离时，每个点的距离都有可能被更新，所以判断返回值时需要以 <code>dist[n] &gt; INF / 2</code> 判断是否无最短路径<br>模板：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">int</span> n, m;      <span class="comment">// n表示点数，m表示边数</span></span><br><span class="line"><span class="keyword">int</span> dist[N];   <span class="comment">// dist[x]存储1到x的最短路距离</span></span><br><span class="line"><span class="keyword">int</span> backup[N]; <span class="comment">// 存储1到x的最短距离的上一个状态</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">int</span> a, b, w;</span><br><span class="line">&#125; e[N]; <span class="comment">// 边，a表示出点，b表示入点，w表示边的权重</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 求1到n的最短路距离，如果无法从1走到n，则返回INF</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bellman_ford</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dist, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> dist);</span><br><span class="line">    dist[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 只有n个点，如果第n次迭代仍然会松弛三角不等式，就说明存在一条长度是n+1的最短路径，由抽屉原理，路径中至少存在两个相同的点，说明图中存在负权回路</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) <span class="comment">// 经过不超过m条边，即最多经过m-1条边</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">memcpy</span>(backup, dist, <span class="keyword">sizeof</span> dist); <span class="comment">// 将dist[]值复制一份到backup[]</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> a = e[j].a, b = e[j].b, w = e[j].w;</span><br><span class="line">            dist[b] = <span class="built_in">min</span>(dist[b], backup[a] + w); <span class="comment">// 松弛不等式（离散数学专业术语罢了）</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 判断是否存在1~n的最短距离，这里要大于INF/2，因为有可能是第n号点加上了负权边</span></span><br><span class="line">    <span class="keyword">if</span> (dist[n] &gt; INF / <span class="number">2</span>)</span><br><span class="line">        <span class="keyword">return</span> INF;</span><br><span class="line">    <span class="keyword">return</span> dist[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p><strong>注意：</strong>如果题目限制边数为 $k$ ，则 <code>backup[]</code> 一定得有，因为需要获取上一个状态的1到各点最短路径，即 经过 $k$ 条边时的最短路径 需要 经过 $k-1$ 条边时的1到各点最短路径 来确定</p>
-<p>单纯只求最短路径的话，可以不需要 <code>backup[]</code> 数组，即修改 <code>for</code> 循环为：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++ )</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; j ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> a = e[j].a, b = e[j].b, w = e[j].w;</span><br><span class="line">        dist[b] = <span class="built_in">min</span>(dist[b], dist[a] + w);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>  其他都不用变，当然啦，一般题目<strong>有边数限制</strong>才用 $bellman$ 算法，否则其他算法（例如：SPFA算法）效率都比它更好</p>
-</blockquote>
-<h2 id="SPFA算法"><a href="#SPFA算法" class="headerlink" title="SPFA算法"></a>SPFA算法</h2><p>队列优化的 Bellman-Ford 算法</p>
-<p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/853/">AcWing 851. spfa求最短路</a></p>
-<p>时间复杂度  平均情况下 $O(m)$ ，最坏情况下 $O(nm)$ ， $n$ 表示点数，$m$ 表示边数</p>
-<p>思路：（基于离散数学）</p>
-<ul>
-<li><p>同样的，初始化所有点到 1 号点距离为正无穷，且 1 号点距离为 0，并将 1 号点入队，将 1 号点设置为已在队列的标志</p>
-</li>
-<li><p>while(队列是否为空)</p>
-<ul>
-<li>取出队头 t ，并弹出</li>
-<li>设置点 t 不在队列中</li>
-<li>用点 t 更新各点到 1 号点到距离<ul>
-<li>如果有比当前距离更短的（松弛不等式）<ul>
-<li>更新且入队</li>
-<li>设置该点在队列标志</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>模板：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">int</span> n;	<span class="comment">// 总点数</span></span><br><span class="line"><span class="keyword">int</span> h[N], w[N], e[N], ne[N], idx;	<span class="comment">// 邻接表存储所有边</span></span><br><span class="line"><span class="keyword">int</span> dist[N];	<span class="comment">// 存储每个点到1号点的最短距离</span></span><br><span class="line"><span class="keyword">bool</span> st[N];		<span class="comment">// 存储每个点是否在队列中</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// bellman_ford宽搜改良（队列优化），遍历点的出边</span></span><br><span class="line"><span class="comment">// 基本思路大概是：用队列存已经遍历到的点，然后拿出来，宽搜其出边是否比dist[]中的小，小的话更新，且如果该点不在队列中就入队</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 求1号点到n号点的最短路距离，如果从1号点无法走到n号点则返回INF</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">spfa</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dist, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> dist);</span><br><span class="line">    dist[<span class="number">1</span>] = <span class="number">0</span>; <span class="comment">// 从1出发</span></span><br><span class="line"></span><br><span class="line">    queue&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">    q.<span class="built_in">push</span>(<span class="number">1</span>); <span class="comment">// 从1出发</span></span><br><span class="line">    st[<span class="number">1</span>] = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (q.<span class="built_in">size</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">auto</span> t = q.<span class="built_in">front</span>();</span><br><span class="line">        q.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">        st[t] = <span class="literal">false</span>;</span><br><span class="line">        </span><br><span class="line">		<span class="comment">// 更新dist[]</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = h[t]; i != <span class="number">-1</span>; i = ne[i]) <span class="comment">// 遍历t结点中所有出边</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> j = e[i];</span><br><span class="line">            <span class="keyword">if</span> (dist[j] &gt; dist[t] + w[i]) <span class="comment">// 和dijkstra一样取最短（松弛不等式）</span></span><br><span class="line">            &#123;</span><br><span class="line">                dist[j] = dist[t] + w[i];</span><br><span class="line">                <span class="keyword">if</span> (!st[j])     <span class="comment">// 如果队列中已存在j，则不需要将j重复插入</span></span><br><span class="line">                &#123;</span><br><span class="line">                    q.<span class="built_in">push</span>(j);</span><br><span class="line">                    st[j] = <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (dist[n] == INF) <span class="keyword">return</span> INF;</span><br><span class="line">    <span class="keyword">return</span> dist[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>  ⚠️<strong>注意</strong>这个SPFA算法是不能适用于<strong>有负环</strong>的题目的</p>
-</blockquote>
-<p><strong>SPFA怕判断图中是否存在负环</strong></p>
-<p>时间复杂度是 $O(nm)$ ， $n$ 表示点数，$m$ 表示边数</p>
-<p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/854/">AcWing 852. spfa判断负环</a></p>
-<p>模板：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n;	<span class="comment">// 总点数</span></span><br><span class="line"><span class="keyword">int</span> h[N], w[N], e[N], ne[N], idx;	<span class="comment">// 邻接表存储所有边</span></span><br><span class="line"><span class="keyword">int</span> dist[N], cnt[N];	<span class="comment">// dist[x]存储1号点到x的最短距离，cnt[x]存储1到x的最短路中经过的点数</span></span><br><span class="line"><span class="keyword">bool</span> st[N];	<span class="comment">// 存储每个点是否在队列中</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果存在负环，则返回true，否则返回false。</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">spfa</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// dist[]不用初始化，因为不需要算出最短距离，且判断是否存在负环不需要用到里面的准确数据</span></span><br><span class="line">    <span class="comment">// 一般存在负环，他就死循环了，一直到 cnt[j] &gt;= n才出来，所以复杂度也相当高，和bellman算法一样</span></span><br><span class="line">    <span class="comment">// 原理：如果某条最短路径上有n个点（除了自己），那么加上自己之后一共有n+1个点，由抽屉原理一定有两个点相同，所以存在负环</span></span><br><span class="line"></span><br><span class="line">    queue&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        q.<span class="built_in">push</span>(i);</span><br><span class="line">        st[i] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (q.<span class="built_in">size</span>())</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">int</span> t = q.<span class="built_in">front</span>();</span><br><span class="line">        q.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">        st[t] = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = h[t]; i != <span class="number">-1</span>; i = ne[i])</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> j = e[i];</span><br><span class="line">            <span class="keyword">if</span> (dist[j] &gt; dist[t] + w[i])</span><br><span class="line">            &#123;</span><br><span class="line">                dist[j] = dist[t] + w[i];</span><br><span class="line">                cnt[j] = cnt[t] + <span class="number">1</span>; <span class="comment">// 从结点t出发到其出边的另一头顶点的步数就是加上1</span></span><br><span class="line">                <span class="keyword">if</span> (cnt[j] &gt;= n) <span class="keyword">return</span> <span class="literal">true</span>;<span class="comment">// 如果从1号点到x的最短路中包含至少n个点（不包括自己），则说明存在负环</span></span><br><span class="line">                <span class="keyword">if</span> (!st[j])</span><br><span class="line">                &#123;</span><br><span class="line">                    q.<span class="built_in">push</span>(j);</span><br><span class="line">                    st[j] = <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>  一般求是否存在负环问题，都不会用SPFA算法，因为相比 bellman 写法，复杂度一样，那肯定选代码量小一点的 bellman 算法呐</p>
-</blockquote>
-<h1 id="多源最短路"><a href="#多源最短路" class="headerlink" title="多源最短路"></a>多源最短路</h1><h2 id="Floyd算法"><a href="#Floyd算法" class="headerlink" title="Floyd算法"></a>Floyd算法</h2><p>基于DP思想，<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1q4411M7r9?spm_id_from=333.1007.top_right_bar_window_history.content.click">算法思路</a>，空降7：45</p>
-<p>时间复杂度是 $O(n^3)$ ， $n$ 表示点数</p>
-<p>模板题：<a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/856/">AcWing 854. Floyd求最短路</a></p>
-<p>思路：</p>
-<ul>
-<li>基于 DP</li>
-</ul>
-<p>模版：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">初始化：</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j ++ )</span><br><span class="line">            <span class="keyword">if</span> (i == j) d[i][j] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">else</span> d[i][j] = INF;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 算法结束后，d[a][b]表示a到b的最短距离</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">floyd</span><span class="params">()</span> <span class="comment">// 采用了滚动数组</span></span></span><br><span class="line"><span class="function"></span>&#123;	<span class="comment">// d[k,i,j]是i在1~k中到j的最短距离</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">1</span>; k &lt;= n; k ++ )</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++ )</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j ++ )</span><br><span class="line">                d[i][j] = <span class="built_in">min</span>(d[i][j], d[i][k] + d[k][j]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3283,7 +3504,7 @@
             
               <div class="site-state-item site-state-posts">
                 <a href="/archives">
-                  <span class="site-state-item-count">73</span>
+                  <span class="site-state-item-count">75</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -3294,7 +3515,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -3305,7 +3526,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-count">72</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
